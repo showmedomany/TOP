@@ -18,11 +18,8 @@ import member.MemberDao;
 
 @Controller
 public class PageController {
-	/*
-	//DBBean 객체생성 bean패키지 CreateBean에 이름있음
-	@Resource(name = "memberDao")
-	private MemberDao memberDao;		
-	*/
+	
+	//DBBean 객체생성 bean패키지 CreateBean에 이름있음	
 	@Resource(name = "memberDao")
 	private MemberDao memberDao;
 	
@@ -68,8 +65,6 @@ public class PageController {
 			int authority_id = memberDao.getAuthority_id(id);
 			request.setAttribute("authority_id", authority_id);			
 		}
-		
-		
 		//loginMember메소드 사용
 		//getMember메소드 사용해서 권한 저장
 		request.setAttribute("loginCheck", loginCheck);
@@ -78,21 +73,39 @@ public class PageController {
 		
 		//리턴은 loginPro.jsp로 이동하여 로그인이 제대로 이뤄 졌는지 알려줌
 		return new ModelAndView("/vtFrame/vt_loginPro");
-	}//loginForm
+	}//loginPro
 	
 	@RequestMapping("/logoutPro")
 	public ModelAndView logoutPro
 	(HttpServletRequest request,HttpServletResponse response){
 		
 		//메인으로 돌아가야하므로 센터 컨텐트로 설정
-		String center = "vt_loginForm";
+		String center = "vt_centerContent";
 		request.setAttribute("center", center);		
 		//세션 내용을 지움
 		request.getSession().removeAttribute("memId");
 		request.getSession().removeAttribute("authority_id");
 		
 		return new ModelAndView("/vtFrame/vtFrame");
-	}//loginForm
+	}//logoutPro
 	
+	
+	@RequestMapping("/infoForm")
+	public ModelAndView infoForm
+	(HttpServletRequest request,HttpServletResponse response){		
+		//메인으로 돌아가야하므로 센터 컨텐트로 설정
+		String center = "/vt_info/vt_infoForm";
+		request.setAttribute("center", center);				
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//infoForm
+	
+	@RequestMapping("/inputForm")
+	public ModelAndView inputForm
+	(HttpServletRequest request,HttpServletResponse response){		
+		//메인으로 돌아가야하므로 센터 컨텐트로 설정
+		String center = "vt_inputForm";
+		request.setAttribute("center", center);				
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//loginForm
 }	
 

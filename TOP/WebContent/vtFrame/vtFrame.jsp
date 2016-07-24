@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<!-- 한글로 된부분 setting.jsp로 옮겨야함 -->
+
 <html>
 	<head>	
 	<title>비주얼탑 홈페이지에 오신것을 환영합니다.</title>	

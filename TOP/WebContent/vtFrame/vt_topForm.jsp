@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
 
+
+<!-- 한글로 된부분 setting.jsp로 옮겨야함 -->
 <html>			
 	<head>
 		<script src = "${jquery}"></script>
@@ -22,7 +24,8 @@
 								href="main.do">${str_hometag}</a>
 							<a class="top_header_atag_font"
 								href="loginForm.do">${str_logintag}</a>
-							<a class="top_header_atag_font">${str_membership}</a>
+							<a class="top_header_atag_font"
+								href="inputForm.do">${str_membership}</a>
 						</c:if>
 						
 						<!-- 세션스코프의 권한 값이 관리자일때  -->
@@ -34,7 +37,7 @@
 						<!-- 세션스코프의 권한 값이 회원일때  -->
 						<c:if test="${sessionScope.authority_id eq 2 }">
 							${sessionScope.memId }
-							<a>관리자페이지</a>
+							<a>마이페이지</a>
 							<a href = "logoutPro.do">로그아웃</a> 
 						</c:if>
 						
@@ -53,7 +56,8 @@
 								<div class="top_navi_emptymenu"></div>
 							</li> 
 							<li class="top_navi_menuframe">  
-								<div class="top_navi_menu">센터 소개</div>
+								<div class="top_navi_menu"
+									onclick="location = 'infoForm.do'">센터 소개</div>
 								<ul class="top_navi_subframe">  
 									<li>인사말</li>  
 									<li>센터 연혁</li> 

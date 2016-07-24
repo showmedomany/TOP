@@ -2,11 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
 
+<!-- 한글써진 부분 setting.jsp로 옮겨야함 -->
 
 <html>
 	<head>
 	
 	</head>
+	
 	<body>
 		<!-- 아이디 없음 -->
 		<c:if test="${loginCheck eq 0}">

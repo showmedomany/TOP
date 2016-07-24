@@ -1,0 +1,38 @@
+.vt_info_frame{	
+	/* 센터에 뿌려질 큰 틀 */
+	margin: auto;
+	position: relative;
+	height: 1000;
+	background-color: lightgray;
+	z-index: 0;
+}
+.vt_info_body{
+	/* 틀안에 올라갈 내용물들의 몸통 */
+	margin: auto;
+    position: relative;
+    height: inherit;
+    background-color: beige;
+    z-index: 1;
+}
+.vt_info_path_body{
+	/* 메뉴를 선택했을시 경로 */
+	margin: 0 auto;
+    width: 170;
+}
+.vt_info_path{
+	width: 200;
+    margin-left: 550;
+}
+.vt_info_menu_body{
+	/* 메뉴안의 소메뉴들 올라갈 부분 */
+    height: inherit;
+    background-color: lightcyan;
+    width: 400;
+    position: absolute;
+}
+.vt_info_content_body{
+	/* 뿌려질 내용 */
+	height: inherit;
+    background-color: lightpink;
+    left: 400;
+}

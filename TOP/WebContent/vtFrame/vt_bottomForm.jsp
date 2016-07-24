@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
 
+<!-- 한글로 된부분 setting.jsp로 옮겨야함 -->
+
 <html>
 	<head>
 		<link href="${css}vt_bottomFormStyle.css" rel="stylesheet"	type="text/css">
