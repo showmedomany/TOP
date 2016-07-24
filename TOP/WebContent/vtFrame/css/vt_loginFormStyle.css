@@ -1,0 +1,161 @@
+/* 로그인폼프레임 */
+.vt_loginForm_frame{
+	position: relative;
+	width: auto;
+	height: 540;
+	background-image : url("/TOP/vtFrame/images/loginFormbg.png");
+	background-size: inherit;
+	z-index: 0;
+}
+/* 로그인폼 중앙 내용물바탕 */
+.vt_loginForm_body{	
+   	position: relative;
+    margin: auto;
+    width: 600;
+    height: 300;
+    top: 140;
+    /* left: 0; */
+    /* right: 100px; */
+    /* bottom: 100px; */
+    z-index: 1;
+}
+/* 홈페이지 타이틀 문자바탕 */
+.vt_loginForm_title{
+	/* 가운데로 */
+	position: relative;    
+    height: 90;
+    width: 230;
+    top: 100;
+    left: 50;
+    z-index: 2;
+}
+/* 홈페이지 타이틀 문자바탕 스타일*/
+.vt_loginForm_title div{
+	float: left;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 46px;
+	font-weight: 200;
+}
+.vt_loginForm_title div span{	
+	color: black;	
+}
+
+/* 로그인폼 인풋관련 테이블 바탕 */
+.vt_loginForm_inputTable{
+	position: relative;
+    
+    
+    left: 300px;
+    z-index: 2;
+}
+/* 로그인폼 인풋관련 테이블 아이디칸 */
+.vt_loginForm_inputTable input[type=text]{
+	width: 259px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+}
+/* 로그인폼 인풋관련 테이블 비밀번호칸 */
+.vt_loginForm_inputTable input[type=password]{
+	width: 259px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+/* 로그인폼 인풋관련 테이블 로그인 버튼 */
+.vt_loginForm_inputTable input[type=submit]{
+	width: 260px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+/* 로그인폼 인풋관련 테이블 아이디인풋창 포커싱 */
+.vt_loginForm_inputTable input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+/* 로그인폼 인풋관련 테이블 비밀번호인풋창 포커싱 */
+.vt_loginForm_inputTable input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+/* 로그인폼 인풋관련 테이블 로그인 버튼 호버 */
+.vt_loginForm_inputTable input[type=submit]:hover{
+	opacity: 0.8;
+}
+
+/* 로그인폼 인풋관련 테이블 로그인 버튼 액션 */
+.vt_loginForm_inputTable input[type=submit]:active{
+	opacity: 0.6;
+}
+
+
+/*홀더글씨 색*/
+::-webkit-input-placeholder{
+   color:white;
+}
+::-moz-input-placeholder{
+   color:white;
+}
+
+/* atag  */
+.vt_loginForm_atag{
+	position: relative;
+    left: 390;
+}
+
+.vt_loginForm_atag a{
+	color: white;
+	TEXT-DECORATION:none;
+}
+
+.vt_loginForm_atag a:hover{
+	color:black;
+	TEXT-DECORATION:none;
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

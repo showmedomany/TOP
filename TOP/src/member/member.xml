@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Member">
+	
+	<select id = "checkMember" parameterType="String" resultType="int">
+		select count(*) from vt_members where id = #{id}
+	</select>
+	
+	<select id="getMember" parameterType="String" resultType="member.MemberDataBean">
+		select * from vt_members where id = #{id}
+	</select>
+	
+</mapper>
