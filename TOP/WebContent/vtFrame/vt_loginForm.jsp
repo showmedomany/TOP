@@ -3,7 +3,7 @@
 <%@ include file = "setting.jsp" %>
 
 <html>
-	<head>
+	<head> 
 		<link href = "${css}vt_loginFormStyle.css" rel = "stylesheet" type = "text/css">
 	</head>
 	<body>
