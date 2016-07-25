@@ -1,4 +1,4 @@
-package input;
+package address;
 
 public interface AddressDao {
 	public int checkAddress(String adr);			//주소가 있는지 확인

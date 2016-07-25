@@ -1,0 +1,67 @@
+1.	주소찾기의 경우 이미 정의된 주소table이 있으므로 주소DataBean은 주소 table의 컬럼들로 구성한다.
+
+2.	주소(명칭은 취향)DataBean.java의 구성
+	변수들
+	private String zipcode;
+	private String area1;
+	private String area2;
+	private String area3;
+	private String area4;
+	
+	setter/getter
+	
+	가 들어있다.
+	
+3.	핸들러에서 사용할 DB쿼리를 실행하는 메소드를 주소(명칭은 취향)Dao.java에 작성한다.
+	주소 찾기의 경우
+	입력한 주소가 있는지 확인하는 check메소드, 있다면 해당 주소와 관련된 모든 DataBean을 가져올 get메소드
+	두 종류가 필요하므로
+	
+	public int check명칭(String 입력받은주소);			//주소가 있는지 확인
+	public 주소DataBean get명칭(String 입력받은주소);	//해당 주소로 검색해서 DataBean을 가져옴
+	
+	가 있다
+	
+4.	Dao가 작성되었다면 주소 처리를 할 폼을 작성한다.
+	
+	아마 inputform.jsp에서 주소찾기 버튼을 누른경우 새 창을 띄워 해당 창에서 주소 찾기를 진행하게 될 예정이므로
+	
+	inputform.jsp의 주소 찾기 버튼에 새 창을 띄울 javascript의 function을 넣는다.
+	ex)
+	<input class="inputbutton" type="button" value="주소찾기" onclick = "searchadr()">
+																		△이 function은 js에서 작업
+																		명칭은 취향
+																		
+5.	inputform의 js파일이 있다면 js파일에 function searchadr() 펑션을 만들어 준다.
+	function searchadr(){
+		var url = "주소찾기처리를 할 핸들러명칭";
+		
+		open(url, "맨위에 타이틀 넣는 자린데 잘 안됨 아무거나 넣어도 무관", 
+			"status = yes, width = 300, height = 250");]
+		넘길 데이터는 없고 새창만 띄우면 되므로 이대로 마무리
+	}
+	
+6.	주소찾기를 할 핸들러를 만들어야하는데 주소찾기도 member가 사용할 기능이므로 memberController에 작성할 예정
+	핸들러를 작성하면 return new ModelAndView("리턴될 jsp주소");이 부분으로 인해 주소찾기.jsp창이 호출되며
+	다른 핸들러들과는 다르게 첫 호출에는 작업을 해도 null값만 리턴되며 주소찾기 창이 뜨고 나서 값을 입력해야 
+	핸들러의 제대로 된 기능을 수행한다.
+
+7.	주소찾기 창은 <c:if>문을 이용하여 리턴되는 값이 null인경우와 리턴되는 값이 있는 경우인 두가지로 구현하며
+	참조는 zipcheck.jsp를 참조한다.
+	
+	zipcheck.jsp를 참조하면 주소를 입력받을 테이블을 먼저 보여준뒤
+	그 밑으로 c:if문을 통해 리턴되는 값이null이면 아무것도 뿌리지 않고
+	값이 있다면 주소DataBean리스트를 <c:forEach>문을 이용해 나열하는 형식으로 구현되어있으며
+	첫 실행시에는 호출시 들어오는 값이 null이므로 아무것도 뜨지 않게 구현했다
+	
+	주소찾기 창에서 input에 주소를 입력후 sumit을 누르면 위에서 만든 주소찾기 핸들러로 보내지게 된다.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

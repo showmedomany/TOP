@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
-import input.AddressDBBean;
-import input.AddressDao;
+import address.AddressDBBean;
+import address.AddressDao;
 import member.MemberDBBean;
 import member.MemberDao;
 import myPage.MyPageDBBean;

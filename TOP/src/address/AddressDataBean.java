@@ -1,4 +1,4 @@
-package input;
+package address;
 
 public class AddressDataBean {
 	private String zipcode;

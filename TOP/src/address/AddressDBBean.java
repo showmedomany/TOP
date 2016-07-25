@@ -1,4 +1,4 @@
-package input;
+package address;
 
 public class AddressDBBean implements AddressDao {
 
