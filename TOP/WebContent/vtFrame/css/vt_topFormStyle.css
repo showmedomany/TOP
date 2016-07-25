@@ -13,6 +13,11 @@ a:active, a:hover {text-decoration:underline}
 address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 /*css 초기화끝*/
 
+a {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 /* 헤더영역 */
 .top_frame {
@@ -36,8 +41,6 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
     margin-left: 550;
 }
 .top_header_atag_font {
-    color: #ABABAB;
-    font-size: 16;
     cursor: pointer;
     margin: 5;   
 }

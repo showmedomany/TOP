@@ -27,8 +27,6 @@
 .vt_inputForm_top_sub2 {
     height: 75;
     width: 800;
-    border-bottom-color: #c0c0c0;
-    border-bottom-style: groove;
 }
 .vt_inputForm_hello {
     width: 620;
@@ -41,7 +39,26 @@
     margin-left: 660;
     width: 150;
 }
-
+.vt_inputForm_bottom_line {
+    width: inherit;
+    border-top-style: groove;
+    -webkit-filter: blur(3px);
+}
+.vt_inputForm_bottom_wrap {
+    text-align: center;
+    width: 800;
+    height: 100;
+}
+.vt_inputForm_top_line {
+    width: inherit;
+    border-bottom-style: groove;
+    position: absolute;
+    margin-top: 75;
+    -webkit-filter: blur(3px);
+}
+.vt_inputForm_bottom_btn{
+	padding: 40;
+}
 .vt_inputForm_body{
 	margin:auto;
     width: 50%;

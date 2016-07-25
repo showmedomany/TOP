@@ -30,7 +30,8 @@
 							</div>
 							<div class="vt_inputForm_hello_path">
 								( * ) &nbsp;필수입력사항 입니다
-							</div>							
+							</div>			
+							<div class="vt_inputForm_top_line"></div>			
 						</div>													
 					</div>						
 					<table class="vt_inputForm_table" >
@@ -121,14 +122,15 @@
 								<input class="inputbutton" type="button" value=인증번호확인 style="width: 100px">
 							</td>
 						</tr>
-						<tr>
-							<th colspan="2" >
+						</table>
+						<div class="vt_inputForm_bottom_wrap">
+							<div class="vt_inputForm_bottom_line"></div>
+							<div class="vt_inputForm_bottom_btn">
 								<input class="inputbutton_okno" type="submit" value=회원가입>
 								<input class="inputbutton_okno" type="button" value=취소하기
-									onclick="location='main.do'">					
-							</th>
-						</tr>
-						</table>
+									onclick="location='main.do'">
+							</div>
+						</div>
 					</div>
 				</div>
 		</form>
