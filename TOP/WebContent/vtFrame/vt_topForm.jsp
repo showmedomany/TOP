@@ -3,7 +3,7 @@
 <%@ include file = "setting.jsp" %>
 
 
-<!-- 한글로 된부분 setting.jsp로 옮겨야함 -->
+<!-- 한글로 된부분 setting.jsp로 옮겨야함 제훈이씀-->
 <html>			
 	<head>
 		<script src = "${jquery}"></script>
