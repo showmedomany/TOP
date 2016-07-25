@@ -1,14 +1,45 @@
-.vt_inputForm_path {
-    width: 100;
+.vt_inputForm_top{
+	
+}
+.vt_inputForm_top_sub1 {
+    height: 70;
+    width: 800;
+    border-bottom-color: #fafafa;
+    border-bottom-style: groove;
+}
+.vt_inputForm_info {
     position: absolute;
-    margin-left: 710;
-    margin-top: -20;
+    font-size: 25;
+    padding: 20;
+}
+.vt_inputForm_path {
+    width: 170;
+    position: absolute;
+    margin-left: 630;
+    margin-top: 50;
 }
 
 .vt_inputForm_Frame{
 	margin: auto;
 	position: relative;	
 	z-index: 0;
+}
+.vt_inputForm_top_sub2 {
+    height: 75;
+    width: 800;
+    border-bottom-color: #c0c0c0;
+    border-bottom-style: groove;
+}
+.vt_inputForm_hello {
+    width: 620;
+    position: absolute;
+    margin-top: 15;
+}
+.vt_inputForm_hello_path {
+    position: absolute;
+    margin-top: 50;
+    margin-left: 660;
+    width: 150;
 }
 
 .vt_inputForm_body{
@@ -24,7 +55,6 @@
 	font-family:'Exo', sans-serif;;
 	width: 800px;
 	height: 700px;
-	border-collapse: collapse;	
 	z-index: 2;
 }
 
@@ -43,6 +73,9 @@
 .inputbutton_okno{
 	background-color: #EAEAEA;
 	width:100px;
+}
+.inputbutton{
+	width: 80px;
 }
 .right{
 	position: absolute;	

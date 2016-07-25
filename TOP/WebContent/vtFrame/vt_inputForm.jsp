@@ -12,9 +12,27 @@
 		<form method = "post">
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">
-					<div class="vt_inputForm_info">회원정보입력</div>
-					( * ) &nbsp;필수입력사항 입니다
-					<div class="vt_inputForm_path">홈 ▶ 회원가입</div>
+					<div class="vt_inputForm_top">
+						<div class="vt_inputForm_top_sub1">
+							<div class="vt_inputForm_info">
+								회원정보입력
+							</div>
+							<div class="vt_inputForm_path">
+								홈 > 회원가입 > 회원정보 입력
+							</div>
+						</div>
+						<div class="vt_inputForm_top_sub2">
+							<div class="vt_inputForm_hello">
+								<p>비주얼 탑 휘트니스는 개인정보를 소중히 생각하며,회원님의 동의 없이는 공개 또는
+								제3자에게 제공되지 않습니다.</p>
+								<p></p>
+								<p>자세한 내용은 개인정보취급방침을 확인해 주시기 바랍니다.</p>
+							</div>
+							<div class="vt_inputForm_hello_path">
+								( * ) &nbsp;필수입력사항 입니다
+							</div>							
+						</div>													
+					</div>						
 					<table class="vt_inputForm_table" >
 						<tr style ="border-top: 2px solid #D8D8D8">
 							<th> *회원아이디 </th>
