@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
 
+
+
 <html>
 	<head> 
 		<link href = "${css}vt_loginFormStyle.css" rel = "stylesheet" type = "text/css">
