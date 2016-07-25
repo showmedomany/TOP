@@ -128,5 +128,26 @@ public class MemberController {
 		
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//logoutPro
+	
+	
+	//여기에 메일을 보낼 핸들러를 제작한다.
+	/**
+	 * 여기에 만들어질 핸들러에는 
+	 * 1. 메일인증을 보내는폼에서 email1과 email2을 request.getparameter로 받아 
+	 * 	  email변수에 저장을 한다 (email1이 직접입력이라면 email1을 그대로 email변수로)
+	 * 
+	 * 2. email을 보내는 권한이 있는 email과 해당 email의 비밀번호, 보내는 사람 이름,
+	 *    보내는 사람의 메일(email을 보내는 권한이 있는 email을 써도 무관),보내는 메일의 제목을
+	 *    각 id,pw,forname,from,subject변수에 저장한다.
+	 *   
+	 * 3. 보낼 내용을 작성(인증번호의 경우 랜덤을 돌려 생성)
+	 * 
+	 * 4. try/catch문을 작성(참조 소스긁어도 무관)
+	 * 
+	 * 5. 인증메일을 보낸경우 해당 번호를 메일인증을 보낸 폼에서도 알아야 하므로
+	 *    request.setparmeter로 인증번호를 세팅후
+	 *    메일인증을 보낸 폼으로 리턴한다 
+	 *   
+	 */
 		
 }

@@ -1,0 +1,35 @@
+실제 핸들러에서 이 SMTP자바 파일의 함수를 이용해 아이디와 패스워드를 세팅한다
+
+메일 작업을 하는 순서는
+
+1.	인증메일을 보낼 폼에서 메일을 보낼 방법(버튼을 눌러 보낼지 새창을 띄워 보낼지 등등)
+	을 계획후 해당 이벤트에 메일작업을 수행할 javascript의 function을 넣는다.
+	ex) button으로 작업할 계획이라면
+	<input class="inputbutton" type="button" value="인증번호전송" onclick="mailconfirm()">
+																		△이 function은 js에서 작업
+
+2.	javascript에서
+	function mailconfirm(){
+		메일의 유효성 검사 작업 후(이곳에서 하지 않고 인증메일을 보낼 폼에서 해도 무관하다.)
+		
+		get방식으로 인증메일을 보낼 폼에서 얻은 email1과 email2를 인증메일 처리하는 handler로 보냄
+										▽이게 get방식 sumit버튼으로 보내는건 post방식
+		var url = "memberMailConfirm.do?email1="+inputform.email1.value
+					+"&email2="+inputform.email2.value+"&mailcheck="+inputform.mailcheck.value;
+		인증번호를 입력할 새창을 만들거나 인증메일을 보낼 폼에서 처리하거나는 개인취향
+		
+		
+		이부분은 예전에 내가 구현했던 새창으로 인증번호 받는 방법에서 새창을 띄우는 명령어
+		open(url, title_mailconfirm, "status = yes, width = 300, height = 250");
+				inputform.mailcheck.value = msg_wait;		
+		
+	}
+
+3.	memberMailConfirm.do는 핸들러의 이름이므로 controller에서 인증메일 처리할 메소드 생성후
+	@RequestMapping("/memberMailConfirm")를 붙여주면 된다
+	핸들러의 이름은 바꿔도 무관하다
+	
+4.	인증메일을 보내는 부분은 member가 사용하고 처리하는 기능이므로 일단은 memberController에 만든다고 가정했으므로
+	memberController 제일 아래부분에 나머지 설명 적어둠
+																
+	
