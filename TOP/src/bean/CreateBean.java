@@ -9,6 +9,8 @@ import input.AddressDBBean;
 import input.AddressDao;
 import member.MemberDBBean;
 import member.MemberDao;
+import myPage.MyPageDBBean;
+import myPage.MyPageDao;
 
 
 
@@ -35,6 +37,11 @@ public class CreateBean {
 	@Bean
 	public AddressDao adrDao(){
 		return new AddressDBBean();
+	}
+	
+	@Bean
+	public MyPageDao myPageDao(){
+		return new MyPageDBBean();
 	}
 
 	

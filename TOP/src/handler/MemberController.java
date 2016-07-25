@@ -17,6 +17,7 @@ public class MemberController {
 	//DBBean 객체생성 bean패키지 CreateBean에 이름있음	
 	@Resource(name = "memberDao")
 	private MemberDao memberDao;
+	
 	//로그인처리 핸들러
 	@RequestMapping("/loginPro")
 	public ModelAndView loginPro
