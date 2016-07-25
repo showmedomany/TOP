@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
+import input.AddressDBBean;
+import input.AddressDao;
 import member.MemberDBBean;
 import member.MemberDao;
 
@@ -29,6 +31,10 @@ public class CreateBean {
 		//@Resource(name = "memberDao") <---얘때문에 씀
 		//private MemberDao memberDao;
 		return new MemberDBBean();
+	}
+	@Bean
+	public AddressDao adrDao(){
+		return new AddressDBBean();
 	}
 
 	

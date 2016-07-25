@@ -7,8 +7,7 @@
 	<head>	
 	<title>비주얼탑 홈페이지에 오신것을 환영합니다.</title>	
 	</head>
-	
-	<body>
+	<!-- 홈페이지 시작시 작은 채팅창 생성 -->		 
 		<div id = "top" >
 			<div>
 				<jsp:include page="vt_topForm.jsp"></jsp:include>

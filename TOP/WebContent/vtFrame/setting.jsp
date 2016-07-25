@@ -27,6 +27,27 @@
 <c:set var = "str_findidentity" value = "아이디/비밀번호찾기"/>
 
 
-
-
-
+<!-- 회원가입 문자열 -->
+<c:set var = "str_vt_inputForm_info" value = "회원정보입력"/>
+<c:set var = "str_vt_inputForm_path" value = "홈 > 회원가입 > 회원정보 입력"/>
+<c:set var = "str_vt_inputForm_hello" value = "<p>비주얼 탑 휘트니스는 개인정보를 소중히 생각하며,회원님의 동의 없이는 공개 또는
+								제3자에게 제공되지 않습니다.</p>
+								<p></p>
+								<p>자세한 내용은 개인정보취급방침을 확인해 주시기 바랍니다.</p>"/>
+<c:set var = "str_vt_inputForm_hello_path" value = "( * ) &nbsp;필수입력사항 입니다"/>
+<c:set var = "str_inputForm_id" value = "*회원아이디"/>
+<c:set var = "str_inputForm_id_confirm" value = "확인"/>
+<c:set var = "str_inputForm_id_info" value = "&nbsp;(영문 소문자/숫자, 4~16자)"/>
+<c:set var = "str_inputForm_passwd" value = "* 비밀번호"/>
+<c:set var = "str_inputForm_passwd_confirm" value = "* 비밀번호 확인"/>
+<c:set var = "str_inputForm_name" value = "* 이름"/>
+<c:set var = "str_inputForm_nickname" value = "* 닉네임"/>
+<c:set var = "str_inputForm_adr" value = "주소"/>
+<c:set var = "str_inputForm_adr_add" value = "나머지 주소"/>
+<c:set var = "str_inputForm_adr_search" value = "찾기"/>
+<c:set var = "str_inputForm_tel" value = "전화번호"/>
+<c:set var = "str_inputForm_email" value = "* 이메일"/>
+<c:set var = "str_inputForm_email_send" value = "인증번호전송"/>
+<c:set var = "str_inputForm_email_confirm" value = "인증번호확인"/>
+<c:set var = "str_inputForm_bt_sumit" value = "회원가입"/>
+<c:set var = "str_inputForm_bt_cancel" value = "취소하기"/>

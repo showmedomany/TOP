@@ -7,93 +7,96 @@
 <html>
 	<head>
 		<link href = "${css}vt_inputFormStyle.css" rel = "stylesheet" type = "text/css">
+		<script src = "${script }vt_inputForm.js"></script>
 	</head>
-	<body>
-		<form method = "post">
+	<body onload = "inputformfocus()">
+		<form method = "post" name = "inputform" action = "inputPro.do">
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">
 					<div class="vt_inputForm_top">
 						<div class="vt_inputForm_top_sub1">
 							<div class="vt_inputForm_info">
-								회원정보입력
+								${str_vt_inputForm_info}
 							</div>
 							<div class="vt_inputForm_path">
-								홈 > 회원가입 > 회원정보 입력
+								${str_vt_inputForm_path}
 							</div>
 						</div>
 						<div class="vt_inputForm_top_sub2">
 							<div class="vt_inputForm_hello">
-								<p>비주얼 탑 휘트니스는 개인정보를 소중히 생각하며,회원님의 동의 없이는 공개 또는
-								제3자에게 제공되지 않습니다.</p>
-								<p></p>
-								<p>자세한 내용은 개인정보취급방침을 확인해 주시기 바랍니다.</p>
+								${str_vt_inputForm_hello}
 							</div>
 							<div class="vt_inputForm_hello_path">
-								( * ) &nbsp;필수입력사항 입니다
+								${str_vt_inputForm_hello_path}
 							</div>			
 							<div class="vt_inputForm_top_line"></div>			
 						</div>													
 					</div>						
 					<table class="vt_inputForm_table" >
 						<tr style ="border-top: 2px solid #D8D8D8">
-							<th> *회원아이디 </th>
+							<th>${str_inputForm_id}</th>
 							<td>
+								<!-- AJAX로 아이디 비교 -->
 								<input class="input" type="text" name="id" maxlength="15">
-								<input class="inputbutton" type="button" value=확인>
-								&nbsp;(영문 소문자/숫자, 4~16자)																			
+								<input class="inputbutton" type="button" value="${str_inputForm_id_confirm}">
+								${str_inputForm_id_info}																	
 							</td>
 						</tr>
 						<tr>
-							<th> * 비밀번호  </th>
+							<!-- AJAX로 비밀번호 다른지 비교 -->
+							<th> ${str_inputForm_passwd}  </th>
 							<td>
 								<input class="input" type="password" name="passwd" maxlength="15">
 							</td>
 						</tr>
 						<tr>	
-							<th> * 비밀번호 확인</th>			
+							<th> ${str_inputForm_passwd_confirm}</th>			
 							<td>
 								<input class="input" type="password" name="repasswd" maxlength="15">
 							</td>
 						</tr>
 						<tr>
-							<th>* 이름  </th>
+							<th>${str_inputForm_name}</th>
 							<td>
 								<input class="input" type="text" name="name" maxlength="20">
 							</td>
 						</tr>
 						<tr>
-							<th>* 닉네임 </th>
+							<!-- AJAX로 닉네임 비교 -->
+							<th>${str_inputForm_nickname}</th>
 							<td>
 							<input class="input" type="text" name="nickname" maxlength="20">
 							</td>
 						</tr>
 						<tr>
-							<th rowspan="3"> 주소</th>
+							<th rowspan="3">${str_inputForm_adr}</th>
 							<td>
 								<!-- 수정불가로 -->
-								<input class="input" type="text" name="address1" 
-								style="width:60px">-
+								<input class="input" type="text" name="zipcode1" 
+									style="width:60px" readonly="readonly">-
 								<!-- 수정불가로 -->
-								<input class="input" type="text" name="address2"  
-								style="width:60px">
-								<input class="inputbutton" type="button" value=찾기>
+								<input class="input" type="text" name="zipcode2"  
+									style="width:60px" readonly="readonly">
+								<!-- 주소 검색창 -->
+								<input class="inputbutton" type="button" value="${str_inputForm_adr_search}">
 							</td>
 						</tr>
 						<tr>
 							<td>
 								
-								<input class="input" type="text" name="address4"  
-								style="width:500px" placeholder = "주소"><br>
+								<input class="input" type="text" name="adr" readonly="readonly" 
+									style="width:500px" placeholder = "${str_inputForm_adr}">
+									<br>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input class="input" type="text" name="address5"  
-								style="width:500px"placeholder = "나머지주소">
+								<input class="input" type="text" name="detail_adr" 
+									style="width:500px"placeholder = "${str_inputForm_adr_add}">
 							</td>
 						</tr>
 						<tr>
-							<th> 전화번호 </th>
+							<th> ${str_inputForm_tel } </th>
 							<td>
 								<input class="input" type="text" name="tel1"	
 									maxlength="3" style="width: 34px" onkeyup="nexttel1()">
@@ -104,30 +107,30 @@
 							</td>				
 						</tr>
 						<tr style="border-bottom: 2px solid #D8D8D8">
-							<th> *이메일  </th>
+							<!-- 이메일 전송 및 확인 -->
+							<th> ${str_inputForm_email }  </th>
 							<td>
 								<input class="input" type="text" name="email1"
 									maxlength="20" style="width: 100px">
 								@
-								<select name="email2">
-									<option value=""> </option>
+								<select name="email2">									
 									<option value="0"> 직접입력 </option>
 									<option value="naver.com"> 네이버 </option>
 									<option value="daum.net"> 다음 </option>
 									<option value="gmail.com"> 구글 </option>
 									<option value="nate.com"> 네이트 </option>						
 								</select>	
-								<input class="inputbutton" type="button" value=인증번호전송 name="email_btn" style="width: 100px">
+								<input class="inputbutton" type="button" value="${str_inputForm_email_send }" name="email_btn" style="width: 100px">
 								<input class="input" type="text" name="email_send" >
-								<input class="inputbutton" type="button" value=인증번호확인 style="width: 100px">
+								<input class="inputbutton" type="button" value="${str_inputForm_email_confirm}" style="width: 100px">
 							</td>
 						</tr>
 						</table>
 						<div class="vt_inputForm_bottom_wrap">
 							<div class="vt_inputForm_bottom_line"></div>
 							<div class="vt_inputForm_bottom_btn">
-								<input class="inputbutton_okno" type="submit" value=회원가입>
-								<input class="inputbutton_okno" type="button" value=취소하기
+								<input class="inputbutton_okno" type="submit" value="${str_inputForm_bt_sumit}">
+								<input class="inputbutton_okno" type="button" value="${str_inputForm_bt_cancel}"
 									onclick="location='main.do'">
 							</div>
 						</div>

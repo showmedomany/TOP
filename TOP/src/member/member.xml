@@ -14,4 +14,11 @@
 		select * from vt_members where id = #{id}
 	</select>
 	
+	<insert id="insertMember" parameterType="member.MemberDataBean">
+		insert into vt_members values
+		(#{id}, #{authority_id},  #{passwd}, #{name}, #{nickname},
+		#{phone, jdbcType=VARCHAR}, #{zipcode, jdbcType=VARCHAR},
+		#{address, jdbcType=VARCHAR}, #{email}, sysdate)
+	</insert>
+	
 </mapper>

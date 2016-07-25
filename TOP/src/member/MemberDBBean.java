@@ -40,4 +40,9 @@ public class MemberDBBean implements MemberDao {
 		MemberDataBean mdto = getMember(id);
 		return mdto.getAuthority_id();
 	}
+
+	@Override
+	public int insertMember(MemberDataBean mdto) {		
+		return SqlMapClient.getSession().insert("Member.insertMember",mdto);		
+	}
 }
