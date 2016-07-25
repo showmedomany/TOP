@@ -6,6 +6,7 @@
 	<head>
 		<link href = "${css}vt_infoFormStyle.css" rel="stylesheet"	type="text/css">
 	</head>
+	
 	<body>
 		<div class = "vt_info_frame">
 			<div class = "vt_info_body">
