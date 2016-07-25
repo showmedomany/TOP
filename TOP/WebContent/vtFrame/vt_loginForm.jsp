@@ -6,7 +6,7 @@
 	<head> 
 		<link href = "${css}vt_loginFormStyle.css" rel = "stylesheet" type = "text/css">
 	</head>
-	<body>
+	<body onload = "vt_loginForm()">
 		<form method = "post" action = "loginPro.do">
 			<div class = "vt_loginForm_frame">
 				

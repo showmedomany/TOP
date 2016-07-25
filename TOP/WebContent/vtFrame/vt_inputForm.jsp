@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
 
+<!-- 한글 setting에서 처리할것 -->
+
 <html>
 	<head>
 		<link href = "${css}vt_inputFormStyle.css" rel = "stylesheet" type = "text/css">
@@ -20,10 +22,8 @@
 							<th> *회원아이디 </th>
 							<td>
 								<input class="input" type="text" name="id" maxlength="15">
-								<input class="inputbutton" type="button" value=확인
-									onclick="confirmid()">&nbsp;
-									 (영문 소문자/숫자, 4~16자)
-																			
+								<input class="inputbutton" type="button" value=확인>
+								&nbsp;(영문 소문자/숫자, 4~16자)																			
 							</td>
 						</tr>
 						<tr>
@@ -53,16 +53,18 @@
 						<tr>
 							<th rowspan="3"> 주소</th>
 							<td>
+								<!-- 수정불가로 -->
 								<input class="input" type="text" name="address1" 
 								style="width:60px">-
+								<!-- 수정불가로 -->
 								<input class="input" type="text" name="address2"  
 								style="width:60px">
-								<input class="inputbutton" type="button" value=찾기
-								onclick="address_check()">
+								<input class="inputbutton" type="button" value=찾기>
 							</td>
 						</tr>
 						<tr>
 							<td>
+								
 								<input class="input" type="text" name="address4"  
 								style="width:500px" placeholder = "주소"><br>
 							</td>
@@ -98,8 +100,7 @@
 									<option value="gmail.com"> 구글 </option>
 									<option value="nate.com"> 네이트 </option>						
 								</select>	
-								<input class="inputbutton" type="button" value=인증번호전송 name="email_btn" style="width: 100px" 
-								onclick="emailcheck()">
+								<input class="inputbutton" type="button" value=인증번호전송 name="email_btn" style="width: 100px">
 								<input class="input" type="text" name="email_send" >
 								<input class="inputbutton" type="button" value=인증번호확인 style="width: 100px">
 							</td>

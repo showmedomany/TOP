@@ -32,13 +32,15 @@
 						<c:if test="${sessionScope.authority_id eq 1 }">
 							${sessionScope.memId }
 							<a>관리자페이지</a>
-							<a href = "logoutPro.do">로그아웃</a> 
+							<a class="top_header_atag_font" 
+								href = "logoutPro.do">${str_logouttag}</a> 
 						</c:if>
 						<!-- 세션스코프의 권한 값이 회원일때  -->
 						<c:if test="${sessionScope.authority_id eq 2 }">
 							${sessionScope.memId }
 							<a>마이페이지</a>
-							<a href = "logoutPro.do">로그아웃</a> 
+							<a class="top_header_atag_font"
+								href = "logoutPro.do">${str_logouttag}</a> 
 						</c:if>
 						
 						

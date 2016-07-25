@@ -15,6 +15,7 @@
 <c:set var = "str_hometag" value = "홈"/>
 <c:set var = "str_logintag" value = "로그인"/>
 <c:set var = "str_membership" value = "회원가입"/>
+<c:set var = "str_logouttag" value = "로그아웃"/>
 
 <!-- 로그인 페이지 문자열 -->
 <c:set var = "str_visual" value = "Visual"/>
