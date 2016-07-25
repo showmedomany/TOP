@@ -107,5 +107,14 @@ public class PageController {
 		request.setAttribute("center", center);				
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//loginForm
+	
+	@RequestMapping("/mypage")
+	public ModelAndView mypage
+	(HttpServletRequest request,HttpServletResponse response){		
+		//메인으로 돌아가야하므로 센터 컨텐트로 설정
+		String center = "/vt_member/vt_mypage";
+		request.setAttribute("center", center);				
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//loginForm
 }	
 

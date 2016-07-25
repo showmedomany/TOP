@@ -16,10 +16,12 @@
 				</div>
 				<div class = "vt_info_menu_body">
 					<div class = "vt_info_menu">
+						메뉴만 고정
 					</div>
 				</div>
 				<div class = "vt_info_content_body">
 					<div class = "vt_info_content">
+						jsp밖아넣기
 					</div>
 				</div>
 			</div>

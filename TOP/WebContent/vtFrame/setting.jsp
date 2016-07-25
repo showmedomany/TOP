@@ -17,10 +17,16 @@
 <c:set var = "str_membership" value = "회원가입"/>
 <c:set var = "str_logouttag" value = "로그아웃"/>
 
+
+
+
 <!-- 로그인 페이지 문자열 -->
 <c:set var = "str_visual" value = "Visual"/>
 <c:set var = "str_top" value = "T.O.P"/>
 <c:set var = "str_loginbt" value = "Login"/>
 <c:set var = "str_findidentity" value = "아이디/비밀번호찾기"/>
+
+
+
 
 

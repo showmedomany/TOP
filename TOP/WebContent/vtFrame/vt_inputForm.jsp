@@ -14,9 +14,7 @@
 				<div class = "vt_inputForm_body">
 					<div class="vt_inputForm_info">회원정보입력</div>
 					( * ) &nbsp;필수입력사항 입니다
-					<div class="vt_inputForm_path"> 
-					<a>HOME ▶ 회원가입</a>
-					</div>
+					<div class="vt_inputForm_path">홈 ▶ 회원가입</div>
 					<table class="vt_inputForm_table" >
 						<tr style ="border-top: 2px solid #D8D8D8">
 							<th> *회원아이디 </th>
@@ -107,8 +105,8 @@
 						</tr>
 						<tr>
 							<th colspan="2" >
-								<input class="inputbutton" type="submit" value=회원가입>
-								<input class="inputbutton" type="button" value=취소하기
+								<input class="inputbutton_okno" type="submit" value=회원가입>
+								<input class="inputbutton_okno" type="button" value=취소하기
 									onclick="location='main.do'">					
 							</th>
 						</tr>

@@ -38,6 +38,7 @@
 						<!-- 세션스코프의 권한 값이 회원일때  -->
 						<c:if test="${sessionScope.authority_id eq 2 }">
 							${sessionScope.memId }
+							<!-- 마이페이지.do 를 a태그에 걸어줌 -->	
 							<a>마이페이지</a>
 							<a class="top_header_atag_font"
 								href = "logoutPro.do">${str_logouttag}</a> 
