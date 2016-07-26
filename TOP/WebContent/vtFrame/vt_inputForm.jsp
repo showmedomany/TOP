@@ -6,11 +6,14 @@
 <html>
 	<head>
 		<link href = "${css}vt_inputFormStyle.css" rel = "stylesheet" type = "text/css">
-		<script src = "${script }vt_inputForm.js"></script>
+		<script src = "${script}vt_inputForm.js"></script>
 	</head>
 	<body onload = "inputformfocus()">
+
 		<form method = "post" name = "inputform" action = "inputPro.do">
-			
+			<input type="hidden" name = "idConfirm" value = "0">
+			<input type="hidden" name = "nickConfirm" value = "0">
+
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">
 					<div class="vt_inputForm_top">
@@ -81,8 +84,16 @@
 							<!-- AJAX로 닉네임 비교 -->
 							<th>${str_inputForm_nickname}</th>
 							<td>
-							<input class="input" type="text" name="nickname" maxlength="20">
-							</td>
+							<input class="input" type="text" name="nickname" maxlength="20" onkeyup="confirmnick()">
+							<br>
+											
+							<div id="userNick" style="font-size:12px; margin-left: 5px; color: blue">
+								${msg_nickerror}
+							</div>
+							<div id="userNick_overlap" style="font-size:12px; margin-left: 5px; color: red;">
+							
+							</div>								
+						</td>
 						</tr>
 						<tr>
 							<th rowspan="3">${str_inputForm_adr}</th>

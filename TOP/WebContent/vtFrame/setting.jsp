@@ -54,3 +54,4 @@
 <c:set var = "str_inputForm_bt_cancel" value = "취소하기"/>
 
 <c:set var="msg_iderror" value="아이디를 입력하세요."/>
+<c:set var="msg_nickerror" value="닉네임을 입력하세요."/>
