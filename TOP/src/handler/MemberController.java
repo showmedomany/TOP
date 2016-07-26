@@ -141,6 +141,21 @@ public class MemberController {
 		return new ModelAndView("/vtFrame/vt_idConfirm");
 	}
 	
+	//닉네임
+	@RequestMapping("/nickConfirm")
+	public ModelAndView nickConfirm
+	(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		
+		request.setCharacterEncoding("utf-8");
+		
+		String nick =request.getParameter("nick");
+		int result = memberDao.nickcheckMember(nick);		
+		request.setAttribute("result", result);
+		
+		return new ModelAndView("/vtFrame/vt_nickConfirm");
+		
+	}
+	
 	
 	
 	

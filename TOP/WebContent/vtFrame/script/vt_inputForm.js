@@ -2,11 +2,13 @@
  * 
  */
 var request = null;
+
 var msg_iderror = "아이디를 입력하세요.";
 var msg_passwderror = "비밀번호를 입력하세요.";
 var msg_passwdok = "비밀번호가 일치합니다.";
 var msg_repasswd="비밀번호 재입력하세요";
 var msg_repasswderror = "비밀번호가 다릅니다.";
+var msg_nickerror="닉네임을 입력하세요";
 
 
 
@@ -79,6 +81,8 @@ function confirmidResult(){
 		if(request.httpRequest.status == 200){
 			if(!inputform.id.value){
 				userId.innerHTML = msg_iderror;
+				
+				
 			}else{
 				if(request.httpRequest.responseText == 0){
 					inputform.idConfirm.value="1";					
@@ -97,6 +101,7 @@ function confirmidResult(){
 		}
 	}	
 }
+// 비밀번호 체크하기
 function comparepasswd(){
 	var userPasswd = document.getElementById("userPasswd");	//div 출력 설정
 	var userPasswd_overlap = document.getElementById("userPasswd_overlap");
@@ -131,6 +136,49 @@ function comparepasswd(){
 		userPasswd.style.display = "none"; //빨간거 출력 ex)비밀번호가 다릅니다	
 	}				
 }
+
+
+// 닉네임 중복확인
+function confirmnick(){	
+	request = new Request(confirmnickResult, "nickConfirm.do", "POST", "nick="+inputform.nickname.value);	
+	request.sendRequest();
+	
+}
+function confirmnickResult(){
+	
+	var userNick = document.getElementById("userNick");
+	var userNick_overlap = document.getElementById("userNick_overlap");
+	
+	if(request.httpRequest.readyState == 4){
+		if(request.httpRequest.status == 200){
+			
+			if(!inputform.nickname.value){				
+				userNick.innerHTML = msg_nickerror;		
+			}else{
+				
+				if(request.httpRequest.responseText == 0){
+					inputform.nickConfirm.value="1";
+					
+					userNick.innerHTML = inputform.nickname.value + " 는 사용할 수 있습니다.";	
+					
+					userNick.style.display = "";	
+					userNick_overlap.style.display = "none";								
+				}else{	
+					inputform.nickConfirm.value="0";					
+					userNick_overlap.innerHTML = inputform.nickname.value + " 는 사용할 수 없습니다.";
+					
+					userNick_overlap.style.display = "";			
+					userNick.style.display = "none";	
+				}	
+			}	
+		
+			
+			
+		}
+	}	
+}
+	
+
 
 /*
 

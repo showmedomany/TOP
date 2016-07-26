@@ -9,6 +9,9 @@
 	<select id = "checkMember" parameterType="String" resultType="int">
 		select count(*) from vt_members where id = #{id}
 	</select>
+	<select id="nickcheckMember" parameterType="String" resultType="int">
+		select count(*) from vt_members where NICKNAME = #{nick}
+	</select>
 	
 	<select id="getMember" parameterType="String" resultType="member.MemberDataBean">
 		select * from vt_members where id = #{id}
