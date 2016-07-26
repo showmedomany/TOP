@@ -29,6 +29,7 @@
 
 <!-- 회원가입 문자열 -->
 <c:set var = "str_vt_inputForm_info" value = "회원정보입력"/>
+
 <c:set var = "str_vt_inputForm_path" value = "홈 > 회원가입 > 회원정보 입력"/>
 <c:set var = "str_vt_inputForm_hello" value = "<p>비주얼 탑 휘트니스는 개인정보를 소중히 생각하며,회원님의 동의 없이는 공개 또는
 								제3자에게 제공되지 않습니다.</p>
@@ -51,3 +52,5 @@
 <c:set var = "str_inputForm_email_confirm" value = "인증번호확인"/>
 <c:set var = "str_inputForm_bt_sumit" value = "회원가입"/>
 <c:set var = "str_inputForm_bt_cancel" value = "취소하기"/>
+
+<c:set var="msg_iderror" value="아이디를 입력하세요."/>

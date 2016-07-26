@@ -130,6 +130,23 @@ public class MemberController {
 	}//logoutPro
 	
 	
+	@RequestMapping("/idConfirm")
+	public ModelAndView idConfirm
+	(HttpServletRequest request,HttpServletResponse response){
+		
+		String id =request.getParameter("id");
+		int result = memberDao.checkMember(id);
+		request.setAttribute("result", result);
+		
+		return new ModelAndView("/vtFrame/vt_idConfirm");
+	}
+	
+	
+	
+	
+	
+	
+	
 	//여기에 메일을 보낼 핸들러를 제작한다.
 	/**
 	 * 여기에 만들어질 핸들러에는 
