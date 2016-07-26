@@ -1,6 +1,16 @@
 package handler;
 
+import java.util.Properties;
+
 import javax.annotation.Resource;
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import emailconfirm.SMTPmailconfirm;
 import member.MemberDao;
 import member.MemberDataBean;
 
@@ -131,6 +142,92 @@ public class MemberController {
 	
 	
 	//여기에 메일을 보낼 핸들러를 제작한다.
+	@RequestMapping("/memberMailConfirm")
+	public ModelAndView memberMailConfirm
+	(HttpServletRequest request,HttpServletResponse response){
+		
+		
+		
+		String email = null;
+		
+		String email1 = request.getParameter("email1");
+		String email2 = request.getParameter("email2");
+		
+		
+		if(!email1.equals("") && !email2.equals("")){
+			if(email2.equals("0")){
+				//직접입력
+				email = email1;
+			}
+			else{
+				//선택입력
+				email = email1 + "@" + email2;
+			}
+		}
+		System.out.println(email);	
+		String id = "dhwan.jung@gmail.com";
+		String pw = "ehdghks87g";	
+		String fromname = "KH정보교육원 오후반 2차 과제";
+		String from = "kajika24@naver.com";
+		String subject = "회원가입 인증번호";
+		
+		
+		StringBuffer buffer = new StringBuffer();
+		for(int i = 0; i < 6; i++){
+			int n = (int) (Math.random()*10);
+			buffer.append(n);
+		}
+		String confirmnum = buffer.toString();	//인증번호
+		
+		try{
+			Properties p = new Properties();
+			
+			p.put("mail.smtp.starttls.enable", "true");
+			p.put("mail.transpor.protocol", "smtp");
+			p.put("mail.smtp.host","smtp.gmail.com");
+			
+			p.setProperty("mail.smtp.socketFactory.class", 
+					"javax.net.ssl.SSLSocketFactory");
+			p.put("mail.smtp.port", "465");		
+			p.put("mail.smtp.auth", "true"); 
+			p.put("mail.smtp.debug", "true");
+			p.put("mail.smtp.socketFactory.fallback", "false");
+			
+		    Authenticator auth = new SMTPmailconfirm(id, pw);
+		    Session ses = Session.getInstance(p, auth);
+		     
+		    
+		    
+		    ses.setDebug(true);
+		     
+		    MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
+		    //subject = 인증번호;
+		    msg.setSubject(subject); // 제목 작성
+		    //from = kajika24@naver.com;
+		    
+		    msg.setFrom(new InternetAddress(from,MimeUtility.encodeText
+		    		(fromname, "UTF-8", "B"))); // 보내는 사람
+		     
+		    Address toAddr = new InternetAddress(email);	//받는사람
+		    msg.addRecipient(Message.RecipientType.TO, toAddr); // 받는 사람
+		     
+		    //content = random
+		    msg.setContent(confirmnum, "text/html;charset=UTF-8"); // 내용과 인코딩
+		     
+		    Transport.send(msg); // 전송
+		} catch(Exception e){
+		    e.printStackTrace();	    
+		    // 오류 발생시 뒤로 돌아가도록		    
+		}
+		String center = "vt_inputForm";
+		
+		request.setAttribute("center", center);
+		request.setAttribute("confirmnum", confirmnum);
+		
+		//inputform으로 바로
+		return new ModelAndView("vtFrame/vtFrame");
+	}
+//memberMailConfirm
 	/**
 	 * 여기에 만들어질 핸들러에는 
 	 * 1. 메일인증을 보내는폼에서 email1과 email2을 request.getparameter로 받아 

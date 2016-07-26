@@ -6,26 +6,43 @@
 	<head>
 		<link href = "${css}vt_infoFormStyle.css" rel="stylesheet"	type="text/css">
 	</head>
-	
-	<body>
-		<div class = "vt_info_frame">
-			<div class = "vt_info_body">
-				<div class = "vt_info_path_body">
-					<div class = "vt_info_path">
-						센터 소개 > 인사말
+		<div class="vt_inforForm">	
+			<div class = "vt_info_path">
+				<jsp:include page="${word}.jsp"></jsp:include>
+			</div>	
+					<div class = "vt_info_menu_wrap">
+						<div class="vt_info_menu_wrap_sub1">
+							<p class="sub1_p1">건강을 먼저 생각하는</p>
+							<p class="sub1_p2">비주얼탑 휘트니스</p>
+						</div>
+						<div class="vt_info_menu_wrap_sub2">
+							<div class="vt_info_menu_wrap_sub">
+									<p class="vt_info_menu_wrap_sub_sub">센터 소개</p>
+									<p class="sub" onclick="location = 'vt_infoHello.do'">> 인사말</p>
+									<p class="sub" onclick="location = 'vt_infoHistory.do'">> 센터 연혁</p>
+									<p class="sub" onclick="location = 'vt_infoInfo.do'">> 센터 정보</p>
+									<p class="sub" onclick="location = 'vt_infoChar.do'">> 센터 특징</p>
+							</div>
+							<div class="vt_info_menu_wrap_sub">
+								<p class="vt_info_menu_wrap_sub_sub">운동 프로그램 정보</p>
+									<p class="sub">> 퍼스널 트레이닝 정보</p>
+									<p class="sub">> GX 트레이닝 정보</p>
+							</div>
+							<div class="vt_info_menu_wrap_sub">
+									<p class="vt_info_menu_wrap_sub_sub">트레이너 소개</p>
+									<p class="sub">> 트레이너 정보</p>
+									<p class="sub">> GX 강사 정보</p>
+							</div>
+							<div class="vt_info_menu_wrap_sub">
+									<p class="vt_info_menu_wrap_sub_sub">커뮤니티</p>
+									<p class="sub">> 공지사항 게시판</p>
+									<p class="sub">> 자유게시판</p>
+									<p class="sub">> FAQ</p>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class = "vt_info_menu_body">
-					<div class = "vt_info_menu">
-						메뉴만 고정
-					</div>
-				</div>
-				<div class = "vt_info_content_body">
-					<div class = "vt_info_content">
-						jsp밖아넣기
-					</div>
-				</div>
-			</div>
+				<div class="vt_info_center">
+					<jsp:include page="${menu}.jsp"></jsp:include>
+				</div>				
 		</div>
-	</body>
 </html>
