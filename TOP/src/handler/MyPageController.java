@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import myPage.ExerciseDataBean;
+import myPage.InbodyDataBean;
 import myPage.MemberRoutineDataBean;
 import myPage.MyPageDao;
+import myPage.RegisterDataBean;
 import myPage.RoutineInfoDataBean;
 
 @Controller
@@ -24,43 +26,50 @@ public class MyPageController {
 	
 	@RequestMapping("/myPageView")
 	public ModelAndView myPageView
-	(HttpServletRequest request,HttpServletResponse response){		
-		//마이페이지
-		List<MemberRoutineDataBean> WeekScheduleList = new ArrayList<MemberRoutineDataBean>();
-		String center = "/vt_member/vt_myPageView";		
-		
+	(HttpServletRequest request,HttpServletResponse response){			
 		String choice = request.getParameter("choice");		
 		String myPageSuject = null;
 		String id = (String) request.getSession().getAttribute("memId");
-		
-		if(choice==null){
-			myPageSuject = "vt_centerPaymentInfo";
-		}else{
-			switch(Integer.parseInt(choice)){
-			case 0:
-				myPageSuject = "vt_centerPaymentInfo";
-				break;
-			case 1:
-				myPageSuject = "vt_ex_routine";
-				RoutineInfoDataBean StartEndDateData = myPageDao.getStartEndDate(id);
-				WeekScheduleList = myPageDao.getWeekExerciseSchedule(id);
-				request.setAttribute("myPageSuject", myPageSuject);	
-				request.setAttribute("id", id);
-				request.setAttribute("StartEndDateData", StartEndDateData);
-				request.setAttribute("WeekScheduleList", WeekScheduleList);
-				break;
-			case 2:
-				myPageSuject = "vt_achievementRate";
-				break;
-			case 3:
-				myPageSuject = "vt_memberInfo";
-				break;
-			case 4:
-				myPageSuject = "vt_memberOut";
-				break;
-			}
+		String center = "/vt_member/vt_myPageView";
+		if(choice==null){// 처음 들어왔을 경우 // 			
+			choice = "0";
 		}
-		request.setAttribute("center", center);			
+		switch(Integer.parseInt(choice)){
+		case 0://센터 결제정보/인바디 이동
+			myPageSuject = "vt_centerPaymentInfo";
+			RegisterDataBean registerData = myPageDao.getRegisterData(id);
+			InbodyDataBean inbodyData = myPageDao.getInbodyData(id);
+			
+			request.setAttribute("registerData", registerData);	
+			request.setAttribute("inbodyData", inbodyData);
+			
+			break;
+		case 1:	//참조운동정보 이동
+			myPageSuject = "vt_ex_routine";
+			List<MemberRoutineDataBean> WeekScheduleList = new ArrayList<MemberRoutineDataBean>();				
+			
+			RoutineInfoDataBean StartEndDateData = myPageDao.getStartEndDate(id);
+			WeekScheduleList = myPageDao.getWeekExerciseSchedule(id);	
+			
+			request.setAttribute("StartEndDateData", StartEndDateData);
+			request.setAttribute("WeekScheduleList", WeekScheduleList);
+			break;
+		case 2://달성률 이동
+			myPageSuject = "vt_achievementRate";
+			break;
+		case 3://회원정보
+			myPageSuject = "vt_memberInfo";
+			break;
+		case 4://회원탈퇴
+			myPageSuject = "vt_memberOut";
+			break;
+		}
+		
+		
+		request.setAttribute("id", id);
+		request.setAttribute("myPageSuject", myPageSuject);	
+		request.setAttribute("center", center);	
+		
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//
 	

@@ -31,10 +31,10 @@ function partScheduleResult(){
 }
 
 function exeriseInfo(number){
-	var pList = document.getElementsByTagName("p");	
-	var p = pList.item(number).firstChild.nodeValue;
+	var spanList = document.getElementsByTagName("span");		
+	var span = spanList.item(number).firstChild.nodeValue;
 	
-	request = new Request(exeriseInfoResult, "myPageExeriseInfoPrint.do", "POST", "name="+encodeURI(p));	
+	request = new Request(exeriseInfoResult, "myPageExeriseInfoPrint.do", "POST", "name="+encodeURI(span));	
 	request.sendRequest();	
 }
 function exeriseInfoResult(){
