@@ -64,7 +64,7 @@ public class PageController {
 	@RequestMapping("/inputForm")
 	public ModelAndView inputForm
 	(HttpServletRequest request,HttpServletResponse response){		
-		//메인으로 돌아가야하므로 센터 컨텐트로 설정
+		
 		String center = "vt_inputForm";
 		request.setAttribute("center", center);				
 		return new ModelAndView("/vtFrame/vtFrame");

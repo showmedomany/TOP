@@ -10,13 +10,14 @@
 	</head>
 	<body onload = "inputformfocus()">
 		<form method = "post" name = "inputform" action = "inputPro.do">
-			<input type="hidden" name="idConfirm" value="0">
+			
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">
 					<div class="vt_inputForm_top">
 						<div class="vt_inputForm_top_sub1">
 							<div class="vt_inputForm_info">
 								${str_vt_inputForm_info}
+								
 							</div>
 							<div class="vt_inputForm_path">
 								${str_vt_inputForm_path}
@@ -42,23 +43,12 @@
 								
 								${str_inputForm_id_info}
 								<br>								
-								
+								<div> ${idConfirm}</div>
 								<div id="userId" style="font-size:12px; margin-left: 5px; color: blue">
 									${msg_iderror}					
 								</div>
 								<div id="userId_overlap" style="font-size:12px; margin-left: 5px; color: red;">
-											
-								</div>																	
-
-								<input class="input" type="text" name="id" maxlength="15" onkeyup="confirmid(this)">
-								${str_inputForm_id_info}
-								<br>
-									<div id="userId" style="font-size:12px; margin-left: 5px; color: blue">
-										${msg_iderror}					
-									</div>
-									<div id="userId_overlap" style="font-size:12px; margin-left: 5px; color: red;">
-									</div>	
-
+								</div>	
 							</td>
 						</tr>																		
 
