@@ -1,5 +1,11 @@
 package handler;
 
+
+
+
+
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import address.AddressDao;
+import address.AddressDataBean;
 import member.MemberDao;
 import member.MemberDataBean;
 
@@ -17,6 +25,9 @@ public class MemberController {
 	//DBBean 객체생성 bean패키지 CreateBean에 이름있음	
 	@Resource(name = "memberDao")
 	private MemberDao memberDao;
+	
+	@Resource(name = "adrDao")
+	private AddressDao adrDao;
 	
 	//로그인처리 핸들러
 	@RequestMapping("/loginPro")
@@ -169,5 +180,36 @@ public class MemberController {
 	 * 	 
 	 *   
 	 */
+	@RequestMapping("/zipCheck")
+	public ModelAndView zipCheck
+	(HttpServletRequest request,HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
 		
+		String inputarea = request.getParameter("inputarea");
+		
+		int resultCheck = adrDao.checkAddress(inputarea);
+		
+		if(resultCheck != 0){
+			List<AddressDataBean> alist = adrDao.getAddress(inputarea);		
+			request.setAttribute("adto", alist);
+			
+		}		
+		
+		request.setAttribute("resultCheck", resultCheck);
+		request.setAttribute("area", inputarea);
+		
+		return new ModelAndView("/vtFrame/vt_zipCheck");
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

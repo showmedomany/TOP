@@ -70,3 +70,29 @@ function nexttel3(){
 		inputform.email1.focus();
 	}
 }*/
+function serchadr() {
+	var url = "zipCheck.do";
+	open(url, "zipCheck", "scrollbars = yes, status = yes, width = 600, height = 500");
+}
+
+function useadr(first, second, adr){
+	opener.document.inputform.zipcode1.value = first;
+	opener.document.inputform.zipcode2.value = second;
+	opener.document.inputform.adr.value = adr;
+	opener.document.inputform.detail_adr.focus();
+	self.close();
+	opener.document.inputform.adrcheck.value = 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
