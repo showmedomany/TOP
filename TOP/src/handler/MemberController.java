@@ -134,12 +134,15 @@ public class MemberController {
 	public ModelAndView idConfirm
 	(HttpServletRequest request,HttpServletResponse response){
 		
-		String id = request.getParameter("id");		 		
-	 	int idConfirm = memberDao.checkMember(id);
-		request.setAttribute("result", idConfirm);	
+		String id =request.getParameter("id");
+		int result = memberDao.checkMember(id);
+		request.setAttribute("result", result);
 		
-		return new ModelAndView("/vtFrame/vt_inputForm");		
+		return new ModelAndView("/vtFrame/vt_idConfirm");
+		
 	}
+	
+
 	
 	
 	//여기에 메일을 보낼 핸들러를 제작한다.
