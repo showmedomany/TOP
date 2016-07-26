@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
-
 <!-- 한글 setting에서 처리할것 -->
 
 <html>
@@ -11,6 +10,8 @@
 	</head>
 	<body onload = "inputformfocus()">
 		<form method = "post" name = "inputform" action = "inputPro.do">
+			<input type="hidden" name="idConfirm" value="0">
+			
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">
 					<div class="vt_inputForm_top">
@@ -37,10 +38,20 @@
 							<th>${str_inputForm_id}</th>
 							<td>
 								<!-- AJAX로 아이디 비교 -->
-								<input class="input" type="text" name="id" maxlength="15">
-								<input class="inputbutton" type="button" value="${str_inputForm_id_confirm}">
-								${str_inputForm_id_info}																	
+								<input class="input" type="text" name="id" maxlength="15" onkeyup = "confirmid(this)">
+								
+								${str_inputForm_id_info}
+								<br>								
+								
+								<div id="userId" style="font-size:12px; margin-left: 5px; color: blue">
+									${msg_iderror}					
+								</div>
+								<div id="userId_overlap" style="font-size:12px; margin-left: 5px; color: red;">
+											
+								</div>																	
 							</td>
+							
+							
 						</tr>
 						<tr>
 							<!-- AJAX로 비밀번호 다른지 비교 -->
