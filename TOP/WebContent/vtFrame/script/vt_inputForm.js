@@ -285,15 +285,12 @@ function mailconfirm(){
 					return false;
 				}
 			}
-			/*window.location = "memberMailConfirm.do?email1="+inputform.email1.value
-				+"&email2="+inputform.email2.value+"&="+inputform..value;*/
+			
 			
 			window.location="memberMailConfirm.do?email1="+inputform.email1.value
 							 +"&email2="+inputform.email2.value;
 			
-			/*var url = "memberMailConfirm.do?email1="+inputform.email1.value
-			+"&email2="+inputform.email2.value+"&="+inputform..value;
-			open(url, aaa,"status = yes, width = 1, height = 1,top=300,left=650");*/			
+				
 			inputform.email_send.focus();
 		}
 	}
@@ -317,3 +314,17 @@ function emailcheck(){
 	}
 }
 
+
+function serchadr() {
+	var url = "zipCheck.do";
+	open(url, "zipCheck", "scrollbars = yes, status = yes, width = 600, height = 500");
+}
+
+function useadr(first, second, adr){
+	opener.document.inputform.zipcode1.value = first;
+	opener.document.inputform.zipcode2.value = second;
+	opener.document.inputform.adr.value = adr;
+	opener.document.inputform.detail_adr.focus();
+	self.close();
+	opener.document.inputform.adrcheck.value = 1;
+}

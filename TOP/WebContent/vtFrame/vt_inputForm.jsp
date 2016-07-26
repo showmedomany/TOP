@@ -120,7 +120,8 @@
 								<input class="input" type="text" name="zipcode2"  
 									style="width:60px" readonly="readonly">
 								<!-- 주소 검색창 -->
-								<input class="inputbutton" type="button" value="${str_inputForm_adr_search}">
+								<input class="inputbutton" type="button" value="${str_inputForm_adr_search}"
+								onclick="serchadr()">
 							</td>
 						</tr>
 						<tr>
