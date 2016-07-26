@@ -59,7 +59,7 @@
 								
 								${str_inputForm_id_info}
 								<br>								
-								<div> ${idConfirm}</div>
+								
 								<div id="userId" style="font-size:12px; margin-left: 5px; color: blue">
 									${msg_iderror}					
 								</div>

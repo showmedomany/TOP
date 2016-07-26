@@ -76,7 +76,7 @@ function confirmidResult(){
 				
 				
 			}else{
-				if(inputform.idConfirm.value == 0){
+				if(request.httpRequest.responseText == 0){
 								
 					userId.innerHTML = inputform.id.value + " 는 사용할 수 있습니다.";	
 					

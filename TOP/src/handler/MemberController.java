@@ -161,7 +161,7 @@ public class MemberController {
 		String center = "vt_inputForm";
 		request.setAttribute("center", center);
 		
-		return new ModelAndView("/vtFrame/vtFrame");		
+		return new ModelAndView("/vtFrame/vt_idConfirm");		
 		
 	}
 
