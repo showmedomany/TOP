@@ -1,17 +1,10 @@
 package handler;
-
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import member.MemberDao;
-import member.MemberDataBean;
-import myPage.MyPageDao;
-import myPage.RoutineInfoDataBean;
 
 /**
  * PageController
@@ -21,10 +14,7 @@ import myPage.RoutineInfoDataBean;
  */
 
 @Controller
-public class PageController {
-	
-	@Resource(name="myPageDao")
-	private MyPageDao myPageDao;	
+public class PageController {		
 	
 	//홈페이지 접속 & 홈으로 이동 핸들러
 	@RequestMapping("/main")
@@ -68,23 +58,6 @@ public class PageController {
 		String center = "vt_inputForm";
 		request.setAttribute("center", center);				
 		return new ModelAndView("/vtFrame/vtFrame");
-	}//loginForm
-	
-	@RequestMapping("/myPageView")
-	public ModelAndView myPageView
-	(HttpServletRequest request,HttpServletResponse response){		
-		//메인으로 돌아가야하므로 센터 컨텐트로 설정
-		String center = "vt_member/vt_myPageView";
-		String id = (String) request.getSession().getAttribute("memId");
-		RoutineInfoDataBean StartEndDateData = myPageDao.getStartEndDate(id);
-		
-		request.setAttribute("id", id);
-		request.setAttribute("center", center);				
-		return new ModelAndView("/vtFrame/vtFrame");
-	}//loginForm
-	
-	
-	
-	
+	}//loginForm		
 }	
 

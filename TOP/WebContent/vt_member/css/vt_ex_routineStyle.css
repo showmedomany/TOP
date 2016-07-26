@@ -1,13 +1,18 @@
 .vt_ex_routine_body{
-	background-color: #EAEAEA;
-
+    background-color: #EAEAEA;
+    margin: auto;
+    width: 95%;
+    height: 95%;
 }
 .vt_ex_routine_body_id{
 	background-color: #C6FFFF;
+    width: 200;
+   
 }
 
 .vt_ex_routine_body_startEnd_date{
 	background-color: #E3FFDC;
+    width: 300;
 	
 }
 .vt_ex_routine_body_exerciseSchedule{
@@ -16,5 +21,12 @@
 
 .weekScheduleResult{
 	background-color: #FFFFA2;
+	
+}
+.partExeriseResult{
+	background-color: #FFFFB4;
+}
+.exeriseInfo{
+	
 	
 }
