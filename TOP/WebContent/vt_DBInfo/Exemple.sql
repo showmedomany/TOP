@@ -562,6 +562,7 @@ CREATE TABLE vt_inbody
 	PRIMARY KEY (inbody_id)
 );
 insert into vt_inbody values(1, 'kimy', 22, 170, 'male', 90, 70, sysdate);
+insert into vt_inbody values(2, 'jangb', 32, 160, 'male', 90, 70, sysdate);
 
 
 CREATE TABLE vt_members
@@ -638,7 +639,8 @@ CREATE TABLE vt_register
 	trainer_id varchar2(30) NOT NULL,
 	PRIMARY KEY (register_id)
 );
-insert into vt_register values(1, 'kimy', sysdate, 1, add_months(sysdate, 1), 'true', 'true', 20, 1);
+insert into vt_register values(1, 'kimy', sysdate, 1, add_months(sysdate, 1), 'true', 'true', 20, 'kimTrainer');
+insert into vt_register values(2, 'jangb', sysdate, 3, add_months(sysdate, 3), 'false', 'true', 20, 'leeTrainer');
 
 
 CREATE TABLE vt_request
@@ -673,6 +675,7 @@ CREATE TABLE vt_trainer
 	PRIMARY KEY (trainer_id)
 );
 insert into vt_trainer values('kimTrainer', 'KT', '±Ë∆Æ', '010-0001-0001', 'male');
+insert into vt_trainer values('leeTrainer', 'LT', '¿Ã∆Æ', '010-3331-2201', 'male');
 
 
 

@@ -1,17 +1,10 @@
 package handler;
-
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import member.MemberDao;
-import member.MemberDataBean;
-import myPage.MyPageDao;
-import myPage.RoutineInfoDataBean;
 
 /**
  * PageController
@@ -21,10 +14,7 @@ import myPage.RoutineInfoDataBean;
  */
 
 @Controller
-public class PageController {
-	
-	@Resource(name="myPageDao")
-	private MyPageDao myPageDao;	
+public class PageController {		
 	
 	//홈페이지 접속 & 홈으로 이동 핸들러
 	@RequestMapping("/main")
@@ -56,77 +46,7 @@ public class PageController {
 		String center = "vt_inputForm";
 		request.setAttribute("center", center);				
 		return new ModelAndView("/vtFrame/vtFrame");
-	}//loginForm
-	
-	
 
-	
-	
-	@RequestMapping("/myPageView")
-	public ModelAndView myPageView
-	(HttpServletRequest request,HttpServletResponse response){		
-		//메인으로 돌아가야하므로 센터 컨텐트로 설정
-		String center = "vt_member/vt_myPageView";
-		String id = (String) request.getSession().getAttribute("memId");
-		RoutineInfoDataBean StartEndDateData = myPageDao.getStartEndDate(id);
-		
-		request.setAttribute("id", id);
-		request.setAttribute("center", center);				
-		return new ModelAndView("/vtFrame/vtFrame");
 	}//loginForm
-	//센터소개 메뉴 시작
-			@RequestMapping("/vt_infoHello")
-			public ModelAndView vt_infoHello(HttpServletRequest request, 
-					HttpServletResponse response){
-				
-				String center = "/vt_info/vt_infoForm"; 
-				String menu = "/vt_info/vt_infoHello";
-				String word = "/vt_info/word/hello";
-				request.setAttribute("center", center);
-				request.setAttribute("menu", menu);
-				request.setAttribute("word", word);
-				
-				return new ModelAndView("/vtFrame/vtFrame");
-			}//vt_infoHello
-			@RequestMapping("/vt_infoHistory")
-			public ModelAndView vt_infoHistory(HttpServletRequest request, 
-					HttpServletResponse response){
-				
-				String center = "/vt_info/vt_infoForm"; 
-				String menu = "/vt_info/vt_infoHistory";
-				String word = "/vt_info/word/history";
-				request.setAttribute("center", center);
-				request.setAttribute("menu", menu);
-				request.setAttribute("word", word);
-				
-				return new ModelAndView("/vtFrame/vtFrame");
-			}//vt_infoHistory
-			@RequestMapping("/vt_infoInfo")
-			public ModelAndView vt_infoInfo(HttpServletRequest request, 
-					HttpServletResponse response){
-				
-				String center = "/vt_info/vt_infoForm"; 
-				String menu = "/vt_info/vt_infoInfo";
-				String word = "/vt_info/word/info";
-				request.setAttribute("center", center);
-				request.setAttribute("menu", menu);
-				request.setAttribute("word", word);
-				
-				return new ModelAndView("/vtFrame/vtFrame");
-			}//vt_infoInfo
-			@RequestMapping("/vt_infoChar")
-			public ModelAndView vt_infoChar(HttpServletRequest request, 
-					HttpServletResponse response){
-				
-				String center = "/vt_info/vt_infoForm"; 
-				String menu = "/vt_info/vt_infoChar";
-				String word = "/vt_info/word/char";
-				request.setAttribute("center", center);
-				request.setAttribute("menu", menu);
-				request.setAttribute("word", word);
-				
-				return new ModelAndView("/vtFrame/vtFrame");
-			}//vt_infoChar
-			//센터소개 메뉴 끝
 }	
 

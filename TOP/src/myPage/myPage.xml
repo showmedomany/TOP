@@ -5,9 +5,20 @@
 
 
 <mapper namespace="MyPage">
-	<select id="getStartEndDate" parameterType="String">
+	<select id="getStartEndDate" parameterType="String" resultType="myPage.RoutineInfoDataBean">
 		select START_DATE, END_DATE from vt_routine_info where id = #{id}
 	</select>
+	<select id="getWeekExerciseSchedule" parameterType="String" resultType="myPage.MemberRoutineDataBean">
+		select day, exercise_id, count_check from vt_member_routine
+		where routineinfo_id = (select routineinfo_id from vt_routine_info where id = #{id})
+	</select>
+	<select id="getExerciseNames" parameterType="int" resultType="myPage.ExerciseDataBean">
+		select ex_part_id, name from vt_exercise where ex_part_id = #{partId}
+	</select>
 	
+	<select id="getExeriseInfo" parameterType="String" resultType="myPage.ExerciseDataBean">
+		select method1, method2, method3, method4 from vt_exercise where name = #{name}
+	</select>
+
 	
 </mapper>
