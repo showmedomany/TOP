@@ -1,39 +1,89 @@
+.vt_inforForm {
+    width: 1200;
+    margin: 0 auto;
+}
 .vt_info_frame{	
 	/* 센터에 뿌려질 큰 틀 */
 	margin: auto;
-	position: relative;
-	height: 1000;
-	background-color: lightgray;
 	z-index: 0;
 }
-.vt_info_body{
-	/* 틀안에 올라갈 내용물들의 몸통 */
-	margin: auto;
-    position: relative;
-    height: inherit;
-    background-color: beige;
+.vt_info_body {
+	/*vt_info_frame 안 큰틀*/
+    margin: auto;
     z-index: 1;
+    width: 1200;
 }
-.vt_info_path_body{
-	/* 메뉴를 선택했을시 경로 */
-	margin: 0 auto;
-    width: 170;
+/*상단부분 시작*/
+.vt_info_path_body {
+	/*vt_info_body 상단부분 */
+    margin: 0 auto;
+    width: inherit;
+    height: 180;
 }
-.vt_info_path{
-	width: 200;
-    margin-left: 550;
+.vt_info_path {
+    width: 200;
+    margin-left: 980;
+    margin-top: 150;
 }
-
-.vt_info_menu_body{
-	/* 메뉴안의 소메뉴들 올라갈 부분 */
-    height: inherit;
-    background-color: lightcyan;
+/*상단부분 끝*/
+/*중간 내용불러오기 시작*/
+.vt_info_center {
+    width: 900;
+    margin-left: 400;
+}
+/*중간 내용불러오기 끝*/
+/*좌측 메뉴 시작*/
+.vt_info_menu_body {
+	/*vt_info_body 좌측메뉴 큰 틀*/
     width: 400;
+    height: 790;
+    margin-top: 10;
+}
+.vt_info_menu_wrap {
+    background: linear-gradient(to bottom, #ffffff 0%,#f6f6f6 7%,#ffffff 93%,#ededed 100%);
+    width: 290;
+    height: 780;
+    margin-left: 100;
     position: absolute;
 }
-.vt_info_content_body{
-	/* 뿌려질 내용 */
-	height: inherit;
-    background-color: lightpink;
-    left: 400;
+.vt_info_menu_wrap_sub1 {
+    width: 270;
+    height: 100;
+    margin-left: 10;
+    text-align: center;
+    border-bottom-style: outset;
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+    margin-top: 10;
 }
+.sub1_p1 {
+	/*p태그 css*/
+    font-size: 20;
+    color: cornflowerblue;
+}
+.sub1_p2 {
+	/*p태그 css*/
+    margin: 30;
+    font-size: 20;
+    color: darkcyan;
+}
+.vt_info_menu_wrap_sub2 {
+    height: 630;
+}
+.vt_info_menu_wrap_sub {
+	/*각 메뉴별 영역 공통 적용*/
+    width: inherit;
+    height: 150;
+	text-align: center;
+	margin:25;
+}
+.vt_info_menu_wrap_sub_sub{
+	/*각 메뉴별 영역 안 제목 영역 공통 적용*/
+    font-size: 25px;
+}
+.sub{
+	/*메뉴 영역 P태그 공통적용*/
+	margin: 5;
+    cursor: pointer;
+}
+/*좌측 메뉴 끝*/

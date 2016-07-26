@@ -1,3 +1,13 @@
+<%@page import="javax.mail.internet.MimeUtility"%>
+<%@page import="javax.mail.Transport"%>
+<%@page import="javax.mail.Message"%>
+<%@page import="javax.mail.Address"%>
+<%@page import="javax.mail.internet.InternetAddress"%>
+<%@page import="javax.mail.internet.MimeMessage"%>
+<%@page import="emailconfirm.SMTPmailconfirm"%>
+<%@page import="javax.mail.Session"%>
+<%@page import="javax.mail.Authenticator"%>
+<%@page import="java.util.Properties"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
@@ -7,12 +17,15 @@
 	<head>
 		<link href = "${css}vt_inputFormStyle.css" rel = "stylesheet" type = "text/css">
 		<script src = "${script}vt_inputForm.js"></script>
+
 	</head>
 	<body onload = "inputformfocus()">
 
 		<form method = "post" name = "inputform" action = "inputPro.do">
+
 			<input type="hidden" name = "idConfirm" value = "0">
 			<input type="hidden" name = "nickConfirm" value = "0">
+			<input type = "hidden" name = "equal" value = "${confirmnum}">
 
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">
@@ -59,7 +72,9 @@
 							<!-- AJAX로 비밀번호 다른지 비교 -->
 							<th> ${str_inputForm_passwd}  </th>
 							<td>
+
 								<input class="input" type="password" name="passwd" maxlength="15" onkeyup="comparepasswd()">
+
 							</td>
 						</tr>
 						<tr>	
@@ -118,7 +133,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input class="input" type="text" name="detail_adr" 
+								<input class="input" type="text" name="detail_adr"  readonly="readonly"
 									style="width:500px"placeholder = "${str_inputForm_adr_add}">
 							</td>
 						</tr>
@@ -135,6 +150,7 @@
 						</tr>
 						<tr style="border-bottom: 2px solid #D8D8D8">
 							<!-- 이메일 전송 및 확인 -->
+							
 							<th> ${str_inputForm_email }  </th>
 							<td>
 								<input class="input" type="text" name="email1"
@@ -147,10 +163,12 @@
 									<option value="gmail.com"> 구글 </option>
 									<option value="nate.com"> 네이트 </option>						
 								</select>	
-								<input class="inputbutton" type="button" value="${str_inputForm_email_send }" name="email_btn" style="width: 100px">
+								<input class="inputbutton" type="button" value="${str_inputForm_email_send }" name="email_btn" style="width: 100px"
+										onclick="mailconfirm()">
 								<input class="input" type="text" name="email_send" >
-								<input class="inputbutton" type="button" value="${str_inputForm_email_confirm}" style="width: 100px">
-							</td>
+								<input class="inputbutton" type="button" value="${str_inputForm_email_confirm}" style="width: 100px"
+										onclick="emailcheck()">
+							</td>							
 						</tr>
 						</table>
 						<div class="vt_inputForm_bottom_wrap">
