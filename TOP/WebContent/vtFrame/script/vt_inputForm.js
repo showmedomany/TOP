@@ -72,20 +72,14 @@ function confirmidResult(){
 	if(request.httpRequest.readyState == 4){
 		if(request.httpRequest.status == 200){
 			if(!inputform.id.value){
-				userId.innerHTML = msg_iderror;
-				
-				
+				userId.innerHTML = msg_iderror;				
 			}else{
-				if(request.httpRequest.responseText == 0){
-								
-					userId.innerHTML = inputform.id.value + " 는 사용할 수 있습니다.";	
-					
+				if(request.httpRequest.responseText == 0){								
+					userId.innerHTML = inputform.id.value + " 는 사용할 수 있습니다.";					
 					userId.style.display = "";	
 					userId_overlap.style.display = "none";								
 				}else{	
-									
 					userId_overlap.innerHTML = inputform.id.value + " 는 사용할 수 없습니다.";
-					
 					userId_overlap.style.display = "";			
 					userId.style.display = "none";	
 				}	

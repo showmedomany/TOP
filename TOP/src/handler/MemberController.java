@@ -156,10 +156,7 @@ public class MemberController {
 		
 		String id =request.getParameter("id");
 		int result = memberDao.checkMember(id);
-		request.setAttribute("idConfirm", result);
-		
-		String center = "vt_inputForm";
-		request.setAttribute("center", center);
+		request.setAttribute("result", result);
 		
 		return new ModelAndView("/vtFrame/vt_idConfirm");		
 		
