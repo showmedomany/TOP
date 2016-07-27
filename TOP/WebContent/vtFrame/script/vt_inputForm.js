@@ -2,13 +2,27 @@
  * 
  */
 
-var request = null;
+
 var msg_iderror = "아이디를 입력하세요.";
 var msg_passwderror = "비밀번호를 입력하세요.";
 var msg_repasswd = "비밀번호";
 var msg_passwdok = "ok";
 var msg_repasswderror = "틀림";
+var msg_emailerror = "이메일이 유효하지 않습니다";
+var msg_wait = "전송중";
+var msg_send = "전송완료";
+var msg_mailconfirmerror = "인증번호가 유효하지 않습니다. \n 다시 입력하세요.";
+var msg_emptyerror = "인증번호를 입력하세요."; 
+var msg_wait = "전송중...";
+var msg_send = "전송 완료";
+var msg_ok = "인증 완료";
+//////////////////////////////////////////////////////////////////////////
 
+var request = null;
+var emailResult = document.getElementById("emailResult");
+
+//////////////////////////////////////////////////////////////////////////
+//ajax
 function Request( callback, url, method, params ){
 	this.callback = callback;
 	this.url = url;
@@ -16,6 +30,7 @@ function Request( callback, url, method, params ){
 	this.params = params;
 	this.httpRequest = null;	
 };
+
 Request.prototype = {
 		getXMLHttpRequest : function(){
 			if(window.ActiveXObject){
@@ -166,69 +181,6 @@ function confirmnickResult(){
 		}
 	}	
 }
-	
-
-
-/*
-
-
-var request = null;
-var project = "/Visual/member/";
-
-
-//	* inputForm	* //
-
-//아이디 중복체크
-function confirmid(obj){
-	
-	if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39
-	        || event.keyCode == 46 ) return;
-	    //obj.value = obj.value.replace(/[\a-zㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
-	    obj.value = obj.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
-
-	
-	request = new Request(confirmidResult, "logonConfirmId.do", "POST", "id="+inputform.id.value);	
-	request.sendRequest();
-}
-function confirmidResult(){
-	var userId = document.getElementById("userId");	
-	
-	var userId_overlap = document.getElementById("userId_overlap");
-	
-	if(request.httpRequest.readyState == 4){
-		if(request.httpRequest.status == 200){
-			if(!inputform.id.value){
-				userId.innerHTML = msg_iderror;
-			}else{
-				if(request.httpRequest.responseText == 0){
-					inputform.confirm.value="1";					
-					userId.innerHTML = inputform.id.value + " 는 사용할 수 있습니다.";	
-					
-					userId.style.display = "";	
-					userId_overlap.style.display = "none";								
-				}else{	
-					inputform.confirm.value="0";					
-					userId_overlap.innerHTML = inputform.id.value + " 는 사용할 수 없습니다.";
-					
-					userId_overlap.style.display = "";			
-					userId.style.display = "none";	
-				}	
-			}					
-		}
-	}	
-}
-
-*/
-var msg_emailerror = "이메일이 유효하지 않습니다";
-var msg_wait = "전송중";
-var msg_send = "전송완료";
-var msg_mailconfirmerror = "인증번호가 유효하지 않습니다. \n 다시 입력하세요.";
-var msg_emptyerror = "인증번호를 입력하세요."; 
-var msg_wait = "전송중...";
-var msg_send = "전송 완료";
-var msg_ok = "인증 완료";
-var emailResult = document.getElementById("emailResult");
-
 function inputformfocus() {
 	inputform.id.focus();
 }
@@ -283,13 +235,8 @@ function mailconfirm(){
 					inputform.email1.focus();
 					return false;
 				}
-			}
+			}			
 			
-			/*
-			window.location="memberMailConfirm.do?email1="+inputform.email1.value
-							 +"&email2="+inputform.email2.value;
-			
-			*/
 			inputform.email_send.focus();
 			emailResultText.innerHTML = "전송중...";
 			request = new Request(mailconfirmResult, "memberMailConfirm.do", 
@@ -331,13 +278,11 @@ function emailcheck(){
 	}
 }
 
-
-function serchadr() {
+function searchAdr(){
 	var url = "zipCheck.do";
-	
-	open(url, "zipCheck", "scrollbars = yes, status = yes, width = 600, height = 500");
-	
+	open(url, "zipCheck", "scrollbars = yes, status = yes, width = 600, height = 500");	
 }
+
 
 function useadr(first, second, adr) {
 	opener.document.inputform.zipcode1.value = first;
@@ -345,6 +290,5 @@ function useadr(first, second, adr) {
 	opener.document.inputform.adr.value = adr;
 	opener.document.inputform.detail_adr.focus();
 	self.close();
-	//opener.document.inputform.adrcheck.value = 1;
 }
 

@@ -115,13 +115,13 @@
 							<td>
 								<!-- 수정불가로 -->
 								<input class="input" type="text" name="zipcode1" 
-									style="width:60px" readonly="readonly" value = "111">-
+									style="width:60px" readonly="readonly" value = "111">
 								<!-- 수정불가로 -->
 								<input class="input" type="text" name="zipcode2"  
 									style="width:60px" readonly="readonly">
 								<!-- 주소 검색창 -->
 								<input class="inputbutton" type="button" value="${str_inputForm_adr_search}"
-								onclick="serchadr()">
+								onclick="searchAdr()">
 							</td>
 						</tr>
 						<tr>
