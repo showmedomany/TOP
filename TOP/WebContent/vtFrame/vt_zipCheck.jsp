@@ -22,6 +22,7 @@
 					<div class="vt_zipCheckForm_ser">
 						<input class = "input" type = "text" name = "inputarea" >
 						<input class = "inputbutton" type = "submit" value = "${str_zipCheckForm_zip_search}">
+						<!-- <input class = "inputbutton" type = "button" value = "검색" onclick = "search()"> -->
 						<input class = "inputbutton" type = "button" value = "${str_zipCheckForm_zip_cancel}"
 											onclick = "self.close();">
 						
@@ -33,53 +34,55 @@
 			</div>
 		</form>
 		
-		
-		<c:if test = "${area ne null }">
-			<c:if test = "${resultCheck eq 0 }">
-				<table>
-					<tr>
-						<th> ${str_zipCheckForm_zipNum} </th>
-						<th style = "width : 285px;">${str_inputForm_adr}</th>
-					</tr>
-					<tr>
-						<th colspan = "2">
-						검색결과가 없습니다.
-						</th>					
-					</tr>					
-				</table>
-			</c:if>
-			<c:if test = "${resultCheck ne 0 }">
-				<c:set var = "adto" value = "${adto }"/>
-				<form method = "post" name = "addressform">
+
+		<div class = "vt_zipCheckForm_center">
+			<c:if test = "${area ne null }">
+				<c:if test = "${resultCheck eq 0 }">
 					<table>
 						<tr>
-							<th>${str_inputForm_adr} </th>
-							<th style = "width : 285px;" >${str_zipCheckForm_ziparea}</th>
+							<th> ${str_zipCheckForm_zipNum} </th>
+							<th style = "width : 285px;">${str_inputForm_adr}</th>
 						</tr>
-						<c:forEach var = "adto" items="${adto }">
-							<c:set var = "first" value = "${fn:substring(adto.zipcode,0,3) }"/>
-							<c:set var = "second" value = "${fn:substring(adto.zipcode,4,7) }"/>
-						
-							<c:set var = "adr" 
-								value = "${adto.area1} ${adto.area2} ${adto.area3} ${adto.area4}"/>
-							<tr>							
-								<th>
-									<a onclick = "useadr('${first}','${second}','${adr}')">
-										${adto.zipcode}
-									</a>
-								</th>
-								<th>						
-									<a onclick = "useadr('${first}','${second}','${adr}')">
-										${adr}
-									</a> 
-								</th>								
-							</tr>
-						</c:forEach>						
+						<tr>
+							<th colspan = "2">
+							검색결과가 없습니다.
+							</th>					
+						</tr>					
 					</table>
-				</form>	
-			</c:if>			
-		</c:if>
-			
+				</c:if>
+				<c:if test = "${resultCheck ne 0 }">
+					<c:set var = "adto" value = "${adto }"/>
+					<form method = "post" name = "addressform">
+						<table>
+							<tr>
+								<th>${str_inputForm_adr} </th>
+								<th style = "width : 285px;" >${str_zipCheckForm_ziparea}</th>
+							</tr>
+							<c:forEach var = "adto" items="${adto }">
+								<c:set var = "first" value = "${fn:substring(adto.zipcode,0,3) }"/>
+								<c:set var = "second" value = "${fn:substring(adto.zipcode,4,7) }"/>
+							
+								<c:set var = "adr" 
+									value = "${adto.area1} ${adto.area2} ${adto.area3} ${adto.area4}"/>
+								<tr>							
+									<th>
+										<a onclick = "useadr('${first}','${second}','${adr}')">
+											${adto.zipcode}
+										</a>
+									</th>
+									<th>
+										<a onclick = "useadr('${first}','${second}','${adr}')">
+	
+											${adr}
+										</a> 
+									</th>								
+								</tr>
+							</c:forEach>						
+						</table>
+					</form>	
+				</c:if>			
+			</c:if>
+		</div>
 	</body>
 </html>
 

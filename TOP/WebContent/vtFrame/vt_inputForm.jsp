@@ -100,10 +100,11 @@
 						<tr>
 							<th rowspan="3">${str_inputForm_adr}</th>
 							<td>
-								<input class="input" type="text" name="zipcode1" 
+								<input class="input" type="text" name="zipcode1"
 									style="width:60px" readonly="readonly">-
 								<input class="input" type="text" name="zipcode2"  
 									style="width:60px" readonly="readonly">
+
 								<input class="inputbutton" type="button" name = "searchadr" value="${str_inputForm_adr_search}"
 								onclick="searchAdr()">
 							</td>

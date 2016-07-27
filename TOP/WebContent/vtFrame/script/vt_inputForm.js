@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 var msg_iderror = "아이디를 입력해주세요";
 var msg_idcheckerror = "사용할 수 없는 아이디입니다";
 
@@ -205,8 +204,9 @@ function confirmnickResult(){
 //주소검색 버튼 클릭
 function searchAdr(){
 	var url = "zipCheck.do";
-	//크기조정, 크기변경불가 등여기서 고침
-	open(url, "zipCheck", "scrollbars = yes, status = yes, width = 600, height = 500");	
+	//크기조정, 크기변경불가 등여기서 고침 근데 명령어가 안먹음
+	window.open(url, "zipCheck", 
+			'scrollbars=no,resizable=no, menubar=yes, status=yes, width=600, height=500 ');	
 }
 
 //주소 선택시 inputform에 값 넣기
@@ -267,6 +267,7 @@ function mailconfirm(){
 					inputform.email1.focus();
 					return false;
 				}
+
 			}
 			//메일전송에 포커싱
 			inputform.email_send.focus();
@@ -314,12 +315,15 @@ function emailcheck(){
 	}
 }
 
+
 function loaded(){ 
     window.setTimeout(CloseMe, 0);
 }
 function CloseMe(){
     window.close();
 }
+
+
 
 function sumitCheckfn(){
 	//아이디 안쓰거나 확인 안한경우
@@ -364,46 +368,4 @@ function sumitCheckfn(){
 		inputform.email_send.focus();
 		return false;
 	}
-	
-	
-	
-	/*
-	if(!inputform.id.value){//이건 없어도 될듯
-		alert(msg_iderror);
-		inputform.id.focus();
-		return false;
-	}else if(!inputform.passwd.value){
-		alert(msg_passwderror);
-		inputform.passwd.focus();
-		return false;
-	}
-	//비밀번호 썼는데 확인 틀림
-	else if (inputform.passwd.value != inputform.repasswd.value){
-		alert(msg_repasswderror);
-		inputform.repasswd.focus();
-		return false;
-	}
-	else if(!inputform.name.value){
-		alert(msg_nameerror);
-		inputform.name.focus();
-		return false;
-	}
-	else if(!inputform.nickname.value){//얘도 없어도 될듯
-		alert(msg_nicknameerror);
-		inputform.nickname.focus();
-		return false;
-	}
-	else if(!inputform.email1.value){
-		alert(msg_emailerror);
-		inputform.email1.focus();
-		return false;
-	}
-	else if(!inputform.email_send.value){
-		alert(msg_emailsenderror);
-		inputform.email_send.focus();
-		return false;
-	}*/
-	
 }
-
-
