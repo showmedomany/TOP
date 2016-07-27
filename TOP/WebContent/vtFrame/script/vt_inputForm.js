@@ -223,6 +223,7 @@ var msg_emptyerror = "인증번호를 입력하세요.";
 var msg_wait = "전송중...";
 var msg_send = "전송 완료";
 var msg_ok = "인증 완료";
+var emailResult = document.getElementById("emailResult");
 
 function inputformfocus() {
 	inputform.id.focus();
@@ -280,15 +281,31 @@ function mailconfirm(){
 				}
 			}
 			
-			
+			/*
 			window.location="memberMailConfirm.do?email1="+inputform.email1.value
 							 +"&email2="+inputform.email2.value;
 			
-				
+			*/
 			inputform.email_send.focus();
+			emailResultText.innerHTML = "전송중...";
+			request = new Request(mailconfirmResult, "memberMailConfirm.do", 
+					"POST", "email1="+inputform.email1.value+"&email2="+inputform.email2.value);	
+			request.sendRequest();
+			
 		}
 	}
 }
+function mailconfirmResult(){
+	var emailResult = document.getElementById("emailResult");;
+	if(request.httpRequest.readyState == 4){
+		if(request.httpRequest.status == 200){
+			emailResultText.innerHTML = "전송완료!";
+			emailResult.innerHTML = request.httpRequest.responseText;
+			
+		}	
+	}	
+}
+
 function emailcheck(){	
 	if(!inputform.email_send.value){
 		//입력안하면 오류
@@ -304,6 +321,7 @@ function emailcheck(){
 	}
 	else if(inputform.email_send.value == inputform.equal.value){
 		alert(msg_ok);
+		emailResultText.innerHTML = "인증완료!";
 		return false;
 	}
 }

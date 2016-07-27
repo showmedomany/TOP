@@ -25,7 +25,7 @@
 
 			<input type="hidden" name = "idConfirm" value = "0">
 			<input type="hidden" name = "nickConfirm" value = "0">
-			<input type = "hidden" name = "equal" value = "${confirmnum}">
+			
 
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">
@@ -165,10 +165,12 @@
 									<option value="nate.com"> 네이트 </option>						
 								</select>	
 								<input class="inputbutton" type="button" value="${str_inputForm_email_send }" name="email_btn" style="width: 100px"
-										onclick="mailconfirm()">
+										onclick="mailconfirm()"><!-- 인증번호 전송 -->
 								<input class="input" type="text" name="email_send" >
 								<input class="inputbutton" type="button" value="${str_inputForm_email_confirm}" style="width: 100px"
-										onclick="emailcheck()">
+										onclick="emailcheck()"><!-- 인증번호 확인 -->
+										<div id="emailResultText"></div>
+										<div id="emailResult"></div>
 							</td>							
 						</tr>
 						</table>
