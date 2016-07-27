@@ -158,7 +158,7 @@ public class MemberController {
 		int result = memberDao.checkMember(id);
 		request.setAttribute("result", result);
 		
-		return new ModelAndView("/vtFrame/vt_idConfirm");		
+		return new ModelAndView("/vtFrame/vt_Confirm");		
 		
 	}
 
@@ -173,7 +173,7 @@ public class MemberController {
 		int result = memberDao.nickcheckMember(nick);		
 		request.setAttribute("result", result);
 		
-		return new ModelAndView("/vtFrame/vt_nickConfirm");
+		return new ModelAndView("/vtFrame/vt_Confirm");
 		
 	}
 
@@ -263,45 +263,7 @@ public class MemberController {
 		//inputform으로 바로
 		return new ModelAndView("vtFrame/vt_mailConfirmResult");
 	}
-//memberMailConfirm
-	/**
-	 * 여기에 만들어질 핸들러에는 
-	 * 1. 메일인증을 보내는폼에서 email1과 email2을 request.getparameter로 받아 
-	 * 	  email변수에 저장을 한다 (email1이 직접입력이라면 email1을 그대로 email변수로)
-	 * 
-	 * 2. email을 보내는 권한이 있는 email과 해당 email의 비밀번호, 보내는 사람 이름,
-	 *    보내는 사람의 메일(email을 보내는 권한이 있는 email을 써도 무관),보내는 메일의 제목을
-	 *    각 id,pw,forname,from,subject변수에 저장한다.
-	 *   
-	 * 3. 보낼 내용을 작성(인증번호의 경우 랜덤을 돌려 생성)
-	 * 
-	 * 4. try/catch문을 작성(참조 소스긁어도 무관)
-	 * 
-	 * 5. 인증메일을 보낸경우 해당 번호를 메일인증을 보낸 폼에서도 알아야 하므로
-	 *    request.setparmeter로 인증번호를 세팅후
-	 *    메일인증을 보낸 폼으로 리턴한다 
-	 *   
-	 */
-	
-	//여기에 주소찾기할 핸들러 작성
-	/**
-	 * 여기에 만들어질 핸들러에는 
-	 * 1. 이 핸들러를 호출한 폼에서 주소를 받아 area변수(변수명칭은 취향)에 저장 후 
-	 * 	  area변수를 Dao에 작성하고 DBBean에 구현한 메소드에 매개변수로 이용하여 해당 DB를 처리 후
-	 *	  javascript에서 생성한 새 창으로 해당 값을 리턴하는 작업을 한다.
-	 *
-	 * 2. 맨처음 inputform에서 주소찾기 버튼을 눌러 새창을 생성한 경우 입력값이 아무것도 없기 때문에
-	 *    다시 새창으로 리턴되는 값은 null이 된다.
-	 *    
-	 * 3. return new ModelAndView("리턴될 jsp주소"); 이 부분으로 인해 주소찾기창.jsp가 호출되며
-	 *    입력값이 없더라도 jsp주소는 호출했기 때문에 새 창이 생성된다.
-	 *    
-	 * 4. 주소찾기 창에서 검색할 주소를 입력후 호출된다면 주소DBBean에 구현된 check를 통해 해당 주소가 있는지
-	 * 	   검색후 있다면 get을 통해 주소DataBean들을 가져와 List에 담고 담긴 DataBean List들을 
-	 * 	  request.setAttribut해준다. 
-	 * 	 
-	 *   
-	 */
+
 	@RequestMapping("/zipCheck")
 	public ModelAndView zipCheck
 	(HttpServletRequest request,HttpServletResponse response) throws Exception {

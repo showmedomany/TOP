@@ -31,7 +31,8 @@
 						<!-- 세션스코프의 권한 값이 관리자일때  -->
 						<c:if test="${sessionScope.authority_id eq 1 }">
 							${sessionScope.memId}
-							<a>관리자페이지</a>
+							<a class="top_header_atag_font" 
+								href = "vt_managerPage.do">관리자페이지</a>
 							<a class="top_header_atag_font" 
 								href = "logoutPro.do">${str_logouttag}</a> 
 						</c:if>
