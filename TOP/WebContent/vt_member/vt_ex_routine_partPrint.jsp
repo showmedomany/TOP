@@ -6,7 +6,8 @@
 <c:forEach var="i" begin="0" end="${exeriseLength-1}" step="1">
 	<c:set var='exeriseData' value="${exeriselist.get(i)}"/>
 	<c:if test="${exeriseData.ex_part_id == partId}">		
-		<p onclick="exeriseInfo(${cnt})">${exeriseData.name}</p>
+		<span onclick="exeriseInfo(${cnt})">${exeriseData.name}</span>
+		<input type="checkbox"><br>
 		<c:set var='cnt' value="${cnt+1}"/>
 	</c:if>
 </c:forEach>

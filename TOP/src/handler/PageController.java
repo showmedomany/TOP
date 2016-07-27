@@ -27,8 +27,7 @@ public class PageController {
 		
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//main
-	
-	
+		
 	//로그인태그 클릭시 로그인form 호출 핸들러
 	@RequestMapping("/loginForm")
 	public ModelAndView loginForm
@@ -40,26 +39,17 @@ public class PageController {
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//loginForm
 	
-	
-	
-	@RequestMapping("/infoForm")
-	public ModelAndView infoForm 
-	(HttpServletRequest request,HttpServletResponse response){		
-		//메인으로 돌아가야하므로 센터 컨텐트로 설정
-		String center = "/vt_info/vt_infoForm";
-		request.setAttribute("center", center);				
-		return new ModelAndView("/vtFrame/vtFrame");
-	}//infoForm
-	
 	@RequestMapping("/inputForm")
 	public ModelAndView inputForm
 	(HttpServletRequest request,HttpServletResponse response){		
-		//메인으로 돌아가야하므로 센터 컨텐트로 설정
+		
 		String center = "vt_inputForm";
 		request.setAttribute("center", center);				
 		return new ModelAndView("/vtFrame/vtFrame");
 
+
 	}//loginForm		
+
 
 }	
 

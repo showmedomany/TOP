@@ -25,6 +25,7 @@
 	<mappers>
 		<mapper resource="member/member.xml"/>
 		<mapper resource="myPage/myPage.xml"/>
+		<mapper resource="address/address.xml"/>
 		<!-- DB쿼리 들어간 xml파일 경로
 		<mapper resource="member/member.xml"/>
 		<mapper resource="board/board.xml"/>

@@ -60,12 +60,12 @@
 							</li> 
 							<li class="top_navi_menuframe">  
 								<div class="top_navi_menu"
-									onclick="location = 'infoForm.do'">센터 소개</div>
+									onclick="location = 'vt_infoHello.do'">센터 소개</div>
 								<ul class="top_navi_subframe">  
-									<li>인사말</li>  
-									<li>센터 연혁</li> 
-									<li>센터 정보</li>  
-									<li>센터 소개</li>   
+									<li onclick="location = 'vt_infoHello.do'">인사말</li>  
+									<li onclick="location = 'vt_infoHistory.do'">센터 연혁</li>
+									<li onclick="location = 'vt_infoInfo.do'">센터 정보</li>  
+									<li onclick="location = 'vt_infoChar.do'">센터 특징</li>   
 								</ul>  
 							</li> 
 							<li class="top_navi_menuframe">  

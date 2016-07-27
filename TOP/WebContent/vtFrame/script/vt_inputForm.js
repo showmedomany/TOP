@@ -1,16 +1,8 @@
 /**
  * 
  */
+
 var request = null;
-
-var msg_iderror = "아이디를 입력하세요.";
-var msg_passwderror = "비밀번호를 입력하세요.";
-var msg_passwdok = "비밀번호가 일치합니다.";
-var msg_repasswd="비밀번호 재입력하세요";
-var msg_repasswderror = "비밀번호가 다릅니다.";
-var msg_nickerror="닉네임을 입력하세요";
-
-
 
 
 function Request( callback, url, method, params ){
@@ -80,20 +72,14 @@ function confirmidResult(){
 	if(request.httpRequest.readyState == 4){
 		if(request.httpRequest.status == 200){
 			if(!inputform.id.value){
-				userId.innerHTML = msg_iderror;
-				
-				
+				userId.innerHTML = msg_iderror;				
 			}else{
-				if(request.httpRequest.responseText == 0){
-					inputform.idConfirm.value="1";					
-					userId.innerHTML = inputform.id.value + " 는 사용할 수 있습니다.";	
-					
+				if(request.httpRequest.responseText == 0){								
+					userId.innerHTML = inputform.id.value + " 는 사용할 수 있습니다.";					
 					userId.style.display = "";	
 					userId_overlap.style.display = "none";								
 				}else{	
-					inputform.idConfirm.value="0";					
 					userId_overlap.innerHTML = inputform.id.value + " 는 사용할 수 없습니다.";
-					
 					userId_overlap.style.display = "";			
 					userId.style.display = "none";	
 				}	
@@ -136,7 +122,6 @@ function comparepasswd(){
 		userPasswd.style.display = "none"; //빨간거 출력 ex)비밀번호가 다릅니다	
 	}				
 }
-
 
 // 닉네임 중복확인
 function confirmnick(){	
@@ -228,8 +213,16 @@ function confirmidResult(){
 		}
 	}	
 }
-*/
 
+*/
+var msg_emailerror = "이메일이 유효하지 않습니다";
+var msg_wait = "전송중";
+var msg_send = "전송완료";
+var msg_mailconfirmerror = "인증번호가 유효하지 않습니다. \n 다시 입력하세요.";
+var msg_emptyerror = "인증번호를 입력하세요."; 
+var msg_wait = "전송중...";
+var msg_send = "전송 완료";
+var msg_ok = "인증 완료";
 
 function inputformfocus() {
 	inputform.id.focus();
@@ -249,4 +242,83 @@ function nexttel3(){
 	if(inputform.tel3.value.length == 4){
 		inputform.email1.focus();
 	}
+}
+
+function loaded(){ 
+    window.setTimeout(CloseMe, 0);
+}
+function CloseMe(){
+    window.close();
+}
+
+function mailconfirm(){
+	if(! inputform.email1.value || ! inputform.email2.value){
+		alert(msg_emailerror);
+		inputform.email1.focus();
+		return false;
+	}
+	else{
+		if(inputform.email1.value){			
+			var email = inputform.email1.value;
+			if(inputform.email2.
+					options[inputform.email2.selectedIndex].
+					value=="0"){
+				
+				//전체에서 @가 없다면
+				if(email.match('@')==null){
+					alert(msg_emailerror);
+					inputform.email1.focus();
+					return false;
+				}
+			}
+			else{
+				//전체에서 @가 있다면(뒤에 @붙은 이메일을 주므로)
+				if(email.match('@')!=null){
+					alert(msg_emailerror);
+					inputform.email1.focus();
+					return false;
+				}
+			}
+			
+			
+			window.location="memberMailConfirm.do?email1="+inputform.email1.value
+							 +"&email2="+inputform.email2.value;
+			
+				
+			inputform.email_send.focus();
+		}
+	}
+}
+function emailcheck(){	
+	if(!inputform.email_send.value){
+		//입력안하면 오류
+		alert(msg_emptyerror);		
+		inputform.email_send.focus();
+		return false;
+	}
+	else if(inputform.email_send.value != inputform.equal.value){
+		alert(msg_mailconfirmerror);
+		inputform.email_send.value = "";
+		inputform.email_send.focus();		
+		return false;
+	}
+	else if(inputform.email_send.value == inputform.equal.value){
+		alert(msg_ok);
+		return false;
+	}
+}
+
+
+function serchadr() {
+	var url = "zipCheck.do";
+	open(url, "zipCheck", "scrollbars = yes, status = yes, width = 600, height = 500");
+}
+
+function useadr(first, second, adr){
+	opener.document.inputform.zipcode1.value = first;
+	opener.document.inputform.zipcode2.value = second;
+	opener.document.inputform.adr.value = adr;
+	opener.document.inputform.detail_adr.focus();
+	self.close();
+	opener.document.inputform.adrcheck.value = 1;
 }
