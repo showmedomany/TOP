@@ -12,7 +12,6 @@ public class MemberDBBean implements MemberDao {
 	public int nickcheckMember(String nick){
 		return SqlMapClient.getSession().selectOne("Member.nickcheckMember",nick);
 	}
-	
 
 	
 	@Override

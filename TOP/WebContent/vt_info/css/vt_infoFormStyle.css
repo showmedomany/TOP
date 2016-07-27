@@ -1,6 +1,7 @@
 .vt_inforForm {
     width: 1200;
     margin: 0 auto;
+    height: auto;
 }
 .vt_info_frame{	
 	/* 센터에 뿌려질 큰 틀 */
@@ -29,22 +30,14 @@
 /*중간 내용불러오기 시작*/
 .vt_info_center {
     width: 900;
-    margin-left: 400;
+    margin-left: 450;
+    margin-top: -600;
 }
 /*중간 내용불러오기 끝*/
 /*좌측 메뉴 시작*/
-.vt_info_menu_body {
-	/*vt_info_body 좌측메뉴 큰 틀*/
-    width: 400;
-    height: 790;
-    margin-top: 10;
-}
 .vt_info_menu_wrap {
     background: linear-gradient(to bottom, #ffffff 0%,#f6f6f6 7%,#ffffff 93%,#ededed 100%);
     width: 290;
-    height: 780;
-    margin-left: 100;
-    position: absolute;
 }
 .vt_info_menu_wrap_sub1 {
     width: 270;

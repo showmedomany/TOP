@@ -202,6 +202,10 @@ public class MemberController {
 				email = email1 + "@" + email2;
 			}
 		}
+		//이프문으로 묶어서 이메일 있나 없나 검사 먼저
+		//있으면 이미 가입된 이메일입니다 경고창
+		//없으면 메일전송
+		
 		System.out.println(email);	
 		String id = "dhwan.jung@gmail.com";
 		String pw = "ehdghks87g";	
@@ -257,12 +261,14 @@ public class MemberController {
 		    e.printStackTrace();	    
 		    // 오류 발생시 뒤로 돌아가도록		    
 		}		
-	
+		
 		request.setAttribute("confirmnum", confirmnum);
 		
 		//inputform으로 바로
 		return new ModelAndView("vtFrame/vt_mailConfirmResult");
 	}
+	
+	
 //memberMailConfirm
 	/**
 	 * 여기에 만들어질 핸들러에는 
