@@ -31,7 +31,7 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
     margin: 0 auto;
 }
 .centerContent_empty_space{
-	height: 50;
+	height: 30;
 }
 .centerContent_table{
 	width: 1200;
@@ -66,13 +66,13 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 #slider {
     background-color: white;
     position: relative;
-    margin: 0 auto;
+    margin: 8 auto;
     transform: translate3d(0,0,0);
     box-shadow: 0px 1px 5px #999999;
-    right: -30;
+   	right: -30;
     width: 1000;
     height: 500;
-    margin-left: -170px;
+    margin-left: -185px;
 }
 
 /* the link style (if an image is wrapped by a link) */

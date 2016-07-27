@@ -8,7 +8,13 @@ public class MemberDBBean implements MemberDao {
 	public int checkMember(String id) {				
 		return SqlMapClient.getSession().selectOne("Member.checkMember",id);
 	}
+	@Override
+	public int nickcheckMember(String nick){
+		return SqlMapClient.getSession().selectOne("Member.nickcheckMember",nick);
+	}
+	
 
+	
 	@Override
 	public int loginMember(String id, String passwd) {
 		int result;

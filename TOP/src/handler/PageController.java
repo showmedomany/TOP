@@ -70,6 +70,10 @@ public class PageController {
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//loginForm
 	
+	
+
+	
+	
 	@RequestMapping("/myPageView")
 	public ModelAndView myPageView
 	(HttpServletRequest request,HttpServletResponse response){		
