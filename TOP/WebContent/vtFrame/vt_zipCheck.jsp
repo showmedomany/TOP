@@ -5,16 +5,18 @@
 <h2> zipCheck </h2>
 <html>
 	<head>
+		<link href = "${css}vt_zipCheckFormStyle.css" rel = "stylesheet" type = "text/css">
 		<script src = "${script}vt_inputForm.js"></script>
 	</head>
 	<body>
 		<form method="post" name="zipCheckForm" action="zipCheck.do" onsubmit="return serchadr()">
+		<div class="vt_zipCheckForm_Frame">
 			<table class="vt_zipCheckForm_table">
 				<tr>
 					<th colspan="2"> </th>
 				</tr>
 				<tr>
-					<th> 주소찾기 </th>
+					<th> ${str_zipCheckForm_zip_search} </th>
 					<td>
 						<input class = "input" type = "text" name = "inputarea">
 						<input class = "inputbutton" type = "submit" value = "${str_inputForm_adr_search}">
@@ -28,6 +30,7 @@
 				</tr>
 			</table>
 			<br>
+			</div>
 		</form>
 		
 		<c:if test = "${area ne null }">
@@ -35,7 +38,7 @@
 			<c:if test = "${resultCheck eq 0 }">
 				<table>
 					<tr>
-						<th> 우편번호</th>
+						<th> ${str_zipCheckForm_zipNum} </th>
 						<th style = "width : 285px;">주소</th>
 					</tr>
 					<tr>

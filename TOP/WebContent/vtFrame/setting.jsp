@@ -52,3 +52,13 @@
 <c:set var = "str_inputForm_email_confirm" value = "인증번호확인"/>
 <c:set var = "str_inputForm_bt_sumit" value = "회원가입"/>
 <c:set var = "str_inputForm_bt_cancel" value = "취소하기"/>
+
+
+
+<!-- 우편번호 검색 -->
+<c:set var = "str_zipCheckForm_zip_search" value = "주소찾기"/>
+<c:set var = "str_zipCheckForm_zipNum" value = "우편번호"/>
+
+
+
+
