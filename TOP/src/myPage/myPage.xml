@@ -28,6 +28,10 @@
 	<select id="getInbodyData" parameterType="String" resultType="myPage.InbodyDataBean">
 		select AGE, HEIGHT, SEX, WEIGHT, BMI, CHECK_DATE from vt_inbody where id = #{id}
 	</select>
+	
+	<select id="getMemberData" parameterType="String" resultType="member.MemberDataBean">
+		select PASSWD, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE from vt_members where id = #{id}
+	</select>
 
 	
 </mapper>

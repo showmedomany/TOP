@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.MemberDataBean;
 import myPage.ExerciseDataBean;
 import myPage.InbodyDataBean;
 import myPage.MemberRoutineDataBean;
@@ -26,7 +27,12 @@ public class MyPageController {
 	
 	@RequestMapping("/myPageView")
 	public ModelAndView myPageView
-	(HttpServletRequest request,HttpServletResponse response){			
+	(HttpServletRequest request,HttpServletResponse response){	
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {			
+			e.printStackTrace();
+		}
 		String choice = request.getParameter("choice");		
 		String myPageSuject = null;
 		String id = (String) request.getSession().getAttribute("memId");
@@ -58,7 +64,9 @@ public class MyPageController {
 			myPageSuject = "vt_achievementRate";
 			break;
 		case 3://회원정보
-			myPageSuject = "vt_memberInfo";
+			myPageSuject = "vt_memberInfoView";
+			MemberDataBean memberData = myPageDao.getMemberData(id);
+			request.setAttribute("memberData", memberData);
 			break;
 		case 4://회원탈퇴
 			myPageSuject = "vt_memberOut";

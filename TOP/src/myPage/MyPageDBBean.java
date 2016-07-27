@@ -2,6 +2,7 @@ package myPage;
 
 import java.util.List;
 
+import member.MemberDataBean;
 import mybatis.SqlMapClient;
 
 public class MyPageDBBean implements MyPageDao {
@@ -29,6 +30,10 @@ public class MyPageDBBean implements MyPageDao {
 	@Override
 	public InbodyDataBean getInbodyData(String id) {
 		return SqlMapClient.getSession().selectOne("MyPage.getInbodyData", id);
+	}
+	@Override
+	public MemberDataBean getMemberData(String id) {
+		return SqlMapClient.getSession().selectOne("MyPage.getMemberData", id);
 	}
 	
 }
