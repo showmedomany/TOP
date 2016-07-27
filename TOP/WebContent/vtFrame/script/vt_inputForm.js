@@ -294,6 +294,7 @@ function mailconfirm(){
 			
 		}
 	}
+
 }
 function mailconfirmResult(){
 	var emailResult = document.getElementById("emailResult");;
@@ -340,3 +341,4 @@ function useadr(first, second, adr){
 	self.close();
 	opener.document.inputform.adrcheck.value = 1;
 }
+
