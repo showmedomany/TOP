@@ -256,14 +256,12 @@ public class MemberController {
 		} catch(Exception e){
 		    e.printStackTrace();	    
 		    // 오류 발생시 뒤로 돌아가도록		    
-		}
-		String center = "vt_inputForm";
-		
-		request.setAttribute("center", center);
+		}		
+	
 		request.setAttribute("confirmnum", confirmnum);
 		
 		//inputform으로 바로
-		return new ModelAndView("vtFrame/vtFrame");
+		return new ModelAndView("vtFrame/vt_mailConfirmResult");
 	}
 //memberMailConfirm
 	/**
