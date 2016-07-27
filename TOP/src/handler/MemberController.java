@@ -157,8 +157,9 @@ public class MemberController {
 		String id =request.getParameter("id");
 		int result = memberDao.checkMember(id);
 		request.setAttribute("result", result);
-		
+
 		return new ModelAndView("/vtFrame/vt_Confirm");		
+
 		
 	}
 
@@ -183,14 +184,10 @@ public class MemberController {
 	@RequestMapping("/memberMailConfirm")
 	public ModelAndView memberMailConfirm
 	(HttpServletRequest request,HttpServletResponse response){
-		
-		
-		
 		String email = null;
-		
+		String confirmnum = "1";
 		String email1 = request.getParameter("email1");
 		String email2 = request.getParameter("email2");
-		
 		
 		if(!email1.equals("") && !email2.equals("")){
 			if(email2.equals("0")){
@@ -202,63 +199,75 @@ public class MemberController {
 				email = email1 + "@" + email2;
 			}
 		}
-		System.out.println(email);	
-		String id = "dhwan.jung@gmail.com";
-		String pw = "ehdghks87g";	
-		String fromname = "KH정보교육원 오후반 2차 과제";
-		String from = "kajika24@naver.com";
-		String subject = "회원가입 인증번호";
+		//이프문으로 묶어서 이메일 있나 없나 검사 먼저
+		//있으면 이미 가입된 이메일입니다 경고창
+		//없으면 메일전송
 		
+		int emailcheck = memberDao.checkEmail(email);
 		
-		StringBuffer buffer = new StringBuffer();
-		for(int i = 0; i < 6; i++){
-			int n = (int) (Math.random()*10);
-			buffer.append(n);
+		if(emailcheck==0){
+			System.out.println(email);	
+			String id = "dhwan.jung@gmail.com";
+			String pw = "ehdghks87g";	
+			String fromname = "KH정보교육원 오후반 2차 과제";
+			String from = "kajika24@naver.com";
+			String subject = "회원가입 인증번호";
+			
+			
+			StringBuffer buffer = new StringBuffer();
+			for(int i = 0; i < 6; i++){
+				int n = (int) (Math.random()*10);
+				buffer.append(n);
+			}
+			confirmnum = buffer.toString();	//인증번호
+			
+			try{
+				Properties p = new Properties();
+				
+				p.put("mail.smtp.starttls.enable", "true");
+				p.put("mail.transpor.protocol", "smtp");
+				p.put("mail.smtp.host","smtp.gmail.com");
+				
+				p.setProperty("mail.smtp.socketFactory.class", 
+						"javax.net.ssl.SSLSocketFactory");
+				p.put("mail.smtp.port", "465");		
+				p.put("mail.smtp.auth", "true"); 
+				p.put("mail.smtp.debug", "true");
+				p.put("mail.smtp.socketFactory.fallback", "false");
+				
+			    Authenticator auth = new SMTPmailconfirm(id, pw);
+			    Session ses = Session.getInstance(p, auth);
+			     
+			    
+			    
+			    ses.setDebug(true);
+			     
+			    MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
+			    //subject = 인증번호;
+			    msg.setSubject(subject); // 제목 작성
+			    //from = kajika24@naver.com;
+			    
+			    msg.setFrom(new InternetAddress(from,MimeUtility.encodeText
+			    		(fromname, "UTF-8", "B"))); // 보내는 사람
+			     
+			    Address toAddr = new InternetAddress(email);	//받는사람
+			    msg.addRecipient(Message.RecipientType.TO, toAddr); // 받는 사람
+			     
+			    //content = random
+			    msg.setContent(confirmnum, "text/html;charset=UTF-8"); // 내용과 인코딩
+			     
+			    Transport.send(msg); // 전송
+			} catch(Exception e){
+			    e.printStackTrace();	    
+			    // 오류 발생시 뒤로 돌아가도록		    
+			}		
+			
+			confirmnum = "<input type = 'hidden' name = 'equal' value = '"+confirmnum+"'>";
+			
+			request.setAttribute("confirmnum", confirmnum);
 		}
-		String confirmnum = buffer.toString();	//인증번호
-		
-		try{
-			Properties p = new Properties();
-			
-			p.put("mail.smtp.starttls.enable", "true");
-			p.put("mail.transpor.protocol", "smtp");
-			p.put("mail.smtp.host","smtp.gmail.com");
-			
-			p.setProperty("mail.smtp.socketFactory.class", 
-					"javax.net.ssl.SSLSocketFactory");
-			p.put("mail.smtp.port", "465");		
-			p.put("mail.smtp.auth", "true"); 
-			p.put("mail.smtp.debug", "true");
-			p.put("mail.smtp.socketFactory.fallback", "false");
-			
-		    Authenticator auth = new SMTPmailconfirm(id, pw);
-		    Session ses = Session.getInstance(p, auth);
-		     
-		    
-		    
-		    ses.setDebug(true);
-		     
-		    MimeMessage msg = new MimeMessage(ses); // 메일의 내용을 담을 객체
-		    //subject = 인증번호;
-		    msg.setSubject(subject); // 제목 작성
-		    //from = kajika24@naver.com;
-		    
-		    msg.setFrom(new InternetAddress(from,MimeUtility.encodeText
-		    		(fromname, "UTF-8", "B"))); // 보내는 사람
-		     
-		    Address toAddr = new InternetAddress(email);	//받는사람
-		    msg.addRecipient(Message.RecipientType.TO, toAddr); // 받는 사람
-		     
-		    //content = random
-		    msg.setContent(confirmnum, "text/html;charset=UTF-8"); // 내용과 인코딩
-		     
-		    Transport.send(msg); // 전송
-		} catch(Exception e){
-		    e.printStackTrace();	    
-		    // 오류 발생시 뒤로 돌아가도록		    
-		}		
-	
 		request.setAttribute("confirmnum", confirmnum);
+		
 		
 		//inputform으로 바로
 		return new ModelAndView("vtFrame/vt_mailConfirmResult");

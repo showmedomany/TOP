@@ -12,9 +12,10 @@ public class MemberDBBean implements MemberDao {
 	public int nickcheckMember(String nick){
 		return SqlMapClient.getSession().selectOne("Member.nickcheckMember",nick);
 	}
-	
-
-	
+	@Override
+	public int checkEmail(String email) {		
+		return SqlMapClient.getSession().selectOne("Member.checkEmail",email);
+	}	
 	@Override
 	public int loginMember(String id, String passwd) {
 		int result;
@@ -50,5 +51,5 @@ public class MemberDBBean implements MemberDao {
 	@Override
 	public int insertMember(MemberDataBean mdto) {		
 		return SqlMapClient.getSession().insert("Member.insertMember",mdto);		
-	}
+	}	
 }

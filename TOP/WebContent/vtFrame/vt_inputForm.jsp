@@ -1,13 +1,3 @@
-<%@page import="javax.mail.internet.MimeUtility"%>
-<%@page import="javax.mail.Transport"%>
-<%@page import="javax.mail.Message"%>
-<%@page import="javax.mail.Address"%>
-<%@page import="javax.mail.internet.InternetAddress"%>
-<%@page import="javax.mail.internet.MimeMessage"%>
-<%@page import="emailconfirm.SMTPmailconfirm"%>
-<%@page import="javax.mail.Session"%>
-<%@page import="javax.mail.Authenticator"%>
-<%@page import="java.util.Properties"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
@@ -20,13 +10,13 @@
 
 	</head>
 	<body onload = "inputformfocus()">
-
-		<form method = "post" name = "inputform" action = "inputPro.do">
+		<form method = "post" name = "inputform" action = "inputPro.do"
+			 onsubmit = "return sumitCheckfn()">
 
 			<input type="hidden" name = "idConfirm" value = "0">
 			<input type="hidden" name = "nickConfirm" value = "0">
+			<input type="hidden" name = "emailConfirm" value = "0">
 			
-
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">
 					<div class="vt_inputForm_top">
@@ -55,13 +45,12 @@
 							<td>
 								<!-- AJAX로 아이디 비교 -->
 
-								<input class="input" type="text" name="id" maxlength="15"
-								onfocus = "confirmid(this)">
+								<input class="input" type="text" name="id" maxlength="15" onkeyup = "confirmid(this)">
 								
 								${str_inputForm_id_info}
-								<br>								
-								
+								<br>
 								<div id="userId" style="font-size:12px; margin-left: 5px; color: blue">
+									${msg_iderror}
 								</div>
 								<div id="userId_overlap" style="font-size:12px; margin-left: 5px; color: red;">
 								</div>	
@@ -72,9 +61,8 @@
 							<!-- AJAX로 비밀번호 다른지 비교 -->
 							<th> ${str_inputForm_passwd}  </th>
 							<td>
-
 								<input class="input" type="password" name="passwd" maxlength="15" onkeyup="comparepasswd()">
-
+								
 							</td>
 						</tr>
 						<tr>	
@@ -83,6 +71,7 @@
 								<input class="input" type="password" name="repasswd" maxlength="15" onkeyup="comparepasswd()">
 								<br>
 								<div id="userPasswd" style="font-size:12px; margin-left: 5px; color: blue">
+									${msg_passwderror}
 								</div>
 								<div id="userPasswd_overlap" style="font-size:12px; margin-left: 5px; color: red;">
 								</div>	
@@ -99,9 +88,9 @@
 							<th>${str_inputForm_nickname}</th>
 							<td>
 							<input class="input" type="text" name="nickname" maxlength="20" onkeyup="confirmnick()">
-							<br>
-											
+							<br>											
 							<div id="userNick" style="font-size:12px; margin-left: 5px; color: blue">
+								${msg_nickerror}
 							</div>
 							<div id="userNick_overlap" style="font-size:12px; margin-left: 5px; color: red;">
 							
@@ -111,13 +100,10 @@
 						<tr>
 							<th rowspan="3">${str_inputForm_adr}</th>
 							<td>
-								<!-- 수정불가로 -->
 								<input class="input" type="text" name="zipcode1" 
-									style="width:60px" readonly="readonly" value = "111">-
-								<!-- 수정불가로 -->
+									style="width:60px" readonly="readonly">-
 								<input class="input" type="text" name="zipcode2"  
 									style="width:60px" readonly="readonly">
-								<!-- 주소 검색창 -->
 								<input class="inputbutton" type="button" name = "searchadr" value="${str_inputForm_adr_search}"
 								onclick="searchAdr()">
 							</td>
