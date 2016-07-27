@@ -7,10 +7,12 @@
 <html>
 	<head>
 		<link href = "${css}vt_inputFormStyle.css" rel = "stylesheet" type = "text/css">
-		<script src = "${script }vt_inputForm.js"></script>
+		<script src = "${script}vt_inputForm.js"></script>
 	</head>
 	<body onload = "inputformfocus()">
 		<form method = "post" name = "inputform" action = "inputPro.do">
+			<input type="hidden" name = "idConfirm" value = "0">
+			<input type="hidden" name = "nickConfirm" value = "0">
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">
 					<div class="vt_inputForm_top">
@@ -37,22 +39,34 @@
 							<th>${str_inputForm_id}</th>
 							<td>
 								<!-- AJAX로 아이디 비교 -->
-								<input class="input" type="text" name="id" maxlength="15">
-								<input class="inputbutton" type="button" value="${str_inputForm_id_confirm}">
-								${str_inputForm_id_info}																	
+								<input class="input" type="text" name="id" maxlength="15" onkeyup="confirmid(this)">
+								${str_inputForm_id_info}
+								<br>
+								<div id="userId" style="font-size:12px; margin-left: 5px; color: blue">
+									${msg_iderror}					
+								</div>
+								<div id="userId_overlap" style="font-size:12px; margin-left: 5px; color: red;">
+								</div>	
 							</td>
-						</tr>
+					
+						</tr>																	
 						<tr>
 							<!-- AJAX로 비밀번호 다른지 비교 -->
 							<th> ${str_inputForm_passwd}  </th>
 							<td>
-								<input class="input" type="password" name="passwd" maxlength="15">
+								<input class="input" type="password" name="passwd" maxlength="15" onkeyup="comparepasswd()">
 							</td>
 						</tr>
 						<tr>	
 							<th> ${str_inputForm_passwd_confirm}</th>			
 							<td>
-								<input class="input" type="password" name="repasswd" maxlength="15">
+								<input class="input" type="password" name="repasswd" maxlength="15" onkeyup="comparepasswd()">
+								<br>
+								<div id="userPasswd" style="font-size:12px; margin-left: 5px; color: blue">
+								${msg_passwderror}	
+								</div>
+								<div id="userPasswd_overlap" style="font-size:12px; margin-left: 5px; color: red;">
+								</div>	
 							</td>
 						</tr>
 						<tr>
@@ -65,8 +79,16 @@
 							<!-- AJAX로 닉네임 비교 -->
 							<th>${str_inputForm_nickname}</th>
 							<td>
-							<input class="input" type="text" name="nickname" maxlength="20">
-							</td>
+							<input class="input" type="text" name="nickname" maxlength="20" onkeyup="confirmnick()">
+							<br>
+											
+							<div id="userNick" style="font-size:12px; margin-left: 5px; color: blue">
+								${msg_nickerror}
+							</div>
+							<div id="userNick_overlap" style="font-size:12px; margin-left: 5px; color: red;">
+							
+							</div>								
+						</td>
 						</tr>
 						<tr>
 							<th rowspan="3">${str_inputForm_adr}</th>

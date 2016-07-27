@@ -58,6 +58,8 @@ public class PageController {
 		String center = "vt_inputForm";
 		request.setAttribute("center", center);				
 		return new ModelAndView("/vtFrame/vtFrame");
+
 	}//loginForm		
+
 }	
 
