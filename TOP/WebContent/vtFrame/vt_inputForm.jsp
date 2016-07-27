@@ -55,13 +55,13 @@
 							<td>
 								<!-- AJAX로 아이디 비교 -->
 
-								<input class="input" type="text" name="id" maxlength="15" onkeyup = "confirmid(this)">
+								<input class="input" type="text" name="id" maxlength="15"
+								onfocus = "confirmid(this)">
 								
 								${str_inputForm_id_info}
 								<br>								
 								
 								<div id="userId" style="font-size:12px; margin-left: 5px; color: blue">
-									${msg_iderror}					
 								</div>
 								<div id="userId_overlap" style="font-size:12px; margin-left: 5px; color: red;">
 								</div>	
@@ -83,7 +83,6 @@
 								<input class="input" type="password" name="repasswd" maxlength="15" onkeyup="comparepasswd()">
 								<br>
 								<div id="userPasswd" style="font-size:12px; margin-left: 5px; color: blue">
-								${msg_passwderror}	
 								</div>
 								<div id="userPasswd_overlap" style="font-size:12px; margin-left: 5px; color: red;">
 								</div>	
@@ -103,7 +102,6 @@
 							<br>
 											
 							<div id="userNick" style="font-size:12px; margin-left: 5px; color: blue">
-								${msg_nickerror}
 							</div>
 							<div id="userNick_overlap" style="font-size:12px; margin-left: 5px; color: red;">
 							
@@ -120,8 +118,8 @@
 								<input class="input" type="text" name="zipcode2"  
 									style="width:60px" readonly="readonly">
 								<!-- 주소 검색창 -->
-								<input class="inputbutton" type="button" value="${str_inputForm_adr_search}"
-								onclick="serchadr()">
+								<input class="inputbutton" type="button" name = "searchadr" value="${str_inputForm_adr_search}"
+								onclick="searchAdr()">
 							</td>
 						</tr>
 						<tr>
