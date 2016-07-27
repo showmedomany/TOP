@@ -10,7 +10,9 @@
 		<script src = "${jquery}"></script>
 	</head>
 	<body>
+		
 		<form method="post" name="zipCheckForm" action="zipCheck.do" onsubmit="return serchadr()">
+		
 			<div class="vt_zipCheckForm_Frame"> 
 				<div class="vt_zipCheckForm_header">
 					우편번호 검색
@@ -32,9 +34,8 @@
 					</div>
 				</div>
 			</div>
+			
 		</form>
-		
-
 		<div class = "vt_zipCheckForm_center">
 			<c:if test = "${area ne null }">
 				<c:if test = "${resultCheck eq 0 }">

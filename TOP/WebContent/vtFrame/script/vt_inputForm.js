@@ -193,7 +193,7 @@ function confirmnickResult(){
 					userNick_overlap.innerHTML = inputform.nickname.value + " 는 사용할 수 없습니다.";					
 					userNick_overlap.style.display = "";			
 					userNick.style.display = "none";	
-				}	
+				}
 			}			
 		}
 	}
@@ -206,7 +206,7 @@ function searchAdr(){
 	var url = "zipCheck.do";
 	//크기조정, 크기변경불가 등여기서 고침 근데 명령어가 안먹음
 	window.open(url, "zipCheck", 
-			'scrollbars=no,resizable=no, menubar=yes, status=yes, width=600, height=500 ');	
+			'scrollbars=no,resizable=no, menubar=yes, status=yes, width=600, height=500 ');
 }
 
 //주소 선택시 inputform에 값 넣기
@@ -314,7 +314,6 @@ function emailcheck(){
 		return false;
 	}
 }
-
 
 function loaded(){ 
     window.setTimeout(CloseMe, 0);

@@ -1,44 +1,69 @@
 .inputbutton{
-	width: 80px;
+	width: 65px;
+	background-color: white;
 }
 .vt_zipCheckForm_Frame{
 	margin: auto;
 	position: relative;	
 	z-index: 0;
+	
 }
 .info{
-	width:100px;
+	width:300px;
 }
 .vt_zipCheckForm_top {
-    width: 640px;
-    height: 200;
-    font-weight: bolder;
+    width: 400;
+    height: 30;
+    font-weight: normal;
+   
+   
 }
 .vt_zipCheckForm_info1 {
-    width: 600;
-    text-align: center;
+   width: 400;
+   font-size: 13px;
+ 
 }
-.vt_zipCheckForm_info2 {
-    text-align: center;
-    width: 600;
-}
+
 .vt_zipCheckForm_ser {
-    text-align: center;
+	
 }
 .vt_zipCheckForm_header {
-    text-align: center;
+    text-align: left;
     font-size: 25;
     font-weight: bolder;    
     width: 595;
+    font-family:'Exo', sans-serif;
+    font-weight: normal;
 }
-.vt_zipCheckForm_center {    
-    text-align: center;
+.vt_zipCheckForm_center {
+	text-align: center;
     overflow: scroll; 
     width:630px; 
     height:200px; 
     padding:20px;
 }
+.vt_zipCheckForm_table{
+	font-family:'Exo', sans-serif;;
+	width: 500px;
+	height: 100px;
+	background-color:#F6F6F6;
+	border-top-style:ridge;
+	border-top-width:thin;
+	border-bottom-style: ridge;
+	border-bottom-width: thin;
+	
+}
+.vt_zipCheckForm_table tr{
+	
+}
+.vt_zipCheckForm_table th{
+	
+	
+}
 
+.vt_zipCheckForm_table td{
+	
+}
 
 
 
