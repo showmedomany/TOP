@@ -58,8 +58,9 @@ public class AddressDBBean implements AddressDao {
 
 	@Override
 	public int serchadr(String area) {
-		// TODO Auto-generated method stub
+		
 		return 0;
+		
 	}
 
 }
