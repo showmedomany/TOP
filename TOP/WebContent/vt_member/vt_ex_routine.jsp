@@ -40,25 +40,25 @@
 									<c:set var="WeekScheduleData" value="${WeekScheduleList.get(i)}"/>
 									<c:if test="${WeekScheduleData.day == 'mon'}">						
 										<c:if test="${WeekScheduleData.exercise_id==1}">
-											<span onclick="partSchedule(1)">가슴</span><br>									
+											<p onclick="partSchedule(1)">가슴</p>									
 										</c:if>
 										<c:if test="${WeekScheduleData.exercise_id==2}">
-											<span onclick="partSchedule(2)">등</span><br>							
+											<p onclick="partSchedule(2)">등</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==3}">
-											<span>하체</span><br>							
+											<p>하체</p>						
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==4}">
-											<span>팔_이두</span><br>								
+											<p>팔_이두</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==5}">
-											<span>팔_삼두</span><br>								
+											<p>팔_삼두</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==6}">
-											<span>어깨</span><br>								
+											<p>어깨</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==7}">
-											<span>복근</span><br>								
+											<p>복근</p>							
 										</c:if>						
 									</c:if>
 								</c:forEach>
@@ -68,25 +68,25 @@
 									<c:set var="WeekScheduleData" value="${WeekScheduleList.get(i)}"/>
 									<c:if test="${WeekScheduleData.day == 'tue'}">						
 										<c:if test="${WeekScheduleData.exercise_id==1}">
-											<span onclick="partSchedule(1)">가슴</span><br>									
+											<p onclick="partSchedule(1)">가슴</p>								
 										</c:if>
 										<c:if test="${WeekScheduleData.exercise_id==2}">
-											<span onclick="partSchedule(2)">등</span><br>							
+											<p onclick="partSchedule(2)">등</p>						
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==3}">
-											<span>하체</span><br>							
+											<p>하체</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==4}">
-											<span>팔_이두</span><br>								
+											<p>팔_이두</p>								
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==5}">
-											<span>팔_삼두</span><br>								
+											<p>팔_삼두</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==6}">
-											<span>어깨</span><br>								
+											<p>어깨</p>						
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==7}">
-											<span>복근</span><br>								
+											<p>복근</p>								
 										</c:if>						
 									</c:if>
 								</c:forEach>
@@ -96,25 +96,25 @@
 									<c:set var="WeekScheduleData" value="${WeekScheduleList.get(i)}"/>
 									<c:if test="${WeekScheduleData.day == 'wed'}">						
 										<c:if test="${WeekScheduleData.exercise_id==1}">
-											<span onclick="partSchedule(1)">가슴</span><br>									
+											<p onclick="partSchedule(1)">가슴</p>									
 										</c:if>
 										<c:if test="${WeekScheduleData.exercise_id==2}">
-											<span onclick="partSchedule(2)">등</span><br>							
+											<p onclick="partSchedule(2)">등</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==3}">
-											<span>하체</span><br>							
+											<p>하체</p>						
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==4}">
-											<span>팔_이두</span><br>								
+											<p>팔_이두</p>								
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==5}">
-											<span>팔_삼두</span><br>								
+											<p>팔_삼두</p>								
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==6}">
-											<span>어깨</span><br>								
+											<p>어깨</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==7}">
-											<span>복근</span><br>								
+											<p>복근</p>								
 										</c:if>						
 									</c:if>
 								</c:forEach>
@@ -124,25 +124,25 @@
 									<c:set var="WeekScheduleData" value="${WeekScheduleList.get(i)}"/>
 									<c:if test="${WeekScheduleData.day == 'thur'}">						
 										<c:if test="${WeekScheduleData.exercise_id==1}">
-											<span onclick="partSchedule(1)">가슴</span><br>									
+											<p onclick="partSchedule(1)">가슴</p>								
 										</c:if>
 										<c:if test="${WeekScheduleData.exercise_id==2}">
-											<span onclick="partSchedule(2)">등</span><br>							
+											<p onclick="partSchedule(2)">등</p>					
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==3}">
-											<span>하체</span><br>							
+											<p>하체</p>						
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==4}">
-											<span>팔_이두</span><br>								
+											<p>팔_이두</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==5}">
-											<span>팔_삼두</span><br>								
+											<p>팔_삼두</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==6}">
-											<span>어깨</span><br>								
+											<p>어깨</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==7}">
-											<span>복근</span><br>								
+											<p>복근</p>						
 										</c:if>					
 									</c:if>
 								</c:forEach>
@@ -152,25 +152,25 @@
 									<c:set var="WeekScheduleData" value="${WeekScheduleList.get(i)}"/>
 									<c:if test="${WeekScheduleData.day == 'fri'}">											
 										<c:if test="${WeekScheduleData.exercise_id==1}">
-											<span onclick="partSchedule(1)">가슴</span><br>									
+											<p onclick="partSchedule(1)">가슴</p>									
 										</c:if>
 										<c:if test="${WeekScheduleData.exercise_id==2}">
-											<span onclick="partSchedule(2)">등</span><br>							
+											<p onclick="partSchedule(2)">등</p>						
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==3}">
-											<span>하체</span><br>							
+											<p>하체</p>						
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==4}">
-											<span>팔_이두</span><br>								
+											<p>팔_이두</p>								
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==5}">
-											<span>팔_삼두</span><br>								
+											<p>팔_삼두</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==6}">
-											<span>어깨</span><br>								
+											<p>어깨</p>							
 										</c:if>	
 										<c:if test="${WeekScheduleData.exercise_id==7}">
-											<span>복근</span><br>								
+											<p>복근</p>							
 										</c:if>	
 									</c:if>
 								</c:forEach>

@@ -19,6 +19,15 @@
 	<select id="getExeriseInfo" parameterType="String" resultType="myPage.ExerciseDataBean">
 		select method1, method2, method3, method4 from vt_exercise where name = #{name}
 	</select>
+	
+	<select id="getRegisterData" parameterType="String" resultType="myPage.RegisterDataBean">
+		select START_DATE, END_DATE, EXP_DATE, GX_CHECK, PT_CHECK, 
+		PT_COUNT, TRAINER_ID from vt_register where id = #{id}
+	</select>
+	
+	<select id="getInbodyData" parameterType="String" resultType="myPage.InbodyDataBean">
+		select AGE, HEIGHT, SEX, WEIGHT, BMI, CHECK_DATE from vt_inbody where id = #{id}
+	</select>
 
 	
 </mapper>

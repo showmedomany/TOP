@@ -13,6 +13,7 @@ public class MyPageDBBean implements MyPageDao {
 	public List<MemberRoutineDataBean> getWeekExerciseSchedule(String id){
 		return SqlMapClient.getSession().selectList("MyPage.getWeekExerciseSchedule", id);	
 	}
+	
 	@Override
 	public List<ExerciseDataBean> getExerciseNames(int partId) {		
 		return SqlMapClient.getSession().selectList("MyPage.getExerciseNames", partId);
@@ -20,6 +21,14 @@ public class MyPageDBBean implements MyPageDao {
 	@Override
 	public ExerciseDataBean getExeriseInfo(String name) {	
 		return SqlMapClient.getSession().selectOne("MyPage.getExeriseInfo", name);
+	}
+	@Override
+	public RegisterDataBean getRegisterData(String id) {
+		return SqlMapClient.getSession().selectOne("MyPage.getRegisterData", id);
+	}
+	@Override
+	public InbodyDataBean getInbodyData(String id) {
+		return SqlMapClient.getSession().selectOne("MyPage.getInbodyData", id);
 	}
 	
 }
