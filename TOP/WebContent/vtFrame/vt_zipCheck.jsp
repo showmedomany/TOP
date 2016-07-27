@@ -14,7 +14,7 @@
 					<th colspan="2"> </th>
 				</tr>
 				<tr>
-					<th> 주소찾기 </th>
+					<th> ${str_inputForm_address_search}</th>
 					<td>
 						<input class = "input" type = "text" name = "inputarea">
 						<input class = "inputbutton" type = "submit" value = "${str_inputForm_adr_search}">
@@ -23,7 +23,7 @@
 				<tr>
 					<th colspan = "2">
 						<input class = "inputbutton" type = "button" value = "${str_inputForm_bt_cancel}"
-							onclick = "self.close();">
+							onclick = "self.close();  opener.document.inputform.search.focus();">
 					</th>			
 				</tr>
 			</table>
@@ -35,12 +35,12 @@
 			<c:if test = "${resultCheck eq 0 }">
 				<table>
 					<tr>
-						<th> 우편번호</th>
-						<th style = "width : 285px;">주소</th>
+						<th> ${str_zipcode_num}</th>
+						<th style = "width : 285px;">${str_inputForm_adr}</th>
 					</tr>
 					<tr>
 						<th colspan = "2">
-						검색결과가 없습니다.
+						${msg_notfind}
 						</th>					
 					</tr>
 					
@@ -50,11 +50,10 @@
 			<c:if test = "${resultCheck ne 0 }">
 				<c:set var = "adto" value = "${adto }"/>
 				
-				<form method = "post" name = "addressform" 
-					>
+				<form method = "post" name = "addressform">
 					<table>
 						<tr>
-							<th>주소</th>
+							<th>${str_inputForm_adr}</th>
 							<th style = "width : 285px;" >지역</th>
 						</tr>
 						<c:forEach var = "adto" items="${adto }">

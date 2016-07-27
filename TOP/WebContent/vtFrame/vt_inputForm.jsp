@@ -25,7 +25,7 @@
 
 			<input type="hidden" name = "idConfirm" value = "0">
 			<input type="hidden" name = "nickConfirm" value = "0">
-			
+			<input type = "hidden" name = "adrcheck" value = "0">
 
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">

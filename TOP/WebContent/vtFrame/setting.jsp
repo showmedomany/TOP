@@ -47,6 +47,8 @@
 <c:set var = "str_inputForm_adr" value = "주소"/>
 <c:set var = "str_inputForm_adr_add" value = "나머지 주소"/>
 <c:set var = "str_inputForm_adr_search" value = "찾기"/>
+<c:set var = "str_inputForm_address_search" value="주소찾기"/>
+<c:set var = "str_zipcode_num" value="우편번호"/>
 <c:set var = "str_inputForm_tel" value = "전화번호"/>
 <c:set var = "str_inputForm_email" value = "* 이메일"/>
 <c:set var = "str_inputForm_email_send" value = "인증번호전송"/>
@@ -54,5 +56,10 @@
 <c:set var = "str_inputForm_bt_sumit" value = "회원가입"/>
 <c:set var = "str_inputForm_bt_cancel" value = "취소하기"/>
 
+
 <c:set var="msg_iderror" value="아이디를 입력하세요."/>
 <c:set var="msg_nickerror" value="닉네임을 입력하세요."/>
+<c:set var="msg_notfind" value="검색결과가 없습니다"/>
+
+
+<
