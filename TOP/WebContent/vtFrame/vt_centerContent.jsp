@@ -7,7 +7,7 @@
 		<script src="${script}vt_centerContent.js" type="text/javascript"></script>
 		<link href="${css}vt_centerContentStyle.css" rel="stylesheet"	type="text/css">
 	</head>
-	<body>
+	<body  onload = "vtFrame()">
 		<div class="centerContentframe">
 			<div id="sliderFrame">
 				<div id="slider">

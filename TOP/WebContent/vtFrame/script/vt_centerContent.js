@@ -1,3 +1,9 @@
+function vtFrame(){
+	var url = "memberChat.do";
+	open(url, "챗챗챗", 
+		"scrollbars = yes, status = yes, width = 400, height = 300");
+}
+
 var sliderOptions=
 {
 	sliderId: "slider",
