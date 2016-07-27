@@ -70,6 +70,7 @@
 <c:set var = "str_zipCheckForm_zip_cancel" value = "취소"/>
 <c:set var = "str_zipCheckForm_zipNum" value = "우편번호"/>
 <c:set var = "str_zipCheckForm_ziparea" value = "지역"/>
+<c:set var = "str_zipCheckForm_dongname" value="동이름 입력"/>
 
 
 

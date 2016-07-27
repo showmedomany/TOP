@@ -50,7 +50,7 @@
 						</div>													
 					</div>						
 					<table class="vt_inputForm_table" >
-						<tr style ="border-top: 2px solid #D8D8D8">
+						<tr>
 							<th>${str_inputForm_id}</th>
 							<td>
 								<!-- AJAX로 아이디 비교 -->

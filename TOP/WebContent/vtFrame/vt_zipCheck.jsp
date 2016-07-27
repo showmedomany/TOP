@@ -10,32 +10,44 @@
 		
 	</head>
 	<body>
+		
 		<form method="post" name="zipCheckForm" action="zipCheck.do" onsubmit="return serchadr()">
-
+		
 			<div class="vt_zipCheckForm_Frame"> 
 				<div class="vt_zipCheckForm_header">
 					우편번호 검색
 				</div>
-				<div class="vt_zipCheckForm_top">
-					<div class="vt_zipCheckForm_info1">
-						<p>입력창에 찾고자 하는 주소를 입력하세요.</p>
-					</div>
-					<div class="vt_zipCheckForm_ser">
-
-						<input class = "input" type = "text" name = "inputarea">
-
-
-						<input class = "inputbutton" type = "submit" value = "${str_zipCheckForm_zip_search}">
-						<input class = "inputbutton" type = "button" value = "${str_zipCheckForm_zip_cancel}"
-											onclick = "self.close(); opener.document.vt_inputform.search.focus();">
-					</div>
-					<div class="vt_zipCheckForm_info2">
-						<p>예)성내동,신천동,개포동</p>
-					</div>
-				</div>
+				
+				<table class="vt_zipCheckForm_table" >					
+					<tr>
+						<th>${str_zipCheckForm_dongname}</th>
+						<td>
+							<div class="vt_zipCheckForm_top">
+								<div class="vt_zipCheckForm_info1">
+									<p>입력창에 찾고자 하는 주소를 입력하세요. 예)성내동,신천동,개포동</p>
+								</div>
+								<div class="vt_zipCheckForm_ser">
+									<input class = "input" type = "text" name = "inputarea">
+									<input class = "inputbutton" type = "submit" value = "${str_zipCheckForm_zip_search}">
+									<input class = "inputbutton" type = "button" value = "${str_zipCheckForm_zip_cancel}"
+														onclick = "self.close(); opener.document.vt_inputform.search.focus();">
+								</div>
+								
+							
+							</div>
+						</td>		
+						
+					</tr>
+					<tr>
+						
+					</tr>
+				</table>
+				
+				
 			</div>
-
+			
 		</form>
+		
 
 
 			
@@ -55,8 +67,9 @@
 									</tr>
 									
 								</table>
+							
 							</c:if>
-
+							
 						
 						<c:if test = "${resultCheck ne 0 }">
 							<c:set var = "adto" value = "${adto }"/>
