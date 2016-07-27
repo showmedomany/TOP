@@ -579,9 +579,9 @@ CREATE TABLE vt_members
 	join_date date NOT NULL,
 	PRIMARY KEY (id)
 );
-insert into vt_members values('lees', 1, '111', '이순신', 'nic_lee', '111-6666-2222', '031-222', '서울특별시 강남구 강남동 강남아파트 111-111', '1111@gmail.com', sysdate);
-insert into vt_members values('kimy', 2,  '111', '김유신', 'nic_kim', '111-2222-7777', '031-111', '경기도 안양시 안양동 안양아파트 111-111', '2222@gmail.com', sysdate);
-insert into vt_members values('jangb', 2,  '111', '장보고', 'nic_jang', '111-2222-0000', '121-292', '경기도 군포시 군포동 군포아파트 111-111', '3333@gmail.com', sysdate);
+insert into vt_members values('lees', 1, '111', '이순신', 'nic_lee', '111-6666-2222', '031-222', '서울특별시 강남구 강남동|강남아파트 111-111', '1111@gmail.com', sysdate);
+insert into vt_members values('kimy', 2,  '111', '김유신', 'nic_kim', '111-2222-7777', '031-111', '경기도 안양시 안양동|안양아파트 111-111', '2222@gmail.com', sysdate);
+insert into vt_members values('jangb', 2,  '111', '장보고', 'nic_jang', '111-2222-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '3333@gmail.com', sysdate);
 
 
 CREATE TABLE vt_member_routine

@@ -1,8 +1,9 @@
 package handler;
 
 
-import java.util.Properties;
 import java.util.List;
+import java.util.Properties;
+
 import javax.annotation.Resource;
 import javax.mail.Address;
 import javax.mail.Authenticator;
@@ -19,12 +20,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import emailconfirm.SMTPmailconfirm;
-
 import address.AddressDao;
 import address.AddressDataBean;
-
+import emailconfirm.SMTPmailconfirm;
 import member.MemberDao;
 import member.MemberDataBean;
 
@@ -94,7 +92,7 @@ public class MemberController {
 		String detail = request.getParameter("detail_adr");
 		
 		if(!adr.equals("") && !detail.equals("")){
-			address = adr + " " + detail;
+			address = adr + "|" + detail;
 		}
 		mdto.setAddress(address);
 	
@@ -294,15 +292,3 @@ public class MemberController {
 		return new ModelAndView("/vtFrame/vt_zipCheck");
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
