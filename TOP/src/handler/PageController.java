@@ -54,6 +54,7 @@ public class PageController {
 		request.setAttribute("center", center);				
 		return new ModelAndView("/vtFrame/vtFrame");
 
+
 	}//loginForm
 
 	
@@ -124,6 +125,5 @@ public class PageController {
 				return new ModelAndView("/vtFrame/vtFrame");
 			}//vt_infoInfo
 			//센터 소개메뉴 끝
-
-}	
+}
 

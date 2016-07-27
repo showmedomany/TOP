@@ -94,7 +94,7 @@ public class MemberController {
 		String detail = request.getParameter("detail_adr");
 		
 		if(!adr.equals("") && !detail.equals("")){
-			address = adr + " " + detail;
+			address = adr + "|" + detail;
 		}
 		mdto.setAddress(address);
 	
