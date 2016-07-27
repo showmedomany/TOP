@@ -57,12 +57,15 @@
 
 
 <!-- 우편번호 검색 -->
+<c:set var = "str_zipCheckForm_info" value = "우편번호검색"/>
 <c:set var = "str_zipCheckForm_zip_search" value = "주소찾기"/>
+<c:set var = "str_zipCheckForm_zip_cancel" value = "취소"/>
 <c:set var = "str_zipCheckForm_zipNum" value = "우편번호"/>
+<c:set var = "str_zipCheckForm_ziparea" value = "지역"/>
 
 
 
 
-<c:set var="msg_iderror" value="아이디를 입력하세요."/>
-<c:set var="msg_nickerror" value="닉네임을 입력하세요."/>
+<c:set var ="msg_iderror" value ="아이디를 입력하세요."/>
+<c:set var ="msg_nickerror" value ="닉네임을 입력하세요."/>
 

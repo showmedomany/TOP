@@ -115,7 +115,7 @@
 							<td>
 								<!-- 수정불가로 -->
 								<input class="input" type="text" name="zipcode1" 
-									style="width:60px" readonly="readonly">-
+									style="width:60px" readonly="readonly" value = "111">-
 								<!-- 수정불가로 -->
 								<input class="input" type="text" name="zipcode2"  
 									style="width:60px" readonly="readonly">
@@ -134,7 +134,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input class="input" type="text" name="detail_adr"  readonly="readonly"
+								<input class="input" type="text" name="detail_adr" 
 									style="width:500px"placeholder = "${str_inputForm_adr_add}">
 							</td>
 						</tr>

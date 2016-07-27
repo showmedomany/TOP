@@ -3,7 +3,11 @@
  */
 
 var request = null;
-
+var msg_iderror = "아이디를 입력하세요.";
+var msg_passwderror = "비밀번호를 입력하세요.";
+var msg_repasswd = "비밀번호";
+var msg_passwdok = "ok";
+var msg_repasswderror = "틀림";
 
 function Request( callback, url, method, params ){
 	this.callback = callback;
@@ -330,15 +334,17 @@ function emailcheck(){
 
 function serchadr() {
 	var url = "zipCheck.do";
+	
 	open(url, "zipCheck", "scrollbars = yes, status = yes, width = 600, height = 500");
+	
 }
 
-function useadr(first, second, adr){
+function useadr(first, second, adr) {
 	opener.document.inputform.zipcode1.value = first;
 	opener.document.inputform.zipcode2.value = second;
 	opener.document.inputform.adr.value = adr;
 	opener.document.inputform.detail_adr.focus();
 	self.close();
-	opener.document.inputform.adrcheck.value = 1;
+	//opener.document.inputform.adrcheck.value = 1;
 }
 

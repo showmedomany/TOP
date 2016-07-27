@@ -9,7 +9,10 @@
 		<%-- <script src = "${script}vtFrame.js"></script> --%>
 	</head>
 	<!-- 홈페이지 시작시 작은 채팅창 생성 -->	
-	<body>	 
+	<body>
+		<form name = "test">
+			<input type ="hidden" name="test" value = "111">
+		</form>	 
 		<div id = "top" >
 			<div>
 				<jsp:include page="vt_topForm.jsp"></jsp:include>
