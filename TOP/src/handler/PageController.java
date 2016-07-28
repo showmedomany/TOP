@@ -22,8 +22,6 @@ public class PageController {
 	(HttpServletRequest request,HttpServletResponse response){
 		
 		
-		
-		
 		//가운데 컨텐츠를 메인화면용 jsp로 교체
 		String center = "vt_centerContent";
 		request.setAttribute("center", center);
@@ -125,5 +123,20 @@ public class PageController {
 				return new ModelAndView("/vtFrame/vtFrame");
 			}//vt_infoInfo
 			//센터 소개메뉴 끝
+			//커뮤니티 시작
+			@RequestMapping("/vt_mainboard")
+			public ModelAndView vt_mainboard(HttpServletRequest request, 
+					HttpServletResponse response){
+				
+				String center = "/vt_board/vt_infoForm"; 
+				String menu = "/vt_board/vt_mainboard";
+				String word = "/vt_board/word/char";
+				request.setAttribute("center", center);
+				request.setAttribute("menu", menu);
+				request.setAttribute("word", word);
+				
+				return new ModelAndView("/vtFrame/vtFrame");
+			}//vt_infoInfo
+			//커뮤니티 끝
 }
 
