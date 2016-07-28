@@ -1,21 +1,38 @@
 package chat;
 
+import java.sql.Timestamp;
+
 public class RequestDataBean {
-	private String ip;					//요청한 아이피
-	private String request_id;			//요청한 아이디
-	
+	private String ip;
+	private String id;
+	private Timestamp req_date;
+	private int rp;				//요청에 응답했는지
 	
 	public String getIp() {
 		return ip;
 	}
-	public String getRequest_id() {
-		return request_id;
+	public String getId() {
+		return id;
+	}
+	public Timestamp getReq_date() {
+		return req_date;
+	}
+	public int getRp() {
+		return rp;
 	}
 	
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
-	public void setRequest_id(String request_id) {
-		this.request_id = request_id;
+	public void setId(String id) {
+		this.id = id;
 	}
+	public void setReq_date(Timestamp req_date) {
+		this.req_date = req_date;
+	}
+	public void setRp(int rp) {
+		this.rp = rp;
+	}
+	
+	
 }

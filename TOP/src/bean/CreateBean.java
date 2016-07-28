@@ -7,6 +7,8 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import address.AddressDBBean;
 import address.AddressDao;
+import chat.RequestDBBean;
+import chat.RequestDao;
 import member.MemberDBBean;
 import member.MemberDao;
 import myPage.MyPageDBBean;
@@ -43,7 +45,11 @@ public class CreateBean {
 	public MyPageDao myPageDao(){
 		return new MyPageDBBean();
 	}
-
+	
+	@Bean
+	public RequestDao requestDao(){
+		return new RequestDBBean();
+	}
 	
 	/*
 	//DAO

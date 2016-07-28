@@ -3,18 +3,18 @@
 <%@ include file = "setting.jsp" %>
 <html>
 	<head>
-		<script src = "${script}vt_chat.js"></script>
+		<script src="${script}vt_chat.js" type="text/javascript"></script>
 		
 	</head>
-	<body>
-		
+	<body>		
 		<form name = "chatForm">			
 			<h2>흐흫핰ㅋㅋㅋ</h2>
 			<input type = "hidden" name = "ip" value = "${ip}">
 			<input type = "hidden" name = "id" value = "${id}">
 					
-			<TEXTAREA rows="5" cols="30" NAME="chatarea"></TEXTAREA>
+			<TEXTAREA rows="5" cols="30" NAME="chatarea">${ip}, ${id}</TEXTAREA>
 			<br>
+			
 			<input type = "text" name = "chatinput">
 			<input type = "button" value = "전송" onclick = "sendmsg()">
 		</form>
