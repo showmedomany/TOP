@@ -110,4 +110,19 @@ public class MyPageController {
 		request.setAttribute("exeriseInfoData", exeriseInfoData);
 		return new ModelAndView("/vt_member/vt_ex_routine_exeriseInfoPrint");
 	}//
+	
+	@RequestMapping("/myPageInsertInbody")
+	public ModelAndView myPageInsertInbody
+	(HttpServletRequest request,HttpServletResponse response){		
+		//일반 회원이 인바디 저장		
+		int age = Integer.parseInt(request.getParameter("age"));
+		int height = Integer.parseInt(request.getParameter("height"));
+		String sex = request.getParameter("sex");
+		int weight = Integer.parseInt(request.getParameter("weight"));
+		int bmi = Integer.parseInt(request.getParameter("bmi"));
+		
+		
+		
+		return new ModelAndView("/vt_member/");
+	}//
 }

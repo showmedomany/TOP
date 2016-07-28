@@ -562,7 +562,7 @@ CREATE TABLE vt_inbody
 	PRIMARY KEY (inbody_id)
 );
 insert into vt_inbody values(1, 'kimy', 22, 170, 'male', 90, 70, sysdate);
-insert into vt_inbody values(2, 'jangb', 32, 160, 'male', 90, 70, sysdate);
+
 
 
 CREATE TABLE vt_members
