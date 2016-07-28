@@ -56,8 +56,43 @@ public class PageController {
 
 
 	}//loginForm
-
 	
+	@RequestMapping("/writeForm")
+	public ModelAndView writeForm
+	(HttpServletRequest request, HttpServletResponse response) {
+
+		int num = 0;
+		int ref = 0;
+		int re_step = 0;
+		int re_level = 0;
+		
+		String pageNum =request.getParameter("pageNum");
+		if( pageNum == null){
+			pageNum = "1";
+		}
+			
+		if(request.getParameter("num") != null){
+			//답변글 - content.jsp에서 이동
+			//넘어온 값을 써야함
+			num = Integer.parseInt(request.getParameter("num"));
+			ref = Integer.parseInt(request.getParameter("ref"));
+			re_step = Integer.parseInt(request.getParameter("re_step"));
+			re_level = Integer.parseInt(request.getParameter("re_level"));	
+			pageNum = request.getParameter("pageNum");			
+			
+		}
+		
+		request.setAttribute("num", num);
+		request.setAttribute("ref", ref);
+		request.setAttribute("re_step", re_step);
+		request.setAttribute("re_level", re_level);
+		request.setAttribute("pageNum", pageNum);
+		
+		
+		return new ModelAndView("/vtFrame/vt_writeForm");
+	}
+	
+			
 	@RequestMapping("/memberChat")
 	public ModelAndView memberChat
 	(HttpServletRequest request,HttpServletResponse response){		
@@ -70,7 +105,6 @@ public class PageController {
 	}//loginForm
 	
 	
-
 	//센터소개 메뉴 시작
 			@RequestMapping("/vt_infoHello")
 			public ModelAndView vt_infoHello(HttpServletRequest request, 

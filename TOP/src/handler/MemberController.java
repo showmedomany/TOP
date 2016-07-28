@@ -1,6 +1,7 @@
 package handler;
 
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Properties;
 
@@ -20,8 +21,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.javafx.sg.prism.NGShape.Mode;
+
 import address.AddressDao;
 import address.AddressDataBean;
+import board.BoardDao;
+import board.BoardDataBean;
 import emailconfirm.SMTPmailconfirm;
 import member.MemberDao;
 import member.MemberDataBean;
@@ -35,6 +40,9 @@ public class MemberController {
 	
 	@Resource(name = "adrDao")
 	private AddressDao adrDao;
+	
+	@Resource(name = "boardDao")
+	private BoardDao boardDao;
 	
 	//로그인처리 핸들러
 	@RequestMapping("/loginPro")
@@ -274,8 +282,7 @@ public class MemberController {
 	@RequestMapping("/zipCheck")
 	public ModelAndView zipCheck
 	(HttpServletRequest request,HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		
+		request.setCharacterEncoding("utf-8");		
 		String inputarea = request.getParameter("inputarea");
 		
 		int resultCheck = adrDao.checkAddress(inputarea);
@@ -291,4 +298,38 @@ public class MemberController {
 		
 		return new ModelAndView("/vtFrame/vt_zipCheck");
 	}
+	
+	
+	
+	@RequestMapping("/writePro")
+	public ModelAndView writePro
+	(HttpServletRequest request,HttpServletResponse response) throws Exception {
+		
+		request.setCharacterEncoding("utf-8");
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+			
+		BoardDataBean dto = new BoardDataBean();
+		
+		dto.setNum(Integer.parseInt(request.getParameter("num")));
+		dto.setRef(Integer.parseInt(request.getParameter("ref")));
+		dto.setRe_step(Integer.parseInt(request.getParameter("re_step")));
+		dto.setRe_level(Integer.parseInt(request.getParameter("re_level")));
+		dto.setWriter(request.getParameter("writer"));
+		dto.setEmail(request.getParameter("email"));
+		dto.setSubject(request.getParameter("subject"));
+		dto.setContent(request.getParameter("content"));
+		dto.setPasswd(request.getParameter("passwd"));
+		
+		//<!-- num ref re_step re_level -->
+		//<!-- writer email subject content passwd -->
+
+		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
+		
+		int result = boardDao.insertArticle(dto);
+		
+		request.setAttribute("result", result);
+		request.setAttribute("pageNum", pageNum);
+		return new ModelAndView("/vtFrame/vt_writePro");
+	}
+	
 }

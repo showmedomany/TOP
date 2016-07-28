@@ -7,6 +7,8 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import address.AddressDBBean;
 import address.AddressDao;
+import board.BoardDBBean;
+import board.BoardDao;
 import member.MemberDBBean;
 import member.MemberDao;
 import myPage.MyPageDBBean;
@@ -44,6 +46,10 @@ public class CreateBean {
 		return new MyPageDBBean();
 	}
 
+	@Bean
+	public BoardDao boardDao(){		
+		return new BoardDBBean();
+	}
 	
 	/*
 	//DAO
@@ -54,10 +60,7 @@ public class CreateBean {
 		//private MemberDao memberDao;
 		return new MemberDBBean();
 	}
-	@Bean
-	public BoardDao boardDao(){		
-		return new BoardDBBean();
-	}
+	
 	
 	@Bean
 	public MemberDao memberDao(){
