@@ -3,12 +3,15 @@ package board;
 import java.sql.Timestamp;
 
 public class BoardDataBean {
+
 	private int num;
 	private String id;
 	private String subject;
 	private int readcount;
 	private Timestamp reg_date;
 	private String content;
+	
+	
 	public int getNum() {
 		return num;
 	}
@@ -44,7 +47,5 @@ public class BoardDataBean {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	
-	
+	}	
 }

@@ -40,6 +40,8 @@ public class MemberController {
 	@Resource(name = "adrDao")
 	private AddressDao adrDao;
 	
+	
+	
 	//로그인처리 핸들러
 	@RequestMapping("/loginPro")
 	public ModelAndView loginPro
@@ -279,8 +281,7 @@ public class MemberController {
 	@RequestMapping("/zipCheck")
 	public ModelAndView zipCheck
 	(HttpServletRequest request,HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		
+		request.setCharacterEncoding("utf-8");		
 		String inputarea = request.getParameter("inputarea");
 		
 		int resultCheck = adrDao.checkAddress(inputarea);
@@ -296,4 +297,9 @@ public class MemberController {
 		
 		return new ModelAndView("/vtFrame/vt_zipCheck");
 	}
+	
+	
+	
+	
+	
 }

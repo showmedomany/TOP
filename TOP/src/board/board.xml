@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!-- member.xml -->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -12,4 +13,12 @@
 			from (select num,id,subject,readcount,reg_date,content,rownum r 
 			from (select * from vt_board)) where r &gt;= #{start} and r &lt;= #{end}
 		</select>
+		
+		<insert id="insertArticle" parameterType="board.BoardDataBean">
+			insert into board(num, writer, email, subject
+			, passwd, reg_date, ref, re_step, re_level, content) 
+			values(board_seq.NEXTVAL, 
+			#{writer}, #{email, jdbcType=VARCHAR}, #{subject}, #{passwd},
+			#{reg_date}, #{ref}, #{re_step}, #{re_level}, #{content})
+		</insert>
 </mapper>

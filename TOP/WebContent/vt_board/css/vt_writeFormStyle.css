@@ -1,0 +1,70 @@
+.vt_writeForm_Frame {
+	margin: auto;
+	position: relative;	
+	z-index: 0;
+	
+}
+
+    
+.vt_writeForm_info {
+    padding: -6px;
+    font-size: 25;
+    font-weight: bolder;
+    width: 565px;
+    font-weight: normal;
+}
+
+.vt_writeForm_button {
+	background-color: #EAEAEA;
+	width:100px;
+}
+.vt_writeForm_table {
+    font-family: 'Exo', sans-serif;
+    width: 650px;
+    height: 500px;
+    
+    border-style: solid;
+    margin: auto;
+    border-top-color: #EAEAEA;
+    border-left-color: #EAEAEA;
+    border-right-color: #B7AFA3;
+    border-bottom-color: #B7AFA3;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+
+.input {
+	width : 285px;
+}
+
+
+.vt_writeForm_table  tr {
+	border-top: 1px solid #F6F6F6;
+}
+
+.vt_writeForm_table th {
+	background-color:#F6F6F6;
+	font-weight: normal;
+}
+
+.vt_writeForm_table input{
+	background-color:#F6F6F6;
+}
+
+.vt_writieForm_bottom_line {
+    width: inherit;
+    border-top-style: groove;
+    -webkit-filter: blur(3px);
+}
+
+.vt_writeForm_top_line {
+    width: inherit;
+    border-bottom-style: groove;
+  	
+    -webkit-filter: blur(3px);
+}
+
+
+
+

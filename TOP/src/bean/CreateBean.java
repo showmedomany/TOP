@@ -46,9 +46,7 @@ public class CreateBean {
 	@Bean
 	public MyPageDao myPageDao(){
 		return new MyPageDBBean();
-	}
-
-	
+	}	
 	@Bean
 	public RequestDao requestDao(){
 		return new RequestDBBean();

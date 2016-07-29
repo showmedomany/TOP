@@ -46,7 +46,7 @@
 			</c:if>
 			<tr>
 				<td>
-					<input type = "button" value = "글쓰기">
+					<input type = "button" value = "글쓰기" onclick = "freewrite()">
 				</td>
 			</tr>
 		</table>
