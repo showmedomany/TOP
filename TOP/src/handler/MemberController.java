@@ -1,7 +1,9 @@
 package handler;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.annotation.Resource;
@@ -22,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import address.AddressDao;
 import address.AddressDataBean;
+import board.BoardDao;
+import board.BoardDataBean;
 import emailconfirm.SMTPmailconfirm;
 import member.MemberDao;
 import member.MemberDataBean;
@@ -291,4 +295,90 @@ public class MemberController {
 		
 		return new ModelAndView("/vtFrame/vt_zipCheck");
 	}
+	//자유게시판 리스트 출력 시작
+	@Resource(name = "boardDao")
+	private BoardDao boardDao;	
+	@RequestMapping("/vt_freeboard.do")
+	public ModelAndView vt_freeboard(HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
+		
+
+		int pageSize = 5;
+		int pageBlock = 5;
+			
+		//글의 개수를 가져오는 변수
+		//진짜 db에 있는 글을 가져와 증가시켜라
+		String pageNum = null;				//넘어오는 페이지
+		String menu = "vt_freeboard";
+		String center = "/vt_board/vt_infoForm";
+		int count = boardDao.getCount();			//글의 총 갯수
+		int currentPage = 0;				//현재 페이지
+		int start = 0;						//게시판에서 맨 윗글
+		int end = 0;						//게시판에서 맨 아랫글
+		int number = 0;						//게시판의 글 번호
+		
+		int pageCount = 0;					//페이지들의 총 갯수
+		int startPage = 0;					//밑에 표시될 페이지의 시작
+		int endPage = 0;					//밑에 표시될 페이지의 끝
+	
+		pageNum = request.getParameter("pageNum");
+		
+		if(pageNum == null){
+			pageNum = "1";
+		}
+		
+		currentPage = Integer.parseInt(pageNum);		//받아온 페이지를 현재페이지로
+		
+		/*게시판의 시작글과 끝글*/
+		start = (currentPage - 1) * pageSize + 1;	// 5번 페이지 본다면 (5 - 1) * 10+1 => 41
+		end = start + pageSize - 1;					// (41 + 10) - 1 => 50;		
+
+		request.setAttribute("count", count);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("currentPage", currentPage);
+		
+		if(count != 0) {
+			//왼쪽에 나열될 글의 번호
+			number = count - (currentPage -1) * pageSize;			
+			
+			/*페이지들의 총 갯수 */
+			pageCount = count / pageSize 
+					+ (count % pageSize>0 ? 1 : 0);	
+			// 전체 글의 갯수/게시판에 올라갈수있는 글의 갯수 
+			//		+ (전체 글의 갯수%게시판에 올라갈 수 있는 글의 갯수 >0 ? 1 : 0);
+			
+			/*밑에 표시될 페이지의 시작 */
+			startPage = (currentPage / pageBlock) * pageBlock + 1;
+			//			(현재 페이지/나열될 페이지수) * 나열될 페이지수 + 1;
+			
+			if(currentPage % pageBlock == 0) startPage -= pageBlock;
+			
+			/*밑에 표시될 페이지의 끝 */
+			endPage = startPage + pageBlock -1;
+			//			표시 시작 페이지 + 나열될 페이지수 -1;
+			
+			if(endPage > pageCount) endPage = pageCount;
+			
+			Map<String, Integer> map = new HashMap<String, Integer>();
+			map.put("start", start);
+			map.put("end", end);
+			
+			List<BoardDataBean> list
+				=boardDao.getArticles(map);
+			
+			
+			request.setAttribute("number", number);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("pageCount", pageCount);
+			request.setAttribute("pageBlock", pageBlock);
+			
+			request.setAttribute("list", list);
+		}
+		request.setAttribute("menu", menu);
+		request.setAttribute("center", center);
+		return new ModelAndView("vtFrame/vtFrame");
+	}
+
+	//자유게시판 리스트 출력끝
 }

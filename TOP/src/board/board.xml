@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- member.xml -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Board">    
+	    <select id="getCount" resultType="int">
+			select count(*) from vt_board
+		</select>
+		
+		<select id="getArticles" parameterType="Map" resultType="board.BoardDataBean">
+			select num,id,subject,readcount,reg_date,content,r
+			from (select num,id,subject,readcount,reg_date,content,rownum r 
+			from (select * from vt_board)) where r &gt;= #{start} and r &lt;= #{end}
+		</select>
+</mapper>

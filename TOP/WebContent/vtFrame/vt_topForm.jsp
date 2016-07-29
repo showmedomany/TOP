@@ -84,10 +84,11 @@
 								</ul>  
 							</li> 
 							<li class="top_navi_menuframe">  
-								<div class="top_navi_menu">커뮤니티</div>
+								<div class="top_navi_menu"
+									onclick="location = 'vt_mainboard.do'">커뮤니티</div>
 								<ul class="top_navi_subframe">  
-									<li>공지사항 게시판</li>  
-									<li>자유 게시판</li> 
+									<li onclick="location = 'vt_mainboard.do'">공지사항 게시판</li>  
+									<li onclick="location = 'vt_freeboard.do'">자유 게시판</li> 
 									<li>FAQ</li>   
 								</ul>  
 							</li> 

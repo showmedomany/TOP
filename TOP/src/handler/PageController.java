@@ -123,7 +123,7 @@ public class PageController {
 				return new ModelAndView("/vtFrame/vtFrame");
 			}//vt_infoInfo
 			//센터 소개메뉴 끝
-			//커뮤니티 시작
+			//게시판 이동 시작
 			@RequestMapping("/vt_mainboard")
 			public ModelAndView vt_mainboard(HttpServletRequest request, 
 					HttpServletResponse response){
@@ -136,7 +136,20 @@ public class PageController {
 				request.setAttribute("word", word);
 				
 				return new ModelAndView("/vtFrame/vtFrame");
-			}//vt_infoInfo
-			//커뮤니티 끝
+			}//vt_mainboard
+			@RequestMapping("/vt_freeboard")
+			public ModelAndView vt_freeboard(HttpServletRequest request, 
+					HttpServletResponse response){
+				
+				String center = "/vt_board/vt_infoForm"; 
+				String menu = "/vt_board/vt_freeboard";
+				String word = "/vt_board/word/char";
+				request.setAttribute("center", center);
+				request.setAttribute("menu", menu);
+				request.setAttribute("word", word);
+				
+				return new ModelAndView("/vtFrame/vtFrame");
+			//게시판 이동 끝
+			}//vt_freeboard
 }
 
