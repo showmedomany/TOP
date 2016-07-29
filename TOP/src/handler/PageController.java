@@ -61,11 +61,12 @@ public class PageController {
 	@RequestMapping("/memberChat")
 	public ModelAndView memberChat
 	(HttpServletRequest request,HttpServletResponse response){		
-		//세션아이디 받아와야함
+		
 		String ip = request.getRemoteAddr();
+		String id = (String)request.getSession().getAttribute("id");
 		
 		request.setAttribute("ip", ip);
-		return new ModelAndView("/vtFrame/vt_chat");
+		return new ModelAndView("/vtFrame/vt_memberchat");
 
 	}//loginForm
 	
