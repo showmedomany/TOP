@@ -7,6 +7,8 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import address.AddressDBBean;
 import address.AddressDao;
+import board.BoardDBBean;
+import board.BoardDao;
 import chat.RequestDBBean;
 import chat.RequestDao;
 import member.MemberDBBean;
@@ -45,60 +47,15 @@ public class CreateBean {
 	public MyPageDao myPageDao(){
 		return new MyPageDBBean();
 	}
+
 	
 	@Bean
 	public RequestDao requestDao(){
 		return new RequestDBBean();
 	}
-	
-	/*
-	//DAO
-	@Bean
-	public MemberDao memberDao(){
-		//Controller.java에서 사용할 DBd의 Bean이름
-		//@Resource(name = "memberDao") <---얘때문에 씀
-		//private MemberDao memberDao;
-		return new MemberDBBean();
-	}
 	@Bean
 	public BoardDao boardDao(){		
 		return new BoardDBBean();
-	}
-	
-	@Bean
-	public MemberDao memberDao(){
-		return new LogonDBBean();
-	}
-	
-	*/
-	/*이제 얘 안씀
-	//DataSource
-	@Bean
-	public DataSource dataSource(){
-		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-		dataSource.setUsername("khpm");
-		dataSource.setPassword("khpm");
-		dataSource.setInitialSize(10);
-		dataSource.setMaxWait(3000);
-		dataSource.setMaxActive(10);
-		return dataSource;
-	}
-	
-	//JdbcMemberDao
-	@Bean
-	public BoardDao boardDao(){
-		BoardDBBean boardDao = new BoardDBBean();
-		boardDao.setDataSource(dataSource());
-		return boardDao;
-	}
-	
-	@Bean
-	public MemberDao memberDao(){
-		LogonDBBean memberDao = new LogonDBBean();
-		memberDao.setDataSource(dataSource());
-		return memberDao;
-	}
-	*/
+
+	}	
 }

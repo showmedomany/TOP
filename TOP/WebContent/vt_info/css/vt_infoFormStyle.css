@@ -1,45 +1,21 @@
-.vt_inforForm {
-    width: 1200;
+#container{
+	overflow: hidden;
+    position: relative;
+}
+.cont_main {
+    max-width: 1130px;
     margin: 0 auto;
-    height: auto;
 }
-.vt_info_frame{	
-	/* 센터에 뿌려질 큰 틀 */
-	margin: auto;
-	z-index: 0;
+.side_menu {
+    width: 290px;
+    min-height: 800px;
+    border-style: double;
+    box-sizing: border-box;
+    height: 100%;
+    float: left;
+    position: relative;
 }
-.vt_info_body {
-	/*vt_info_frame 안 큰틀*/
-    margin: auto;
-    z-index: 1;
-    width: 1200;
-}
-/*상단부분 시작*/
-.vt_info_path_body {
-	/*vt_info_body 상단부분 */
-    margin: 0 auto;
-    width: inherit;
-    height: 180;
-}
-.vt_info_path {
-    width: 200;
-    margin-left: 980;
-    margin-top: 150;
-}
-/*상단부분 끝*/
-/*중간 내용불러오기 시작*/
-.vt_info_center {
-    width: 900;
-    margin-left: 450;
-    margin-top: -600;
-}
-/*중간 내용불러오기 끝*/
-/*좌측 메뉴 시작*/
-.vt_info_menu_wrap {
-    background: linear-gradient(to bottom, #ffffff 0%,#f6f6f6 7%,#ffffff 93%,#ededed 100%);
-    width: 290;
-}
-.vt_info_menu_wrap_sub1 {
+.vt_info_menu_title {
     width: 270;
     height: 100;
     margin-left: 10;
@@ -47,7 +23,6 @@
     border-bottom-style: outset;
     border-bottom-right-radius: 10%;
     border-bottom-left-radius: 10%;
-    margin-top: 10;
 }
 .sub1_p1 {
 	/*p태그 css*/
@@ -60,15 +35,11 @@
     font-size: 20;
     color: darkcyan;
 }
-.vt_info_menu_wrap_sub2 {
-    height: 630;
-}
 .vt_info_menu_wrap_sub {
 	/*각 메뉴별 영역 공통 적용*/
-    width: inherit;
     height: 150;
-	text-align: center;
-	margin:25;
+    text-align: center;
+    margin:25;
 }
 .vt_info_menu_wrap_sub_sub{
 	/*각 메뉴별 영역 안 제목 영역 공통 적용*/
@@ -79,4 +50,13 @@
 	margin: 5;
     cursor: pointer;
 }
-/*좌측 메뉴 끝*/
+.main_wrap {
+    position: relative;
+    float: right;
+    left: -700;
+}
+.menu_top {
+    position: relative;
+    width: 1200;
+    height: 200;
+}

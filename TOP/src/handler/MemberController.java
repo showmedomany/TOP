@@ -1,7 +1,9 @@
 package handler;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.annotation.Resource;
@@ -22,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import address.AddressDao;
 import address.AddressDataBean;
+import board.BoardDao;
+import board.BoardDataBean;
 import emailconfirm.SMTPmailconfirm;
 import member.MemberDao;
 import member.MemberDataBean;

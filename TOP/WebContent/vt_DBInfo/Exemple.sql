@@ -18,47 +18,53 @@ DROP TABLE vt_faq CASCADE CONSTRAINTS;
 DROP TABLE vt_request CASCADE CONSTRAINTS;
 DROP TABLE vt_trainer CASCADE CONSTRAINTS;
 DROP TABLE chatTest CASCADE CONSTRAINTS;
-DROP SEQUENCE chatTestSeq;
-
-
-/*test 지워도됨*/
-
+DROP SEQUENCE register_seq;
+DROP SEQUENCE board_seq;
+DROP SEQUENCE nt_board_seq;
 commit;
 
 
-CREATE SEQUENCE chatTestSeq
+/*vt_board_seq*/
+CREATE SEQUENCE board_seq
 START WITH 1
-MAXVALUE 99999999
+MAXVALUE 999999999999
 MINVALUE 1
 INCREMENT BY 1
 CYCLE;
 
-CREATE TABLE chatTest
-(
-	userId varchar2(30),
-	text varchar2(1000),
-	inputSequence number
-);
-/*test 지워도됨*/
+/*vt_nt_board_seq*/
+CREATE SEQUENCE nt_board_seq
+START WITH 1
+MAXVALUE 999999999999
+MINVALUE 1
+INCREMENT BY 1
+CYCLE;
 
+/*vt_register*/
+CREATE SEQUENCE register_seq
+START WITH 1
+MAXVALUE 999999999999
+MINVALUE 1
+INCREMENT BY 1
+CYCLE;
 
 /* Create Tables */
 
 CREATE TABLE address
 (
-	zipcode varchar2(7),
-	area1 varchar2(10),
-	area2 varchar2(20),
-	area3 varchar2(70),
-	area4 varchar2(20)
+   zipcode varchar2(7),
+   area1 varchar2(10),
+   area2 varchar2(20),
+   area3 varchar2(70),
+   area4 varchar2(20)
 );
 
 
 CREATE TABLE vt_authority
 (
-	authority_id number NOT NULL,
-	authority varchar2(13) NOT NULL UNIQUE,
-	PRIMARY KEY (authority_id)
+   authority_id number NOT NULL,
+   authority varchar2(13) NOT NULL UNIQUE,
+   PRIMARY KEY (authority_id)
 );
 insert into vt_authority values(1, 'administrator'); 
 insert into vt_authority values(2, 'member');
@@ -66,51 +72,51 @@ insert into vt_authority values(2, 'member');
 
 CREATE TABLE vt_board
 (
-	num number NOT NULL,
-	id varchar2(15) NOT NULL,
-	subject varchar2(50) NOT NULL,
-	readcount number NOT NULL,
-	reg_date date NOT NULL,
-	ref_value number NOT NULL,
-	re_step number NOT NULL,
-	re_level number NOT NULL,
-	content varchar2(4000) NOT NULL,
-	PRIMARY KEY (num)
+   num number NOT NULL,
+   id varchar2(15) NOT NULL,
+   subject varchar2(50) NOT NULL,
+   readcount number NOT NULL,
+   reg_date date NOT NULL,
+   ref_value number NOT NULL,
+   re_step number NOT NULL,
+   re_level number NOT NULL,
+   content varchar2(4000) NOT NULL,
+   PRIMARY KEY (num)
 );
 
 
 CREATE TABLE vt_chatting
 (
-	chat_num number NOT NULL,
-	request_num number NOT NULL,
-	request_id varchar2(20) NOT NULL,
-	content varchar2(4000) NOT NULL,
-	PRIMARY KEY (chat_num)
+   chat_num number NOT NULL,
+   request_num number NOT NULL,
+   request_id varchar2(20) NOT NULL,
+   content varchar2(4000) NOT NULL,
+   PRIMARY KEY (chat_num)
 );
 
 
 CREATE TABLE vt_comm
 (
-	cmm_id number NOT NULL,
-	num number NOT NULL,
-	id varchar2(15) NOT NULL,
-	cmm_content varchar2(200) NOT NULL,
-	cmm_date date NOT NULL,
-	PRIMARY KEY (cmm_id)
+   cmm_id number NOT NULL,
+   num number NOT NULL,
+   id varchar2(15) NOT NULL,
+   cmm_content varchar2(200) NOT NULL,
+   cmm_date date NOT NULL,
+   PRIMARY KEY (cmm_id)
 );
 
 
 CREATE TABLE vt_exercise
 (
-	exercise_id number NOT NULL,
-	ex_part_id number NOT NULL,
-	name varchar2(50) NOT NULL UNIQUE,
-	machine varchar2(50) NOT NULL,
-	method1 varchar2(4000) NOT NULL,
-	method2 varchar2(4000) NOT NULL,
-	method3 varchar2(4000) NOT NULL,
-	method4 varchar2(4000) NOT NULL,
-	PRIMARY KEY (exercise_id)
+   exercise_id number NOT NULL,
+   ex_part_id number NOT NULL,
+   name varchar2(50) NOT NULL UNIQUE,
+   machine varchar2(50) NOT NULL,
+   method1 varchar2(4000) NOT NULL,
+   method2 varchar2(4000) NOT NULL,
+   method3 varchar2(4000) NOT NULL,
+   method4 varchar2(4000) NOT NULL,
+   PRIMARY KEY (exercise_id)
 );
 
 /* 가슴운동 */
@@ -527,9 +533,9 @@ insert into vt_exercise values(21,3,'런지','바벨',
 
 CREATE TABLE vt_ex_part
 (
-	ex_part_id number NOT NULL,
-	part_name varchar2(30) NOT NULL UNIQUE,
-	PRIMARY KEY (ex_part_id)
+   ex_part_id number NOT NULL,
+   part_name varchar2(30) NOT NULL UNIQUE,
+   PRIMARY KEY (ex_part_id)
 );
 insert into vt_ex_part values(1, '가슴');
 insert into vt_ex_part values(2, '등');
@@ -542,56 +548,56 @@ insert into vt_ex_part values(7, '복근');
 
 CREATE TABLE vt_faq
 (
-	num number NOT NULL,
-	question varchar2(100) NOT NULL,
-	answer varchar2(4000) NOT NULL,
-	PRIMARY KEY (num)
+   num number NOT NULL,
+   question varchar2(100) NOT NULL,
+   answer varchar2(4000) NOT NULL,
+   PRIMARY KEY (num)
 );
 
 
 CREATE TABLE vt_inbody
 (
-	inbody_id number NOT NULL,
-	id varchar2(15) NOT NULL,
-	age number NOT NULL,
-	height number NOT NULL,
-	sex varchar2(10) NOT NULL,
-	weight number NOT NULL,
-	bmi number NOT NULL,
-	check_date date NOT NULL,
-	PRIMARY KEY (inbody_id)
+   inbody_id number NOT NULL,
+   id varchar2(15) NOT NULL,
+   age number NOT NULL,
+   height number NOT NULL,
+   sex varchar2(10) NOT NULL,
+   weight number NOT NULL,
+   bmi number NOT NULL,
+   check_date date NOT NULL,
+   PRIMARY KEY (inbody_id)
 );
 insert into vt_inbody values(1, 'kimy', 22, 170, 'male', 90, 70, sysdate);
-
+insert into vt_inbody values(2, 'jangb', 32, 160, 'male', 90, 70, sysdate);
 
 
 CREATE TABLE vt_members
 (
-	id varchar2(15) NOT NULL,
-	authority_id number NOT NULL,
-	passwd varchar2(15) NOT NULL,
-	name varchar2(30) NOT NULL,
-	nickname varchar2(30) NOT NULL UNIQUE,
-	phone varchar2(15),
-	zipcode varchar2(10),
-	address varchar2(100),
-	email varchar2(30) NOT NULL UNIQUE,
-	join_date date NOT NULL,
-	PRIMARY KEY (id)
+   id varchar2(15) NOT NULL,
+   authority_id number NOT NULL,
+   passwd varchar2(15) NOT NULL,
+   name varchar2(30) NOT NULL,
+   nickname varchar2(30) NOT NULL UNIQUE,
+   phone varchar2(15),
+   zipcode varchar2(10),
+   address varchar2(100),
+   email varchar2(30) NOT NULL UNIQUE,
+   join_date date NOT NULL,
+   PRIMARY KEY (id)
 );
-insert into vt_members values('lees', 1, '111', '이순신', 'nic_lee', '111-6666-2222', '031-222', '서울특별시 강남구 강남동|강남아파트 111-111', '1111@gmail.com', sysdate);
-insert into vt_members values('kimy', 2,  '111', '김유신', 'nic_kim', '111-2222-7777', '031-111', '경기도 안양시 안양동|안양아파트 111-111', '2222@gmail.com', sysdate);
-insert into vt_members values('jangb', 2,  '111', '장보고', 'nic_jang', '111-2222-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '3333@gmail.com', sysdate);
+insert into vt_members values('lees', 1, '111', '이순신', 'nic_lee', '111-6666-2222', '031-222', '서울특별시 강남구 강남동|강남아파트 111-111',  '1111@gmail.com', sysdate);
+insert into vt_members values('kimy', 2,  '111', '김유신', 'nic_kim', '111-2222-7777', '031-111', '경기도 안양시 안양동|안양아파트 111-111', '2222@gmail.com',  sysdate);
+insert into vt_members values('jangb', 2,  '111', '장보고', 'nic_jang', '111-2222-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '3333@gmail.com',  sysdate);
 
 
 CREATE TABLE vt_member_routine
 (
-	mr_id number NOT NULL,
-	routineinfo_id number NOT NULL,
-	day varchar2(10) NOT NULL,
-	exercise_id number NOT NULL,
-	count_check number,
-	PRIMARY KEY (mr_id)
+   mr_id number NOT NULL,
+   routineinfo_id number NOT NULL,
+   day varchar2(10) NOT NULL,
+   exercise_id number NOT NULL,
+   count_check number,
+   PRIMARY KEY (mr_id)
 );
 insert into vt_member_routine values(1, 1, 'mon',  1, 24);
 insert into vt_member_routine values(2, 1, 'mon',  2, 24);
@@ -616,63 +622,63 @@ insert into vt_member_routine values(15, 1, 'fri', 3, 24);
 
 CREATE TABLE vt_notice_board
 (
-	num number NOT NULL,
-	id varchar2(15) NOT NULL,
-	subjec varchar2(50) NOT NULL,
-	readcount number,
-	reg_date date NOT NULL,
-	content varchar2(4000) NOT NULL,
-	PRIMARY KEY (num)
+   num number NOT NULL,
+   id varchar2(15) NOT NULL,
+   subject varchar2(50) NOT NULL,
+   readcount number,
+   reg_date date NOT NULL,
+   content varchar2(4000) NOT NULL,
+   PRIMARY KEY (num)
 );
 
 
 CREATE TABLE vt_register
 (
-	register_id number NOT NULL,
-	id varchar2(15) NOT NULL,
-	start_date date NOT NULL,
-	exp_date number NOT NULL,
-	end_date date NOT NULL,
-	gx_check varchar2(5) NOT NULL,
-	pt_check varchar2(5) NOT NULL,
-	pt_count number,
-	trainer_id varchar2(30) NOT NULL,
-	PRIMARY KEY (register_id)
+   register_id number NOT NULL,
+   id varchar2(15) NOT NULL,
+   start_date date NOT NULL,
+   exp_date number NOT NULL,
+   end_date date NOT NULL,
+   gx_check varchar2(5) NOT NULL,
+   pt_check varchar2(5) NOT NULL,
+   pt_count number,
+   trainer_id varchar2(30) NOT NULL,
+   PRIMARY KEY (register_id)
 );
-insert into vt_register values(1, 'kimy', sysdate, 1, add_months(sysdate, 1), 'true', 'true', 20, 'kimTrainer');
-insert into vt_register values(2, 'jangb', sysdate, 3, add_months(sysdate, 3), 'false', 'true', 20, 'leeTrainer');
+insert into vt_register values(register_seq.nextval, 'kimy', sysdate, 1, add_months(sysdate, 1), 'true', 'true', 20, 'kimTrainer');
+insert into vt_register values(register_seq.nextval, 'jangb', sysdate, 3, add_months(sysdate, 3), 'false', 'true', 20, 'leeTrainer');
 
 
 CREATE TABLE vt_request
 (
-	request_num number NOT NULL,
-	request_ip varchar2(15) NOT NULL,
-	reqest_id varchar2(20) NOT NULL,
-	PRIMARY KEY (request_num)
+   request_num number NOT NULL,
+   request_ip varchar2(15) NOT NULL,
+   reqest_id varchar2(20) NOT NULL,
+   PRIMARY KEY (request_num)
 );
-	
+   
 
 CREATE TABLE vt_routine_info
 (
-	routineinfo_id number NOT NULL,
-	id varchar2(15) NOT NULL,
-	sex varchar2(10),
-	routine_type varchar2(15),
-	start_date date,
-	end_date date,
-	PRIMARY KEY (routineinfo_id)
+   routineinfo_id number NOT NULL,
+   id varchar2(15) NOT NULL,
+   sex varchar2(10),
+   routine_type varchar2(15),
+   start_date date,
+   end_date date,
+   PRIMARY KEY (routineinfo_id)
 );
 insert into vt_routine_info values(1, 'kimy', 'male', 'A-course', sysdate, add_months(sysdate, 1));
 
 
 CREATE TABLE vt_trainer
 (
-	trainer_id varchar2(30) NOT NULL,
-	trainer_nickname varchar2(30) NOT NULL UNIQUE,
-	name varchar2(30) NOT NULL,
-	phone varchar2(15) NOT NULL,
-	sex varchar2(10) NOT NULL,
-	PRIMARY KEY (trainer_id)
+   trainer_id varchar2(30) NOT NULL,
+   trainer_nickname varchar2(30) NOT NULL UNIQUE,
+   name varchar2(30) NOT NULL,
+   phone varchar2(15) NOT NULL,
+   sex varchar2(10) NOT NULL,
+   PRIMARY KEY (trainer_id)
 );
 insert into vt_trainer values('kimTrainer', 'KT', '김트', '010-0001-0001', 'male');
 insert into vt_trainer values('leeTrainer', 'LT', '이트', '010-3331-2201', 'male');
@@ -682,81 +688,80 @@ insert into vt_trainer values('leeTrainer', 'LT', '이트', '010-3331-2201', 'male
 /* Create Foreign Keys */
 
 ALTER TABLE vt_members
-	ADD FOREIGN KEY (authority_id)
-	REFERENCES vt_authority (authority_id)
+   ADD FOREIGN KEY (authority_id)
+   REFERENCES vt_authority (authority_id)
 ;
 
 
 ALTER TABLE vt_comm
-	ADD FOREIGN KEY (num)
-	REFERENCES vt_board (num)
+   ADD FOREIGN KEY (num)
+   REFERENCES vt_board (num)
 ;
 
 
 ALTER TABLE vt_member_routine
-	ADD FOREIGN KEY (exercise_id)
-	REFERENCES vt_exercise (exercise_id)
+   ADD FOREIGN KEY (exercise_id)
+   REFERENCES vt_exercise (exercise_id)
 ;
 
 
 ALTER TABLE vt_exercise
-	ADD FOREIGN KEY (ex_part_id)
-	REFERENCES vt_ex_part (ex_part_id)
+   ADD FOREIGN KEY (ex_part_id)
+   REFERENCES vt_ex_part (ex_part_id)
 ;
 
 
 ALTER TABLE vt_board
-	ADD FOREIGN KEY (id)
-	REFERENCES vt_members (id)
+   ADD FOREIGN KEY (id)
+   REFERENCES vt_members (id)
 ;
 
 
 ALTER TABLE vt_comm
-	ADD FOREIGN KEY (id)
-	REFERENCES vt_members (id)
+   ADD FOREIGN KEY (id)
+   REFERENCES vt_members (id)
 ;
 
 
 ALTER TABLE vt_inbody
-	ADD FOREIGN KEY (id)
-	REFERENCES vt_members (id)
+   ADD FOREIGN KEY (id)
+   REFERENCES vt_members (id)
 ;
 
 
 ALTER TABLE vt_notice_board
-	ADD FOREIGN KEY (id)
-	REFERENCES vt_members (id)
+   ADD FOREIGN KEY (id)
+   REFERENCES vt_members (id)
 ;
 
 
 ALTER TABLE vt_register
-	ADD FOREIGN KEY (id)
-	REFERENCES vt_members (id)
+   ADD FOREIGN KEY (id)
+   REFERENCES vt_members (id)
 ;
 
 
 ALTER TABLE vt_routine_info
-	ADD FOREIGN KEY (id)
-	REFERENCES vt_members (id)
+   ADD FOREIGN KEY (id)
+   REFERENCES vt_members (id)
 ;
 
 
 ALTER TABLE vt_chatting
-	ADD FOREIGN KEY (request_num)
-	REFERENCES vt_request (request_num)
+   ADD FOREIGN KEY (request_num)
+   REFERENCES vt_request (request_num)
 ;
 
 
 ALTER TABLE vt_member_routine
-	ADD FOREIGN KEY (routineinfo_id)
-	REFERENCES vt_routine_info (routineinfo_id)
+   ADD FOREIGN KEY (routineinfo_id)
+   REFERENCES vt_routine_info (routineinfo_id)
 ;
 
 
 ALTER TABLE vt_register
-	ADD FOREIGN KEY (trainer_id)
-	REFERENCES vt_trainer (trainer_id)
+   ADD FOREIGN KEY (trainer_id)
+   REFERENCES vt_trainer (trainer_id)
 ;
-
 
 

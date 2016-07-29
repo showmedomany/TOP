@@ -6,12 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * PageController
- * 페이지 이동관련 핸들러 모음
- * 가능하면 핸들러 위에 주석으로 무엇에 관한 핸들러 인지 적어줄 것 
- *    
- */
 
 @Controller
 public class PageController {		
@@ -20,16 +14,9 @@ public class PageController {
 	@RequestMapping("/main")
 	public ModelAndView main
 	(HttpServletRequest request,HttpServletResponse response){
-		
-		
-		
-		
 		//가운데 컨텐츠를 메인화면용 jsp로 교체
 		String center = "vt_centerContent";
-		request.setAttribute("center", center);
-		
-		//홈으로 오면 채팅창 띄운다
-		
+		request.setAttribute("center", center);		
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//main
 		
@@ -53,65 +40,62 @@ public class PageController {
 		String center = "vt_inputForm";
 		request.setAttribute("center", center);				
 		return new ModelAndView("/vtFrame/vtFrame");
-
-
 	}//loginForm
 	
 	
 
 	//센터소개 메뉴 시작
-			@RequestMapping("/vt_infoHello")
-			public ModelAndView vt_infoHello(HttpServletRequest request, 
-					HttpServletResponse response){
-				
-				String center = "/vt_info/vt_infoForm"; 
-				String menu = "/vt_info/vt_infoHello";
-				String word = "/vt_info/word/hello";
-				request.setAttribute("center", center);
-				request.setAttribute("menu", menu);
-				request.setAttribute("word", word);
-				
-				return new ModelAndView("/vtFrame/vtFrame");
-			}//vt_infoHello
-			@RequestMapping("/vt_infoHistory")
-			public ModelAndView vt_infoHistory(HttpServletRequest request, 
-					HttpServletResponse response){
-				
-				String center = "/vt_info/vt_infoForm"; 
-				String menu = "/vt_info/vt_infoHistory";
-				String word = "/vt_info/word/history";
-				request.setAttribute("center", center);
-				request.setAttribute("menu", menu);
-				request.setAttribute("word", word);
-				
-				return new ModelAndView("/vtFrame/vtFrame");
-			}//vt_infoChar
-			@RequestMapping("/vt_infoInfo")
-			public ModelAndView vt_infoInfo(HttpServletRequest request, 
-					HttpServletResponse response){
-				
-				String center = "/vt_info/vt_infoForm"; 
-				String menu = "/vt_info/vt_infoInfo";
-				String word = "/vt_info/word/info";
-				request.setAttribute("center", center);
-				request.setAttribute("menu", menu);
-				request.setAttribute("word", word);
-				
-				return new ModelAndView("/vtFrame/vtFrame");
-			}//vt_infoInfo
-			@RequestMapping("/vt_infoChar")
-			public ModelAndView vt_infoChar(HttpServletRequest request, 
-					HttpServletResponse response){
-				
-				String center = "/vt_info/vt_infoForm"; 
-				String menu = "/vt_info/vt_infoChar";
-				String word = "/vt_info/word/char";
-				request.setAttribute("center", center);
-				request.setAttribute("menu", menu);
-				request.setAttribute("word", word);
-				
-				return new ModelAndView("/vtFrame/vtFrame");
-			}//vt_infoInfo
-			//센터 소개메뉴 끝
+	@RequestMapping("/vt_infoHello")
+	public ModelAndView vt_infoHello(HttpServletRequest request, 
+			HttpServletResponse response){		
+		String center = "/vt_info/vt_infoForm"; 
+		String menu = "/vt_info/vt_infoHello";
+		String word = "/vt_info/word/hello";
+		request.setAttribute("center", center);
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//vt_infoHello
+	@RequestMapping("/vt_infoHistory")
+	public ModelAndView vt_infoHistory(HttpServletRequest request, 
+			HttpServletResponse response){
+		
+		String center = "/vt_info/vt_infoForm"; 
+		String menu = "/vt_info/vt_infoHistory";
+		String word = "/vt_info/word/history";
+		request.setAttribute("center", center);
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//vt_infoChar
+	@RequestMapping("/vt_infoInfo")
+	public ModelAndView vt_infoInfo(HttpServletRequest request, 
+			HttpServletResponse response){
+		
+		String center = "/vt_info/vt_infoForm"; 
+		String menu = "/vt_info/vt_infoInfo";
+		String word = "/vt_info/word/info";
+		request.setAttribute("center", center);
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//vt_infoInfo
+	
+	@RequestMapping("/vt_infoChar")
+	public ModelAndView vt_infoChar(HttpServletRequest request, 
+			HttpServletResponse response){
+		
+		String center = "/vt_info/vt_infoForm"; 
+		String menu = "/vt_info/vt_infoChar";
+		String word = "/vt_info/word/char";
+		request.setAttribute("center", center);
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//vt_infoInfo
+	//센터 소개메뉴 끝
 }
 
