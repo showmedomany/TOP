@@ -7,6 +7,7 @@
 	<head>
 		<link href = "${css}vt_inputFormStyle.css" rel = "stylesheet" type = "text/css">
 		<script src = "${script}vt_inputForm.js"></script>
+		<script src = "${request}"></script>
 
 	</head>
 	<body onload = "inputformfocus()">

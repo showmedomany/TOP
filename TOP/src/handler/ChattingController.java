@@ -1,5 +1,7 @@
 package handler;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import chat.ChatDataBean;
 import chat.RequestDao;
 import chat.RequestDataBean;
 
@@ -18,20 +21,41 @@ public class ChattingController {
 	
 	
 	//이건 채팅창 여는 핸들러
-	@RequestMapping("/chatting")
-	public ModelAndView chatting
+		@RequestMapping("/memberChat")
+		public ModelAndView memberChat
+		(HttpServletRequest request,HttpServletResponse response){
+			
+			String ip = request.getRemoteAddr();
+			String id = (String)request.getSession().getAttribute("memId");
+			if(id == null){
+				id = "guest";
+			}
+			request.setAttribute("ip", ip);
+			request.setAttribute("id", id);
+			
+			return new ModelAndView("/vt_chat/vt_memberchat");
+		}//main
+		
+	/*인터벌돌면서 채팅이 있는지 확인하고 있으면 뿌려줄 메소드*/
+	@RequestMapping("/receiveChat")
+	public ModelAndView receiveChat
 	(HttpServletRequest request,HttpServletResponse response){
 		
-		String ip = request.getRemoteAddr();
-		String id = (String)request.getSession().getAttribute("memId");
-		if(id == null){
-			id = "guest";
-		}
-		request.setAttribute("ip", ip);
-		request.setAttribute("id", id);
+		//메세지를 받을 필요는 없다
+		String ip = request.getParameter("ip");
+		String id = request.getParameter("id");
 		
-		return new ModelAndView("/vt_chat/vt_chat");
+		List<ChatDataBean> chatlist = requestDao.getChat(ip);
+		
+		
+		request.setAttribute("id", id);	//내껀지 상대방껀지 확인하기 위해서
+		request.setAttribute("chatlist", chatlist);	//채팅 내역	
+		
+		return new ModelAndView("/vt_chat/vt_chatPro");//채팅 내역을 구성해줄 jsp로	
 	}//main
+	
+	
+	
 	
 	//채팅요청 보내기 + 메세지 보내기 핸들러
 	@RequestMapping("/requestchat")
@@ -40,47 +64,49 @@ public class ChattingController {
 		
 		String ip = request.getParameter("ip");
 		String id = request.getParameter("id");
-		String msg = request.getParameter("msg");
-		//먼저 chattingrequest 테이블을 검색 ->checkRequest
+		String chatting = request.getParameter("chatting");
+		System.out.println(chatting);
+		int checkip = requestDao.checkIp(ip);
 		
-		if(msg != null){
-			int checkip = requestDao.checkIp(ip);
+		//없으면 요청생성
+		if(checkip == 0){
+			int rp = 0;	//요청 대기 상태를 0으로 시작
+			RequestDataBean rdto = new RequestDataBean();
+			rdto.setIp(ip);
+			rdto.setId(id);
+			rdto.setRp(rp);
+			//만들어진 DataBean으로 요청 생성
+			int insertresult = requestDao.insertRequest(rdto);//요청생성	
 			
-			//새로운 요청자면 이부분실행
-			if(checkip == 0){
-				int rp = 0;	//요청 대기 상태를 0으로 시작
-				RequestDataBean rdto = new RequestDataBean();
-				rdto.setIp(ip);
-				rdto.setId(id);
-				rdto.setRp(rp);
-				//만들어진 DataBean으로 요청 생성 
-				int insertresult = requestDao.insertRequest(rdto);	
-				
-				//여기서 채팅내용이랑 보낸사람 DB에 넣는다.
+			if(insertresult !=0){//요청생성에 성공하면
+				ChatDataBean cdto = new ChatDataBean();
+				cdto.setIp(ip);
+				cdto.setChatting(chatting);
+				cdto.setId(id);
+				//채팅 데이터 생성
+				int insertchat = requestDao.insertChet(cdto);
+				if(insertchat != 0){
+					List<ChatDataBean> chatlist = requestDao.getChat(ip);
+					request.setAttribute("id", id);
+					request.setAttribute("chatlist", chatlist);
+					return new ModelAndView("/vt_chat/vt_chatPro");
+				}
 			}
-			//기존에 요청했던 사용자면 채팅내용만 DB생성
-			else{
-				//채팅내용이랑 보낸사람을 DB에 넣는다.
-				System.out.println("있는놈");
-			}
-			
-			
-			//아이피? 아이디?
-			//요청을 하면 관리자에서 어떻게 받음?
-			//요청용 Table 을 검색해서 요청이 있는경우 새로운 창이 뜨게
-			//요청을 했을경우 응답 받으면 respones를 1로
-			//요청에 응답을 안한경우(관리자가 로그인을 안한경우);
-			//요청시간도?
-			//ip, id, 요청시간, 응답,
-			//첫 요청이라면 요청정보와 채팅데이터가 들어가게
-			//만약 이미 요청을 한 상태에서 전송을 누르면 채팅데이터가 들어가게
-			
-			//해당 요청의 창이 있으면 더이상 안뜨게 
 		}
+		//있으면 DB넣고
 		else{
-			//여기는 채팅내역을 가져오는 메소드
+			ChatDataBean cdto = new ChatDataBean();
+			cdto.setIp(ip);
+			cdto.setChatting(chatting);
+			cdto.setId(id);
+			//채팅 데이터 생성
+			int insertchat = requestDao.insertChet(cdto);
+			if(insertchat != 0){
+				List<ChatDataBean> chatlist = requestDao.getChat(ip);
+				request.setAttribute("id", id);
+				request.setAttribute("chatlist", chatlist);				
+			}
 		}
-		
-		return new ModelAndView("/vt_chat/vt_chatrequestPro");
+		return new ModelAndView("/vt_chat/vt_chatPro");		
 	}//main
 }

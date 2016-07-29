@@ -1,6 +1,6 @@
 $(
 	function(){		
-		window.open("chatting.do", "chatting", 
+		window.open("memberChat.do", "chatting", 
 				'scrollbars=no,resizable=no, menubar=yes, status=yes, width=600, height=500 ');
 	}
 );

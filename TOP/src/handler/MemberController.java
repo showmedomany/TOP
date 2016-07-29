@@ -153,6 +153,7 @@ public class MemberController {
 	(HttpServletRequest request,HttpServletResponse response){
 		
 		String id =request.getParameter("id");
+		
 		int result = memberDao.checkMember(id);
 		request.setAttribute("result", result);
 

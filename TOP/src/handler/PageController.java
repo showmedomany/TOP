@@ -56,19 +56,6 @@ public class PageController {
 
 
 	}//loginForm
-
-	
-	@RequestMapping("/memberChat")
-	public ModelAndView memberChat
-	(HttpServletRequest request,HttpServletResponse response){		
-		
-		String ip = request.getRemoteAddr();
-		String id = (String)request.getSession().getAttribute("id");
-		
-		request.setAttribute("ip", ip);
-		return new ModelAndView("/vtFrame/vt_memberchat");
-
-	}//loginForm
 	
 	
 

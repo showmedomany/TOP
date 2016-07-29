@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 function Request( callback, url, method, params ){
 	this.callback = callback;
@@ -9,6 +6,7 @@ function Request( callback, url, method, params ){
 	this.params = params;
 	this.httpRequest = null;	
 };
+
 Request.prototype = {
 		getXMLHttpRequest : function(){
 			if(window.ActiveXObject){
@@ -48,4 +46,3 @@ Request.prototype = {
 			this.httpRequest.send(httpMethod == "POST" ? httpParams : null);			
 		}
 };
-

@@ -3,7 +3,9 @@
 <%@ include file = "setting.jsp" %>
 <html>
 	<head>
-		<script src="${script}vt_chat.js" type="text/javascript"></script>
+		<script src = "${jquery}"></script>
+		<script src = "${request}" type="text/javascript"></script>
+		<script src="${script}vt_memberchat.js" type="text/javascript"></script>
 		
 	</head>
 	<body>		
@@ -12,9 +14,9 @@
 			<input type = "hidden" name = "ip" value = "${ip}">
 			<input type = "hidden" name = "id" value = "${id}">
 					
-			<TEXTAREA rows="5" cols="30" NAME="chatarea">${ip}, ${id}</TEXTAREA>
-			<br>
 			
+			<br>
+			<div id = "chatarea"></div>
 			<input type = "text" name = "chatinput">
 			<input type = "button" value = "전송" onclick = "sendmsg()">
 		</form>

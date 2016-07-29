@@ -12,4 +12,12 @@
 	<insert id="insertRequest" parameterType="chat.RequestDataBean">
 		insert into testchatrequest values(#{ip},#{id},sysdate,#{rp})
 	</insert>
+	
+	<insert id="insertChat" parameterType="chat.ChatDataBean">
+		insert into testchat values(#{ip}, #{chatting}, #{id})
+	</insert>
+	
+	<select id="getChat" parameterType="String" resultType="chat.ChatDataBean">
+		select * from testchat where ip = #{ip}
+	</select>
 </mapper>
