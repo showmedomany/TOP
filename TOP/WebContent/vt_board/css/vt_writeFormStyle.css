@@ -61,7 +61,7 @@
 .vt_writeForm_top_line {
     width: inherit;
     border-bottom-style: groove;
-  	 margin-top: 75;
+  	
     -webkit-filter: blur(3px);
 }
 

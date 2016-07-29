@@ -16,16 +16,16 @@
 				//-->			
 			</script>
 		</c:if>
- <!--
+
 		<c:if test="${result < 0 }">
 			<c:if test="${pageNum > 0 }">
 			
 			  
-				<c:redirect url = "list.do?pageNum=${pageNum }"/>
+				<c:redirect url = "main.do?pageNum=${pageNum }"/>
 				
 			</c:if>
 		</c:if>
-		 -->
+		
 	</body>
 </html>
 

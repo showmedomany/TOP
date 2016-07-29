@@ -37,6 +37,7 @@
 					<div class="vt_info_menu_wrap_sub">
 							<p class="vt_info_menu_wrap_sub_sub">커뮤니티</p>
 							<p class="sub"onclick="location = 'vt_mainboard.do'">> 공지사항 게시판</p>
+							
 							<p class="sub">> 자유게시판</p>
 							<p class="sub">> FAQ</p>
 					</div>
