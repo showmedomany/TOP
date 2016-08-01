@@ -18,7 +18,7 @@
 				
 			</tr>
 			<tr>
-				<td td colspan="4" align="center">
+				<td colspan="4" align="center">
 					<div id="writeFormCheckDiv">			
 					</div>				
 				</td>				

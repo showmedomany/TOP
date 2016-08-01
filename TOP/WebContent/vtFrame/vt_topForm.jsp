@@ -91,7 +91,7 @@
 								<div class="top_navi_menu"
 									onclick="location = 'vt_communityForm.do'">커뮤니티</div>
 								<ul class="top_navi_subframe">  
-									<li onclick="location = 'vt_communityForm.do'">공지사항 게시판</li>  
+									<li onclick="location = 'noticeBoard.do'">공지사항 게시판</li>  
 									<li onclick="location = 'vt_community_free.do'">자유 게시판</li> 
 									<li>FAQ</li>   
 								</ul>  
