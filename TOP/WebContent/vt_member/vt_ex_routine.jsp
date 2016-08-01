@@ -7,7 +7,7 @@
 	<head>
 	<meta charset="UTF-8">
 		<title>vt_ex_routine</title>		
-		<script src="${request}" type="text/javascript"></script>
+		<script src="/TOP/request.js" type="text/javascript"></script>
 		<script src="${script}vt_ex_routine.js" type="text/javascript"></script>
 	</head>
 	<body>
