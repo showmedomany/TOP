@@ -12,6 +12,7 @@ var msg_emailerror = "이메일을 입력해주세요";
 var msg_emailsenderror = "인증번호를 입력해주세요";
 var msg_emailsendcheckerror = "인증번호를 확인해주세요";
 var msg_emailerror = "이메일이 유효하지 않습니다";
+var msg_addresserror = "주소를 입력해주세요.";
 var msg_wait = "전송중";
 var msg_send = "전송완료";
 var msg_mailconfirmerror = "인증번호가 유효하지 않습니다. \n 다시 입력하세요.";
@@ -139,7 +140,13 @@ function confirmnickResult(){
 	}
 }
 
-
+function checkadr(){
+	if(!zipCheckForm.inputarea.value){
+		alert(msg_addresserror);
+		zipCheckForm.inputarea.focus();
+		return false;
+	}
+}
 
 //주소검색 버튼 클릭
 function searchAdr(){

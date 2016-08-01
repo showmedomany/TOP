@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "setting.jsp" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 한글써진 부분 setting.jsp로 옮겨야함 -->
 
@@ -31,9 +31,10 @@
 		<!-- 로그인 하면 세션에 ID랑 권한 넘김 -->
 		<c:if test="${loginCheck eq 1 }">
 			${sessionScope.memId = id}
-			${sessionScope.nick = nickname}
+			${sessionScope.nickname = nickname}
 			${sessionScope.authority_id = authority_id}
 			<c:redirect url = "main.do"/>
+			
 		</c:if>
 	
 	</body>

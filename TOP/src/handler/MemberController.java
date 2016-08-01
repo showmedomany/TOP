@@ -1,9 +1,7 @@
 package handler;
 
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.annotation.Resource;
@@ -24,8 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import address.AddressDao;
 import address.AddressDataBean;
-import board.BoardDao;
-import board.BoardDataBean;
 import emailconfirm.SMTPmailconfirm;
 import member.MemberDao;
 import member.MemberDataBean;
@@ -38,8 +34,7 @@ public class MemberController {
 	private MemberDao memberDao;
 	
 	@Resource(name = "adrDao")
-	private AddressDao adrDao;
-	
+	private AddressDao adrDao;	
 	
 	
 	//로그인처리 핸들러
@@ -53,6 +48,8 @@ public class MemberController {
 		String id = request.getParameter("id");
 		//로그인 폼에서 보내진 passwd
 		String passwd = request.getParameter("passwd");
+		
+		
 		
 		int loginCheck = memberDao.loginMember(id, passwd);
 		
@@ -71,78 +68,13 @@ public class MemberController {
 		request.setAttribute("id", id);
 		
 		
+		
+		
+		
 		//리턴은 loginPro.jsp로 이동하여 로그인이 제대로 이뤄 졌는지 알려줌
-		return new ModelAndView("/vtFrame/vt_loginPro");
+		return new ModelAndView("/vtFrame/processing/vt_loginPro");
 	}//loginPro
 	
-	@RequestMapping("/inputPro")
-	public ModelAndView inputPro
-	(HttpServletRequest request,HttpServletResponse response) throws Exception{		
-		//메인으로 돌아가야하므로 센터 컨텐트로 설정
-		request.setCharacterEncoding("utf-8");
-		
-		MemberDataBean mdto = new MemberDataBean();
-		
-		mdto.setAuthority_id(2);
-		mdto.setId(request.getParameter("id"));
-		mdto.setPasswd(request.getParameter("passwd"));
-		mdto.setName(request.getParameter("name"));
-		mdto.setNickname(request.getParameter("nickname"));
-				
-		String zipcode = null;
-		String zipcode1 = request.getParameter("zipcode1");
-		String zipcode2 = request.getParameter("zipcode2");
-		
-		if(!zipcode1.equals("") && !zipcode2.equals("")){
-			zipcode = zipcode1 + "-" + zipcode2;
-		}
-		mdto.setZipcode(zipcode);
-		
-		String address = null;
-		String adr = request.getParameter("adr");
-		String detail = request.getParameter("detail_adr");
-		
-		if(!adr.equals("") && !detail.equals("")){
-			address = adr + "|" + detail;
-		}
-		mdto.setAddress(address);
-	
-		String tel = null;
-		String tel1 = request.getParameter("tel1");
-		String tel2 = request.getParameter("tel2");
-		String tel3 = request.getParameter("tel3");
-		
-		if(!tel1.equals("")
-				&& !tel2.equals("") 
-				&& !tel3.equals("")){
-			tel = tel1 + "-" + tel2 + "-" + tel3;
-		}
-		
-		mdto.setPhone(tel);
-	
-		String email = null;
-		String email1 = request.getParameter("email1");
-		String email2 = request.getParameter("email2");
-		
-		if(!email1.equals("") && !email2.equals("")){
-			if(email2.equals("0")){
-				//직접입력
-				email = email1;
-			}
-			else{
-				//선택입력
-				email = email1 + "@" + email2;
-			}
-		}
-		
-		mdto.setEmail(email);
-		
-		int insertResult = memberDao.insertMember(mdto);
-		
-		request.setAttribute("insertResult", insertResult);
-		
-		return new ModelAndView("/vtFrame/inputPro");
-	}//loginForm
 	
 	@RequestMapping("/logoutPro")
 	public ModelAndView logoutPro
@@ -154,6 +86,7 @@ public class MemberController {
 		//세션 내용을 지움
 		request.getSession().removeAttribute("memId");
 		request.getSession().removeAttribute("authority_id");
+		request.getSession().removeAttribute("nickname");
 		
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//logoutPro
@@ -168,7 +101,7 @@ public class MemberController {
 		int result = memberDao.checkMember(id);
 		request.setAttribute("result", result);
 
-		return new ModelAndView("/vtFrame/vt_Confirm");		
+		return new ModelAndView("/vtFrame/processing/vt_Confirm");		
 
 		
 	}
@@ -184,7 +117,7 @@ public class MemberController {
 		int result = memberDao.nickcheckMember(nick);		
 		request.setAttribute("result", result);
 		
-		return new ModelAndView("/vtFrame/vt_Confirm");
+		return new ModelAndView("/vtFrame/processing/vt_Confirm");
 		
 	}
 
@@ -280,7 +213,7 @@ public class MemberController {
 		
 		
 		//inputform으로 바로
-		return new ModelAndView("vtFrame/vt_mailConfirmResult");
+		return new ModelAndView("vtFrame/processing/vt_mailConfirmResult");
 	}
 
 	@RequestMapping("/zipCheck")
@@ -303,6 +236,75 @@ public class MemberController {
 		return new ModelAndView("/vtFrame/vt_zipCheck");
 	}
 	
+	
+	@RequestMapping("/inputPro")
+	public ModelAndView inputPro
+	(HttpServletRequest request,HttpServletResponse response) throws Exception{		
+		//메인으로 돌아가야하므로 센터 컨텐트로 설정
+		request.setCharacterEncoding("utf-8");
+		
+		MemberDataBean mdto = new MemberDataBean();
+		
+		mdto.setAuthority_id(2);
+		mdto.setId(request.getParameter("id"));
+		mdto.setPasswd(request.getParameter("passwd"));
+		mdto.setName(request.getParameter("name"));
+		mdto.setNickname(request.getParameter("nickname"));
+				
+		String zipcode = null;
+		String zipcode1 = request.getParameter("zipcode1");
+		String zipcode2 = request.getParameter("zipcode2");
+		
+		if(!zipcode1.equals("") && !zipcode2.equals("")){
+			zipcode = zipcode1 + "-" + zipcode2;
+		}
+		mdto.setZipcode(zipcode);
+		
+		String address = null;
+		String adr = request.getParameter("adr");
+		String detail = request.getParameter("detail_adr");
+		
+		if(!adr.equals("") && !detail.equals("")){
+			address = adr + "|" + detail;
+		}
+		mdto.setAddress(address);
+	
+		String tel = null;
+		String tel1 = request.getParameter("tel1");
+		String tel2 = request.getParameter("tel2");
+		String tel3 = request.getParameter("tel3");
+		
+		if(!tel1.equals("")
+				&& !tel2.equals("") 
+				&& !tel3.equals("")){
+			tel = tel1 + "-" + tel2 + "-" + tel3;
+		}
+		
+		mdto.setPhone(tel);
+	
+		String email = null;
+		String email1 = request.getParameter("email1");
+		String email2 = request.getParameter("email2");
+		
+		if(!email1.equals("") && !email2.equals("")){
+			if(email2.equals("0")){
+				//직접입력
+				email = email1;
+			}
+			else{
+				//선택입력
+				email = email1 + "@" + email2;
+			}
+		}
+		
+		mdto.setEmail(email);
+		
+		int insertResult = memberDao.insertMember(mdto);
+		
+		request.setAttribute("insertResult", insertResult);
+		
+		return new ModelAndView("/vtFrame/processing/inputPro");
+	}//loginForm
 	
 	
 	

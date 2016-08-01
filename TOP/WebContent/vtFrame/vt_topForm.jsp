@@ -9,9 +9,6 @@
 		<script src = "${jquery}"></script>
 		<script src = "${script}vtFrame.js"></script>		
 		<link href = "${css}vt_topFormStyle.css" rel="stylesheet"	type="text/css">
-		<%-- 
-		<script src = "${script}vt_topForm.js"></script>
-		 --%>		
 	</head>
 	
 	<body>

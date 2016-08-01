@@ -216,7 +216,7 @@ public class BoardController {
 		request.setAttribute("pageNum", pageNum);
 		
 		
-		return new ModelAndView("/vt_board/vt_freeWritePro");
+		return new ModelAndView("/vt_board/processing/vt_freeWritePro");
 	}//vt_freeWritePro
 	
 	
@@ -262,7 +262,7 @@ public class BoardController {
 		request.setAttribute("result", result);
 		request.setAttribute("pageNum", pageNum);
 		
-		return new ModelAndView("/vt_board/vt_freeModifyPro");
+		return new ModelAndView("/vt_board/processing/vt_freeModifyPro");
 	}//vt_freeModifyForm
 	
 	@RequestMapping("/vt_freeDeletePro")
@@ -278,6 +278,6 @@ public class BoardController {
 		request.setAttribute("result", result);
 		request.setAttribute("pageNum", pageNum);
 		
-		return new ModelAndView("/vt_board/vt_freeDeletePro");
+		return new ModelAndView("/vt_board/processing/vt_freeDeletePro");
 	}//vt_freeModifyForm
 }	

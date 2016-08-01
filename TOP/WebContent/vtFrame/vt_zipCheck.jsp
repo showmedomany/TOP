@@ -8,14 +8,10 @@
 		<link href = "${css}vt_zipCheckFormStyle.css" rel = "stylesheet" type = "text/css">
 		<script src = "${script}vtFrame.js"></script>		
 		<script src = "${jquery}"></script>
-		<%-- 
-		<script src = "${script}vt_inputForm.js"></script>
-		 --%>
 	</head>
 	<body>
 		
-		<form method="post" name="zipCheckForm" action="zipCheck.do" onsubmit="return serchadr()">
-		
+		<form method="post" name="zipCheckForm" action="zipCheck.do" onsubmit="return checkadr()">		
 			<div class="vt_zipCheckForm_Frame"> 
 				<div class="vt_zipCheckForm_header">
 					우편번호 검색
@@ -26,8 +22,7 @@
 					</div>
 					<div class="vt_zipCheckForm_ser">
 						<input class = "input" type = "text" name = "inputarea" >
-						<input class = "inputbutton" type = "submit" value = "${str_zipCheckForm_zip_search}">
-						<!-- <input class = "inputbutton" type = "button" value = "검색" onclick = "search()"> -->
+						<input class = "inputbutton" type = "submit" value = "${str_zipCheckForm_zip_search}">						
 						<input class = "inputbutton" type = "button" value = "${str_zipCheckForm_zip_cancel}"
 											onclick = "self.close();">
 						

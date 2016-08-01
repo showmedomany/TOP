@@ -7,7 +7,6 @@
 	<link href = "${css}vt_FrameStyle.css" rel = "stylesheet" type = "text/css">
 	<head>	
 		<title>비주얼탑 홈페이지에 오신것을 환영합니다.</title>	
-		<%-- <script src = "${script}vtFrame.js"></script> --%>
 	</head>
 	<!-- 홈페이지 시작시 작은 채팅창 생성 -->	
 		<div id = "top" >

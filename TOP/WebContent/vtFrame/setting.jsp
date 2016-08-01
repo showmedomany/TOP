@@ -10,7 +10,7 @@
 <c:set var = "css" value = "/TOP/vtFrame/css/"/>
 <c:set var = "script" value = "/TOP/vtFrame/script/"/>
 <c:set var = "images" value = "/TOP/vtFrame/images/"/>
-<c:set var = "request" value = "/TOP/vtFrame/script/request.js"/>
+<c:set var = "request" value = "/TOP/request.js"/>
 <c:set var = "jquery" value = "/TOP/jquery-1.12.4.js"/>
 
 <!-- 탑메뉴 문자열 -->

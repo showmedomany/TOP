@@ -27,9 +27,12 @@
 		<mapper resource="myPage/myPage.xml"/>
 		<mapper resource="address/address.xml"/>
 		<mapper resource="chat/chatrq.xml"/>
-		<mapper resource="board/board.xml"/>
+		<mapper resource="board/board.xml"/>		
 		<mapper resource="administrator/admin.xml"/>
 		<mapper resource="administrator/adminNoticeBoard.xml"/>
+		
+		
+		
 	</mappers>
 	
 </configuration>

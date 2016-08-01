@@ -52,8 +52,7 @@
 }
 .main_wrap {
     position: relative;
-    float: right;
-    left: -700px;
+    float: left;
 }
 .menu_top {
     position: relative;

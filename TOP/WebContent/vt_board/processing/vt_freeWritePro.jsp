@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "setting.jsp" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 	<head>
@@ -18,7 +18,7 @@
 		<c:if test="${result ne 0 }">
 			
 			<c:if test="${pageNum > 0 }">			
-				<c:redirect url = "vt_community_free.do?pageNum=${pageNum }"/>
+				<c:redirect url = "vt_community_free.do"/>
 			</c:if>
 		</c:if>
 	</body>
