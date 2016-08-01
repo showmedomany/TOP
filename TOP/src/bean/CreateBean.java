@@ -7,6 +7,8 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import address.AddressDBBean;
 import address.AddressDao;
+import administrator.AdminDBBean;
+import administrator.AdminDao;
 import board.BoardDBBean;
 import board.BoardDao;
 import chat.RequestDBBean;
@@ -55,5 +57,9 @@ public class CreateBean {
 	public BoardDao boardDao(){		
 		return new BoardDBBean();
 
-	}	
+	}
+	@Bean
+	public AdminDao adminDao(){
+		return new AdminDBBean();
+	}
 }

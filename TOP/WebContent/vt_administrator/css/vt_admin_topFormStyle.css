@@ -11,6 +11,7 @@ body,th,td,input,select,textarea,button {font-size:12px;line-height:1.5;font-fam
 a {color:#333;text-decoration:none}
 a:active, a:hover {text-decoration:none}
 address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
+/*css 초기화끝*/
 
 a {
     color: #333;
@@ -24,9 +25,6 @@ a {
     margin: 0 auto;
     z-index: 999;
     position: relative;
-    border-bottom-style:ridge;
-    border-bottom-color: #6A84B7;
-    border-bottom-width: 0.8px;
 }
 .admin_top_header {
     width: 100%; 
@@ -51,6 +49,17 @@ a {
 
 
 
+
+/*네비게이션 색상*/
+
+.admin_top_navi_frame {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-bottom-style:ridge;
+    border-bottom-color: #6A84B7;
+    border-bottom-width: 0.8px;
+}
 
 
 /*네비게이션 전체 영역 제어*/

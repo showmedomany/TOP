@@ -11,8 +11,8 @@
 	<body>
 		회원정보<br>		
 		설명<br>
-		<form>
-			<table class="vt_inputForm_table" >
+		<form method="post" action="not" name="memberInfoView" onsubmit="return false">
+			<table>
 				<tr style ="border-top: 2px solid #D8D8D8">
 					<th>*회원아이디</th>
 					<td>${sessionScope.id }</td>

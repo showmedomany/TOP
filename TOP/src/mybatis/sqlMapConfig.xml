@@ -28,12 +28,8 @@
 		<mapper resource="address/address.xml"/>
 		<mapper resource="chat/chatrq.xml"/>
 		<mapper resource="board/board.xml"/>
-
-
-		<!-- DB쿼리 들어간 xml파일 경로
-		<mapper resource="member/member.xml"/>
-		
-		-->
+		<mapper resource="administrator/admin.xml"/>
+		<mapper resource="administrator/adminNoticeBoard.xml"/>
 	</mappers>
 	
 </configuration>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Admin">
+	<select id="insertFitnessUserSearchIDCheck" parameterType="String" resultType="int">
+		select count(*) from vt_members where id=#{searchMsg}	
+	</select>
+	<select id="insertFitnessUserSearchNickNameCheck" parameterType="String" resultType="int">
+		select count(*) from vt_members where nickname=#{searchMsg}	
+	</select>
+	<select id="insertFitnessUserSearchEmailCheck" parameterType="String" resultType="int">
+		select count(*) from vt_members where email=#{searchMsg}	
+	</select>
+
+	<select id="insertFitnessUserSearchID" parameterType="String" resultType="member.MemberDataBean">
+		select id from vt_members where id=#{searchMsg}	
+	</select>
+	
+	<select id="insertFitnessUserSearchNickName" parameterType="String" resultType="member.MemberDataBean">
+		select id from vt_members where nickname=#{searchMsg}		
+	</select>
+	
+	<select id="insertFitnessUserSearchEmail" parameterType="String" resultType="member.MemberDataBean">
+		select id from vt_members where email = #{searchMsg}
+	</select>
+	
+	<select id="getUserRegisterCheck" parameterType="String" resultType="int">
+		select count(*) from vt_register where id = #{userId}
+	</select>
+	
+	<select id="getUserRegister" parameterType="String" resultType="myPage.RegisterDataBean">
+		select * from vt_register where id = #{userId}
+	</select>
+	
+	<select id="getTrainerIdList"  resultType="String">
+		select trainer_id from vt_trainer
+	</select>
+</mapper>
