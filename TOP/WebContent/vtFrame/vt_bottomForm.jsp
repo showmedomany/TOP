@@ -7,7 +7,6 @@
 <html>
 	<head>
 		<link href="${css}vt_bottomFormStyle.css" rel="stylesheet"	type="text/css">
-	
 	</head>
 	<body>
 		<div class="bottomForm_wrap">

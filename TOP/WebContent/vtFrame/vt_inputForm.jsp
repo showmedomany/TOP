@@ -6,9 +6,11 @@
 <html>
 	<head>
 		<link href = "${css}vt_inputFormStyle.css" rel = "stylesheet" type = "text/css">
-		<script src = "${script}vt_inputForm.js"></script>
+		<script src = "${script}vtFrame.js"></script>
 		<script src = "${request}"></script>
-
+		<%-- 
+		<script src = "${script}vt_inputForm.js"></script>
+		 --%>
 	</head>
 	<body onload = "inputformfocus()">
 		<form method = "post" name = "inputform" action = "inputPro.do"

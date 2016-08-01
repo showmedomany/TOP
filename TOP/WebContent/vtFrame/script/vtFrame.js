@@ -1,24 +1,16 @@
-/**
- * 
- */
+/*									inputForm 관련						*/
 var msg_iderror = "아이디를 입력해주세요";
 var msg_idcheckerror = "사용할 수 없는 아이디입니다";
-
 var msg_passwderror = "비밀번호를 입력해주세요";
 var msg_passwdok = "비밀번호 확인";
 var msg_repasswderror = "비밀번호가 다릅니다";
 var msg_repasswd = "비밀번호를 확인해주세요";
-
 var msg_nameerror = "이름을 입력해주세요";
-
 var msg_nickerror = "닉네임을 입력해주세요";
 var msg_nickcheckerror = "사용할 수 없는 닉네임입니다";
-
 var msg_emailerror = "이메일을 입력해주세요";
 var msg_emailsenderror = "인증번호를 입력해주세요";
 var msg_emailsendcheckerror = "인증번호를 확인해주세요";
-
-
 var msg_emailerror = "이메일이 유효하지 않습니다";
 var msg_wait = "전송중";
 var msg_send = "전송완료";
@@ -27,7 +19,6 @@ var msg_emptyerror = "인증번호를 입력하세요.";
 var msg_wait = "전송중...";
 var msg_send = "전송 완료";
 var msg_ok = "인증 완료";
-//////////////////////////////////////////////////////////////////////////
 
 var request = null;
 var emailResult = document.getElementById("emailResult");
@@ -264,13 +255,14 @@ function emailcheck(){
 	}
 }
 
+/*안쓰는 느낌
 function loaded(){ 
     window.setTimeout(CloseMe, 0);
 }
 function CloseMe(){
     window.close();
 }
-
+*/
 
 
 function sumitCheckfn(){
@@ -317,3 +309,35 @@ function sumitCheckfn(){
 		return false;
 	}
 }
+
+
+
+
+
+
+/*									상단 jquery						*/
+$(document).ready(function(){ 
+	$(".top_navi_menu").hover(function() { //마우스를 topnav에 오버시
+		$(this).parent().find(".top_navi_subframe").slideDown('normal').show(); //subnav가 내려옴.
+		$(this).parent().hover(function() {  
+		}, function(){  
+			$(this).parent().find(".top_navi_subframe").slideUp('fast'); //subnav에서 마우스 벗어났을 시 원위치시킴  
+		});  
+	}); 
+});  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

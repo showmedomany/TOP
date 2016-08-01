@@ -6,8 +6,11 @@
 <html>
 	<head>
 		<link href = "${css}vt_zipCheckFormStyle.css" rel = "stylesheet" type = "text/css">
-		<script src = "${script}vt_inputForm.js"></script>
+		<script src = "${script}vtFrame.js"></script>		
 		<script src = "${jquery}"></script>
+		<%-- 
+		<script src = "${script}vt_inputForm.js"></script>
+		 --%>
 	</head>
 	<body>
 		

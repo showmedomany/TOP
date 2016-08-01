@@ -20,7 +20,7 @@
 				| <a href="myPageView.do?choice=3">회원정보</a>
 				| <a href="myPageView.do?choice=4">회원탈퇴</a> | 
 			</div>		
-			<jsp:include page="${myPageSuject }.jsp"></jsp:include>
+			<jsp:include page="${myPageSuject}.jsp"></jsp:include>
 		</div>
 	</body>
 </html>

@@ -4,9 +4,10 @@
 
 <html>
 	<head>
+		<script src = "${jquery}"></script>
 		<script src="${script}vt_centerContent.js" type="text/javascript"></script>
 		<link href="${css}vt_centerContentStyle.css" rel="stylesheet"	type="text/css">
-		<script src = "${jquery}"></script>
+		
 	</head>
 	<body>
 		<div class="centerContentframe">
