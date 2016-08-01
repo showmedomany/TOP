@@ -5,3 +5,7 @@ function checkdelete(){
 		location = "vt_freeDeletePro.do?pageNum="+content.pageNum.value+"&num="+content.num.value;
 	}
 }
+
+function logincheck(){
+	if()
+}
