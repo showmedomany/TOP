@@ -11,14 +11,12 @@
 		<select id="getArticles" parameterType="Map" resultType="board.BoardDataBean">
 			select num,id,subject,readcount,reg_date,content,r
 			from (select num,id,subject,readcount,reg_date,content,rownum r 
-			from (select * from vt_board)) where r &gt;= #{start} and r &lt;= #{end}
+			from (select * from vt_board order by num desc)
+			) where r &gt;= #{start} and r &lt;= #{end}
 		</select>
 		
 		<insert id="insertArticle" parameterType="board.BoardDataBean">
-			insert into board(num, writer, email, subject
-			, passwd, reg_date, ref, re_step, re_level, content) 
-			values(board_seq.NEXTVAL, 
-			#{writer}, #{email, jdbcType=VARCHAR}, #{subject}, #{passwd},
-			#{reg_date}, #{ref}, #{re_step}, #{re_level}, #{content})
+			insert into board(num, id, subject, reg_date, content) 
+			values(board_seq.NEXTVAL, #{id}, #{subject}, #{reg_date}, #{content})
 		</insert>
 </mapper>

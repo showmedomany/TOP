@@ -26,6 +26,7 @@
 								href="loginForm.do">${str_logintag}</a>
 							<a class="top_header_atag_font"
 								href="inputForm.do">${str_membership}</a>
+							
 						</c:if>
 						
 						<!-- 세션스코프의 권한 값이 관리자일때  -->

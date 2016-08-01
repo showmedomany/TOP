@@ -17,6 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 import board.BoardDao;
 import board.BoardDataBean;
 
+/**
+ * 핸들러들은 센터에 들어갈 각 기능의Frame폼과
+ * 각 기능의Frame폼 위에 올라갈 페이지jsp를 같이 vtFrame으로 보내야한다.
+ * */
+
 @Controller
 public class BoardController {
 	
@@ -45,24 +50,22 @@ public class BoardController {
 		String center = "/vt_board/vt_communityForm"; 
 		String board = "/vt_board/vt_freeboard";
 		
-		int pageSize = 5;
-		int pageBlock = 5;
+		int pageSize = 10;		//리스트에 보여질 게시글 갯수
+		int pageBlock = 5;		//게시판 블록의 최대수
 			
-		//글의 개수를 가져오는 변수
-		//진짜 db에 있는 글을 가져와 증가시켜라
+		
 		String pageNum = null;				//넘어오는 페이지
 				
 		int count = boardDao.getCount();			//글의 총 갯수
-		int currentPage = 0;				//현재 페이지
-		int start = 0;						//게시판에서 맨 윗글
-		int end = 0;						//게시판에서 맨 아랫글
-		int number = 0;						//게시판의 글 번호
-		
-		int pageCount = 0;					//페이지들의 총 갯수
-		int startPage = 0;					//밑에 표시될 페이지의 시작
-		int endPage = 0;					//밑에 표시될 페이지의 끝
+		int currentPage = 0;						//현재 페이지
+		int start = 0;								//게시판에서 맨 윗글
+		int end = 0;								//게시판에서 맨 아랫글
+		int number = 0;								//게시판의 글 번호		
+		int pageCount = 0;							//페이지들의 총 갯수
+		int startPage = 0;							//밑에 표시될 페이지의 시작
+		int endPage = 0;							//밑에 표시될 페이지의 끝
 	
-		pageNum = request.getParameter("pageNum");
+		pageNum = request.getParameter("pageNum");	//이 핸들러 호출한page번호
 		
 		if(pageNum == null){
 			pageNum = "1";
@@ -71,15 +74,16 @@ public class BoardController {
 		currentPage = Integer.parseInt(pageNum);		//받아온 페이지를 현재페이지로
 		
 		/*게시판의 시작글과 끝글*/
-		start = (currentPage - 1) * pageSize + 1;	// 5번 페이지 본다면 (5 - 1) * 10+1 => 41
-		end = start + pageSize - 1;					// (41 + 10) - 1 => 50;		
+		start = (currentPage - 1) * pageSize + 1;	// 5번 페이지 본다면 (5 - 1) * 10+1 => 41 1번페이지 (1-1)*10+1 = 1
+		end = start + pageSize - 1;					// (41 + 10) - 1 => 50;				 1+10 -1 = 10번
+		//1번부터 10번까지글을 1페이지에 보여줌
 
-		request.setAttribute("count", count);
-		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("count", count);		//글의 총 갯수
+		request.setAttribute("pageNum", pageNum);	//이핸들러를 호출한 page번호
+		request.setAttribute("currentPage", currentPage);	//현재페이지
 		
 		if(count != 0) {
-			//왼쪽에 나열될 글의 번호
+			//왼쪽에 나열될 글의 번호 
 			number = count - (currentPage -1) * pageSize;			
 			
 			/*페이지들의 총 갯수 */

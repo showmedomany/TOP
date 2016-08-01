@@ -77,9 +77,6 @@ CREATE TABLE vt_board
    subject varchar2(50) NOT NULL,
    readcount number NOT NULL,
    reg_date date NOT NULL,
-   ref_value number NOT NULL,
-   re_step number NOT NULL,
-   re_level number NOT NULL,
    content varchar2(4000) NOT NULL,
    PRIMARY KEY (num)
 );

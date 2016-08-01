@@ -4,12 +4,12 @@ import java.sql.Timestamp;
 
 public class BoardDataBean {
 
-	private int num;
-	private String id;
-	private String subject;
-	private int readcount;
-	private Timestamp reg_date;
-	private String content;
+	private int num;				//글번호
+	private String id;				//작성자 id
+	private String subject;			//제목
+	private int readcount;			//조회수
+	private Timestamp reg_date;		//작성일
+	private String content;			//내용
 	
 	
 	public int getNum() {

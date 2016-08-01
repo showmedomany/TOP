@@ -11,8 +11,7 @@ public class BoardDBBean implements BoardDao {
 	public int getCount(){
 		return SqlMapClient.getSession().selectOne("Board.getCount");
 	}	
-	public List<BoardDataBean> getArticles(Map<String, Integer> map){
-		
+	public List<BoardDataBean> getArticles(Map<String, Integer> map){		
 		return SqlMapClient.getSession().selectList("Board.getArticles", map);
 	}
 	@Override
@@ -22,8 +21,7 @@ public class BoardDBBean implements BoardDao {
 	}
 
 	@Override
-	public BoardDataBean getArticle(int num) {
-		
+	public BoardDataBean getArticle(int num) {		
 		return SqlMapClient.getSession().selectOne("Board.getArticle", num);
 	}
 

@@ -13,6 +13,7 @@
 			</div>
 			<table class="bd_top">
 				<tr>
+					<td class="bd_sub">글번호</td>
 					<td class="bd_sub">제목</td>
 					<td class="bd_wri">작성자</td>
 					<td class="bd_day">등록일</td>
@@ -27,7 +28,10 @@
 			</c:if>			
 			<c:if test="${count ne 0 }">
 				<c:forEach var = "dto" items="${list}">	
-					<tr>		
+					<tr>
+						<td align = "center">
+							${number} <c:set var = "number" value = "${number-1 }"/>
+						</td>		
 						<td align = "center">
 							${dto.getSubject() }
 						</td>
@@ -44,12 +48,35 @@
 					</tr>
 				</c:forEach>
 			</c:if>
-			<tr>
-				<td>
-					<input type = "button" value = "글쓰기" onclick = "freewrite()">
-				</td>
-			</tr>
+			
 		</table>
+		
+		<c:if test="${count>0 }">
+
+			<c:if test = "${startPage > pageBlock }">
+				<a href = "vt_community_free.do?pageNum=1">[◀◀]</a>
+				<a href = "vt_community_free.do?pageNum=${startPage-pageBlock}">[◀]</a>
+				
+			</c:if>
+			
+			<c:forEach var = "i" begin = "${startPage }" end = "${endPage }">
+			
+				<c:if test="${i eq currentPage }">
+					<span><b>[${i }]</b></span>
+				</c:if>
+				
+				<c:if test="${i ne currentPage }">
+					<a href = "vt_community_free.do?pageNum=${i}">[${i }]</a>
+				</c:if>
+				
+			</c:forEach>
+			
+			<c:if test = "${pageCount > endPage }">
+				<a href = "vt_community_free.do?pageNum=${startPage + pageBlock}">[▶]</a>
+				<a href = "vt_community_free.do?pageNum=${pageCount}">[▶▶]</a>
+			</c:if>
+				
+		</c:if>
 	</div>
 
 	
