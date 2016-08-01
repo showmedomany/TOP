@@ -31,6 +31,7 @@
 		<!-- 로그인 하면 세션에 ID랑 권한 넘김 -->
 		<c:if test="${loginCheck eq 1 }">
 			${sessionScope.memId = id}
+			${sessionScope.nick = nickname}
 			${sessionScope.authority_id = authority_id}
 			<c:redirect url = "main.do"/>
 		</c:if>

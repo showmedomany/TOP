@@ -9,7 +9,13 @@
 	</div>	
 	<div class="bd_wrap">
 			<div class="bd_btn">
-				글쓰기
+				<c:if test="${authority_id ne null }">
+					여기를 눌렀을때 권한 검사할건지 아니면 그냥 이렇게 할건지 고민
+					<a href = "vt_freeWriteForm.do?pageNum=${pageNum}">
+						글쓰기
+					</a>					
+				</c:if>
+				
 			</div>
 			<table class="bd_top">
 				<tr>
@@ -33,17 +39,19 @@
 							${number} <c:set var = "number" value = "${number-1 }"/>
 						</td>		
 						<td align = "center">
-							${dto.getSubject() }
+						<a href = "vt_freeContent.do?num=${dto.num}&pageNum=${pageNum}&number=${number+1}">							
+							${dto.getSubject()}
+						</a>
 						</td>
 						<td align = "center">
-							${dto.getId() }
+							${dto.nickname}
 						</td>
 						<td align = "center">
 							<fmt:formatDate value="${dto.reg_date}"
 								pattern = "yyyy-MM-dd HH:mm"/>							
 						</td>
 						<td align = "center">
-							${dto.getReadcount() }						
+							${dto.getReadcount()}						
 						</td>
 					</tr>
 				</c:forEach>
@@ -53,7 +61,7 @@
 		
 		<c:if test="${count>0 }">
 
-			<c:if test = "${startPage > pageBlock }">
+			<c:if test = "${startPage > pageBlock}">
 				<a href = "vt_community_free.do?pageNum=1">[◀◀]</a>
 				<a href = "vt_community_free.do?pageNum=${startPage-pageBlock}">[◀]</a>
 				

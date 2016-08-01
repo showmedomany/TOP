@@ -8,8 +8,7 @@ public interface BoardDao {
 	List<BoardDataBean> getArticles(Map<String, Integer> map);	
 	public int insertArticle(BoardDataBean dto);	
 	public BoardDataBean getArticle(int num);
-	public void addCount(int num);
-	public int check(int num, String passwd);
+	public void addCount(int num);	
 	public int modifyArticle(BoardDataBean dto);
-	public int deletArticle (int num);
+	public int deleteArticle (int num);
 }

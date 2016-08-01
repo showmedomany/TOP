@@ -74,8 +74,9 @@ CREATE TABLE vt_board
 (
    num number NOT NULL,
    id varchar2(15) NOT NULL,
+   nickname varchar2(30) NOT NULL,
    subject varchar2(50) NOT NULL,
-   readcount number NOT NULL,
+   readcount number,
    reg_date date NOT NULL,
    content varchar2(4000) NOT NULL,
    PRIMARY KEY (num)

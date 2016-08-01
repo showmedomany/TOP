@@ -9,14 +9,30 @@
 		</select>
 		
 		<select id="getArticles" parameterType="Map" resultType="board.BoardDataBean">
-			select num,id,subject,readcount,reg_date,content,r
-			from (select num,id,subject,readcount,reg_date,content,rownum r 
+			select num,id,nickname,subject,readcount,reg_date,content,r
+			from (select num,id,nickname,subject,readcount,reg_date,content,rownum r 
 			from (select * from vt_board order by num desc)
 			) where r &gt;= #{start} and r &lt;= #{end}
 		</select>
 		
+		<select id="getArticle" parameterType="int" resultType="board.BoardDataBean">
+			select * from vt_board where num =#{num}
+		</select>
+		
+		<update id="addCount" parameterType="int">
+			update vt_board set readcount = readcount+1 where num = #{num}
+		</update>
+		
 		<insert id="insertArticle" parameterType="board.BoardDataBean">
-			insert into board(num, id, subject, reg_date, content) 
-			values(board_seq.NEXTVAL, #{id}, #{subject}, #{reg_date}, #{content})
+			insert into vt_board(num, id, nickname, subject, readcount, reg_date, content) 
+			values(vt_board_seq.NEXTVAL, #{id}, #{nickname}, #{subject}, #{readcount}, #{reg_date}, #{content})
 		</insert>
+				
+		<update id="modifyArticle" parameterType="board.BoardDataBean">
+			update vt_board set subject=#{subject}, content=#{content}, reg_date=#{reg_date} where num = #{num}
+		</update>
+		
+		<delete id="deleteArticle" parameterType="int">
+			delete from vt_board where num = #{num}
+		</delete>
 </mapper>

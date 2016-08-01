@@ -9,5 +9,6 @@ public interface MemberDao {
 	public int insertMember(MemberDataBean mdto);		//회원의 Data를 토대로 회원가입
 	//public int modifyMember(MemberDataBean mdto);		//회원의 Data를 토대로 회원정보수정
 	public int checkEmail(String email);
+	public String getNick(String id);
 	
 }

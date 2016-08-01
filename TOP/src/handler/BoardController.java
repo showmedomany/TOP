@@ -75,12 +75,14 @@ public class BoardController {
 		
 		/*게시판의 시작글과 끝글*/
 		start = (currentPage - 1) * pageSize + 1;	// 5번 페이지 본다면 (5 - 1) * 10+1 => 41 1번페이지 (1-1)*10+1 = 1
+		// 2*11 22
+		//22 + 10 32
+		
+		// 2-1 * 10+1 = start= 11
+		// 11+ 10 = 21 
 		end = start + pageSize - 1;					// (41 + 10) - 1 => 50;				 1+10 -1 = 10번
 		//1번부터 10번까지글을 1페이지에 보여줌
-
-		request.setAttribute("count", count);		//글의 총 갯수
-		request.setAttribute("pageNum", pageNum);	//이핸들러를 호출한 page번호
-		request.setAttribute("currentPage", currentPage);	//현재페이지
+		
 		
 		if(count != 0) {
 			//왼쪽에 나열될 글의 번호 
@@ -120,6 +122,11 @@ public class BoardController {
 			
 			request.setAttribute("list", list);
 		}
+		
+		request.setAttribute("count", count);		//글의 총 갯수
+		request.setAttribute("pageNum", pageNum);	//이핸들러를 호출한 page번호
+		request.setAttribute("currentPage", currentPage);	//현재페이지
+		
 		request.setAttribute("center", center);
 		request.setAttribute("board", board);
 		return new ModelAndView("vtFrame/vtFrame");
@@ -127,136 +134,150 @@ public class BoardController {
 	
 	
 	
-	@RequestMapping("/writeForm")
-	public ModelAndView writeForm
-	(HttpServletRequest request, HttpServletResponse response) {
-
-		int num = 0;
-		int ref = 0;
-		int re_step = 0;
-		int re_level = 0;
+	//자유게시판 게시글 읽는 핸들러
+	@RequestMapping("/vt_freeContent")//메뉴탭에서 선택한경우
+	public ModelAndView vt_freeContent(HttpServletRequest request, 
+			HttpServletResponse response)throws Exception{
 		
-		String pageNum =request.getParameter("pageNum");
-		if( pageNum == null){
+		
+		int num = Integer.parseInt(request.getParameter("num")); //디비속 글번호
+		
+		
+		String pageNum = request.getParameter("pageNum");		//현재페이지
+		String number = request.getParameter("number");			//화면의 표시될 글번호
+		
+		BoardDataBean dto = boardDao.getArticle(num);			//디비에서 해당글의 내용을 가져와서
+		
+		
+		request.setAttribute("number", number);					//페이지로 넘김
+		request.setAttribute("pageNum", pageNum);				//페이지로 넘김
+		request.setAttribute("dto", dto);						//내용도 넘김
+		
+		if(!dto.getId().equals(
+				(String)request.getSession().getAttribute("memId"))){
+			boardDao.addCount(num);
+		}
+		
+		String center = "/vt_board/vt_communityForm"; 
+		String board = "/vt_board/vt_freeContent";
+	
+		request.setAttribute("center", center);
+		request.setAttribute("board", board);
+		
+		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//vt_freeContent
+	
+	//자유게시판 게시글 읽는 핸들러
+	@RequestMapping("/vt_freeWriteForm")
+	public ModelAndView vt_freeWriteForm(HttpServletRequest request, 
+			HttpServletResponse response)throws Exception{
+		
+		
+		/*int num = 0;*/
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null){
 			pageNum = "1";
 		}
-			
-		if(request.getParameter("num") != null){
-			//답변글 - content.jsp에서 이동
-			//넘어온 값을 써야함
-			num = Integer.parseInt(request.getParameter("num"));
-			ref = Integer.parseInt(request.getParameter("ref"));
-			re_step = Integer.parseInt(request.getParameter("re_step"));
-			re_level = Integer.parseInt(request.getParameter("re_level"));	
-			pageNum = request.getParameter("pageNum");			
-			
-		}
+					
+		String center = "/vt_board/vt_communityForm"; 
+		String board = "/vt_board/vt_freeWriteForm";
 		
-		request.setAttribute("num", num);
-		request.setAttribute("ref", ref);
-		request.setAttribute("re_step", re_step);
-		request.setAttribute("re_level", re_level);
+		
+		/*request.setAttribute("num", num);*/
 		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("center", center);
+		request.setAttribute("board", board);
 		
 		
-		return new ModelAndView("/vt_board/vt_writeForm");
-	} // writeForm
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//vt_mainboard
 	
 	
-	@RequestMapping("/deleteForm")
-	public ModelAndView deleteForm
-	(HttpServletRequest request,HttpServletResponse response)  {
-		
-		int num = Integer.parseInt(request.getParameter("num"));
-		String pageNum = request.getParameter("pageNum");
-
-		request.setAttribute("num", num);
-		request.setAttribute("pageNum", pageNum);
-		
-		return new ModelAndView("/vt_board/vt_deleteForm");
-	} // deleteForm
-	
-	@RequestMapping("/writePro")
-	public ModelAndView writePro
-	(HttpServletRequest request,HttpServletResponse response) throws Exception {
-		
+	//게시판 글쓰기 처리핸들러
+	@RequestMapping("/vt_freeWritePro")
+	public ModelAndView vt_freeWritePro(HttpServletRequest request, 
+			HttpServletResponse response)throws Exception{
 		request.setCharacterEncoding("utf-8");
+		
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
-			
-		BoardDataBean dto = new BoardDataBean();
+		BoardDataBean bdto = new BoardDataBean();
 		
+		bdto.setId(request.getParameter("id"));
+		bdto.setNickname(request.getParameter("nickname"));
+		bdto.setSubject(request.getParameter("subject"));
+		bdto.setReadcount(0);
+		bdto.setContent(request.getParameter("content"));
+		bdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
-		
-	/*	dto.setNum(Integer.parseInt(request.getParameter("num")));		
-		dto.setId(id);(request.getParameter("writer"));
-		dto.setEmail(request.getParameter("email"));
-		dto.setSubject(request.getParameter("subject"));
-		dto.setContent(request.getParameter("content"));
-		dto.setPasswd(request.getParameter("passwd"));*/
-		
-		//<!-- num ref re_step re_level -->
-		//<!-- writer email subject content passwd -->
-
-		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
-		
-		int result = boardDao.insertArticle(dto);
+		int result = boardDao.insertArticle(bdto);
 		
 		request.setAttribute("result", result);
 		request.setAttribute("pageNum", pageNum);
-		return new ModelAndView("/vt_board/vt_writePro");
-	}
+		
+		
+		return new ModelAndView("/vt_board/vt_freeWritePro");
+	}//vt_freeWritePro
 	
 	
-	@RequestMapping("/deletePro")
-	public ModelAndView deletePro(HttpServletRequest request, 
-			HttpServletResponse response) throws Exception {
+	//수정 핸들러
+	@RequestMapping("/vt_freeModifyForm")
+	public ModelAndView vt_freeModifyForm(HttpServletRequest request, 
+			HttpServletResponse response)throws Exception{
+		//해당 글의 번호를 받아와 가져온다.
+		int num = Integer.parseInt(request.getParameter("num"));
+		String pageNum = request.getParameter("pageNum");
+		
+		BoardDataBean bdto = boardDao.getArticle(num);
+				
+		String center = "/vt_board/vt_communityForm"; 
+		String board = "/vt_board/vt_freeModifyForm";
+		
+		request.setAttribute("bdto", bdto);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("num", num);
+		request.setAttribute("center", center);
+		request.setAttribute("board", board);
+		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//vt_freeModifyForm
+	
+	//수정 핸들러
+	@RequestMapping("/vt_freeModifyPro")
+	public ModelAndView vt_freeModifyPro(HttpServletRequest request, 
+			HttpServletResponse response)throws Exception{		
+		request.setCharacterEncoding("utf-8");
+		
+		BoardDataBean bdto = new BoardDataBean();
+		
+		bdto.setNum(Integer.parseInt(request.getParameter("num")));
+		bdto.setSubject(request.getParameter("subject"));
+		bdto.setContent(request.getParameter("content"));
+		bdto.setReg_date(new Timestamp(System.currentTimeMillis()));
+		
+		String pageNum = request.getParameter("pageNum");
+		
+		int result = boardDao.modifyArticle(bdto);
+		
+		request.setAttribute("result", result);
+		request.setAttribute("pageNum", pageNum);
+		
+		return new ModelAndView("/vt_board/vt_freeModifyPro");
+	}//vt_freeModifyForm
+	
+	@RequestMapping("/vt_freeDeletePro")
+	public ModelAndView vt_freeDeletePro(HttpServletRequest request, 
+			HttpServletResponse response){		
 		
 		
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
-		String passwd = request.getParameter("passwd");
-	
 		
-		int resultCheck = boardDao.check(num, passwd);
+		int result = boardDao.deleteArticle(num);
 		
-		if(resultCheck != 0){
-			int result = boardDao.deletArticle(num);
-			
-			request.setAttribute("result", result);
-			request.setAttribute("pageNum", pageNum);
-			
-		}
-		
-		request.setAttribute("resultCheck", resultCheck);
-		
-		return new ModelAndView("/vt_board/vt_deletePro");
-	}
-	
-	
-	@RequestMapping("/modifyPro")
-	public ModelAndView modifyPro(HttpServletRequest request, 
-			HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
-	
-		
-		//<!-- num, email, subject, content, passwd 받을 수 있다. -->
-		BoardDataBean dto = new BoardDataBean();
-		
-	/*	dto.setNum(Integer.parseInt(request.getParameter("num")));
-		dto.setEmail(request.getParameter("email"));
-		dto.setSubject(request.getParameter("subject"));
-		dto.setContent(request.getParameter("content"));
-		dto.setPasswd(request.getParameter("passwd"));*/
-	
-		String pageNum = request.getParameter("pageNum");	
-	
-		
-		int result = boardDao.modifyArticle(dto);
-		
-		
-		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("result", result);
+		request.setAttribute("pageNum", pageNum);
 		
-		return new ModelAndView("/vt_board/vt_modifyPro");
-	}
+		return new ModelAndView("/vt_board/vt_freeDeletePro");
+	}//vt_freeModifyForm
 }	

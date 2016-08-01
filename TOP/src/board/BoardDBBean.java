@@ -3,6 +3,8 @@ package board;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.jdbc.SQL;
+
 import mybatis.SqlMapClient;
 
 public class BoardDBBean implements BoardDao {
@@ -26,46 +28,22 @@ public class BoardDBBean implements BoardDao {
 	}
 
 	@Override
-	public void addCount(int num) {
-		
+	public void addCount(int num) {		
 		 SqlMapClient.getSession().update("Board.addCount",num);
 	}
-
-	@Override
-	public int check(int num, String passwd) {
-		
-		return 0;
-	}
+	
 
 	@Override
 	public int modifyArticle(BoardDataBean dto) {
 		
-		return 0;
+		return SqlMapClient.getSession().update("Board.modifyArticle",dto);
 	}
 
 	
 	@Override
-	public int deletArticle(int num) {
-			int result = 0;
-		
-		BoardDataBean dto = getArticle(num);
-		
-		int count = SqlMapClient.getSession().selectOne("Board.replyCheck",dto);	
-		
-		if(count!=0){
-			//답글이 있으므로 삭제 안됨
-			result = -1;
-		}
-		else{
-			//답글이 없으므로 삭제 가능
+	public int deleteArticle(int num) {		
 			
-			SqlMapClient.getSession().update("Board.deleteReply", dto);
-			
-						
-			
-			result = SqlMapClient.getSession().delete("Board.deleteArticle", num);		
-		}		
-		return result;
+		return SqlMapClient.getSession().delete("Board.deleteArticle", num);
 		
 	}
 }

@@ -47,6 +47,12 @@ public class MemberDBBean implements MemberDao {
 		MemberDataBean mdto = getMember(id);
 		return mdto.getAuthority_id();
 	}
+	
+	@Override
+	public String getNick(String id) {		
+		MemberDataBean mdto = getMember(id);
+		return mdto.getNickname();
+	}
 
 	@Override
 	public int insertMember(MemberDataBean mdto) {		

@@ -56,9 +56,14 @@ public class MemberController {
 		
 		int loginCheck = memberDao.loginMember(id, passwd);
 		
-		if(loginCheck == 1){			
+		if(loginCheck == 1){	
 			int authority_id = memberDao.getAuthority_id(id);
-			request.setAttribute("authority_id", authority_id);			
+			
+			String nickname = memberDao.getNick(id);
+			//닉네임도 넘겨라
+			
+			request.setAttribute("authority_id", authority_id);
+			request.setAttribute("nickname", nickname);
 		}
 		//loginMember메소드 사용
 		//getMember메소드 사용해서 권한 저장
