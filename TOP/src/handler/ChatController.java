@@ -16,6 +16,7 @@ public class ChatController {
 		//아이디와 아이피를 받아옴
 		
 		
+		
 		return new ModelAndView("/vt_chat/vt_memberchat");
 	}//logoutPro
 }
