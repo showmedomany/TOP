@@ -4,8 +4,8 @@
 <html>
 	<head>
 		<script src = "${jquery}"></script>
-		<script src = "${request}" type="text/javascript"></script>
-		<script src="${script}vt_memberchat.js" type="text/javascript"></script>
+		<script src = "${request}"></script>
+		<script src="${script}vt_memberchat.js"></script>
 		
 	</head>
 	<body>		

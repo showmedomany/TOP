@@ -3,5 +3,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Chat">
+	<select id="checkIp" parameterType="String" resultType="int">
+		select count(*) from vt_request
+	</select>
 	
+	<insert id="insertRequest" parameterType="chat.RequestDataBean">
+		insert into vt_request(ip, id, response) values(#{ip}, #{id}, #{response})
+	</insert>
+	
+	<insert id="insertChat" parameterType="chat.ChatDataBean">
+		insert into vt_request(num, ip, content, id) values(vt_chatting_seq.NEXTVAL,#{ip}, #{response}, #{id})
+	</insert>
+	
+	<select id="getChat" parameterType="String" resultType="chat.ChatDataBean">
+		select * from vt_request where ip = #{ip}
+	</select>
 </mapper>
