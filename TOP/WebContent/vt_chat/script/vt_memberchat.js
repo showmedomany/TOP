@@ -13,12 +13,15 @@ $(
 
 function sendmsg(){
 	//여기서는 추가로 채팅입력메세지를 보내야함
-	var params = "ip="+chatForm.ip.value
+	if(chatForm.chatinput.value){
+		var params = "ip="+chatForm.ip.value
 				+"&id="+chatForm.id.value
-				+"&chatting="+chatForm.chatinput.value;
+				+"&content="+chatForm.chatinput.value;
+		
+		request = new Request(sendrequest, "memberRequestChat.do", "POST", params);	
+		request.sendRequest(); 
+	}
 	
-	request = new Request(sendrequest, "requestchat.do", "POST", params);	
-	request.sendRequest(); 
 }
 
 function sendrequest(){
