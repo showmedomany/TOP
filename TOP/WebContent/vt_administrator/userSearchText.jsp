@@ -5,7 +5,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!-- form 은 div밖에 있음 -->
-<input type="hidden" name="leapYear" value="${leapYear}">	
+<input type="hidden" name="start_leapYear" value="${start_leapYear}">
+<input type="hidden" name="end_leapYear" value="${end_leapYear}">		
 <c:if test="${result==0}">
 	검색한 결과 등록된 회원이 없습니다.	
 </c:if>
@@ -14,8 +15,6 @@
 	ID : ${memberData.id}<br>	
 	test_date : ${registerData.start_date}<br>
 	<c:if test="${resultRegister!=0}">
-		<input type="button" value="수정 및 저장">
-		
 		<table>			
 			<tr>
 				<th>피트니스 번호</th>
@@ -23,15 +22,15 @@
 			</tr>
 			<tr>
 				<th>피트니스 기간</th>
-				<td><input type="text" value="${registerData.exp_date}">개월</td>
+				<td><input type="text" name="exp_date" value="${registerData.exp_date}">개월</td>
 				
 			</tr>
 			<tr>
 				
 				<th>피트니스 시작일</th>				
 				<td>				
-					<!-- year -->					
-					<select size="1" name="selectYear" onchange="leapYearCheck()">					
+					<!-- start_year -->					
+					<select size="1" name="selectStartYear" onchange="leapYearCheck_start()">					
 						<c:forEach var="i" begin="${start_year-3}" end="${start_year+17}" step="1">
 							<c:if test="${start_year==i}">
 								<c:if test="${i lt 10}">
@@ -52,8 +51,8 @@
 						</c:forEach>
 					</select>
 					
-					<!-- month  vt_fitnessInsert.js 에 함수 있음 -->						
-					<select size="1" name="selectMonth" onchange="monthDataCheck(${leapYear})">
+					<!-- start_month  vt_fitnessInsert.js 에 함수 있음 -->						
+					<select size="1" name="selectStartMonth" onchange="monthDataCheck_start()">
 						<c:forEach var="i" begin="1" end="12" step="1">
 							<c:if test="${start_month==i}">
 								<c:if test="${i lt 10}">										
@@ -73,16 +72,16 @@
 							</c:if>
 						</c:forEach>
 					</select>
-					<!-- day -->														
-					<div id="selectDay" style="float: right; margin-top: 1px">				
+					<!-- start_day -->														
+					<div id="selectStartDay" style="float: right; margin-top: 1px">				
 						<select size="1">
 							<c:forEach var="i" begin="1" end="12" step="1">
 								<c:if test="${start_month==i}">
 									<c:if test="${i==2}">
-										<c:if test="${leapYear==true}">
+										<c:if test="${start_leapYear==true}">
 											<c:set var="day" value="29"/>
 										</c:if>
-										<c:if test="${leapYear==false}">											
+										<c:if test="${start_leapYear==false}">											
 											<c:set var="day" value="28"/>
 										</c:if>
 									</c:if>
@@ -108,7 +107,84 @@
 			</tr>			
 			<tr>
 				<th>피트니스 종료일</th>
-				<td><input type="text" value="${registerData.end_date}"></td>
+				<td>
+				
+				
+					<!-- end_year -->					
+					<select size="1" name="selectEndYear" onchange="leapYearCheck_end()">					
+						<c:forEach var="i" begin="${end_year-3}" end="${end_year+17}" step="1">
+							<c:if test="${end_year==i}">
+								<c:if test="${i lt 10}">
+									<option value="${i}" selected="selected">${i}년</option>
+								</c:if>
+								<c:if test="${i gt 9}">
+									<option value="${i}" selected="selected">${i}년</option>
+								</c:if>
+							</c:if>
+							<c:if test="${end_year!=i}">
+								<c:if test="${i lt 10}">
+									<option value="${i}">${i}년</option>
+								</c:if>
+								<c:if test="${i gt 9}">
+									<option value="${i}">${i}년</option>
+								</c:if>
+							</c:if>
+						</c:forEach>
+					</select>
+					
+					<!-- end_month  vt_fitnessInsert.js 에 함수 있음 -->						
+					<select size="1" name="selectEndMonth" onchange="monthDataCheck_end()">
+						<c:forEach var="i" begin="1" end="12" step="1">
+							<c:if test="${end_month==i}">
+								<c:if test="${i lt 10}">										
+									<option value="${i}" selected="selected">${i}월</option>
+								</c:if>
+								<c:if test="${i gt 9}">										
+									<option value="${i}" selected="selected">${i}월</option>
+								</c:if>
+							</c:if>
+							<c:if test="${end_month!=i}">
+								<c:if test="${i lt 10}">										
+									<option value="${i}">${i}월</option>
+								</c:if>
+								<c:if test="${i gt 9}">									
+									<option value="${i}">${i}월</option>
+								</c:if>
+							</c:if>
+						</c:forEach>
+					</select>
+					<!-- end_day -->														
+					<div id="selectEndDay" style="float: right; margin-top: 1px">				
+						<select size="1">
+							<c:forEach var="i" begin="1" end="12" step="1">
+								<c:if test="${end_month==i}">
+									<c:if test="${i==2}">
+										<c:if test="${end_leapYear==true}">
+											<c:set var="day" value="29"/>
+										</c:if>
+										<c:if test="${end_leapYear==false}">											
+											<c:set var="day" value="28"/>
+										</c:if>
+									</c:if>
+									<c:if test="${i==1 or i==3 or i==5 or i==7 or i==8 or i==12}">
+										<c:set var="day" value="31"/>
+									</c:if>
+									<c:if test="${i==4 or i==6 or i==9 or i==10 or i==11 }">
+										<c:set var="day" value="30"/>
+									</c:if>
+								</c:if>														
+							</c:forEach>
+							<c:forEach var="i" begin="1" end="${day}" step="1">
+								<c:if test="${end_day==i}">		
+									<option value="${i}" selected="selected">${i}일</option>
+								</c:if>
+								<c:if test="${end_day!=i}">
+									<option value="${i}">${i}일</option>									
+								</c:if>
+							</c:forEach>
+						</select>
+					</div>				
+				</td>
 			</tr>
 			<tr>
 				<th>GX</th>
@@ -158,18 +234,12 @@
 					</select>
 				</td>
 			</tr>
-			
-		
+			<tr>
+				<td>
+					<input type="button" value="수정 및 저장">
+				</td>
+			</tr>		
 		</table>
-	
-		
-	
-		
-		
-		
-		
-		
-		
 	</c:if>
 	<c:if test="${resultRegister==0}">
 		<br>해당 회원은 피트니스를 기입하지 않았습니다<br>

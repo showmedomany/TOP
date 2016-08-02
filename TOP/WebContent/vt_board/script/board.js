@@ -40,6 +40,41 @@ function freeModifyFocus(){
 }
 
 
+/* 공지사항   writeForm 유효성 검사*/
+function noticeBoardWriteCheck(){
+	var writeFormCheckDiv = document.getElementById("writeFormCheckDiv");
+	if(!NBWriteForm.subject.value){
+		NBWriteForm.subject.focus();
+		writeFormCheckDiv.innerHTML = "제목을 입력하세요."
+		return false;
+	}else if(!NBWriteForm.content.value){        
+		NBWriteForm.content.focus();
+		writeFormCheckDiv.innerHTML = "내용을 입력하세요."
+		return false;
+	}
+}
+/* 공지사항  modifyForm 유효성 검사*/
+function noticeBoardModifyCheck(){
+	var modifyFormCheckDiv = document.getElementById("modifyFormCheckDiv");
+	if(!NBModifyForm.subject.value){
+		NBModifyForm.subject.focus();
+		modifyFormCheckDiv.innerHTML = "제목을 입력하세요."
+		return false;
+	}else if(!NBModifyForm.content.value){        
+		NBModifyForm.content.focus();
+		modifyFormCheckDiv.innerHTML = "내용을 입력하세요."
+		return false;
+	}
+}
+/*공지사항 삭제 여부*/
+function isDeleteData(num, pageNum){	
+	if (confirm("정말 삭제하시겠습니까?")){
+		location.href = "noticeBoardDeletePro.do?num="+num+"&pageNum="+pageNum;
+	}else{
+		
+	}	
+}
+
 
 
 

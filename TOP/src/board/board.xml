@@ -35,4 +35,31 @@
 		<delete id="deleteArticle" parameterType="int">
 			delete from vt_board where num = #{num}
 		</delete>
+		
+		<!-- 공지사항 -->
+		<select id="getNoticeArticleCount" resultType="int">
+			select count(*) from vt_notice_board
+		</select>
+		<select id="getNoticeBoardList" parameterType="Map" resultType="board.NoticeBoardDataBean">
+			select num, id, subject, reg_date, readcount, r from 
+			(select num, id, subject, reg_date, readcount, rownum r from 
+			(select num, id, subject, reg_date, readcount from vt_notice_board order by num desc) order by num desc)
+			 where r &gt;= #{start} and r &lt;= #{end}
+		</select>	
+		<update id="setNoticeReadcountPlus" parameterType="int">
+			update vt_notice_board set readcount = readcount+1 where num = #{num}
+		</update>	
+		<select id="getNoticeArticle" parameterType="int" resultType="board.NoticeBoardDataBean">
+			select * from vt_notice_board where num = #{num}
+		</select>	
+		<insert id="insertNoticeArticle" parameterType="Map">		
+			insert into vt_notice_board values(vt_notice_board_seq.nextval, #{id}, #{subject}, 0, sysdate, #{content})
+		</insert> 	
+		<update id="updateNoticeArticle" parameterType="board.NoticeBoardDataBean">
+			update vt_notice_board set subject = #{subject}, content = #{content} where num = #{num}		
+		</update>	
+		<delete id="deleteNoticeArticle" parameterType="int">
+			delete from vt_notice_board where num=#{num}
+		</delete>	
+		
 </mapper>

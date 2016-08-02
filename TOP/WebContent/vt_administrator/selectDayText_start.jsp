@@ -5,10 +5,10 @@
 	<c:forEach var="i" begin="1" end="12" step="1">
 		<c:if test="${start_month==i}">
 			<c:if test="${i==2}">
-				<c:if test="${leapYear==true}">
+				<c:if test="${start_leapYear==true}">
 					<c:set var="day" value="29"/>
 				</c:if>
-				<c:if test="${leapYear==false}">											
+				<c:if test="${start_leapYear==false}">											
 					<c:set var="day" value="28"/>
 				</c:if>
 			</c:if>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %> 
-<script src="${script}vt_noticeBoardContent.js" type="text/javascript"></script>
+<script src="/TOP/vt_board/script/board.js" type="text/javascript"></script>
 
 <body>
 	<form>
@@ -16,7 +16,7 @@
 				<th>제목</th>
 				<td>${noticeBoardData.subject }</td>			
 				<th>조회수</th>
-				<td>${noticeBoardData.readcount }</td>
+				<td>${noticeBoardData.readcount+1 }</td>
 			</tr>
 			<tr>
 				<th>내용</th>
@@ -43,6 +43,7 @@
 </body> 
 
 <br>
+<!-- 게시판 LIST 이어붙히기 -->
 <jsp:include page="vt_noticeboard.jsp" flush="false"></jsp:include>	
 
 
