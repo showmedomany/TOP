@@ -39,8 +39,8 @@
 					</div>
 					<div class="vt_info_menu_wrap_sub">
 							<p class="vt_info_menu_wrap_sub_sub">커뮤니티</p>
-							<p class="sub" onclick="location = 'noticeBoard.do'">> 공지사항 게시판</p>
-							<p class="sub" onclick="location = 'vt_community_free.do'">> 자유게시판</p>
+							<p class="sub" onclick="location = 'vt_noticeboard.do'">> 공지사항 게시판</p>
+							<p class="sub" onclick="location = 'vt_freeboard.do'">> 자유게시판</p>
 							<p class="sub" onclick="location = 'vt_FAQ.do'">> FAQ</p>
 					</div>
 				</div>

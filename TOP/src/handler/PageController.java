@@ -129,7 +129,7 @@ public class PageController {
 			HttpServletResponse response){
 		
 		String center = "/vtFrame/vt_sideMenuForm"; 
-		String menu = "/vt_trinfo/vt_gxinfo";
+		String menu = "/vt_trinfo/vt_pttrinfo";
 		String word = "/vt_trinfo/word/pttr";
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
@@ -151,5 +151,46 @@ public class PageController {
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//vt_gxtrinfo
 	//트레이너 소개 끝
+	//커뮤니티 시작
+	@RequestMapping("/vt_freeboard")
+	public ModelAndView vt_freeboard(HttpServletRequest request, 
+			HttpServletResponse response){
+		
+		String center = "/vtFrame/vt_sideMenuForm"; 
+		String menu = "/vt_board/vt_freeboard";
+		String word = "/vt_board/word/free";
+		request.setAttribute("center", center);
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//vt_freeboard
+	@RequestMapping("/vt_noticeboard")
+	public ModelAndView vt_noticeboard(HttpServletRequest request, 
+			HttpServletResponse response){
+		
+		String center = "/vtFrame/vt_sideMenuForm"; 
+		String menu = "/vt_board/vt_noticeboard";
+		String word = "/vt_board/word/notice";
+		request.setAttribute("center", center);
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//vt_noticeboard
+	@RequestMapping("/vt_FAQ")
+	public ModelAndView vt_FAQ(HttpServletRequest request, 
+			HttpServletResponse response){
+		
+		String center = "/vtFrame/vt_sideMenuForm"; 
+		String menu = "/vt_board/vt_FAQ";
+		String word = "/vt_board/word/FNQ";
+		request.setAttribute("center", center);
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}//vt_FAQ
+	//커뮤니티 끝
 }
 
