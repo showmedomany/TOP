@@ -4,7 +4,28 @@
 }
 .trinfo_name{
 	font-size: 30px;
-	margin:50px 0;
+	margin:0px 0px;
+}
+.say{
+	width: inherit;
+    height: 55px;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+}
+.say1{
+	height: inherit;
+	position: relative;
+	float: left;
+	font-size: 20px;
+	color:pink;
+}
+.say2{
+	height: inherit;
+	position: relative;
+	float: left;
+	font-size: 18px;
+	margin:0px 10px;
 }
 .img{
 	width: 380px;
@@ -12,71 +33,65 @@
     position: relative;
     float: left;
 }
-.name{
-	position: relative;
-    width: 459px;
-    float: right;
-    height: 100px;
-}
-.name1{
-	position: relative;
-    float: left;
-    width: 200px;
-    height: inherit;
-    text-align: center;
-    font-size: 42px;
-}
-.name2{
-	position: relative;
-    float: left;
-    width: 165px;
-    height: inherit;
-    text-align: center;
-    font-size: 43px;
-}
-.name3{
-	    position: relative;
-    float: left;
-    width: 86px;
-    height: inherit;
-    text-align: center;
-    font-size: 31px;
-    top: 20;
-    color: blue;
-}
 .cur {
     position: relative;
     float: right;
     width: 452px;
-    height: 491px;
+    height: 600px;
     text-align: center;
     font-size: 20px;
-    border: blue groove 4px;
-    border-right: black groove 2px;
-    border-left: black groove 2px;
+    top: 100px;
 }
-.position1{
+.position{
 	width: inherit;
-    height: 600px;
-    margin: 90px 0;
+    height: 700px;
+    margin: 45px 0;
     position: relative;
+    background: #f3f3f3;
 }
-.position2{
-	width: inherit;
-    height: 600px;
-    margin: 90px 0;
+.img_position{
+	position: relative;
+    top: 100px;
+}
+.name{
+	width: 373px;
+    height: 9%;
+    float: left;
     position: relative;
+    margin: 0 79px;
 }
-.position3{
-	width: inherit;
-    height: 600px;
-    margin: 90px 0;
+.cur_content{
+	width: 373px;
+    height: 89%;
+    float: left;
     position: relative;
+    margin: 11px 78px;
+    border-style: double;
 }
-.position4{
-	width: inherit;
-    height: 600px;
-    margin: 90px 0;
-    position: relative;
+.name_div{
+	float: left;
+    width: 284px;
+    height: 54px;
+    border-bottom-style: groove;
+    border-bottom-right-radius: 10%;
 }
-
+.p_name{
+	position: relative;
+    float: left;
+    vertical-align: middle;
+    width: 115px;
+    margin: 8px 0px;
+    font-size: 27px;
+}
+.p_job{
+	position: relative;
+    float: left;
+    margin: 18px -12px;
+    color: red;
+}
+.p_profile{
+	position: relative;
+    float: right;
+    margin: 18px 0;
+    color: lightpink;
+}

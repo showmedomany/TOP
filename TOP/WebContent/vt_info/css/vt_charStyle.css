@@ -1,0 +1,53 @@
+.char_name{
+    height: 75px;
+    width: 286px;
+    margin: 0px 5px;
+    font-size: 30px;
+}
+
+.char_wrap{
+	width: 988px;
+    height: 334px;
+    margin: 30px 0px;
+    border-bottom-style: groove;
+    position: relative;
+}
+.char1{
+	width: 58%;
+    height: inherit;
+    position: relative;
+    float: left;
+}
+.char1_top{
+	width: inherit;
+    font-family: monospace;
+    font-size: 23px;
+    margin: 20px 0px;
+}
+.char1_center{
+	width: inherit;
+    font-family: fantasy;
+    font-size: 30px;
+    margin: 20px 0px;
+}
+.char1_bottom{
+	width: inherit;
+}
+.char2{
+	width: 42%;
+    height: inherit;
+    position: relative;
+    float: right;
+}
+.char_img{
+	height: 284px;
+    width: 487px;
+    margin: 10px -76px;
+    border-radius: 5%;
+}
+.char1_wrap{
+    width: 505px;
+    height: 254px;
+    margin: 5px;
+    margin-top: 14px;
+}

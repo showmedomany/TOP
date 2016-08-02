@@ -1,0 +1,146 @@
+
+.exer_wrap1 {
+    width: 600px;
+    height: 64px;
+    position: relative;
+    left: 139px;
+    margin: 68px 0;
+}
+.wrap1_1 {
+    width: inherit;
+    height: 97%;
+    text-align: center;
+    font-size: 35px;
+}
+.wrap1_2{
+	background: black;
+	height: 3%;
+}
+.exer_wrap2{
+	width: initial;
+    height: 250px;
+}
+.wrap2_1{
+	width: 250px;
+    height: inherit;
+    background: green;
+    position: relative;
+    float: right;
+    margin: 0 5px;
+}
+.wrap2_2{
+	width: 250px;
+    height: inherit;
+    background: cyan;
+    position: relative;
+    float: right;
+    margin: 0 5px;
+}
+.wrap2_3{
+	width: 250px;
+    height: inherit;
+    background: gold;
+    position: relative;
+    float: right;
+    margin: 0 5px;
+}
+.exer_wrap3{
+    margin: 20 0;
+    width: inherit;
+    height: 250px;
+    position: relative;
+}
+.wrap3_1{
+	width: inherit;
+    height: 40%;
+    text-align: center;
+}
+.wrap3_1_word1{
+    width: 300px;
+    height: 37px;
+    position: relative;
+    left: 276px;
+    font-size: 25px;
+}
+.wrap3_1_word2{
+    width: 300px;
+    height: 37px;
+    position: relative;
+    left: 276px;
+    font-size: 15px;
+}
+.wrap3_2 {
+    width: inherit;
+    height: 60%;
+    font-size: 28px;
+    text-align: center;
+}
+
+.exer_wrap4 {
+    width: inherit;
+    height: 500px;
+	background: #eeeeee;
+    border-radius: 4%;
+    position: relative;
+    margin: 100px 0;
+}
+.wrap4_1 {
+    width: inherit;
+    height: 189px;
+    border-radius: 11%;
+}
+.wrap4_2{
+	
+}
+.wrap4_1_1{
+	margin: 0 37px;
+}
+.wrap4_cir1{
+	width: 150px;
+    height: 150px;
+    background: white;
+    position: relative;
+    border-radius: 100%;
+    float: right;
+    top: 20;
+    margin: 0 20;
+}
+.wrap4_cir2{
+	width: 150px;
+    height: 150px;
+    background: white;
+    position: relative;
+    border-radius: 100%;
+    float: right;
+    top: 20;
+    margin: 0 20;
+}
+.wrap4_cir3{
+	width: 150px;
+    height: 150px;
+    background: white;
+    position: relative;
+    border-radius: 100%;
+    float: right;
+    top: 20;
+    margin: 0 20;
+}
+.wrap4_cir4{
+	width: 150px;
+    height: 150px;
+    background: white;
+    position: relative;
+    border-radius: 100%;
+    float: right;
+    top: 20;
+    margin: 0 20;
+}
+.wrap4_1_2{
+	
+}
+.wrap4_1_3{
+	
+}
+.wrap4_1_4{
+	
+}
