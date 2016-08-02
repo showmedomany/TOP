@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<link href = "${css}vt_sideMenutyle.css" rel="stylesheet"	type="text/css">
+		<link href = "${css}vt_sideMenuStyle.css" rel="stylesheet"	type="text/css">
 	</head>
 	<body>
 		<div id="container">

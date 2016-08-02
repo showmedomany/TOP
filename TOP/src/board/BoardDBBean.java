@@ -46,4 +46,38 @@ public class BoardDBBean implements BoardDao {
 		return SqlMapClient.getSession().delete("Board.deleteArticle", num);
 		
 	}
+	
+	
+	
+	/* 공지사항 */ 
+	@Override
+	public List<NoticeBoardDataBean> getNoticeBoardList(Map<String, Integer> startEndPage) {		
+		return SqlMapClient.getSession().selectList("AdminNoticeBoard.getNoticeBoardList", startEndPage);
+	}
+	@Override
+	public int getNoticeArticleCount() {		
+		return SqlMapClient.getSession().selectOne("AdminNoticeBoard.getArticleCount");
+	}
+	@Override
+	public void setNoticeReadcountPlus(int num) {
+		SqlMapClient.getSession().update("AdminNoticeBoard.setReadcountPlus", num);
+	}
+	@Override
+	public NoticeBoardDataBean getNoticeArticle(int num) {		
+		return SqlMapClient.getSession().selectOne("AdminNoticeBoard.getArticle", num);
+	}
+	@Override
+	public int insertNoticeArticle(Map<String, String> writeContent) {
+		return SqlMapClient.getSession().insert("AdminNoticeBoard.insertArticle", writeContent);
+	}	
+	@Override
+	public int updateNoticeArticle(NoticeBoardDataBean noticeBoardData) {		
+		return SqlMapClient.getSession().update("AdminNoticeBoard.updateArticle", noticeBoardData);		
+	}
+	@Override
+	public int deleteNoticeArticle(int num) {		
+		return SqlMapClient.getSession().delete("AdminNoticeBoard.deleteArticle", num);
+	}
+	
+		
 }

@@ -629,6 +629,23 @@ CREATE TABLE vt_notice_board
    PRIMARY KEY (num)
 );
 
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '공지사항 테스트1' , 0, sysdate, '공지사항 테스트 하하 하');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '공지사항 테스트2' , 0, sysdate, '공지사항 테스트 호호 호');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '공지사항 테스트3' , 0, sysdate, '공지사항 테스트 후후 후');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '공지사항 테스트4' , 0, sysdate, '공지사항 테스트 크크 크');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '공지사항 테스트5' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '공지사항 테스트6' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '공지사항 테스트7' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '공지사항 테스트8' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '공지사항 테스트9' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '하하하하하하하하' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '호호호호호호호호' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '코딩은 재미있어' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '나는야 퉁퉁이' , 0, sysdate, '공지사항 테스트  쿠쿠쿠');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '골목대장 이라네~' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '도라에몽~' , 0, sysdate, '공지사항 테스트 쿠쿠쿠');
+insert into vt_notice_board values(nt_board_seq.nextval, 'lees', '뭐 쓰지' , 0, sysdate, '공지사항 테스트 쿠쿠쿠');
+
 
 CREATE TABLE vt_register
 (

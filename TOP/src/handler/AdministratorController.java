@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import administrator.AdminDao;
-import administrator.NoticeBoardDataBean;
 import member.MemberDataBean;
 import myPage.RegisterDataBean;
 
@@ -166,7 +165,7 @@ public class AdministratorController {
 	
 	// 공지사항 게시판 //	
 	
-	
+	/*
 	
 	//공지사항 글 읽기
 	@RequestMapping("/noticeBoardContent")
@@ -218,7 +217,7 @@ public class AdministratorController {
 			adminDao.setReadcountPlus(num);
 		}	
 		
-		// * 글보기 밑에 게시판 연결하기 *//<>
+		
 		List<NoticeBoardDataBean> noticeBoardDataList = new ArrayList<NoticeBoardDataBean>();
 		
 		int pageSize = 10;		// 페이지 크기
@@ -258,7 +257,7 @@ public class AdministratorController {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("pageCount", pageCount);
 		
-		// * 글보기 밑에 게시판 연결하기 *//</>		
+		
 			
 		request.setAttribute("noticeBoardData", noticeBoardData);		
 		request.setAttribute("authority_id", authority_id);
@@ -268,7 +267,8 @@ public class AdministratorController {
 			return new ModelAndView("/vtFrame/vtFrame");
 		}
 	}//
-	
+
+	/*
 	@RequestMapping("/noticeBoardWriteForm")
 	public ModelAndView adminNoticeBoardWrite
 	(HttpServletRequest request,HttpServletResponse response){		
@@ -283,7 +283,8 @@ public class AdministratorController {
 		request.setAttribute("adminBoardPage", adminBoardPage);
 		return new ModelAndView("/vt_administrator/vt_administrator");
 	}//
-	
+	*/
+	/*
 	//공지사항 글작성 후 데이터 처리
 	@RequestMapping("/noticeBoardWritePro")
 	public ModelAndView noticeBoardWritePro
@@ -314,7 +315,8 @@ public class AdministratorController {
 		request.setAttribute("adminBoardPage", adminBoardPage);
 		return new ModelAndView("/vt_administrator/vt_administrator");
 	}//
-	
+	*/
+	/*
 	
 	//공지사항 글수정
 	@RequestMapping("/noticeBoardModifyForm")
@@ -346,7 +348,8 @@ public class AdministratorController {
 		request.setAttribute("adminBoardPage", adminBoardPage);
 		return new ModelAndView("/vt_administrator/vt_administrator");
 	}//
-	
+	*/
+	/*
 	//공지사항 글수정 pro
 		@RequestMapping("/noticeBoardModifyPro")
 		public ModelAndView noticeBoardModifyPro
@@ -384,7 +387,8 @@ public class AdministratorController {
 			request.setAttribute("adminBoardPage", adminBoardPage);
 			return new ModelAndView("/vt_administrator/vt_administrator");
 		}
-		
+		*/
+		/*
 		//공지사항 글삭제 pro
 		@RequestMapping("/noticeBoardDeletePro")
 		public ModelAndView noticeBoardDeletePro
@@ -413,7 +417,7 @@ public class AdministratorController {
 			request.setAttribute("adminBoardPage", adminBoardPage);
 			return new ModelAndView("/vt_administrator/vt_administrator");
 		}	
-		
+		*/
 }
 
 

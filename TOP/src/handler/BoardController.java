@@ -2,6 +2,7 @@ package handler;
 
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import board.BoardDao;
 import board.BoardDataBean;
+import board.NoticeBoardDataBean;
 
 /**
  * 핸들러들은 센터에 들어갈 각 기능의Frame폼과
@@ -286,7 +288,7 @@ public class BoardController {
 	@RequestMapping("/noticeBoard")
 	public ModelAndView noticeBoard
 	(HttpServletRequest request,HttpServletResponse response){
-		/*
+		
 		List<NoticeBoardDataBean> noticeBoardDataList = new ArrayList<NoticeBoardDataBean>();	
 		
 		int pageSize = 10;		// 페이지 크기
@@ -298,31 +300,11 @@ public class BoardController {
 		
 		//페이지 템플릿	
 		
-		String top = null;
-		String bottom = null;	
-		String center = null;
-		
-		int authority_id = -1;
-		if(request.getSession().getAttribute("authority_id")!=null){
-			authority_id = (Integer) request.getSession().getAttribute("authority_id");
-		}		
 	
-		System.out.println("authority_id : " +authority_id);		
-		
-		if(authority_id==1){
-			top = "vt_admin_topForm";
-			center = "vt_noticeBoard";				
-			request.setAttribute("top", top);
-			request.setAttribute("center", center);
-		}else{				
-			top = "vt_topForm";		
-			bottom = "vt_bottomForm";
-			center = "/vt_administrator/vt_noticeBoard";	
-			request.setAttribute("top", top);
-			request.setAttribute("center", center);
-			request.setAttribute("bottom", bottom);				
-		}	
-		
+		String center = "/vtFrame/vt_sideMenuForm";		
+			
+		request.setAttribute("center", center);
+			
 		
 	
 		String adminBoardPage = "vt_noticeBoardList";
@@ -335,7 +317,7 @@ public class BoardController {
 		request.setAttribute("pageNum", pageNum);
 		
 		//게시글 수
-		int articleCount = adminDao.getArticleCount();
+		int articleCount = boardDao.getNoticeArticleCount();
 		System.out.println("articleCount : " + articleCount);
 		
 		//게시글이 없을때
@@ -343,7 +325,7 @@ public class BoardController {
 			
 			request.setAttribute("pageCount", 1);
 			request.setAttribute("articleCount", articleCount);	
-			return new ModelAndView("/vt_administrator/vt_administrator");	
+			return new ModelAndView("/vtFrame/vtFrame");
 			
 		//게시글이 있을때	
 		}else{			
@@ -365,7 +347,7 @@ public class BoardController {
 			Map<String, Integer> startEndPage = new HashMap<String, Integer>();
 			startEndPage.put("start", start);
 			startEndPage.put("end", end);		
-			noticeBoardDataList = adminDao.getNoticeBoardList(startEndPage);		
+			noticeBoardDataList = boardDao.getNoticeBoardList(startEndPage);		
 			
 			request.setAttribute("noticeBoardDataList", noticeBoardDataList);
 			request.setAttribute("articleCount", articleCount);			
@@ -373,22 +355,127 @@ public class BoardController {
 			request.setAttribute("pageBlock", pageBlock);
 			request.setAttribute("pageCount", pageCount);	
 			
-			request.setAttribute("authority_id", authority_id);
-			if(authority_id==1){
-				return new ModelAndView("/vt_administrator/vt_administrator");
-			}else{
-				return new ModelAndView("/vtFrame/vtFrame");
-			}
+			String menu = "/vt_board/vt_noticeboard";
 			
+			
+			request.setAttribute("menu", menu);
+		
+			return new ModelAndView("/vtFrame/vtFrame");
+		}
+	}
+	
+	@RequestMapping("/noticeBoardContent")
+	public ModelAndView noticeBoardContent
+	(HttpServletRequest request,HttpServletResponse response){	
+		/*
+		String top = null;
+		String bottom = null;
+		*/
+		String center = "/vtFrame/vt_sideMenuForm";
+		String menu = "/vt_board/vt_noticeBoardContent";
+		/*
+		int authority_id = -1;
+		if(request.getSession().getAttribute("authority_id")!=null){
+			authority_id = (Integer) request.getSession().getAttribute("authority_id");
+		}	
+		
+		if(authority_id==1){
+			top = "vt_admin_topForm";
+			center = "vt_noticeBoard";				
+			request.setAttribute("top", top);
+			request.setAttribute("center", center);
+		}else{				
+			top = "vt_topForm";		
+			bottom = "vt_bottomForm";
+			center = "/vt_administrator/vt_noticeBoard";	
+			request.setAttribute("top", top);
+			request.setAttribute("center", center);
+			request.setAttribute("bottom", bottom);				
+		}		
+		*/
+		String adminBoardPage = "vt_noticeBoardContent";
+		request.setAttribute("adminBoardPage", adminBoardPage);
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		request.setAttribute("num", num);
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null){
+			pageNum = "1";
+		}
+		request.setAttribute("pageNum", pageNum);
+		
+		//NoticeBoardDataBean noticeBoardData = adminDao.getArticle(num);
+		NoticeBoardDataBean noticeBoardData = boardDao.getNoticeArticle(num);
+		
+		//조회수 증가 / 아이디 검사
+		String memId = (String) request.getSession().getAttribute("memId");
+		request.setAttribute("memId", memId);
+		//System.out.println("id: " + id);
+		//System.out.println("noticeBoardData.getId() : " + noticeBoardData.getId());
+		if(noticeBoardData.getId().equals(memId) == false){
+			//adminDao.setReadcountPlus(num);
+			boardDao.setNoticeReadcountPlus(num);
+		}	
+		
+		
+		List<NoticeBoardDataBean> noticeBoardDataList = new ArrayList<NoticeBoardDataBean>();
+		
+		int pageSize = 10;		// 페이지 크기
+		int pageBlock = 10;			
+		int currentPage = 0;	// 현재 페이지
+		int pageCount = 0;		// 전체 페이지 수
+		int start = 0;			//(블럭)시작 페이지
+		int end = 0;			//(블럭)끝 페이지		
+		
+		//게시글 수
+		//int articleCount = adminDao.getArticleCount();
+		int articleCount = boardDao.getNoticeArticleCount();
+		
+		System.out.println("articleCount : " + articleCount);			
+				
+		//페이지 공식 구하기 
+		currentPage = Integer.parseInt(pageNum);
+		start = (currentPage - 1) * pageSize + 1;
+		end = start + pageSize - 1;
+		System.out.println("start: " +start);
+		System.out.println("end: " + end);
+		
+		//페이지 수 값 구하기
+		pageCount = articleCount/pageBlock;
+		if(articleCount%pageBlock!=0){
+			pageCount+=1;
+		}
+		System.out.println("pageCount: " + pageCount);
+		
+		//해당 페이지 start ~ end 만큼 표시하기
+		Map<String, Integer> startEndPage = new HashMap<String, Integer>();
+		startEndPage.put("start", start);
+		startEndPage.put("end", end);
+		
+		//noticeBoardDataList = adminDao.getNoticeBoardList(startEndPage);
+		noticeBoardDataList = boardDao.getNoticeBoardList(startEndPage);
+		
+		request.setAttribute("noticeBoardDataList", noticeBoardDataList);
+		request.setAttribute("articleCount", articleCount);			
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("pageBlock", pageBlock);
+		request.setAttribute("pageCount", pageCount);
+		request.setAttribute("noticeBoardData", noticeBoardData);
+		
+		
+		/*
+		request.setAttribute("authority_id", authority_id);
+		if(authority_id==1){
+			return new ModelAndView("/vt_administrator/vt_administrator");
+		}else{
+			return new ModelAndView("/vtFrame/vtFrame");
 		}
 		*/
-		String center = "/vtFrame/vt_sideMenuForm"; 
-		String menu = "/vt_board/vt_noticeboard";
-		
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		
-		
 		return new ModelAndView("/vtFrame/vtFrame");
-	}
+	}//
+	
+	
 }	

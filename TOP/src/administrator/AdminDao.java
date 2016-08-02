@@ -22,13 +22,7 @@ public interface AdminDao {
 	public int getFitnessStartYear();
 	public List<String> getTrainerIdList();
 	
-	public List<NoticeBoardDataBean> getNoticeBoardList(Map<String, Integer> startEndPage);	
-	public int getArticleCount();
-	public void setReadcountPlus(int num);
-	public NoticeBoardDataBean getArticle(int num);
-	public int insertArticle(Map<String, String> writeContent);
-	public int updateArticle(NoticeBoardDataBean noticeBoardData);
-	public int deleteArticle(int num);
+
 	
 	
 }

@@ -6,7 +6,7 @@
 	<select id="getArticleCount" resultType="int">
 		select count(*) from vt_notice_board
 	</select>
-	<select id="getNoticeBoardList" parameterType="Map" resultType="administrator.NoticeBoardDataBean">
+	<select id="getNoticeBoardList" parameterType="Map" resultType="board.NoticeBoardDataBean">
 		select num, id, subject, reg_date, readcount, r from 
 		(select num, id, subject, reg_date, readcount, rownum r from 
 		(select num, id, subject, reg_date, readcount from vt_notice_board order by num desc) order by num desc)
@@ -15,13 +15,13 @@
 	<update id="setReadcountPlus" parameterType="int">
 		update vt_notice_board set readcount = readcount+1 where num = #{num}
 	</update>	
-	<select id="getArticle" parameterType="int" resultType="administrator.NoticeBoardDataBean">
+	<select id="getArticle" parameterType="int" resultType="board.NoticeBoardDataBean">
 		select * from vt_notice_board where num = #{num}
 	</select>	
 	<insert id="insertArticle" parameterType="Map">		
 		insert into vt_notice_board values(notice_board_seq.nextval, #{id}, #{subject}, 0, sysdate, #{content})
 	</insert> 	
-	<update id="updateArticle" parameterType="administrator.NoticeBoardDataBean">
+	<update id="updateArticle" parameterType="board.NoticeBoardDataBean">
 		update vt_notice_board set subject = #{subject}, content = #{content} where num = #{num}		
 	</update>	
 	<delete id="deleteArticle" parameterType="int">
