@@ -46,7 +46,7 @@ public class PageController {
 	@RequestMapping("/vt_infoHello")
 	public ModelAndView vt_infoHello(HttpServletRequest request, 
 			HttpServletResponse response){		
-		String center = "/vt_info/vt_infoForm"; 
+		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_info/vt_infoHello";
 		String word = "/vt_info/word/hello";
 		request.setAttribute("center", center);
@@ -59,7 +59,7 @@ public class PageController {
 	public ModelAndView vt_infoHistory(HttpServletRequest request, 
 			HttpServletResponse response){
 		
-		String center = "/vt_info/vt_infoForm"; 
+		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_info/vt_infoHistory";
 		String word = "/vt_info/word/history";
 		request.setAttribute("center", center);
@@ -72,7 +72,7 @@ public class PageController {
 	public ModelAndView vt_infoInfo(HttpServletRequest request, 
 			HttpServletResponse response){
 		
-		String center = "/vt_info/vt_infoForm"; 
+		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_info/vt_infoInfo";
 		String word = "/vt_info/word/info";
 		request.setAttribute("center", center);
@@ -85,7 +85,7 @@ public class PageController {
 	public ModelAndView vt_infoChar(HttpServletRequest request, 
 			HttpServletResponse response){
 		
-		String center = "/vt_info/vt_infoForm"; 
+		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_info/vt_infoChar";
 		String word = "/vt_info/word/char";
 		request.setAttribute("center", center);

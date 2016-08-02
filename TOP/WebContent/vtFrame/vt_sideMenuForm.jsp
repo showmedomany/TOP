@@ -4,8 +4,9 @@
 
 <html>
 	<head>
-		<link href = "${css}vt_boardStyle.css" rel="stylesheet"	type="text/css">
+		<link href = "${css}vt_sideMenutyle.css" rel="stylesheet"	type="text/css">
 	</head>
+	<body>
 		<div id="container">
 			<div class="cont_main">
 					<div class="menu_top">
@@ -36,9 +37,8 @@
 					</div>
 					<div class="vt_info_menu_wrap_sub">
 							<p class="vt_info_menu_wrap_sub_sub">커뮤니티</p>
-							<p class="sub"onclick="location = 'vt_mainboard.do'">> 공지사항 게시판</p>
-							
-							<p class="sub">> 자유게시판</p>
+							<p class="sub" onclick="location = 'noticeBoard.do'">> 공지사항 게시판</p>
+							<p class="sub" onclick="location = 'vt_community_free.do'">> 자유게시판</p>
 							<p class="sub">> FAQ</p>
 					</div>
 				</div>
@@ -47,4 +47,5 @@
 					</div>
 			</div>		
 		</div>
+	</body>
 </html>
