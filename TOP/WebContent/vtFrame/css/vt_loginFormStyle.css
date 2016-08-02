@@ -62,6 +62,8 @@
 	font-weight: 400;
 	padding: 4px;
 }
+
+
 /* 로그인폼 인풋관련 테이블 비밀번호칸 */
 .vt_loginForm_inputTable input[type=password]{
 	width: 259px;

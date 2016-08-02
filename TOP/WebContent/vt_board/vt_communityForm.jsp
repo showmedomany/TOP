@@ -6,6 +6,8 @@
 	<head>
 		<link href = "${css}vt_boardStyle.css" rel="stylesheet"	type="text/css">
 	</head>
+	
+	<body>
 		<div id="container">
 			<div class="cont_main">
 					<div class="menu_top">
@@ -29,4 +31,5 @@
 					</div>
 			</div>		
 		</div>
+	</body>		
 </html>
