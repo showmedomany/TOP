@@ -35,6 +35,26 @@ public class ChatController {
 		return new ModelAndView("/vt_chat/vt_memberchat");
 	}//memberChat
 	
+	
+	@RequestMapping("/receiveChat")
+	public ModelAndView receiveChat
+	(HttpServletRequest request,HttpServletResponse response){
+		
+		//메세지를 받을 필요는 없다
+		String ip = request.getParameter("ip");
+		String id = request.getParameter("id");
+		
+		List<ChatDataBean> clist = chatDao.getChat(ip);
+		
+		
+		request.setAttribute("id", id);	//내껀지 상대방껀지 확인하기 위해서
+		request.setAttribute("clist", clist);	//채팅 내역	
+		
+		return new ModelAndView("/vt_chat/vt_chatPro");//채팅 내역을 구성해줄 jsp로	
+	}//
+	
+	
+	
 	@RequestMapping("/memberRequestChat")
 	public ModelAndView memberRequestChat(HttpServletRequest request,
 			HttpServletResponse response)throws Exception{
