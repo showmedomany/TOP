@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<link href = "${css}vt_infoFormStyle.css" rel="stylesheet"	type="text/css">
+		<link href = "${css}vt_infoStyle.css" rel="stylesheet"	type="text/css">
 	</head>
 	
 	<body>

@@ -1,0 +1,163 @@
+#container{
+	overflow: hidden;
+    position: relative;
+}
+.cont_main {
+    max-width: 1130px;
+    margin: 0 auto;
+}
+.side_menu {
+    width: 290px;
+    min-height: 800px;
+    border-style: double;
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    margin: 50 0;
+}
+.vt_info_menu_title {
+    width: 270px;
+    height: 100px;
+    margin-left: 10px;
+    text-align: center;
+    border-bottom-style: outset;
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+}
+.sub1_p1 {
+	/*p태그 css*/
+    font-size: 20px;
+    color: cornflowerblue;
+}
+.sub1_p2 {
+	/*p태그 css*/
+    margin: 30px;
+    font-size: 20px;
+    color: darkcyan;
+}
+.vt_info_menu_wrap_sub {
+	/*각 메뉴별 영역 공통 적용*/
+    height: 150px;
+    text-align: center;
+    margin:25px;
+}
+.vt_info_menu_wrap_sub_sub{
+	/*각 메뉴별 영역 안 제목 영역 공통 적용*/
+    font-size: 25px;
+}
+.sub{
+	/*메뉴 영역 P태그 공통적용*/
+	margin: 5px;
+    cursor: pointer;
+}
+.main_wrap {
+    position: relative;
+    float: right;
+    left: -64px;
+    width: 700px;
+    margin : 50 0;
+}
+.menu_top {
+    position: relative;
+    width: 1200px;
+    height: 200px;
+}
+
+.top_word {
+	/*1시방향 메뉴 바뀔때마다 나오는 글씨*/
+    float: right;
+    position: relative;
+    left: -60px;
+    top: 200px;
+}
+.menu_img{
+	/*메뉴 밑 메뉴 바뀔때마다 나오는 사진*/
+	opacity: 0.4;
+    -webkit-filter: brightness(150%);
+}
+.content_wrap {
+    width: 839px;
+    margin:0 auto;
+}
+/*위에까지는 기본셋팅 건들지 말것*/
+.trinfo{
+	text-align: center;
+}
+.trinfo_name{
+	font-size: 30px;
+	margin:50px 0;
+}
+.img{
+	width: 380px;
+    height: inherit;
+    position: relative;
+    float: left;
+}
+.name{
+	position: relative;
+    width: 459px;
+    float: right;
+    height: 100px;
+}
+.name1{
+	position: relative;
+    float: left;
+    width: 200px;
+    height: inherit;
+    text-align: center;
+    font-size: 42px;
+}
+.name2{
+	position: relative;
+    float: left;
+    width: 165px;
+    height: inherit;
+    text-align: center;
+    font-size: 43px;
+}
+.name3{
+	    position: relative;
+    float: left;
+    width: 86px;
+    height: inherit;
+    text-align: center;
+    font-size: 31px;
+    top: 20;
+    color: blue;
+}
+.cur {
+    position: relative;
+    float: right;
+    width: 452px;
+    height: 491px;
+    text-align: center;
+    font-size: 20px;
+    border: blue groove 4px;
+    border-right: black groove 2px;
+    border-left: black groove 2px;
+}
+.position1{
+	width: inherit;
+    height: 600px;
+    margin: 90px 0;
+    position: relative;
+}
+.position2{
+	width: inherit;
+    height: 600px;
+    margin: 90px 0;
+    position: relative;
+}
+.position3{
+	width: inherit;
+    height: 600px;
+    margin: 90px 0;
+    position: relative;
+}
+.position4{
+	width: inherit;
+    height: 600px;
+    margin: 90px 0;
+    position: relative;
+}
+

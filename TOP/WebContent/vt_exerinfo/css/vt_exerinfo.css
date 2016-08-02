@@ -1,0 +1,228 @@
+#container{
+	overflow: hidden;
+    position: relative;
+}
+.cont_main {
+    max-width: 1130px;
+    margin: 0 auto;
+}
+.side_menu {
+    width: 290px;
+    min-height: 800px;
+    border-style: double;
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    margin: 50 0;
+}
+.vt_info_menu_title {
+    width: 270px;
+    height: 100px;
+    margin-left: 10px;
+    text-align: center;
+    border-bottom-style: outset;
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+}
+.sub1_p1 {
+	/*p태그 css*/
+    font-size: 20px;
+    color: cornflowerblue;
+}
+.sub1_p2 {
+	/*p태그 css*/
+    margin: 30px;
+    font-size: 20px;
+    color: darkcyan;
+}
+.vt_info_menu_wrap_sub {
+	/*각 메뉴별 영역 공통 적용*/
+    height: 150px;
+    text-align: center;
+    margin:25px;
+}
+.vt_info_menu_wrap_sub_sub{
+	/*각 메뉴별 영역 안 제목 영역 공통 적용*/
+    font-size: 25px;
+}
+.sub{
+	/*메뉴 영역 P태그 공통적용*/
+	margin: 5px;
+    cursor: pointer;
+}
+.main_wrap {
+    position: relative;
+    float: right;
+    left: -64px;
+    width: 700px;
+    margin : 50 0;
+}
+.menu_top {
+    position: relative;
+    width: 1200px;
+    height: 200px;
+}
+
+.top_word {
+	/*1시방향 메뉴 바뀔때마다 나오는 글씨*/
+    float: right;
+    position: relative;
+    left: -60px;
+    top: 200px;
+}
+.menu_img{
+	/*메뉴 밑 메뉴 바뀔때마다 나오는 사진*/
+	opacity: 0.4;
+    -webkit-filter: brightness(150%);
+}
+.content_wrap {
+    width: 839px;
+    margin:0 auto;
+}
+/*위에까지는 기본셋팅 건들지 말것*/
+
+.exer_wrap1 {
+    width: 600px;
+    height: 64px;
+    position: relative;
+    left: 139px;
+    margin: 68px 0;
+}
+.wrap1_1 {
+    width: inherit;
+    height: 97%;
+    text-align: center;
+    font-size: 35px;
+}
+.wrap1_2{
+	background: black;
+	height: 3%;
+}
+.exer_wrap2{
+	width: initial;
+    height: 250px;
+}
+.wrap2_1{
+	width: 250px;
+    height: inherit;
+    background: green;
+    position: relative;
+    float: right;
+    margin: 0 5px;
+}
+.wrap2_2{
+	width: 250px;
+    height: inherit;
+    background: cyan;
+    position: relative;
+    float: right;
+    margin: 0 5px;
+}
+.wrap2_3{
+	width: 250px;
+    height: inherit;
+    background: gold;
+    position: relative;
+    float: right;
+    margin: 0 5px;
+}
+.exer_wrap3{
+    margin: 20 0;
+    width: inherit;
+    height: 250px;
+    position: relative;
+}
+.wrap3_1{
+	width: inherit;
+    height: 40%;
+    text-align: center;
+}
+.wrap3_1_word1{
+    width: 300px;
+    height: 37px;
+    position: relative;
+    left: 276px;
+    font-size: 25px;
+}
+.wrap3_1_word2{
+    width: 300px;
+    height: 37px;
+    position: relative;
+    left: 276px;
+    font-size: 15px;
+}
+.wrap3_2 {
+    width: inherit;
+    height: 60%;
+    font-size: 28px;
+    text-align: center;
+}
+
+.exer_wrap4 {
+    width: inherit;
+    height: 500px;
+	background: #eeeeee;
+    border-radius: 4%;
+    position: relative;
+    margin: 100px 0;
+}
+.wrap4_1 {
+    width: inherit;
+    height: 189px;
+    border-radius: 11%;
+}
+.wrap4_2{
+	
+}
+.wrap4_1_1{
+	margin: 0 37px;
+}
+.wrap4_cir1{
+	width: 150px;
+    height: 150px;
+    background: white;
+    position: relative;
+    border-radius: 100%;
+    float: right;
+    top: 20;
+    margin: 0 20;
+}
+.wrap4_cir2{
+	width: 150px;
+    height: 150px;
+    background: white;
+    position: relative;
+    border-radius: 100%;
+    float: right;
+    top: 20;
+    margin: 0 20;
+}
+.wrap4_cir3{
+	width: 150px;
+    height: 150px;
+    background: white;
+    position: relative;
+    border-radius: 100%;
+    float: right;
+    top: 20;
+    margin: 0 20;
+}
+.wrap4_cir4{
+	width: 150px;
+    height: 150px;
+    background: white;
+    position: relative;
+    border-radius: 100%;
+    float: right;
+    top: 20;
+    margin: 0 20;
+}
+.wrap4_1_2{
+	
+}
+.wrap4_1_3{
+	
+}
+.wrap4_1_4{
+	
+}
