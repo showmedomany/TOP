@@ -1,6 +1,5 @@
 package handler;
 
-
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,25 +29,12 @@ public class BoardController {
 	@Resource(name = "boardDao")
 	private BoardDao boardDao;
 	
-	//community관련 메뉴들
-	@RequestMapping("/vt_communityForm")//메뉴탭에서 선택한경우
-	public ModelAndView vt_communityForm(HttpServletRequest request, 
-			HttpServletResponse response){
-		
-		String center = "/vtFrame/vt_sideMenuForm"; 
-		String menu = "/vt_board/vt_noticeboard";
 	
-		request.setAttribute("center", center);
-		request.setAttribute("menu", menu);
-		
-		
-		return new ModelAndView("/vtFrame/vtFrame");
-	}//vt_mainboard
 	
 	@RequestMapping("/vt_community_free")//메뉴탭에서 자유게시판 선택경우
 	public ModelAndView vt_community_free(HttpServletRequest request, 
 			HttpServletResponse response)throws Exception{
-		
+		String word = "/vt_board/word/notice";
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_board/vt_freeboard";
 		
@@ -129,8 +115,9 @@ public class BoardController {
 		request.setAttribute("pageNum", pageNum);	//이핸들러를 호출한 page번호
 		request.setAttribute("currentPage", currentPage);	//현재페이지
 		
-		request.setAttribute("center", center);
-		request.setAttribute("menu", menu);
+		request.setAttribute("word",word);
+		request.setAttribute("menu",menu);
+		request.setAttribute("center",center);
 		return new ModelAndView("vtFrame/vtFrame");
 	}//vt_mainboard		
 	
@@ -144,7 +131,7 @@ public class BoardController {
 		
 		int num = Integer.parseInt(request.getParameter("num")); //디비속 글번호
 		
-		
+		String word = "/vt_board/word/notice";
 		String pageNum = request.getParameter("pageNum");		//현재페이지
 		String number = request.getParameter("number");			//화면의 표시될 글번호
 		
@@ -163,8 +150,9 @@ public class BoardController {
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_board/vt_freeContent";
 	
-		request.setAttribute("center", center);
-		request.setAttribute("menu", menu);
+		request.setAttribute("word",word);
+		request.setAttribute("menu",menu);
+		request.setAttribute("center",center);
 		
 		
 		return new ModelAndView("/vtFrame/vtFrame");
@@ -184,14 +172,13 @@ public class BoardController {
 					
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_board/vt_freeWriteForm";
-		
+		String word = "/vt_board/word/notice";
 		
 		/*request.setAttribute("num", num);*/
 		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("center", center);
-		request.setAttribute("menu", menu);
-		
-		
+		request.setAttribute("word",word);
+		request.setAttribute("menu",menu);
+		request.setAttribute("center",center);
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//vt_mainboard
 	
@@ -234,12 +221,14 @@ public class BoardController {
 				
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_board/vt_freeModifyForm";
+		String word = "/vt_board/word/notice";
 		
 		request.setAttribute("bdto", bdto);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
-		request.setAttribute("center", center);
-		request.setAttribute("menu", menu);
+		request.setAttribute("word",word);
+		request.setAttribute("menu",menu);
+		request.setAttribute("center",center);
 		
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//vt_freeModifyForm
@@ -283,11 +272,11 @@ public class BoardController {
 		return new ModelAndView("/vt_board/processing/vt_freeDeletePro");
 	}//vt_freeModifyForm
 	
-	
 	//공지사항 컨트롤러
 	@RequestMapping("/noticeBoard")
 	public ModelAndView noticeBoard
-	(HttpServletRequest request,HttpServletResponse response){
+	(HttpServletRequest request,HttpServletResponse response){	
+		
 		
 		List<NoticeBoardDataBean> noticeBoardDataList = new ArrayList<NoticeBoardDataBean>();	
 		
@@ -296,20 +285,16 @@ public class BoardController {
 		int currentPage = 0;	// 현재 페이지
 		int pageCount = 0;		// 전체 페이지 수
 		int start = 0;			//(블럭)시작 페이지
-		int end = 0;			//(블럭)끝 페이지		
+		int end = 0;			//(블럭)끝 페이지	
+		
+		
+		String word = "/vt_board/word/notice";
+		String menu = "/vt_board/vt_noticeboard";		
+		String center = "/vtFrame/vt_sideMenuForm";
 		
 		//페이지 템플릿	
-		
 	
-		String center = "/vtFrame/vt_sideMenuForm";		
-			
-		request.setAttribute("center", center);
-			
-		
-	
-		String adminBoardPage = "vt_noticeBoardList";
-		request.setAttribute("adminBoardPage", adminBoardPage);
-		
+				
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null){
 			pageNum = "1";
@@ -324,8 +309,10 @@ public class BoardController {
 		if(articleCount == 0){
 			
 			request.setAttribute("pageCount", 1);
-			request.setAttribute("articleCount", articleCount);	
-			return new ModelAndView("/vtFrame/vtFrame");
+			request.setAttribute("articleCount", articleCount);
+			
+			request.setAttribute("center", center);
+			request.setAttribute("menu", menu);
 			
 		//게시글이 있을때	
 		}else{			
@@ -355,13 +342,16 @@ public class BoardController {
 			request.setAttribute("pageBlock", pageBlock);
 			request.setAttribute("pageCount", pageCount);	
 			
-			String menu = "/vt_board/vt_noticeboard";
+					
 			
 			
-			request.setAttribute("menu", menu);
-		
-			return new ModelAndView("/vtFrame/vtFrame");
+			
+			
 		}
+		request.setAttribute("word",word);
+		request.setAttribute("menu",menu);
+		request.setAttribute("center",center);
+		return new ModelAndView("/vtFrame/vtFrame");
 	}
 	
 	@RequestMapping("/noticeBoardContent")
@@ -373,6 +363,7 @@ public class BoardController {
 		*/
 		String center = "/vtFrame/vt_sideMenuForm";
 		String menu = "/vt_board/vt_noticeBoardContent";
+		String word = "/vt_board/word/notice";
 		/*
 		int authority_id = -1;
 		if(request.getSession().getAttribute("authority_id")!=null){
@@ -471,8 +462,9 @@ public class BoardController {
 			return new ModelAndView("/vtFrame/vtFrame");
 		}
 		*/
-		request.setAttribute("center", center);
-		request.setAttribute("menu", menu);
+		request.setAttribute("word",word);
+		request.setAttribute("menu",menu);
+		request.setAttribute("center",center);
 		
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//

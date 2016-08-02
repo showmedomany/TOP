@@ -1,4 +1,4 @@
-
+/*
 $(
 	function(){		
 		window.open("memberChat.do", _blank, 
@@ -6,8 +6,7 @@ $(
 	}
 );
 
-
-
+*/
 var sliderOptions=
 {
 	sliderId: "slider",
