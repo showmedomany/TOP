@@ -31,7 +31,6 @@ public class BoardController {
 	private BoardDao boardDao;
 	
 	
-	
 	@RequestMapping("/vt_community_free")//메뉴탭에서 자유게시판 선택경우
 	public ModelAndView vt_community_free(HttpServletRequest request, 
 			HttpServletResponse response)throws Exception{
@@ -304,7 +303,7 @@ public class BoardController {
 		
 		//게시글 수
 		int articleCount = boardDao.getNoticeArticleCount();
-		System.out.println("articleCount : " + articleCount);
+		
 		
 		//게시글이 없을때
 		if(articleCount == 0){			
@@ -318,15 +317,13 @@ public class BoardController {
 			currentPage = Integer.parseInt(pageNum);
 			start = (currentPage - 1) * pageSize + 1;
 			end = start + pageSize - 1;
-			System.out.println("start: " +start);
-			System.out.println("end: " + end);
+			
 			
 			//페이지 수 값 구하기
 			pageCount = articleCount/pageBlock;
 			if(articleCount%pageBlock!=0){
 				pageCount+=1;
 			}
-			System.out.println("pageCount: " + pageCount);
 			
 			//해당 페이지 start ~ end 만큼 표시하기
 			Map<String, Integer> startEndPage = new HashMap<String, Integer>();
