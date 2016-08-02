@@ -71,17 +71,19 @@
 								</ul>  
 							</li> 
 							<li class="top_navi_menuframe">  
-								<div class="top_navi_menu">운동 프로그램 정보</div>
+								<div class="top_navi_menu"
+									onclick="location = 'vt_ptinfo.do'">운동 프로그램 정보</div>
 								<ul class="top_navi_subframe">  
-									<li>퍼스널트레이닝정보</li>  
-									<li>GX 트레이닝 정보</li>
+									<li	onclick="location = 'vt_ptinfo.do'">퍼스널트레이닝정보</li>  
+									<li onclick="location = 'vt_gxinfo.do'">GX 트레이닝 정보</li>
 								</ul>  
 							</li> 
 							<li class="top_navi_menuframe">  
-								<div class="top_navi_menu">트레이너 소개</div>
+								<div class="top_navi_menu"
+									onclick="location = 'vt_pttrinfo.do'">트레이너 소개</div>
 								<ul class="top_navi_subframe">  
-									<li>트레이너 정보</li>  
-									<li>GX강사 정보</li>  
+									<li onclick="location = 'vt_pttrinfo.do'">트레이너 정보</li>  
+									<li onclick="location = 'vt_gxtrinfo.do'">GX강사 정보</li>  
 								</ul>  
 							</li> 
 							<li class="top_navi_menuframe">  
@@ -90,7 +92,7 @@
 								<ul class="top_navi_subframe">  
 									<li onclick="location = 'noticeBoard.do'">공지사항 게시판</li>  
 									<li onclick="location = 'vt_community_free.do'">자유 게시판</li> 
-									<li>FAQ</li>   
+									<li onclick="location = 'vt_FAQ.do'">FAQ</li>   
 								</ul>  
 							</li> 
 						</ul> 

@@ -3,7 +3,7 @@
 <%@ include file = "setting.jsp" %>
 
 	<head>
-		<link href = "${css}vt_infoStyle.css" rel="stylesheet"	type="text/css">
+		<link href = "${mycss}vt_infoStyle.css" rel="stylesheet"	type="text/css">
 	</head>
 	<div class="content_wrap">
 		<div class="wrap1">
