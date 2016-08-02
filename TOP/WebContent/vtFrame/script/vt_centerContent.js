@@ -1,7 +1,7 @@
 /*
 $(
 	function(){		
-		window.open("memberChat.do", _blank, 
+		window.open("memberChat.do", "name", 
 				'scrollbars=no,resizable=no, menubar=yes, status=yes, width=600, height=500 ');
 	}
 );

@@ -9,8 +9,7 @@
 		
 	</head>
 	<body>		
-		<form name = "chatForm">			
-			<h2>흐흫핰ㅋㅋㅋ</h2>
+		<form name = "chatForm">
 			<input type = "hidden" name = "ip" value = "${ip}">
 			<input type = "hidden" name = "id" value = "${id}">
 					

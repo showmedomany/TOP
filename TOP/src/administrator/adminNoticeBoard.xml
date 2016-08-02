@@ -19,7 +19,7 @@
 		select * from vt_notice_board where num = #{num}
 	</select>	
 	<insert id="insertArticle" parameterType="Map">		
-		insert into vt_notice_board values(notice_board_seq.nextval, #{id}, #{subject}, 0, sysdate, #{content})
+		insert into vt_notice_board values(vt_notice_board_seq.nextval, #{id}, #{subject}, 0, sysdate, #{content})
 	</insert> 	
 	<update id="updateArticle" parameterType="board.NoticeBoardDataBean">
 		update vt_notice_board set subject = #{subject}, content = #{content} where num = #{num}		

@@ -11,8 +11,6 @@ import administrator.AdminDBBean;
 import administrator.AdminDao;
 import board.BoardDBBean;
 import board.BoardDao;
-import chat.RequestDBBean;
-import chat.RequestDao;
 import member.MemberDBBean;
 import member.MemberDao;
 import myPage.MyPageDBBean;
@@ -49,10 +47,7 @@ public class CreateBean {
 	public MyPageDao myPageDao(){
 		return new MyPageDBBean();
 	}	
-	@Bean
-	public RequestDao requestDao(){
-		return new RequestDBBean();
-	}
+	
 	@Bean
 	public BoardDao boardDao(){		
 		return new BoardDBBean();

@@ -19,13 +19,13 @@ DROP TABLE vt_request CASCADE CONSTRAINTS;
 DROP TABLE vt_trainer CASCADE CONSTRAINTS;
 DROP TABLE chatTest CASCADE CONSTRAINTS;
 DROP SEQUENCE register_seq;
-DROP SEQUENCE board_seq;
-DROP SEQUENCE nt_board_seq;
+DROP SEQUENCE vt_board_seq;
+DROP SEQUENCE vt_notice_board_seq;
 commit;
 
 
 /*vt_board_seq*/
-CREATE SEQUENCE board_seq
+CREATE SEQUENCE vt_board_seq
 START WITH 1
 MAXVALUE 999999999999
 MINVALUE 1
@@ -33,7 +33,7 @@ INCREMENT BY 1
 CYCLE;
 
 /*vt_nt_board_seq*/
-CREATE SEQUENCE nt_board_seq
+CREATE SEQUENCE vt_notice_board_seq
 START WITH 1
 MAXVALUE 999999999999
 MINVALUE 1
