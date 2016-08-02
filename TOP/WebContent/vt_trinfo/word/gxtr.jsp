@@ -4,4 +4,4 @@
 
 <link href = "${css}vt_trinfoStyle.css" rel="stylesheet"	type="text/css">
 
-홈&nbsp;<b>></b>&nbsp;센터소개&nbsp;<b>></b>&nbsp;<b>GX 강사 소개</b>
+홈&nbsp;<b>></b>&nbsp;트레이너 소개&nbsp;<b>></b>&nbsp;<b>GX 강사 소개</b>

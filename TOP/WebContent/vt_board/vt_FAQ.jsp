@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
 
-		<link href = "${css}vt_boardStyle.css" rel="stylesheet"	type="text/css">
+		<link href = "${css}vt_FNQStyle.css" rel="stylesheet"	type="text/css">
 
 	<div class="content_wrap">
 		<div class="content_top">

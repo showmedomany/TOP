@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
 
-		<link href = "${css}vt_exerinfo.css" rel="stylesheet"	type="text/css">
+		<link href = "${mycss}vt_exerinfo.css" rel="stylesheet"	type="text/css">
 
 	<div class="content_wrap">
 		<div class="exer_wrap1">

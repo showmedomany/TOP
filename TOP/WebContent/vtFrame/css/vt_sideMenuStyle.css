@@ -11,14 +11,14 @@
     min-height: 800px;
     border-style: double;
     box-sizing: border-box;
-    height: 100%;
     float: left;
     position: relative;
+    margin: 50 0;
 }
 .vt_info_menu_title {
     width: 270px;
     height: 100px;
-    margin-left: 10;
+    margin-left: 10px;
     text-align: center;
     border-bottom-style: outset;
     border-bottom-right-radius: 10%;
@@ -26,13 +26,13 @@
 }
 .sub1_p1 {
 	/*p태그 css*/
-    font-size: 20;
+    font-size: 20px;
     color: cornflowerblue;
 }
 .sub1_p2 {
 	/*p태그 css*/
     margin: 30px;
-    font-size: 20;
+    font-size: 20px;
     color: darkcyan;
 }
 .vt_info_menu_wrap_sub {
@@ -47,18 +47,40 @@
 }
 .sub{
 	/*메뉴 영역 P태그 공통적용*/
-	margin: 5;
+	margin: 5px;
     cursor: pointer;
 }
 .main_wrap {
     position: relative;
-    float: left;
+    float: right;
+    left: -64px;
+    width: 700px;
+    margin : 50 0;
 }
 .menu_top {
     position: relative;
     width: 1200px;
     height: 200px;
 }
+
+.top_word {
+	/*1시방향 메뉴 바뀔때마다 나오는 글씨*/
+    float: right;
+    position: relative;
+    left: -60px;
+    top: 200px;
+}
+.menu_img{
+	/*메뉴 밑 메뉴 바뀔때마다 나오는 사진*/
+	opacity: 0.4;
+    -webkit-filter: brightness(150%);
+}
+.content_wrap {
+    width: 839px;
+    margin:0 auto;
+}
+/*위에까지는 기본셋팅 건들지 말것*/
+
 /*공지사항 게시판 시작*/
 .bd_name {
     font-size: 40;
@@ -106,3 +128,4 @@
 	border-right: white;
     border-left: white;
 }
+

@@ -1,0 +1,61 @@
+.content_top{
+	width: inherit;
+    height: 30%;
+}
+.top1{
+	text-align: center;
+    font-size: 40px;
+    margin: 37px 0;
+}
+.top2{
+	margin: 37px 0;
+}
+.cus1{
+	font-size: 28px;
+}
+.cus2{
+	
+}
+.top3{
+	width: inherit;
+    height: 90px;
+    position: relative;
+    border: gray double 3px;
+    margin: 37px 0;
+}
+.top3_img{
+	height: inherit;
+    width: 120px;
+    position: relative;
+    float: left;
+    background: red;
+    margin: 0 30;
+}
+.top3_option{
+	position: relative;
+    top: 31px;
+    float: left;
+}
+
+.top3_text {
+    position: relative;
+    float: left;
+    width: 406px;
+    height: 35px;
+    margin: 23px 38px;
+    border: black inset 1px;
+}
+.top3_btn{
+	position: relative;
+    float: right;
+    width: 74px;
+    height: 77px;
+    margin: 7px;
+}
+.content_center{
+	margin-top: 150px;
+	width: inherit;
+    height: 70%;
+    position: relative;
+    background: red;
+}
