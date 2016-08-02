@@ -1,5 +1,6 @@
 package handler;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -306,14 +307,11 @@ public class BoardController {
 		System.out.println("articleCount : " + articleCount);
 		
 		//게시글이 없을때
-		if(articleCount == 0){
-			
+		if(articleCount == 0){			
 			request.setAttribute("pageCount", 1);
-			request.setAttribute("articleCount", articleCount);
-			
+			request.setAttribute("articleCount", articleCount);			
 			request.setAttribute("center", center);
-			request.setAttribute("menu", menu);
-			
+			request.setAttribute("menu", menu);			
 		//게시글이 있을때	
 		}else{			
 			//페이지 공식 구하기 
@@ -342,11 +340,6 @@ public class BoardController {
 			request.setAttribute("pageBlock", pageBlock);
 			request.setAttribute("pageCount", pageCount);	
 			
-					
-			
-			
-			
-			
 		}
 		request.setAttribute("word",word);
 		request.setAttribute("menu",menu);
@@ -364,26 +357,10 @@ public class BoardController {
 		String center = "/vtFrame/vt_sideMenuForm";
 		String menu = "/vt_board/vt_noticeBoardContent";
 		String word = "/vt_board/word/notice";
-		/*
-		int authority_id = -1;
-		if(request.getSession().getAttribute("authority_id")!=null){
-			authority_id = (Integer) request.getSession().getAttribute("authority_id");
-		}	
+		request.setAttribute("word",word);
+		request.setAttribute("menu",menu);
+		request.setAttribute("center",center);	
 		
-		if(authority_id==1){
-			top = "vt_admin_topForm";
-			center = "vt_noticeBoard";				
-			request.setAttribute("top", top);
-			request.setAttribute("center", center);
-		}else{				
-			top = "vt_topForm";		
-			bottom = "vt_bottomForm";
-			center = "/vt_administrator/vt_noticeBoard";	
-			request.setAttribute("top", top);
-			request.setAttribute("center", center);
-			request.setAttribute("bottom", bottom);				
-		}		
-		*/
 		String adminBoardPage = "vt_noticeBoardContent";
 		request.setAttribute("adminBoardPage", adminBoardPage);
 		
@@ -393,21 +370,16 @@ public class BoardController {
 		if(pageNum == null){
 			pageNum = "1";
 		}
-		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("pageNum", pageNum);		
 		
-		//NoticeBoardDataBean noticeBoardData = adminDao.getArticle(num);
 		NoticeBoardDataBean noticeBoardData = boardDao.getNoticeArticle(num);
 		
 		//조회수 증가 / 아이디 검사
 		String memId = (String) request.getSession().getAttribute("memId");
 		request.setAttribute("memId", memId);
-		//System.out.println("id: " + id);
-		//System.out.println("noticeBoardData.getId() : " + noticeBoardData.getId());
-		if(noticeBoardData.getId().equals(memId) == false){
-			//adminDao.setReadcountPlus(num);
+		if(noticeBoardData.getId().equals(memId) == false){			
 			boardDao.setNoticeReadcountPlus(num);
-		}	
-		
+		}		
 		
 		List<NoticeBoardDataBean> noticeBoardDataList = new ArrayList<NoticeBoardDataBean>();
 		
@@ -418,32 +390,25 @@ public class BoardController {
 		int start = 0;			//(블럭)시작 페이지
 		int end = 0;			//(블럭)끝 페이지		
 		
-		//게시글 수
-		//int articleCount = adminDao.getArticleCount();
-		int articleCount = boardDao.getNoticeArticleCount();
-		
-		System.out.println("articleCount : " + articleCount);			
+		//게시글 수	
+		int articleCount = boardDao.getNoticeArticleCount();			
 				
 		//페이지 공식 구하기 
 		currentPage = Integer.parseInt(pageNum);
 		start = (currentPage - 1) * pageSize + 1;
 		end = start + pageSize - 1;
-		System.out.println("start: " +start);
-		System.out.println("end: " + end);
 		
 		//페이지 수 값 구하기
 		pageCount = articleCount/pageBlock;
 		if(articleCount%pageBlock!=0){
 			pageCount+=1;
 		}
-		System.out.println("pageCount: " + pageCount);
 		
 		//해당 페이지 start ~ end 만큼 표시하기
 		Map<String, Integer> startEndPage = new HashMap<String, Integer>();
 		startEndPage.put("start", start);
-		startEndPage.put("end", end);
+		startEndPage.put("end", end);		
 		
-		//noticeBoardDataList = adminDao.getNoticeBoardList(startEndPage);
 		noticeBoardDataList = boardDao.getNoticeBoardList(startEndPage);
 		
 		request.setAttribute("noticeBoardDataList", noticeBoardDataList);
@@ -453,21 +418,155 @@ public class BoardController {
 		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("noticeBoardData", noticeBoardData);
 		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}	
+
+	@RequestMapping("/noticeBoardWriteForm")
+	public ModelAndView adminNoticeBoardWrite
+	(HttpServletRequest request,HttpServletResponse response){		
 		
-		/*
-		request.setAttribute("authority_id", authority_id);
-		if(authority_id==1){
-			return new ModelAndView("/vt_administrator/vt_administrator");
-		}else{
-			return new ModelAndView("/vtFrame/vtFrame");
+		String center = "/vtFrame/vt_sideMenuForm";
+		String menu = "/vt_board/vt_noticeBoardWriteForm";
+		String word = "/vt_board/word/notice";		
+		
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		request.setAttribute("center", center);
+	
+		return new ModelAndView("/vtFrame/vtFrame");
+	}
+	//공지사항 글작성 후 데이터 처리
+	@RequestMapping("/noticeBoardWritePro")
+	public ModelAndView noticeBoardWritePro
+	(HttpServletRequest request,HttpServletResponse response){	
+		
+		String center = "/vtFrame/vt_sideMenuForm";
+		String menu = "/vt_board/vt_noticeBoardWritePro";
+		String word = "/vt_board/word/notice";
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		request.setAttribute("center", center);
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {			
+			e.printStackTrace();
 		}
-		*/
-		request.setAttribute("word",word);
-		request.setAttribute("menu",menu);
-		request.setAttribute("center",center);
+		
+		String subject = request.getParameter("subject");
+		String content = request.getParameter("content");
+		
+		Map<String, String> writeContent = new HashMap<String, String>();		
+		writeContent.put("id", ((String) request.getSession().getAttribute("memId")));
+		writeContent.put("subject", subject);
+		writeContent.put("content", content);
+		
+		int insertArticleResult = boardDao.insertNoticeArticle(writeContent);		
+		request.setAttribute("insertArticleResult", insertArticleResult);
 		
 		return new ModelAndView("/vtFrame/vtFrame");
-	}//
+	}
+
+	//공지사항 글수정
+	@RequestMapping("/noticeBoardModifyForm")
+	public ModelAndView noticeBoardModifyForm
+	(HttpServletRequest request,HttpServletResponse response){		
+		
+		String center = "/vtFrame/vt_sideMenuForm";
+		String menu = "/vt_board/vt_noticeBoardModifyForm";
+		String word = "/vt_board/word/notice";
+		request.setAttribute("center", center);
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {			
+			e.printStackTrace();
+		}
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		request.setAttribute("num", num);
+		
+		String pageNum = request.getParameter("pageNum");
+		request.setAttribute("pageNum", pageNum);
+		
+		NoticeBoardDataBean noticeBoardData = boardDao.getNoticeArticle(num);		
+		request.setAttribute("noticeBoardData", noticeBoardData);
+		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}
+	
+
+	//공지사항 글수정 pro
+	@RequestMapping("/noticeBoardModifyPro")
+	public ModelAndView noticeBoardModifyPro
+	(HttpServletRequest request,HttpServletResponse response){	
+		
+		String center = "/vtFrame/vt_sideMenuForm";
+		String menu = "/vt_board/vt_noticeBoardModifyPro";
+		String word = "/vt_board/word/notice";
+		request.setAttribute("center", center);
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {			
+			e.printStackTrace();
+		}
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		request.setAttribute("num", num);
+		
+		String pageNum = request.getParameter("pageNum");
+		request.setAttribute("pageNum", pageNum);
+		
+		String subject = request.getParameter("subject");
+		String content = request.getParameter("content");		
+		
+		NoticeBoardDataBean noticeBoardData = new NoticeBoardDataBean();
+		noticeBoardData.setSubject(subject);
+		noticeBoardData.setContent(content);
+		noticeBoardData.setNum(num);	
+		
+		int updateArticleResult = boardDao.updateNoticeArticle(noticeBoardData);
+		request.setAttribute("updateArticleResult", updateArticleResult);
+					
+		return new ModelAndView("/vtFrame/vtFrame");
+	}
+	
+	//공지사항 글삭제 pro
+	@RequestMapping("/noticeBoardDeletePro")
+	public ModelAndView noticeBoardDeletePro
+	(HttpServletRequest request,HttpServletResponse response){		
+		
+		String center = "/vtFrame/vt_sideMenuForm";
+		String menu = "/vt_board/vt_noticeBoardDeletePro";
+		String word = "/vt_board/word/notice";
+		request.setAttribute("center", center);
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);		
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {			
+			e.printStackTrace();
+		}
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		request.setAttribute("num", num);
+		
+		String pageNum = request.getParameter("pageNum");
+		request.setAttribute("pageNum", pageNum);	
+		
+		int deleteArticleResult = boardDao.deleteNoticeArticle(num);
+		request.setAttribute("deleteArticleResult", deleteArticleResult);
+		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}	
+	
+	
 	
 	
 }	

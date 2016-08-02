@@ -65,7 +65,6 @@ public class AdministratorController {
 		
 		return new ModelAndView("/vt_administrator/vt_administrator");
 	}//인바디 저장하기 컨트롤러
-	
 	@RequestMapping("/insertFitnessUserSearch")
 	public ModelAndView insertFitnessUserSearch
 	(HttpServletRequest request,HttpServletResponse response){		
@@ -109,25 +108,38 @@ public class AdministratorController {
 				
 				format = new SimpleDateFormat("yyyy");
 				int start_year = Integer.parseInt(format.format(registerData.getStart_date()));
+				int end_year = Integer.parseInt(format.format(registerData.getEnd_date()));
 				request.setAttribute("start_year", start_year);
+				request.setAttribute("end_year", end_year);
 				
 				//윤달 검사
-				String leapYear = "false";
+				String start_leapYear = "false";
+				String end_leapYear = "false";
 				if((0==(start_year%4) && 0 !=(start_year%100)) || 0 == start_year%400){
-					leapYear = "true";
+					start_leapYear = "true";
 				}else{
-					leapYear = "false";
+					start_leapYear = "false";
+				}				
+				if((0==(end_year%4) && 0 !=(end_year%100)) || 0 == end_year%400){
+					end_leapYear = "true";
+				}else{
+					end_leapYear = "false";
 				}
-				System.out.println("Start leapYear :" + leapYear);
-				request.setAttribute("leapYear", leapYear);
+				
+				request.setAttribute("start_leapYear", start_leapYear);
+				request.setAttribute("end_leapYear", end_leapYear);
 				
 				format = new SimpleDateFormat("MM");
 				String start_month = format.format(registerData.getStart_date());
 				request.setAttribute("start_month", start_month);
+				String end_month = format.format(registerData.getEnd_date());
+				request.setAttribute("end_month", end_month);
 				
 				format = new SimpleDateFormat("dd");
 				String start_day = format.format(registerData.getStart_date());
 				request.setAttribute("start_day", start_day);
+				String end_day = format.format(registerData.getEnd_date());
+				request.setAttribute("end_day", end_day);
 				
 				//트레이너 정보 가지고 오기
 				List<String> trainerIdList = adminDao.getTrainerIdList();
@@ -141,279 +153,56 @@ public class AdministratorController {
 			request.setAttribute("resultRegister", resultRegister);
 			request.setAttribute("memberData", memberData);
 		}		
-		return new ModelAndView("/vt_administrator/userSearchText");
-	}//
+		return new ModelAndView("/vt_administrator/userSearchText");	}	
 	
 	//다른월 선택시 바뀐 일수 출력하기
-	@RequestMapping("/selectDayText")
-	public ModelAndView selectDayText
+	@RequestMapping("/selectDayText_start")
+	public ModelAndView selectDayText_start
 	(HttpServletRequest request,HttpServletResponse response){			
 		int start_month = Integer.parseInt(request.getParameter("start_month"));
-		String leapYear = request.getParameter("leapYear");
-		
-		System.out.println("start_month : " +start_month);
-		System.out.println("leapYear : " +leapYear);
+		String start_leapYear = request.getParameter("start_leapYear");			
 		
 		request.setAttribute("start_month", start_month);
-		request.setAttribute("leapYear", leapYear);
-		return new ModelAndView("/vt_administrator/selectDayText");
+		request.setAttribute("start_leapYear", start_leapYear);
+		return new ModelAndView("/vt_administrator/selectDayText_start");
 	}//
-	
-	// 공지사항 게시판 //	
-	
-	/*
-	
-	//공지사항 글 읽기
-	@RequestMapping("/noticeBoardContent")
-	public ModelAndView noticeBoardContent
-	(HttpServletRequest request,HttpServletResponse response){	
+	@RequestMapping("/selectDayText_end")
+	public ModelAndView selectDayText_end
+	(HttpServletRequest request,HttpServletResponse response){			
+		int start_month = Integer.parseInt(request.getParameter("end_month"));
+		String start_leapYear = request.getParameter("end_leapYear");			
 		
-		String top = null;
-		String bottom = null;	
-		String center = null;
-		
-		int authority_id = -1;
-		if(request.getSession().getAttribute("authority_id")!=null){
-			authority_id = (Integer) request.getSession().getAttribute("authority_id");
-		}	
-		
-		if(authority_id==1){
-			top = "vt_admin_topForm";
-			center = "vt_noticeBoard";				
-			request.setAttribute("top", top);
-			request.setAttribute("center", center);
-		}else{				
-			top = "vt_topForm";		
-			bottom = "vt_bottomForm";
-			center = "/vt_administrator/vt_noticeBoard";	
-			request.setAttribute("top", top);
-			request.setAttribute("center", center);
-			request.setAttribute("bottom", bottom);				
-		}		
-		
-		String adminBoardPage = "vt_noticeBoardContent";
-		request.setAttribute("adminBoardPage", adminBoardPage);
-		
-		int num = Integer.parseInt(request.getParameter("num"));
-		request.setAttribute("num", num);
-		String pageNum = request.getParameter("pageNum");
-		if(pageNum == null){
-			pageNum = "1";
-		}
-		request.setAttribute("pageNum", pageNum);
-		
-		NoticeBoardDataBean noticeBoardData = adminDao.getArticle(num);
-		
-		//조회수 증가 / 아이디 검사
-		String memId = (String) request.getSession().getAttribute("memId");
-		request.setAttribute("memId", memId);
-		//System.out.println("id: " + id);
-		//System.out.println("noticeBoardData.getId() : " + noticeBoardData.getId());
-		if(noticeBoardData.getId().equals(memId) == false){
-			adminDao.setReadcountPlus(num);
-		}	
-		
-		
-		List<NoticeBoardDataBean> noticeBoardDataList = new ArrayList<NoticeBoardDataBean>();
-		
-		int pageSize = 10;		// 페이지 크기
-		int pageBlock = 10;			
-		int currentPage = 0;	// 현재 페이지
-		int pageCount = 0;		// 전체 페이지 수
-		int start = 0;			//(블럭)시작 페이지
-		int end = 0;			//(블럭)끝 페이지		
-		
-		//게시글 수
-		int articleCount = adminDao.getArticleCount();
-		System.out.println("articleCount : " + articleCount);			
-				
-		//페이지 공식 구하기 
-		currentPage = Integer.parseInt(pageNum);
-		start = (currentPage - 1) * pageSize + 1;
-		end = start + pageSize - 1;
-		System.out.println("start: " +start);
-		System.out.println("end: " + end);
-		
-		//페이지 수 값 구하기
-		pageCount = articleCount/pageBlock;
-		if(articleCount%pageBlock!=0){
-			pageCount+=1;
-		}
-		System.out.println("pageCount: " + pageCount);
-		
-		//해당 페이지 start ~ end 만큼 표시하기
-		Map<String, Integer> startEndPage = new HashMap<String, Integer>();
-		startEndPage.put("start", start);
-		startEndPage.put("end", end);		
-		noticeBoardDataList = adminDao.getNoticeBoardList(startEndPage);		
-		
-		request.setAttribute("noticeBoardDataList", noticeBoardDataList);
-		request.setAttribute("articleCount", articleCount);			
-		request.setAttribute("pageSize", pageSize);
-		request.setAttribute("pageBlock", pageBlock);
-		request.setAttribute("pageCount", pageCount);
-		
-		
-			
-		request.setAttribute("noticeBoardData", noticeBoardData);		
-		request.setAttribute("authority_id", authority_id);
-		if(authority_id==1){
-			return new ModelAndView("/vt_administrator/vt_administrator");
-		}else{
-			return new ModelAndView("/vtFrame/vtFrame");
-		}
-	}//
-
-	/*
-	@RequestMapping("/noticeBoardWriteForm")
-	public ModelAndView adminNoticeBoardWrite
-	(HttpServletRequest request,HttpServletResponse response){		
+		request.setAttribute("end_month", start_month);
+		request.setAttribute("end_leapYear", start_leapYear);
+		return new ModelAndView("/vt_administrator/selectDayText_end");
+	}
+	@RequestMapping("/vt_fitnessInsertPro")
+	public ModelAndView vt_fitnessInsertPro
+	(HttpServletRequest request,HttpServletResponse response){			
 		
 		String top = "vt_admin_topForm";
-		String center = "vt_noticeBoard";
-		String adminBoardPage = "vt_noticeBoardWriteForm";
+		String center = "vt_admin_centerContent";
+		String administratorPage = "vt_fitnessInsert";
+		
+		//String exp_date = request.getParameter("exp_date");
+		//System.out.println("exp_date : " + exp_date);
+		return null;
 		
 		
-		request.setAttribute("top", top);
-		request.setAttribute("center", center);
-		request.setAttribute("adminBoardPage", adminBoardPage);
-		return new ModelAndView("/vt_administrator/vt_administrator");
+		
+		
+		
+		
+		
+		
+		//request.setAttribute("top", top);
+		//request.setAttribute("center", center);
+		//request.setAttribute("administratorPage", administratorPage);
+		//return new ModelAndView("/vt_administrator/vt_administrator");
 	}//
-	*/
-	/*
-	//공지사항 글작성 후 데이터 처리
-	@RequestMapping("/noticeBoardWritePro")
-	public ModelAndView noticeBoardWritePro
-	(HttpServletRequest request,HttpServletResponse response){		
-		String top = "vt_admin_topForm";
-		String center = "vt_noticeBoard";
-		String adminBoardPage = "vt_noticeBoardWritePro";
-		
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {			
-			e.printStackTrace();
-		}
-		
-		String subject = request.getParameter("subject");
-		String content = request.getParameter("content");
-		
-		Map<String, String> writeContent = new HashMap<String, String>();		
-		writeContent.put("id", ((String) request.getSession().getAttribute("memId")));
-		writeContent.put("subject", subject);
-		writeContent.put("content", content);
-		
-		int insertArticleResult = adminDao.insertArticle(writeContent);
-		
-		request.setAttribute("insertArticleResult", insertArticleResult);
-		request.setAttribute("top", top);
-		request.setAttribute("center", center);
-		request.setAttribute("adminBoardPage", adminBoardPage);
-		return new ModelAndView("/vt_administrator/vt_administrator");
-	}//
-	*/
-	/*
 	
-	//공지사항 글수정
-	@RequestMapping("/noticeBoardModifyForm")
-	public ModelAndView noticeBoardModifyForm
-	(HttpServletRequest request,HttpServletResponse response){		
-		String top = "vt_admin_topForm";
-		String center = "vt_noticeBoard";
-		String adminBoardPage = "vt_noticeBoardModifyForm";
-		
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {			
-			e.printStackTrace();
-		}
-		
-		int num = Integer.parseInt(request.getParameter("num"));
-		request.setAttribute("num", num);
-		
-		String pageNum = request.getParameter("pageNum");
-		
-		NoticeBoardDataBean noticeBoardData = adminDao.getArticle(num);
-		
-		request.setAttribute("noticeBoardData", noticeBoardData);
-		request.setAttribute("pageNum", pageNum);	
-		
-		
-		request.setAttribute("top", top);
-		request.setAttribute("center", center);
-		request.setAttribute("adminBoardPage", adminBoardPage);
-		return new ModelAndView("/vt_administrator/vt_administrator");
-	}//
-	*/
-	/*
-	//공지사항 글수정 pro
-		@RequestMapping("/noticeBoardModifyPro")
-		public ModelAndView noticeBoardModifyPro
-		(HttpServletRequest request,HttpServletResponse response){		
-			String top = "vt_admin_topForm";
-			String center = "vt_noticeBoard";
-			String adminBoardPage = "vt_noticeBoardModifyPro";
-			
-			try {
-				request.setCharacterEncoding("utf-8");
-			} catch (UnsupportedEncodingException e) {			
-				e.printStackTrace();
-			}
-			
-			int num = Integer.parseInt(request.getParameter("num"));
-			request.setAttribute("num", num);
-			
-			String pageNum = request.getParameter("pageNum");
-			request.setAttribute("pageNum", pageNum);
-			
-			String subject = request.getParameter("subject");
-			String content = request.getParameter("content");
-			
-			
-			NoticeBoardDataBean noticeBoardData = new NoticeBoardDataBean();
-			noticeBoardData.setSubject(subject);
-			noticeBoardData.setContent(content);
-			noticeBoardData.setNum(num);	
-			
-			int updateArticleResult = adminDao.updateArticle(noticeBoardData);
-			request.setAttribute("updateArticleResult", updateArticleResult);
-						
-			request.setAttribute("top", top);
-			request.setAttribute("center", center);
-			request.setAttribute("adminBoardPage", adminBoardPage);
-			return new ModelAndView("/vt_administrator/vt_administrator");
-		}
-		*/
-		/*
-		//공지사항 글삭제 pro
-		@RequestMapping("/noticeBoardDeletePro")
-		public ModelAndView noticeBoardDeletePro
-		(HttpServletRequest request,HttpServletResponse response){		
-			String top = "vt_admin_topForm";
-			String center = "vt_noticeBoard";
-			String adminBoardPage = "vt_noticeBoardDeletePro";
-			
-			try {
-				request.setCharacterEncoding("utf-8");
-			} catch (UnsupportedEncodingException e) {			
-				e.printStackTrace();
-			}
-			
-			int num = Integer.parseInt(request.getParameter("num"));
-			request.setAttribute("num", num);
-			
-			String pageNum = request.getParameter("pageNum");
-			request.setAttribute("pageNum", pageNum);	
-			
-			int deleteArticleResult = adminDao.deleteArticle(num);
-			request.setAttribute("deleteArticleResult", deleteArticleResult);			
-						
-			request.setAttribute("top", top);
-			request.setAttribute("center", center);
-			request.setAttribute("adminBoardPage", adminBoardPage);
-			return new ModelAndView("/vt_administrator/vt_administrator");
-		}	
-		*/
+	
+	
 }
 
 

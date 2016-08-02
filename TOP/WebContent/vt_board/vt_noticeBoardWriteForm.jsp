@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
-<script src="${script }vt_noticeBoardWriteForm.js" type="text/javascript"></script>
+<script src="/TOP/vt_board/script/board.js" type="text/javascript"></script>
 
 <body>
 	<form method="post" action="noticeBoardWritePro.do" name="NBWriteForm" onsubmit="return noticeBoardWriteCheck()">

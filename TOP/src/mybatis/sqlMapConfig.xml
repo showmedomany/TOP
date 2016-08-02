@@ -28,9 +28,7 @@
 		<mapper resource="address/address.xml"/>
 		<mapper resource="chat/chat.xml"/>
 		<mapper resource="board/board.xml"/>		
-		<mapper resource="administrator/admin.xml"/>
-		<mapper resource="administrator/adminNoticeBoard.xml"/>
-		
+		<mapper resource="administrator/admin.xml"/>	
 		
 		
 	</mappers>

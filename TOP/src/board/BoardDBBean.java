@@ -52,31 +52,31 @@ public class BoardDBBean implements BoardDao {
 	/* 공지사항 */ 
 	@Override
 	public List<NoticeBoardDataBean> getNoticeBoardList(Map<String, Integer> startEndPage) {		
-		return SqlMapClient.getSession().selectList("AdminNoticeBoard.getNoticeBoardList", startEndPage);
+		return SqlMapClient.getSession().selectList("Board.getNoticeBoardList", startEndPage);
 	}
 	@Override
 	public int getNoticeArticleCount() {		
-		return SqlMapClient.getSession().selectOne("AdminNoticeBoard.getArticleCount");
+		return SqlMapClient.getSession().selectOne("Board.getNoticeArticleCount");
 	}
 	@Override
 	public void setNoticeReadcountPlus(int num) {
-		SqlMapClient.getSession().update("AdminNoticeBoard.setReadcountPlus", num);
+		SqlMapClient.getSession().update("Board.setNoticeReadcountPlus", num);
 	}
 	@Override
 	public NoticeBoardDataBean getNoticeArticle(int num) {		
-		return SqlMapClient.getSession().selectOne("AdminNoticeBoard.getArticle", num);
+		return SqlMapClient.getSession().selectOne("Board.getNoticeArticle", num);
 	}
 	@Override
 	public int insertNoticeArticle(Map<String, String> writeContent) {
-		return SqlMapClient.getSession().insert("AdminNoticeBoard.insertArticle", writeContent);
+		return SqlMapClient.getSession().insert("Board.insertNoticeArticle", writeContent);
 	}	
 	@Override
 	public int updateNoticeArticle(NoticeBoardDataBean noticeBoardData) {		
-		return SqlMapClient.getSession().update("AdminNoticeBoard.updateArticle", noticeBoardData);		
+		return SqlMapClient.getSession().update("Board.updateNoticeArticle", noticeBoardData);		
 	}
 	@Override
 	public int deleteNoticeArticle(int num) {		
-		return SqlMapClient.getSession().delete("AdminNoticeBoard.deleteArticle", num);
+		return SqlMapClient.getSession().delete("Board.deleteNoticeArticle", num);
 	}
 	
 		
