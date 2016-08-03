@@ -4,7 +4,6 @@
 
 		<link href = "${css}vt_FNQStyle.css" rel="stylesheet"	type="text/css">
 
-	<div class="content_wrap">
 		<div class="content_top">
 			<div class="top1">
 				고객센터
@@ -35,5 +34,4 @@
 		<div class="content_center">
 		
 		</div>
-	</div>
 	

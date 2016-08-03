@@ -20,38 +20,7 @@
 			</div>
 			<div class="centerContent_empty_space"></div>
 			<div class="centerContent_mainframe">
-				<div class="centerContent_content">
-					<table class="centerContent_table">
-						<tr height="450">
-							<td>
-								<img class="centerContent_img1" src="${images}center1.jpg">
-							</td>
-							<td>
-								<img class="centerContent_img2" src="${images}center1.jpg">
-							</td>
-						</tr>
-						<tr height="50">
-							<td colspan="2"></td>
-						</tr>
-						<tr height="450">
-							<td>
-								<img class="centerContent_img2" src="${images}center1.jpg">
-							</td>
-							<td>
-								<img class="centerContent_img2" src="${images}center1.jpg">
-							</td>
-						</tr>
-						<tr height="50">
-							<td colspan="2"></td>
-						</tr>
-						<tr height="500">
-							<td colspan="2"><img src="${images}center2.jpg"></td>
-						</tr>
-						<tr height="50">
-							<td colspan="2"></td>
-						</tr>
-					</table>
-				</div>
+				
 			</div>
 		</div>
 	</body>

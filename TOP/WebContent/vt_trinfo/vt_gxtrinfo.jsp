@@ -16,7 +16,7 @@
 				<p class="say2">그리고 blahblahblahblahblahblah</p>
 			</div>
 			<div class="img">
-				<img class="img_position" src="${images}pttr1.jpg">
+				<img class="img_position" src="${images}per.png">
 			</div>
 			<div class="cur">
 				<div class="name">
@@ -37,7 +37,7 @@
 				<p class="say2">그리고 blahblahblahblahblahblah</p>
 			</div>
 			<div class="img">
-				<img class="img_position" src="${images}pttr2.jpg">
+				<img class="img_position" src="${images}per.png">
 			</div>
 			<div class="cur">
 				<div class="name">
@@ -58,7 +58,7 @@
 				<p class="say2">그리고 blahblahblahblahblahblah</p>
 			</div>
 			<div class="img">
-				<img class="img_position" src="${images}pttr3.jpg">
+				<img class="img_position" src="${images}per.png">
 			</div>
 			<div class="cur">
 				<div class="name">
@@ -79,7 +79,7 @@
 				<p class="say2">그리고 blahblahblahblahblahblah</p>
 			</div>
 			<div class="img">
-				<img class="img_position" src="${images}pttr4.jpg">
+				<img class="img_position" src="${images}per.png">
 			</div>
 			<div class="cur">
 				<div class="name">
@@ -100,7 +100,7 @@
 				<p class="say2">그리고 blahblahblahblahblahblah</p>
 			</div>
 			<div class="img">
-				<img class="img_position" src="${images}pttr5.jpg">
+				<img class="img_position" src="${images}per.png">
 			</div>
 			<div class="cur">
 				<div class="name">
