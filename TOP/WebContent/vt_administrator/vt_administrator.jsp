@@ -4,8 +4,13 @@
 
 <html>
 	<head>	
-	<title>관리자 페이지</title>	
+		<title>관리자 페이지</title>
+		<script src = "${jquery}"></script>
+		<script src = "${request}"></script>
+		<script src = "${script}chat.js"></script>
+		
 	</head>	
+		<div id = "adminchat"></div>
 		<div id = "administrator_top" >
 			<div>			
 				<jsp:include page="${top }.jsp" flush="false"></jsp:include>

@@ -11,6 +11,14 @@
 		insert into vt_request values(#{ip}, #{id}, #{response})
 	</insert>
 	
+	<select id="searchRequest" resultType="int">
+		select count(*) from vt_request where response = 0
+	</select>
+	
+	<select id="getRequest" resultType="chat.RequestDataBean">
+		select * from vt_request where response = 0
+	</select>
+
 	<insert id="insertChat" parameterType="chat.ChatDataBean">
 		insert into vt_chatting values(vt_chatting_seq.NEXTVAL,#{ip}, #{content}, #{id})
 	</insert>
@@ -18,4 +26,6 @@
 	<select id="getChat" parameterType="String" resultType="chat.ChatDataBean">
 		select * from vt_chatting where ip = #{ip}
 	</select>
+	
+	
 </mapper>

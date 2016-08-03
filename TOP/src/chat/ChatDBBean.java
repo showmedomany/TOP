@@ -30,4 +30,16 @@ public class ChatDBBean implements ChatDao {
 		return SqlMapClient.getSession().selectList("Chat.getChat", ip);
 	}
 
+	@Override
+	public int searchRequest() {
+		
+		return SqlMapClient.getSession().selectOne("Chat.searchRequest");
+	}
+
+	@Override
+	public List<RequestDataBean> getRequest() {
+		
+		return SqlMapClient.getSession().selectList("Chat.getRequest");
+	}
+
 }

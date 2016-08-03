@@ -3,107 +3,115 @@
 <%@ include file = "setting.jsp" %>
 
 
-		<link href = "${mycss}vt_trinfoStyle.css" rel="stylesheet"	type="text/css">
+		<link href = "${css}vt_trinfoStyle.css" rel="stylesheet"	type="text/css">
 
-	<div class="content_wrap">
 		<div class="trinfo">
 			<div class="trinfo_name">
 				V.T GX 강사진 소개
 			</div>
 		</div>
-		<div class="position1">
-			<div class="img">
-				<img src="${images}pttr1.jpg">
+		<div class="position">
+			<div class="say">
+				<p class="say1">"항상 최선을 다하는 코치가 되겠습니다"</p>
+				<p class="say2">그리고 blahblahblahblahblahblah</p>
 			</div>
-			<div class="p1_name">
-				<div class="name1">
-					별명
-				</div>
-				<div class="name2">
-					정동환
-				</div>
-				<div class="name3">
-					코치
-				</div>
+			<div class="img">
+				<img class="img_position" src="${images}pttr1.jpg">
 			</div>
 			<div class="cur">
-				커리큘럼 블라블라블라
+				<div class="name">
+					<div class="name_div">
+						<p class="p_name">정동환</p>
+						<p class="p_job">코치</p>
+						<p class="p_profile">PROFILE</p>
+					</div>
+				</div>
+				<div class="cur_content">
+				
+				</div>
 			</div>
 		</div>
-		<div class="position2">
-			<div class="img">
-				<img src="${images}pttr2.jpg">
+		<div class="position">
+			<div class="say">
+				<p class="say1">"항상 최선을 다하는 코치가 되겠습니다"</p>
+				<p class="say2">그리고 blahblahblahblahblahblah</p>
 			</div>
-			<div class="name">
-				<div class="name1">
-					별명
-				</div>
-				<div class="name2">
-					이민구
-				</div>
-				<div class="name3">
-					코치
-				</div>
+			<div class="img">
+				<img class="img_position" src="${images}pttr2.jpg">
 			</div>
 			<div class="cur">
-				커리큘럼 블라블라블라
+				<div class="name">
+					<div class="name_div">
+						<p class="p_name">이민구</p>
+						<p class="p_job">코치</p>
+						<p class="p_profile">PROFILE</p>
+					</div>
+				</div>
+				<div class="cur_content">
+				
+				</div>
 			</div>
 		</div>
-		<div class="position3">
-			<div class="img">
-				<img src="${images}pttr3.jpg">
+		<div class="position">
+			<div class="say">
+				<p class="say1">"항상 최선을 다하는 코치가 되겠습니다"</p>
+				<p class="say2">그리고 blahblahblahblahblahblah</p>
 			</div>
-			<div class="name">
-				<div class="name1">
-					별명
-				</div>
-				<div class="name2">
-					이제훈
-				</div>
-				<div class="name3">
-					코치
-				</div>
+			<div class="img">
+				<img class="img_position" src="${images}pttr3.jpg">
 			</div>
 			<div class="cur">
-				커리큘럼 블라블라블라
+				<div class="name">
+					<div class="name_div">
+						<p class="p_name">이제훈</p>
+						<p class="p_job">코치</p>
+						<p class="p_profile">PROFILE</p>
+					</div>
+				</div>
+				<div class="cur_content">
+				
+				</div>
 			</div>
 		</div>
-		<div class="position4">
-			<div class="img">
-				<img src="${images}pttr4.jpg">
+		<div class="position">
+			<div class="say">
+				<p class="say1">"항상 최선을 다하는 코치가 되겠습니다"</p>
+				<p class="say2">그리고 blahblahblahblahblahblah</p>
 			</div>
-			<div class="name">
-				<div class="name1">
-					별명
-				</div>
-				<div class="name2">
-					최현서
-				</div>
-				<div class="name3">
-					코치
-				</div>
+			<div class="img">
+				<img class="img_position" src="${images}pttr4.jpg">
 			</div>
 			<div class="cur">
-				커리큘럼 블라블라블라
+				<div class="name">
+					<div class="name_div">
+						<p class="p_name">최현서</p>
+						<p class="p_job">코치</p>
+						<p class="p_profile">PROFILE</p>
+					</div>
+				</div>
+				<div class="cur_content">
+				
+				</div>
 			</div>
 		</div>
-		<div class="position5">
-			<div class="img">
-				<img src="${images}pttr5.jpg">
+		<div class="position">
+			<div class="say">
+				<p class="say1">"항상 최선을 다하는 코치가 되겠습니다"</p>
+				<p class="say2">그리고 blahblahblahblahblahblah</p>
 			</div>
-			<div class="name">
-				<div class="name1">
-					별명
-				</div>
-				<div class="name2">
-					이보미
-				</div>
-				<div class="name3">
-					코치
-				</div>
+			<div class="img">
+				<img class="img_position" src="${images}pttr5.jpg">
 			</div>
 			<div class="cur">
-				커리큘럼 블라블라블라
+				<div class="name">
+					<div class="name_div">
+						<p class="p_name">이보미</p>
+						<p class="p_job">코치</p>
+						<p class="p_profile">PROFILE</p>
+					</div>
+				</div>
+				<div class="cur_content">
+				
+				</div>
 			</div>
 		</div>
-	</div>

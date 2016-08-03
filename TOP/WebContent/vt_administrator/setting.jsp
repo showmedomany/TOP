@@ -11,3 +11,4 @@
 <c:set var = "script" value = "/TOP/vt_administrator/script/"/>
 <c:set var = "images" value = "/TOP/vt_administrator/images/"/>
 <c:set var = "jquery" value = "/TOP/jquery-1.12.4.js"/>
+<c:set var = "request" value = "/TOP/request.js"/>

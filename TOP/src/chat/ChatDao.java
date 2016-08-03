@@ -7,4 +7,6 @@ public interface ChatDao {
 	public int insertRequest(RequestDataBean rdto);
 	public int insertChat(ChatDataBean cdto);
 	public List<ChatDataBean> getChat(String ip);
+	public List<RequestDataBean> getRequest();
+	public int searchRequest();
 }

@@ -1,4 +1,4 @@
-package handler;
+ package handler;
 
 import java.util.List;
 
@@ -101,6 +101,7 @@ public class ChatController {
 				List<ChatDataBean> clist = chatDao.getChat(ip);
 				request.setAttribute("id", id);
 				request.setAttribute("clist", clist);
+				
 			}
 		}
 		
@@ -108,4 +109,47 @@ public class ChatController {
 		
 		return new ModelAndView("/vt_chat/vt_chatPro");
 	}
+	
+	@RequestMapping("/schRequest")
+	public ModelAndView schRequest(HttpServletRequest request, HttpServletResponse response){
+		//요청을 검색후 요청이 있다면 리스트를 보냄
+		
+		int searchResult = chatDao.searchRequest();
+		
+		
+		if(searchResult != 0){
+			//request테이블의 response가 0인 데이터를 검색하여 리스트로 받음
+			List<RequestDataBean> rlist = chatDao.getRequest();		
+			
+			request.setAttribute("rlist", rlist);
+			System.out.println("gg");
+		}		
+		
+		return new ModelAndView("/vt_chat/vt_getRequest");
+	}
+	
+	@RequestMapping("/responseChat")  
+	public ModelAndView responseChat(HttpServletRequest request, HttpServletResponse response){
+		//새창을 만들기 위해 getRequest.jsp에서 받은 rdto의 ip와 id를 세팅해서 채팅창을 연다.
+		String ip = request.getParameter("ip");
+		String id = request.getParameter("id");
+		
+		request.setAttribute("ip", ip);
+		request.setAttribute("id", id);
+		
+		
+		return new ModelAndView("/vt_chat/vt_adminchat");
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

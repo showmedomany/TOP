@@ -2,12 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
 
-<html>
-	<head>
-		<link href = "${css}vt_infoStyle.css" rel="stylesheet"	type="text/css">
-	</head>
+
+
+		<link href = "${css}vt_helloStyle.css" rel="stylesheet"	type="text/css">
 	
-	<body>
-		
-	</body>
-</html>
+

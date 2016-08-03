@@ -11,6 +11,7 @@
     min-height: 800px;
     border-style: double;
     box-sizing: border-box;
+    left:-100px;
     float: left;
     position: relative;
     margin: 50 0;
@@ -53,7 +54,7 @@
 .main_wrap {
     position: relative;
     float: right;
-    left: -64px;
+    left: -165px;
     width: 700px;
     margin : 50 0;
 }

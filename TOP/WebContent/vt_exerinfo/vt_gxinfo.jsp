@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
 
-		<link href = "${css}vt_exerinfo.css" rel="stylesheet"	type="text/css">
+
+		<link href = "${css}vt_gxinfoStyle.css" rel="stylesheet"	type="text/css">
+
 	
 
 	<div class="content_wrap">
