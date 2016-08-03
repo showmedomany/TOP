@@ -5,9 +5,10 @@
 <html>
 	<head> 
 		<link href = "${css}vt_loginFormStyle.css" rel = "stylesheet" type = "text/css">
+		<script src = "${script}vtFram.js"></script>
 	</head>
-	<body onload = "vt_loginForm()">
-		<form method = "post" action = "loginPro.do">
+	<body onload = "vt_loginFormFocus()">
+		<form method = "post" action = "loginPro.do" name = "loginform">
 			<div class = "vt_loginForm_frame">
 				
 				<div class = "vt_loginForm_body">

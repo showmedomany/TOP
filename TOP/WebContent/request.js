@@ -41,7 +41,7 @@ Request.prototype = {
 			var httpUrl = (httpMethod == "GET") ? this.url + "?" + httpParams : this.url;
 			
 			this.httpRequest.open(httpMethod, httpUrl, true);
-			this.httpRequest.setRequestHeader(
+			this.httpRequest.setRequestHeader(//;charset=UTF-8
 					"content-type", "application/x-www-form-urlencoded" );
 			this.httpRequest.send(httpMethod == "POST" ? httpParams : null);			
 		}

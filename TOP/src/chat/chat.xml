@@ -24,8 +24,26 @@
 	</insert>
 	
 	<select id="getChat" parameterType="String" resultType="chat.ChatDataBean">
-		select * from vt_chatting where ip = #{ip}
+		<!-- select * from vt_chatting where ip = #{ip} -->
+		select * from (select * from vt_chatting order by num asc) where ip = #{ip}
 	</select>
+	
+	<update id="responseChat" parameterType="String">
+		update vt_request set response = 1 where ip = #{ip}		
+	</update>	
+	
+	<delete id="exitChat" parameterType="String">
+		delete from vt_request where ip = #{ip}
+	</delete>
+	
+	
+	<!-- 
+	<update id="testchat" parameterType="String">
+		update vt_request set response = 0 where ip = #{ip}
+	</update>
+	 -->
+	
+	
 	
 	
 </mapper>

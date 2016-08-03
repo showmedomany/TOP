@@ -29,6 +29,10 @@ function inputformfocus() {
 	inputform.id.focus();
 }
 
+function vt_loginFormFocus(){
+	loginform.id.focus();
+}
+
 
 //아이디 중복체크
 function confirmid(obj){

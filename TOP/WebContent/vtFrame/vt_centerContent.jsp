@@ -10,6 +10,9 @@
 		
 	</head>
 	<body>
+		<form name = "sessioncheck">
+			<input type = "hidden" name ="authority" value = "${authority_id}">
+		</form>
 		<div class="centerContentframe">
 			<div id="sliderFrame">
 				<div id="slider">

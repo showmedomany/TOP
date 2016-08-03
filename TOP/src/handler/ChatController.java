@@ -25,12 +25,13 @@ public class ChatController {
 		//아이디와 아이피를 받아옴
 		String ip = request.getRemoteAddr();
 		String id = (String)request.getSession().getAttribute("memId");
+		
+		
 		if(id == null){
 			id = "guest";
 		}
 		request.setAttribute("ip", ip);
-		request.setAttribute("id", id);
-		
+		request.setAttribute("id", id);		
 		
 		return new ModelAndView("/vt_chat/vt_memberchat");
 	}//memberChat
@@ -52,7 +53,6 @@ public class ChatController {
 		
 		return new ModelAndView("/vt_chat/vt_chatPro");//채팅 내역을 구성해줄 jsp로	
 	}//
-	
 	
 	
 	@RequestMapping("/memberRequestChat")
@@ -83,11 +83,14 @@ public class ChatController {
 				cdto.setId(id);
 				
 				int insertchat = chatDao.insertChat(cdto);
+				
+				
 				if(insertchat != 0){
 					List<ChatDataBean> clist = chatDao.getChat(ip);
 					request.setAttribute("id", id);
 					request.setAttribute("clist", clist);
-				}				
+				}
+				
 			}
 		}
 		else{
@@ -97,32 +100,32 @@ public class ChatController {
 			cdto.setId(id);
 			
 			int insertchat = chatDao.insertChat(cdto);
+			
 			if(insertchat != 0){
 				List<ChatDataBean> clist = chatDao.getChat(ip);
 				request.setAttribute("id", id);
-				request.setAttribute("clist", clist);
-				
-			}
+				request.setAttribute("clist", clist);				
+			}			
 		}
 		
-		
-		
-		return new ModelAndView("/vt_chat/vt_chatPro");
+		return new ModelAndView("/vt_chat/vt_chatPro");		
 	}
+	
+	
+	
+	
+	
 	
 	@RequestMapping("/schRequest")
 	public ModelAndView schRequest(HttpServletRequest request, HttpServletResponse response){
 		//요청을 검색후 요청이 있다면 리스트를 보냄
 		
-		int searchResult = chatDao.searchRequest();
-		
+		int searchResult = chatDao.searchRequest();		
 		
 		if(searchResult != 0){
 			//request테이블의 response가 0인 데이터를 검색하여 리스트로 받음
-			List<RequestDataBean> rlist = chatDao.getRequest();		
-			
-			request.setAttribute("rlist", rlist);
-			System.out.println("gg");
+			List<RequestDataBean> rlist = chatDao.getRequest();				
+			request.setAttribute("rlist", rlist);			
 		}		
 		
 		return new ModelAndView("/vt_chat/vt_getRequest");
@@ -133,12 +136,67 @@ public class ChatController {
 		//새창을 만들기 위해 getRequest.jsp에서 받은 rdto의 ip와 id를 세팅해서 채팅창을 연다.
 		String ip = request.getParameter("ip");
 		String id = request.getParameter("id");
+		int res = chatDao.responseChat(ip);
+		if(res != 0){
+			request.setAttribute("ip", ip);
+			request.setAttribute("id", id);
+		}		
+		return new ModelAndView("/vt_chat/vt_adminchat");
+	}
+	
+	
+	@RequestMapping("/exitChat")
+	public ModelAndView exitChat(HttpServletRequest request, HttpServletResponse response){
+		//새창을 만들기 위해 getRequest.jsp에서 받은 rdto의 ip와 id를 세팅해서 채팅창을 연다.
+		String ip = request.getParameter("ip");
 		
-		request.setAttribute("ip", ip);
+		chatDao.exitChat(ip);
+		//int result = chatDao.testchat(ip);		
+				
+		return new ModelAndView("/vt_chat/vt_adminchat");
+	}
+	
+	
+	
+	@RequestMapping("/admin_getchat")
+	public ModelAndView admin_getchat(HttpServletRequest request, HttpServletResponse response){
+		//새창을 만들기 위해 getRequest.jsp에서 받은 rdto의 ip와 id를 세팅해서 채팅창을 연다.
+		String ip = request.getParameter("ip");
+		String id = (String)request.getSession().getAttribute("memId");
+		
+		
+		List<ChatDataBean> clist = chatDao.getChat(ip);
+		
+		request.setAttribute("clist", clist);	//채팅 내역	
 		request.setAttribute("id", id);
 		
+		return new ModelAndView("/vt_chat/vt_chatPro");
+	}
+	
+	
+	//보내기 버튼 눌렀을경우
+	@RequestMapping("/admin_sndmsg")
+	public ModelAndView admin_sndmsg
+	(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		
-		return new ModelAndView("/vt_chat/vt_adminchat");
+		String ip = request.getParameter("ip");
+		String id = (String)request.getSession().getAttribute("memId");
+		String content = request.getParameter("content");
+		
+		ChatDataBean cdto = new ChatDataBean();
+		cdto.setIp(ip);
+		cdto.setContent(content);
+		cdto.setId(id);
+		
+		int insertchat = chatDao.insertChat(cdto);
+		
+		if(insertchat != 0){
+			List<ChatDataBean> clist = chatDao.getChat(ip);
+			request.setAttribute("id", id);
+			request.setAttribute("clist", clist);			
+		}
+		
+		return new ModelAndView("/vt_chat/vt_chatPro");
 	}
 }
 

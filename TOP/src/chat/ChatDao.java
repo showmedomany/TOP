@@ -9,4 +9,9 @@ public interface ChatDao {
 	public List<ChatDataBean> getChat(String ip);
 	public List<RequestDataBean> getRequest();
 	public int searchRequest();
+	public int responseChat(String ip);
+	public int exitChat(String ip);
+	
+	
+	//public int testchat(String ip);
 }

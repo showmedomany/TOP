@@ -42,4 +42,22 @@ public class ChatDBBean implements ChatDao {
 		return SqlMapClient.getSession().selectList("Chat.getRequest");
 	}
 
+	@Override
+	public int responseChat(String ip) {
+		
+		return SqlMapClient.getSession().update("Chat.responseChat", ip);
+	}
+
+	@Override
+	public int exitChat(String ip) {
+		
+		return SqlMapClient.getSession().delete("Chat.exitChat", ip);
+	}
+	
+	/*
+	@Override
+	public int testchat(String ip){
+		return SqlMapClient.getSession().update("Chat.testchat",ip);
+	}
+	*/
 }
