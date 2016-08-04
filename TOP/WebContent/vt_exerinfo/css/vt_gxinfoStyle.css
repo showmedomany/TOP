@@ -1,3 +1,143 @@
+.gx_infowarp {
+    width: inherit;
+    height: 3000;
+}
+
+
+/*gx 정보 */
+.gx_infotit {
+    width: 550;
+    height: 100;
+    margin: 20 0;
+    text-align: center;
+    
+}
+.wire {
+	height : 2;
+	background-color: black;
+	margin:20 0;
+}
+
+
+/* 스피닝 */
+.program1 {
+    width: 890;
+    height: 450;
+	position: relative;
+}
+
+/*이미지*/
+.spinning1 {
+    width: 480;
+    height: 400;
+}
+.spinning2 {
+    width: 350;
+    height: 380;
+    margin: 5;
+}
+/*이미지 끝*/
+
+.programss1 {
+   
+    width: 890px;
+    height: 250;
+    position: relative;
+}
+
+/* 스피닝 끝 */
+
+
+/* 필라테스 */
+.program2 {
+    width: 890;
+    height: 350;
+    margin-top: 50;
+}
+.pilates1 {
+    width: 532px;
+    height: 320;
+}
+.pilates2 {
+	width: 350;
+    height: 320;
+}
+.programss2 {
+    margin-top: 0;
+    width: 890;
+    height: 250;
+   
+}
+/* 필라테스 끝*/
+
+
+/* 요가 */
+.program3 {
+	width: 890;
+    height: 350;
+    margin-top: 50;
+}
+
+.programss3 {
+	width: 890px;
+    height: 250;
+    position: relative;
+   
+}
+.yoga1 {
+    width: 650;
+    height: 320;
+}
+
+/* 요가 끝*/
+
+
+/*스트레칭*/
+.program4 {
+	width: 890;
+    height: 350;
+    margin-top: 50;
+}
+
+.programss4 {
+	width: 890px;
+    height: 250;
+    position: relative;
+   
+}
+.stretching1 {
+	width: 532px;
+    height: 320;
+}
+
+.stretching2 {
+	width: 350;
+    height: 320;
+}
+
+/*스트레칭 끝*/
+
+
+/* 문자열 */
+.num {
+	font-size: 30;
+	font-weight: bold;
+}
+.tit {
+	font-size: 35;
+	
+}
+.desc {
+	font-size:25;
+	margin-bottom: 32;
+}
+.context {
+	font-size: 15;
+}
+
+/* 문자열 끝 */
+/* 
+=======
 
 .exer_wrap1 {
     width: 600px;
@@ -144,3 +284,5 @@
 .wrap4_1_4{
 	
 }
+>>>>>>> branch '페이지작업' of https://github.com/showmedomany/TOP.git
+ */
