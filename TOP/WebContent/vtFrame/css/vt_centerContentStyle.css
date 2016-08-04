@@ -27,11 +27,11 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 }
 
 .centerContent_empty_space{
-	height: 79px;
+   height: 79px;
 }
 
 .centerContent_program{
-	position: relative;
+   position: relative;
     height: 202px;
     width: 1395px;
     background:white;
@@ -40,13 +40,13 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 
 }
 .visual_program{
-	position:relative;
+   position:relative;
     top: 25px;
     font-size: 30px;
     left: 390px;
 }
 .visual_program1{
-	position:relative;
+   position:relative;
     top: 30px;
     font-size: 20px;
    left: 518px;
@@ -62,18 +62,18 @@ background-color: black;
     vertical-align: middle;
     position: relative;
     top: 8px;
-    left: 107px;	
+    left: 107px;   
     float: left;
     margin: 0 20px;
 }
 .centerContent_icon1sub{
-	position: relative;
+   position: relative;
     top: 158px;
     font-size: 20;
     left: -13px;
 }
 .centerContent_icon2{
-	background-color: black;
+   background-color: black;
     height: 132px;
     width: 132px;
     border-radius: 50%;
@@ -88,13 +88,13 @@ background-color: black;
     margin: 0 20px;
 }
 .centerContent_icon2sub{
-	position: relative;
+   position: relative;
     top: 128px;
     font-size: 20px;
     left: 12px;
 }
 .centerContent_icon3{
-	background-color: black;
+   background-color: black;
     height: 132px;
     width: 132px;
     border-radius: 50%;
@@ -109,13 +109,13 @@ background-color: black;
     margin: 0 20px;
 }
 .centerContent_icon3sub{
-	position: relative;
+   position: relative;
     top: 98px;
     font-size: 20px;
     left: 58px;
 }
 .centerContent_icon4{
-	background-color: black;
+   background-color: black;
     height: 132px;
     width: 132px;
     border-radius: 50%;
@@ -130,13 +130,13 @@ background-color: black;
     margin: 0 20px;
 }
 .centerContent_icon4sub{
-	position: relative;
+   position: relative;
     top: 68px;
     font-size: 20px;
     left: 63px;
 }
 .centerContent_icon5{
-	background-color: black;
+   background-color: black;
     height: 132px;
     width: 132px;
     border-radius: 50%;
@@ -151,13 +151,13 @@ background-color: black;
     margin: 0 20px;
 }
 .centerContent_icon5sub{
-	position: relative;
+   position: relative;
     top: 38px;
     font-size: 20px;
     left: 72px;
 }
 .centerContent_icon6{
-	background-color: black;
+   background-color: black;
     height: 132px;
     width: 132px;
     border-radius: 50%;
@@ -168,11 +168,11 @@ background-color: black;
     position: relative;
    top: -143px;
     left: 206px;
-    float: left;	
+    float: left;   
     margin: 0 20px;
 }
 .centerContent_icon6sub{
-	position: relative;
+   position: relative;
     top: 7px;
     font-size: 20px;
     left: 109px;
@@ -186,7 +186,7 @@ background-color: black;
 }
 #sliderFrame 
 {
-    width:700px;
+    width:676px;
     margin:0 auto; /*center-aligned*/
 }
 
@@ -201,9 +201,9 @@ background-color: black;
     margin: 8 auto;
     transform: translate3d(0,0,0);
     box-shadow: 0px 1px 5px #999999;
-   	right: -30;
+      right: -30;
     width: 1000;
-    height: 500;
+    height: 495px;
     margin-left: -185px;
 }
 
