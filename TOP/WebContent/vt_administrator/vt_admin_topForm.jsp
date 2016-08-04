@@ -47,7 +47,7 @@
 							<li class="admin_top_navi_menuframe">  
 								<div class="admin_top_navi_menu">회원 관리</div>
 								<ul class="admin_top_navi_subframe">  
-									<li>회원 검색</li>  
+									<li onclick="location = 'memberSearch.do'">회원 검색</li>  
 									<li>빈공간</li>
 								</ul>  
 							</li> 

@@ -158,9 +158,7 @@ insert into vt_exercise values(1, 1, '덤벨플라이', '덤벨',
 3.덤벨을 어깨 밑으로 너무 내리지 않도록 한다.^
 4.덤벨을 들어올리는 동작에서 양손이 벌어지게 않게 살짝 모아줌으로써 대흉근의 수축을 최대화한다.^
 5.덤벨 플라이 운동을 진행할 때는 "자세와 무게"에 특히 신경을 쓰면서 진행하는 것이 좋습니다. ^
-1개의 관절만을 이용하는 운동이므로,너무 무거운 무게는 오히려 관절에 부담이 되고 해당부위에 자극을 주기가 쉽지 않으
-
-므로
+1개의 관절만을 이용하는 운동이므로,너무 무거운 무게는 오히려 관절에 부담이 되고 해당부위에 자극을 주기가 쉽지 않으므로
 자신에게 맞는 무게를 선정하여 바른자세로 진행하는것이 좋습니다.^
 6.또한 너무 빠른동작으로 진행하는것보다 천천히 진행하는 것이 효과적인 운동이 될 수 있습니다.^',
 '* 주의 *^
@@ -256,15 +254,11 @@ insert into vt_exercise values(6,1,'벤치프레스','바벨',
 3. 같은 동작으로 12~15회 반복한다.^',
 '* Tip * ^
 1. 운동을 할때 팔꿈치는 수직으로 이동하며 손보다 아래에 위체한다.^
-2. 발이 바닥에 잘 닿지 않거나 요추 부위가 과도하게 안으로 휘어 있는 경우에는 발을 들고 한다. 이 때 발을 꼬아서는 안
-
-된다. ^
+2. 발이 바닥에 잘 닿지 않거나 요추 부위가 과도하게 안으로 휘어 있는 경우에는 발을 들고 한다. 이 때 발을 꼬아서는 안된다. ^
       -- 발을 꼬고 하면 무릎의 인대와 관절 반월 부위에 힘이 들어간 위험이 있다. --^
 3. 골반은 벤치에 붙이고 움직이지 않는다.^
 4. 바벨을 내릴 때 머리가 들리지 않도록 유의한다.^
-5. 바벨을 든 손과 손사이의 간격을 다양하게 할수 있다. 간격이 좁아지면 안쪽 흉근과 삼두근에 가해지는 자극이 더욱 강
-
-렬해진다. ^
+5. 바벨을 든 손과 손사이의 간격을 다양하게 할수 있다. 간격이 좁아지면 안쪽 흉근과 삼두근에 가해지는 자극이 더욱 강렬해진다. ^
       간격을 넓히면 근육의 바깥쪽이 자극된다.^',
 '* 주의 *^
 바벨을 흉곽에 튕기는 식으로 운동하면 안된다. 갈비뼈가 골절되거나 금이 갈수 있다. ^
@@ -393,9 +387,7 @@ insert into vt_exercise values(13,2,'컬 바벨','바벨',
 * 운동 준비 자세 * ^
 허리를 곧게 펴고 서서 손을 어깨보다 약간 넓게 벌랜채 언더그립으로 바벨을 잡는다.^
 이때 복근과 허리,엉덩이에 힘을 단단히 주고 준비한다.^
-숨을 내쉬면서 팔꿈치를 구부려 바를 어깨 높이까지 들어 올리고,다시 숨을 들이쉬면서 바를 다시 팔 시작위치로 
-
-내린다.^',
+숨을 내쉬면서 팔꿈치를 구부려 바를 어깨 높이까지 들어 올리고,다시 숨을 들이쉬면서 바를 다시 팔 시작위치로 내린다.^',
 '* 운동 방법 *^
 1. 두 손으로 바벨을 어깨너비로 잡고 다리도 어깨너비만큼 벌리고 선다.^
 2. 팔꿈치를 옆구리에 고정시키고, 이두근의 힘을 이용해 바벨을 들어올린다.손의 방향은 삼각근 전면을 향하도록 한다.^
@@ -436,9 +428,7 @@ insert into vt_exercise values(15,2,'해머 컬 덤벨','덤벨',
 2. 팔꿈치를 옆구리에 고정시키고, 덤벨을 이두근의 힘으로 들어올린다.^
 3. 천천히 이두근의 저항을 느끼며 덤벨을 내린다.^',
 '* Tip * ^
-1. 시작 자세에서 팔을 완전혀 펴야 이두근을 최대로 이완시켜, 운동 동작시 모든 이두근이 운동에 적극적으로 참여하게 된
-
-다.^
+1. 시작 자세에서 팔을 완전혀 펴야 이두근을 최대로 이완시켜, 운동 동작시 모든 이두근이 운동에 적극적으로 참여하게 된다.^
 2. 한 팔씩 교대로 들어주는 얼터네이트  컬을 통해 집중도를 높일 수 있다.^
 3. 케이블 기구에서 로프를 이용하여 실시할 수 있다.^',
 '* 주의 *^
@@ -447,9 +437,7 @@ insert into vt_exercise values(15,2,'해머 컬 덤벨','덤벨',
 insert into vt_exercise values(16,2,'덤벨 원암 익스텐션','덤벨',
 '
 * 운동 준비 자세 / 개요 * ^
-상완삼두근 중 특히 장두 부분을 발달시키는 운동으로 중량 설정 시에는 고중량보다 저중량을 설정하여 반복횟수를 늘리는 
-
-것이 중요하다.^
+상완삼두근 중 특히 장두 부분을 발달시키는 운동으로 중량 설정 시에는 고중량보다 저중량을 설정하여 반복횟수를 늘리는 것이 중요하다.^
 탄력 있는 팔을 원하는 여성에게 추천되는 운동이다.^
 어깨에 힘이 과도하게 들어가지 않도록 주의하여 실시한다. ^
 벤치에 앉아서 실시하거나 또는 서서 하는 두 가지 방법 모두 가능하다.^',
@@ -485,6 +473,7 @@ insert into vt_exercise values(17,2,'덤벨 킥백','덤벨',
 운동 중 팔은 옆구리에 붙이고 팔꿈치 각도가 90도 이하가 되지 않게 한다.^
 마지막 수축 시 3초간 유지하지 못하면 좀 더 가벼운 무게의 덤벨을 사용한다.'
 );
+
 insert into vt_exercise values(18,2,'바벨 트라이셉스 익스텐션','바벨',
 '
 * 운동 준비 자세 / 개요 * ^
@@ -501,6 +490,7 @@ insert into vt_exercise values(18,2,'바벨 트라이셉스 익스텐션','바벨',
 수축 시 고정된 팔꿈치가 움직이지 않도록 주의한다.^
 바벨을 머리 뒤로 내릴 때 허리가 과도하게 들리지 않도록 주의한다.'
 );
+
 insert into vt_exercise values(19,2,'오버헤드 덤벨 익스텐션','덤벨',
 '
 * 운동 준비 자세 / 개요 * ^
@@ -519,6 +509,7 @@ insert into vt_exercise values(19,2,'오버헤드 덤벨 익스텐션','덤벨',
 운동 중 팔꿈치가 움직이지 않도록 하며 팔꿈치는 어깨 위에 최대한 고정시킨다.^
 팔꿈치가 양옆으로 벌어지면 가동 범위가 줄어들어 운동 효과가 떨어진다.'
 );
+
 insert into vt_exercise values(20,2,'케이블 트라이셉스 프레스 다운','케이블 바',
 '
 * 운동 준비 자세 / 개요 * ^
@@ -546,9 +537,7 @@ insert into vt_exercise values(21,3,'런지','바벨',
 대퇴 전면과 둔근을 발달시키기 위한 운동이다. ^
 바벨 대신 덤벨을 이용해 실시할 수도 있다.^
 또한 다리의 위치 변화를 통해 walking lunge, side lunge등 다양하게 실시할 수 있으며 ^
-런지운동 초기엔 다리를 앞으로 내민 상태에서 지속적으로 up/down을 실시하여 균형감과 근육의 동원능력을 숙달시키는 것
-
-이 필요하다.^',
+런지운동 초기엔 다리를 앞으로 내민 상태에서 지속적으로 up/down을 실시하여 균형감과 근육의 동원능력을 숙달시키는 것이 필요하다.^',
 '* 운동 방법 *^
 1. 바벨을 어깨너비보다 넓게 잡고 선 다음, 바벨을 들어 승모근에 위치시킨다.^
 2. 왼발을 앞으로 70~100cm 정도 벌려 내민다.^
@@ -560,9 +549,7 @@ insert into vt_exercise values(21,3,'런지','바벨',
 '* 주의 *^
 운동전 체중을 이용한 자세유지 및 균형운동을 꼭 실시하도록 한다.^
 대둔근 발달에 보다 주안점을 두는 운동이므로 보폭을 넓게 하는 것이 권장된다.^
-앞으로 걸어나가면서 실시하는 워킹 런지:앞으로 내민 발을 중심으로 일어서게 되면서 대퇴이두근의 역할이 보다 강조되는 
-
-효과가 있다.'
+앞으로 걸어나가면서 실시하는 워킹 런지:앞으로 내민 발을 중심으로 일어서게 되면서 대퇴이두근의 역할이 보다 강조되는 효과가 있다.'
 );
 
 
@@ -622,9 +609,21 @@ CREATE TABLE vt_members
    join_date date NOT NULL,
    PRIMARY KEY (id)
 );
-insert into vt_members values('lees', 1, '111', '이순신', 'nic_lee', '111-6666-2222', '031-222', '서울특별시 강남구 강남동|강남아파트 111-111',  '1111@gmail.com', sysdate);
-insert into vt_members values('kimy', 2,  '111', '김유신', 'nic_kim', '111-2222-7777', '031-111', '경기도 안양시 안양동|안양아파트 111-111', '2222@gmail.com', sysdate);
-insert into vt_members values('jangb', 2,  '111', '장보고', 'nic_jang', '111-2222-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '3333@gmail.com',  sysdate);
+insert into vt_members values('lees', 1, '111', '이순신', 'nic_lee', '111-6666-2222', '031-222', '서울특별시 강남구 강남동|강남아파트 111-111',  '1111@gmail.com', add_months(sysdate, -20));
+insert into vt_members values('kimy', 2,  '111', '김유신', 'nic_kim', '111-2222-7777', '031-111', '경기도 안양시 안양동|안양아파트 111-111', '2222@gmail.com', add_months(sysdate, -13));
+insert into vt_members values('jangb', 2,  '111', '장보고', 'nic_jang', '111-2222-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '3333@gmail.com',  add_months(sysdate, -12));
+insert into vt_members values('jangb1', 2,  '111', '장보고', 'nic_jang1', '111-2222-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '3@gmail.com',  add_months(sysdate, -11));
+insert into vt_members values('jangb2', 2,  '111', '장보고', 'nic_jang2', '111-2223-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '4@gmail.com',  add_months(sysdate, -10));
+insert into vt_members values('jangb3', 2,  '111', '장보고', 'nic_jang3', '111-2224-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '5@gmail.com',  add_months(sysdate, -9));
+insert into vt_members values('jangb4', 2,  '111', '장보고', 'nic_jang4', '111-2225-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '6@gmail.com',  add_months(sysdate, -8));
+insert into vt_members values('jangb5', 2,  '111', '장보고', 'nic_jang5', '111-2226-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '7@gmail.com',  add_months(sysdate, -7));
+insert into vt_members values('jangb6', 2,  '111', '장보고', 'nic_jang6', '111-2227-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '8@gmail.com',  add_months(sysdate, -6));
+insert into vt_members values('jangb7', 2,  '111', '장보고', 'nic_jang7', '111-2228-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '9@gmail.com',  add_months(sysdate, -5));
+insert into vt_members values('jangb8', 2,  '111', '장보고', 'nic_jang8', '111-2229-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '10@gmail.com',  add_months(sysdate, -4));
+insert into vt_members values('jangb9', 2,  '111', '장보고', 'nic_jang9', '111-2211-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '11@gmail.com',  add_months(sysdate, -3));
+insert into vt_members values('jangb10', 2,  '111', '장보고', 'nic_jang10', '111-2233-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '12@gmail.com',  add_months(sysdate, -2));
+insert into vt_members values('jangb11', 2,  '111', '장보고', 'nic_jang11', '111-2244-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '13@gmail.com',  add_months(sysdate, -1));
+insert into vt_members values('jangb12', 2,  '111', '장보고', 'nic_jang12', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '55@gmail.com',  sysdate);
 
 
 CREATE TABLE vt_member_routine
@@ -699,12 +698,8 @@ CREATE TABLE vt_register
    trainer_id varchar2(30) NOT NULL,
    PRIMARY KEY (register_id)
 );
-insert into vt_register values(register_seq.nextval, 'kimy', sysdate, 1, add_months(sysdate, 1), 'true', 
-
-'true', 20, 'kimTrainer');
-insert into vt_register values(register_seq.nextval, 'jangb', sysdate, 3, add_months(sysdate, 3), 'false', 
-
-'true', 20, 'leeTrainer');
+insert into vt_register values(register_seq.nextval, 'kimy', sysdate, 1, add_months(sysdate, 1), 'true', 'true', 20, 'kimTrainer');
+insert into vt_register values(register_seq.nextval, 'jangb', sysdate, 3, add_months(sysdate, 3), 'false', 'true', 20, 'leeTrainer');
 update vt_register set START_DATE = add_months(sysdate, -6) where id = 'jangb';
 
 
@@ -791,7 +786,6 @@ ALTER TABLE vt_register
    ADD FOREIGN KEY (id)
    REFERENCES vt_members (id)
 ;
-
 
 ALTER TABLE vt_routine_info
    ADD FOREIGN KEY (id)

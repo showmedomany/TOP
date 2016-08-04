@@ -65,6 +65,53 @@ public class AdminDBBean implements AdminDao {
 	public int insertFitnessInfo(RegisterDataBean registerData) {		
 		return SqlMapClient.getSession().update("Admin.insertFitnessInfo", registerData);
 	}
+	@Override
+	public int getMemberDataCount() {		
+		return SqlMapClient.getSession().selectOne("Admin.getMemberDataCount");
+	}
+	@Override
+	public List<MemberDataBean> getMemberList(Map<String, Integer> startEndPage) {		
+		return SqlMapClient.getSession().selectList("Admin.getMemberList", startEndPage);
+	}
+	@Override
+	public int getNameSearchCount(String searchMessage) {
+		return SqlMapClient.getSession().selectOne("Admin.getNameSearchCount", searchMessage);
+	}
+	@Override
+	public int getIdSearchCount(String searchMessage) {
+		return SqlMapClient.getSession().selectOne("Admin.getIdSearchCount", searchMessage);
+	}
+	@Override
+	public int getNickNameSearchCount(String searchMessage) {
+		return SqlMapClient.getSession().selectOne("Admin.getNickNameSearchCount", searchMessage);
+	}
+	/*
+	@Override
+	public List<MemberDataBean> getMemberSearchNameList(Map<String, String> startEndPage) {
+		return SqlMapClient.getSession().selectList("Admin.getMemberSearchNameList", startEndPage);
+	}
+	@Override
+	public List<MemberDataBean> getMemberSearchIdList(Map<String, String> startEndPage) {
+		return SqlMapClient.getSession().selectList("Admin.getMemberSearchIdList", startEndPage);
+	}
+	@Override
+	public List<MemberDataBean> getMemberSearchNickNameList(Map<String, String> startEndPage) {
+		return SqlMapClient.getSession().selectList("Admin.getMemberSearchNickNameList", startEndPage);
+	}
+	*/
+	@Override
+	public List<MemberDataBean> getMemberSearchNameList(String searchMessage) {
+		return SqlMapClient.getSession().selectList("Admin.getMemberSearchNameList", searchMessage);
+	}
+	@Override
+	public List<MemberDataBean> getMemberSearchIdList(String searchMessage) {
+		return null;
+	}
+	@Override
+	public List<MemberDataBean> getMemberSearchNickNameList(String searchMessage) {
+		return null;
+	}
+
 	
 	
 	

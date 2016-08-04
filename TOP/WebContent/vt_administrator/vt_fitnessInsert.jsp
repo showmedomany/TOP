@@ -5,7 +5,7 @@
 <script src="/TOP/request.js" type="text/javascript"></script>
 
 <body>
-	<form name="fitnessInsertform" method="post" action="vt_fitnessInsertPro" onkeydown="if(event.keyCode==13) return false;">		
+	<form name="fitnessInsertform" onkeydown="if(event.keyCode==13) return false;">		
 		<table>
 			<tr>
 				<th colspan="3">

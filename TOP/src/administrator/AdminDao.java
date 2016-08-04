@@ -24,7 +24,17 @@ public interface AdminDao {
 	public int updateFitnessInfo(RegisterDataBean registerData);
 	public int insertFitnessInfo(RegisterDataBean registerData);
 	
+	public int getMemberDataCount();
+	public List<MemberDataBean> getMemberList(Map<String, Integer> startEndPage);
 	
+	public int getNameSearchCount(String searchMessage);
+	public int getIdSearchCount(String searchMessage);
+	public int getNickNameSearchCount(String searchMessage);
+	
+	
+	public List<MemberDataBean> getMemberSearchNameList(String searchMessage);
+	public List<MemberDataBean> getMemberSearchIdList(String searchMessage);
+	public List<MemberDataBean> getMemberSearchNickNameList(String searchMessage);
 
 	
 	

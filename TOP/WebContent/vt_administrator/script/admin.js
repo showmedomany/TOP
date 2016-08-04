@@ -1,3 +1,181 @@
+function memberSearchFormInit(){
+	memberSearchForm.searchMessage.focus();
+}
+
+function memberDataView(userNum, id, name, nickname, phone, zipcode, address, email, join_date){	
+	memberSearchForm.userNumber.value = userNum;
+	var isSend = true;
+	switch(true){
+	case userNum==1 : 		
+		var userNumDiv = document.getElementById("div_1");		
+		if(memberSearchForm.userId_1.value == 0){			
+			memberSearchForm.userId_1.value = 1;
+			userNumDiv.style.display = "";
+		}else{			
+			memberSearchForm.userId_1.value = 0;
+			userNumDiv.style.display = "none";
+		}
+		break;
+	case userNum==2 : 
+		var userNumDiv = document.getElementById("div_2");
+		if(memberSearchForm.userId_2.value == 0){
+			memberSearchForm.userId_2.value = 1;
+			userNumDiv.style.display = "";
+		}else{
+			memberSearchForm.userId_2.value = 0;
+			userNumDiv.style.display = "none";
+		}
+		break;
+	case userNum==3 : 
+		var userNumDiv = document.getElementById("div_3");
+		if(memberSearchForm.userId_3.value == 0){
+			memberSearchForm.userId_3.value = 1;
+			userNumDiv.style.display = "";
+		}else{
+			memberSearchForm.userId_3.value = 0;
+			userNumDiv.style.display = "none";
+		}
+		break;
+	case userNum==4 : 
+		var userNumDiv = document.getElementById("div_4");
+		if(memberSearchForm.userId_4.value == 0){
+			memberSearchForm.userId_4.value = 1;
+			userNumDiv.style.display = "";
+		}else{
+			memberSearchForm.userId_4.value = 0;
+			userNumDiv.style.display = "none";
+		}
+		break;
+	case userNum==5 : 
+		var userNumDiv = document.getElementById("div_5");
+		if(memberSearchForm.userId_5.value == 0){
+			memberSearchForm.userId_5.value = 1;
+			userNumDiv.style.display = "";
+		}else{
+			memberSearchForm.userId_5.value = 0;
+			userNumDiv.style.display = "none";
+		}
+		break;
+	case userNum==6 : 
+		var userNumDiv = document.getElementById("div_6");
+		if(memberSearchForm.userId_6.value == 0){
+			memberSearchForm.userId_6.value = 1;
+			userNumDiv.style.display = "";
+		}else{
+			memberSearchForm.userId_6.value = 0;
+			userNumDiv.style.display = "none";
+		}
+		break;
+	case userNum==7 : 
+		var userNumDiv = document.getElementById("div_7");
+		if(memberSearchForm.userId_7.value == 0){
+			memberSearchForm.userId_7.value = 1;
+			userNumDiv.style.display = "";
+		}else{
+			memberSearchForm.userId_7.value = 0;
+			userNumDiv.style.display = "none";
+		}
+		break;
+	case userNum==8 : 
+		var userNumDiv = document.getElementById("div_8");
+		if(memberSearchForm.userId_8.value == 0){
+			memberSearchForm.userId_8.value = 1;
+			userNumDiv.style.display = "";
+		}else{
+			memberSearchForm.userId_8.value = 0;
+			userNumDiv.style.display = "none";
+		}
+		break;
+	case userNum==9 : 
+		var userNumDiv = document.getElementById("div_9");
+		if(memberSearchForm.userId_9.value == 0){
+			memberSearchForm.userId_9.value = 1;
+			userNumDiv.style.display = "";
+		}else{
+			memberSearchForm.userId_9.value = 0;
+			userNumDiv.style.display = "none";
+		}
+		break;
+	case userNum==10 : 
+		var userNumDiv = document.getElementById("div_10");
+		if(memberSearchForm.userId_10.value == 0){
+			memberSearchForm.userId_10.value = 1;
+			userNumDiv.style.display = "";
+		}else{
+			memberSearchForm.userId_10.value = 0;
+			userNumDiv.style.display = "none";
+		}
+		break;
+	}
+	
+	if(isSend == true){
+		request = new Request(memberDataViewResult, "memberSearchView.do", "POST", 
+				"id="+id+"&name="+name+"&nickname="+nickname+"&phone="+phone+"&zipcode="+zipcode+"&address="
+				+address+"&email="+email+"&join_date="+join_date);
+		request.sendRequest(userNum);
+	}	
+}
+function memberDataViewResult(userNum){
+	
+	if(request.httpRequest.readyState == 4){
+		if(request.httpRequest.status == 200){
+			var userNumber = memberSearchForm.userNumber.value;			
+			switch(true){
+				case userNumber==1 :
+					var userIdDiv = document.getElementById("div_1");
+					userIdDiv.innerHTML = request.httpRequest.responseText;
+					break;
+				case userNumber==2 : 
+					var userIdDiv = document.getElementById("div_2");
+					userIdDiv.innerHTML = request.httpRequest.responseText;
+					break;
+				case userNumber==3 :
+					var userIdDiv = document.getElementById("div_3");
+					userIdDiv.innerHTML = request.httpRequest.responseText;
+					break;
+				case userNumber==4 :
+					var userIdDiv = document.getElementById("div_4");
+					userIdDiv.innerHTML = request.httpRequest.responseText;
+					break;
+				case userNumber==5 : 
+					var userIdDiv = document.getElementById("div_5");
+					userIdDiv.innerHTML = request.httpRequest.responseText;
+					break;
+				case userNumber==6 :
+					var userIdDiv = document.getElementById("div_6");
+					userIdDiv.innerHTML = request.httpRequest.responseText;
+					break;
+				case userNumber==7 :
+					var userIdDiv = document.getElementById("div_7");
+					userIdDiv.innerHTML = request.httpRequest.responseText;
+					break;
+				case userNumber==8 :
+					var userIdDiv = document.getElementById("div_8");
+					userIdDiv.innerHTML = request.httpRequest.responseText;
+					break;
+				case userNumber==9 :
+					var userIdDiv = document.getElementById("div_9");
+					userIdDiv.innerHTML = request.httpRequest.responseText;
+					break;
+				case userNumber==10 :
+					var userIdDiv = document.getElementById("div_10");
+					userIdDiv.innerHTML = request.httpRequest.responseText;
+					break;
+			}
+		}
+	}
+}
+
+function searchMember(pageNum){
+	var searchMeans = memberSearchForm.searchMeans.value;
+	if(searchMeans==null || searchMeans==''){
+		searchMeans = 'name';
+	}
+	var searchMessage = memberSearchForm.searchMessage.value;	
+	location.href = "memberSearchResult.do?pageNum="+pageNum+"&searchMeans="+searchMeans+"&searchMessage="+searchMessage;
+}
+
+
 //submit 과 같은 기능
 function insertFitnessUserSearch(){	
 	var searchMsg = fitnessInsertform.userSearch.value;

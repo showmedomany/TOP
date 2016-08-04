@@ -46,5 +46,38 @@
 		insert into vt_register values(register_seq.nextval, #{id}, #{start_date}, #{exp_date}, 
 		#{end_date}, #{gx_check}, #{pt_check}, #{pt_count, jdbcType=VARCHAR}, #{trainer_id})		
 	</insert>
+	
+	<select id="getMemberDataCount" resultType="int">
+		select count(*) from vt_members where authority_id = 2
+	</select>
+	
+	<select id="getMemberList" parameterType="Map" resultType="member.MemberDataBean">
+		select ID, AUTHORITY_ID, PASSWD, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE, r from 
+		(select ID, AUTHORITY_ID, PASSWD, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE, rownum r from 
+		(select ID, AUTHORITY_ID, PASSWD, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE from vt_members order by JOIN_DATE desc) order by JOIN_DATE desc)
+		 where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	
+	<select id="getNameSearchCount" parameterType="String" resultType="int">
+		select count(*) from vt_members where name = #{searchMessage}
+	</select>
+	<select id="getIdSearchCount" parameterType="String" resultType="int">
+		select count(*) from vt_members where id = #{searchMessage}
+	</select>
+	<select id="getNickNameSearchCount" parameterType="String" resultType="int">
+		select count(*) from vt_members where nickname = #{searchMessage}
+	</select>
+	<!-- 
+	<select id="getMemberSearchNameList" parameterType="Map" resultType="member.MemberDataBean">
+		select ID, AUTHORITY_ID, PASSWD, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE, r from 
+		(select ID, AUTHORITY_ID, PASSWD, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE, rownum r from 
+		(select ID, AUTHORITY_ID, PASSWD, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE from vt_members where name = #{searchMessage} order by JOIN_DATE desc) order by JOIN_DATE desc)
+		where r &gt;= TO_NUMBER(#{start}) and r &lt;= TO_NUMBER(#{end})
+	</select>
+	 -->
+	 
+	 <select id="getMemberSearchNameList" parameterType="String" resultType="member.MemberDataBean">
+	 	select * from vt_members where name = #{searchMessage}
+	 </select>
 </mapper>
 

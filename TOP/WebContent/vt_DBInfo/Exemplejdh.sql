@@ -622,9 +622,15 @@ CREATE TABLE vt_members
    join_date date NOT NULL,
    PRIMARY KEY (id)
 );
-insert into vt_members values('lees', 1, '111', '이순신', 'nic_lee', '111-6666-2222', '031-222', '서울특별시 강남구 강남동|강남아파트 111-111',  '1111@gmail.com', sysdate);
-insert into vt_members values('kimy', 2,  '111', '김유신', 'nic_kim', '111-2222-7777', '031-111', '경기도 안양시 안양동|안양아파트 111-111', '2222@gmail.com', sysdate);
-insert into vt_members values('jangb', 2,  '111', '장보고', 'nic_jang', '111-2222-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '3333@gmail.com',  sysdate);
+insert into vt_members values('lees', 1, '111', '이순신', 'nic_lee', '111-6666-2222', '031-222', '서울특별시 강
+
+남구 강남동|강남아파트 111-111',  '1111@gmail.com', sysdate);
+insert into vt_members values('kimy', 2,  '111', '김유신', 'nic_kim', '111-2222-7777', '031-111', '경기도 안양시 
+
+안양동|안양아파트 111-111', '2222@gmail.com',  sysdate);
+insert into vt_members values('jangb', 2,  '111', '장보고', 'nic_jang', '111-2222-0000', '121-292', '경기도 군포
+
+시 군포동|군포아파트 111-111', '3333@gmail.com',  sysdate);
 
 
 CREATE TABLE vt_member_routine
@@ -668,22 +674,54 @@ CREATE TABLE vt_notice_board
    PRIMARY KEY (num)
 );
 
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트1' , 0, sysdate, '공지사항 테스트 하하 하');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트2' , 0, sysdate, '공지사항 테스트 호호 호');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트3' , 0, sysdate, '공지사항 테스트 후후 후');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트4' , 0, sysdate, '공지사항 테스트 크크 크');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트5' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트6' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트7' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트8' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트9' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '하하하하하하하하' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '호호호호호호호호' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '코딩은 재미있어' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '나는야 퉁퉁이' , 0, sysdate, '공지사항테스트  쿠쿠쿠');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '골목대장 이라네~' , 0, sysdate, '공지사항 테스트 쿠쿠 쿠');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '도라에몽~' , 0, sysdate, '공지사항 테스트 쿠쿠쿠');
-insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '뭐 쓰지' , 0, sysdate, '공지사항 테스트쿠쿠쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트1' , 0, sysdate, '공지사
+
+항 테스트 하하 하');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트2' , 0, sysdate, '공지사
+
+항 테스트 호호 호');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트3' , 0, sysdate, '공지사
+
+항 테스트 후후 후');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트4' , 0, sysdate, '공지사
+
+항 테스트 크크 크');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트5' , 0, sysdate, '공지사
+
+항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트6' , 0, sysdate, '공지사
+
+항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트7' , 0, sysdate, '공지사
+
+항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트8' , 0, sysdate, '공지사
+
+항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '공지사항 테스트9' , 0, sysdate, '공지사
+
+항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '하하하하하하하하' , 0, sysdate, '공지사
+
+항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '호호호호호호호호' , 0, sysdate, '공지사
+
+항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '코딩은 재미있어' , 0, sysdate, '공지사
+
+항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '나는야 퉁퉁이' , 0, sysdate, '공지사항 
+
+테스트  쿠쿠쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '골목대장 이라네~' , 0, sysdate, '공지사
+
+항 테스트 쿠쿠 쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '도라에몽~' , 0, sysdate, '공지사항 테스
+
+트 쿠쿠쿠');
+insert into vt_notice_board values(vt_notice_board_seq.nextval, 'lees', '뭐 쓰지' , 0, sysdate, '공지사항 테스트 
+
+쿠쿠쿠');
 
 
 CREATE TABLE vt_register
@@ -801,7 +839,7 @@ ALTER TABLE vt_routine_info
 
 ALTER TABLE vt_chatting
    ADD FOREIGN KEY (ip)
-   REFERENCES vt_request (ip) on delete cascade
+   REFERENCES vt_request (ip)
 ;
 
 

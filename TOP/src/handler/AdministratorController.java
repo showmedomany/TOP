@@ -3,8 +3,11 @@ package handler;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -29,8 +32,120 @@ public class AdministratorController {
 	@RequestMapping("/administratorPage")
 	public ModelAndView administratorPage
 	(HttpServletRequest request,HttpServletResponse response){
-		String center = "vt_admin_centerContent";	
-		request.setAttribute("center", center);
+		String center = "vt_admin_centerContent";
+		request.setAttribute("center", center);		
+		return new ModelAndView("/vt_administrator/vt_administrator");
+	}//
+	
+	@RequestMapping("/memberSearch")
+	public ModelAndView memberSearch
+	(HttpServletRequest request,HttpServletResponse response){	
+		
+		List<MemberDataBean> memberDataList = new ArrayList<MemberDataBean>();
+		int pageSize = 10;		// 페이지 크기
+		int pageBlock = 10;			
+		int currentPage = 0;	// 현재 페이지
+		int pageCount = 0;		// 전체 페이지 수
+		int start = 0;			//(블럭)시작 페이지
+		int end = 0;			//(블럭)끝 페이지
+		
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null){
+			pageNum = "1";
+		}
+		request.setAttribute("pageNum", pageNum);
+		
+		//회원의  수
+		int articleCount = adminDao.getMemberDataCount();		
+		
+		//회원이 없을때 
+		if(articleCount == 0){			
+			request.setAttribute("pageCount", 1);
+			request.setAttribute("articleCount", articleCount);				
+		//회원이 있을때	
+		}else{			
+			//페이지 공식 구하기 
+			currentPage = Integer.parseInt(pageNum);
+			start = (currentPage - 1) * pageSize + 1;
+			end = start + pageSize - 1;			
+			//페이지 수 값 구하기
+			pageCount = articleCount/pageBlock;
+			if(articleCount%pageBlock!=0){
+				pageCount+=1;
+			}			
+			
+			Map<String, Integer> startEndPage = new HashMap<String, Integer>();
+			startEndPage.put("start", start);
+			startEndPage.put("end", end);		
+			memberDataList = adminDao.getMemberList(startEndPage);		
+			
+			request.setAttribute("memberDataList", memberDataList);
+			request.setAttribute("articleCount", articleCount);			
+			request.setAttribute("pageSize", pageSize);
+			request.setAttribute("pageBlock", pageBlock);
+			request.setAttribute("pageCount", pageCount);				
+		}
+		String center = "vt_memberSearch";	
+		request.setAttribute("center", center);		
+		return new ModelAndView("/vt_administrator/vt_administrator");
+	}//
+	
+	@RequestMapping("/memberSearchView")
+	public ModelAndView memberSearchView
+	(HttpServletRequest request,HttpServletResponse response){
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {			
+			e.printStackTrace();
+		}
+		request.setAttribute("id", request.getParameter("id"));
+		request.setAttribute("name", request.getParameter("name"));
+		request.setAttribute("nickname", request.getParameter("nickname"));
+		request.setAttribute("phone", request.getParameter("phone"));
+		request.setAttribute("zipcode", request.getParameter("zipcode"));
+		request.setAttribute("address", request.getParameter("address"));
+		request.setAttribute("email", request.getParameter("email"));
+		request.setAttribute("join_date", request.getParameter("join_date"));		
+		return new ModelAndView("/vt_administrator/memberSearchView");
+	}//
+	
+	@RequestMapping("/memberSearchResult")
+	public ModelAndView memberSearchResult
+	(HttpServletRequest request,HttpServletResponse response){	
+			
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {	
+			e.printStackTrace();
+		}	
+		
+		request.setAttribute("pageNum", "0");
+		
+		String searchMeans = request.getParameter("searchMeans");
+		String searchMessage  = request.getParameter("searchMessage");
+		int articleCount = 0;
+		if(searchMeans.equals("name")){
+			articleCount = adminDao.getNameSearchCount(searchMessage);
+		}else if(searchMeans.equals("id")){
+			articleCount = adminDao.getIdSearchCount(searchMessage);
+		}else if(searchMeans.equals("nickname")){
+			articleCount = adminDao.getNickNameSearchCount(searchMessage);
+		}	
+			
+		List<MemberDataBean> memberDataList = new ArrayList<MemberDataBean>();
+		
+		if(searchMeans.equals("name")){
+			memberDataList = adminDao.getMemberSearchNameList(searchMessage);		
+		}else if(searchMeans.equals("id")){
+			memberDataList = adminDao.getMemberSearchIdList(searchMessage);		
+		}else if(searchMeans.equals("nickname")){
+			memberDataList = adminDao.getMemberSearchNickNameList(searchMessage);		
+		}	
+		request.setAttribute("articleCount", articleCount);
+		request.setAttribute("memberDataList", memberDataList);
+	
+		String center = "vt_memberSearch";	
+		request.setAttribute("center", center);		
 		return new ModelAndView("/vt_administrator/vt_administrator");
 	}//
 	
@@ -220,12 +335,7 @@ public class AdministratorController {
 		}else if(saveType.equals("insert")){
 			int result = adminDao.insertFitnessInfo(registerData);
 			request.setAttribute("result", result);
-		}
-		
-		
-		
-		
-		
+		}		
 		return new ModelAndView("/vt_administrator/fitnessDBInsertResultText");
 	}
 	
