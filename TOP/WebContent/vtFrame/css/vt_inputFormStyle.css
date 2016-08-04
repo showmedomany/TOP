@@ -105,7 +105,11 @@
 .info{
 	width:100px;
 }
-
+.input_img{
+	height: 200px;
+    background: red;
+    width: 710px;
+}
 
 
 

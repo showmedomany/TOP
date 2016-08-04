@@ -156,8 +156,7 @@ function checkadr(){
 function searchAdr(){
 	var url = "zipCheck.do";
 	//크기조정, 크기변경불가 등여기서 고침 근데 명령어가 안먹음
-	window.open(url, "zipCheck", 
-			'scrollbars=no,resizable=no, menubar=yes, status=yes, width=600, height=500 ');
+	window.open(url, "zipCheck",'resizable=no,width=600,height=500');
 }
 
 //주소 선택시 inputform에 값 넣기
@@ -336,6 +335,7 @@ $(document).ready(function(){
 		});  
 	}); 
 });  
+
 
 
 

@@ -9,6 +9,7 @@
 		<script src = "${script}vtFrame.js"></script>
 		<script src = "${request}"></script>		
 	</head>
+	
 	<body onload = "inputformfocus()">
 		<form method = "post" name = "inputform" action = "inputPro.do"
 			 onsubmit = "return sumitCheckfn()">
@@ -19,6 +20,9 @@
 
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">
+					<div class="input_img">
+						<img src="${images}input.gif">
+					</div>
 					<div class="vt_inputForm_top">
 						<div class="vt_inputForm_top_sub1">
 							<div class="vt_inputForm_info">

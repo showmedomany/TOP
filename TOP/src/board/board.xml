@@ -26,6 +26,7 @@
 		<insert id="insertArticle" parameterType="board.BoardDataBean">
 			insert into vt_board(num, id, nickname, subject, readcount, reg_date, content) 
 			values(vt_board_seq.NEXTVAL, #{id}, #{nickname}, #{subject}, #{readcount}, #{reg_date}, #{content})
+			
 		</insert>
 				
 		<update id="modifyArticle" parameterType="board.BoardDataBean">
