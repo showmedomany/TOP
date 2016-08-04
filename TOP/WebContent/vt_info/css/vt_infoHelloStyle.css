@@ -1,0 +1,115 @@
+.hello_face{
+	height: 380px;
+    
+}
+.hello_header{
+	width: inherit;
+    height: 70px;
+    position: relative;
+    text-align: center;
+    left: 350;
+}
+.hello_hi{
+	border-bottom-style: groove;
+   	width: 156px;
+    font-size: 35px;
+    position: relative;
+    font-weight: bold;
+    font-family:'Exo', sans-serif;
+}
+.hello_top{
+	position: relative;
+    width: inherit;
+   height: 445px;
+   
+}
+.hello_center{
+	position: relative;
+    width: inherit;
+    height: 250px;
+    margin: 20 0;
+    
+}
+
+.hello_bottom	{
+	position:relative;
+  
+   font-size: 33px;
+    top: 30px;
+    right: 20;
+}
+.hello_bottom1{
+	position: relative;
+    left: 252px;
+    top: 23;
+}
+.hello_img1{
+	position: relative;
+    top: 60px;
+   
+}
+.hello_name{
+	   
+	   
+	 position: relative;
+    left: 550;
+    bottom: 210px;
+   
+    width: 206px;
+}
+.hello_name1{
+	font-size:25px;
+	font-weight: bold;
+}
+.hello_name2{
+	position: relative;
+    bottom: 40;
+    font-size: 30px;
+    font-weight: bold;
+	
+}
+.hello_top_hi{
+	font-size:30px;
+	font-weight: bold;
+	color: #636363;
+	
+}
+.hello_top_hi1{
+	font-size:16px;
+	color: #636363;
+	font-weight: bold;
+	float: left;
+	
+}
+.hello_top_hi2{
+	font-size:16px;
+	color: #636363;
+	 font-weight: bold;
+	
+}
+.hello_top_hi3{
+	position: relative;
+    left: 679px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #636363;
+}
+.hello_top_body{
+	font-size:23px;
+	 font-weight: bold;
+	color: #050099;
+	float: left;
+
+	
+}
+.hello_top_think{
+	font-size:16px;
+	color: #636363;
+	font-weight: bold;
+	
+}
+.hello_bottom_mana{
+	position: relative;
+    width: inherit;
+    height: 425px;
+}

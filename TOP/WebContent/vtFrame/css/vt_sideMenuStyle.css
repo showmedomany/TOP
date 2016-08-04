@@ -7,17 +7,17 @@
     margin: 0 auto;
 }
 .side_menu {
-    width: 290px;
+    width: 268px;
     min-height: 800px;
-    border-style: double;
-    box-sizing: border-box;
+   
     left:-100px;
     float: left;
     position: relative;
     margin: 50 0;
+    left:-100px;
 }
 .vt_info_menu_title {
-    width: 270px;
+    width: 246px;
     height: 100px;
     margin-left: 10px;
     text-align: center;

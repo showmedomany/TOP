@@ -21,32 +21,164 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 }
 
 .centerContent_mainframe {
-    height: inherit;
-    width: inherit;
-    margin: 0 auto;
-}
-.centerContent_content {
-    width: inherit;
-    height: inherit; 
-    margin: 0 auto;
-}
-.centerContent_empty_space{
-	height: 30;
-}
-.centerContent_table{
-	width: 1200;
-    position: relative;
-    left: -30;
-}
-.centerContent_img1 {
-    background: red;
-    margin-top: -90;
-}
-.centerContent_img2{
-	
+ height: 800px;
+ width: 1131px;
+ 
 }
 
+.centerContent_empty_space{
+	height: 79px;
+}
+
+.centerContent_program{
+	position: relative;
+    height: 202px;
+    width: 1395px;
+    background:white;
+    left: -132px;
+    
+
+}
+.visual_program{
+	position:relative;
+    top: 25px;
+    font-size: 30px;
+    left: 390px;
+}
+.visual_program1{
+	position:relative;
+    top: 30px;
+    font-size: 20px;
+   left: 518px;
+}
+.centerContent_icon1{
+background-color: black;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    top: 8px;
+    left: 107px;	
+    float: left;
+    margin: 0 20px;
+}
+.centerContent_icon1sub{
+	position: relative;
+    top: 158px;
+    font-size: 20;
+    left: -13px;
+}
+.centerContent_icon2{
+	background-color: black;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    top: -22px;
+    left: 133px;
+    float: left;
+    margin: 0 20px;
+}
+.centerContent_icon2sub{
+	position: relative;
+    top: 128px;
+    font-size: 20px;
+    left: 12px;
+}
+.centerContent_icon3{
+	background-color: black;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    top: -52px;
+    left: 153px;
+    float: left;
+    margin: 0 20px;
+}
+.centerContent_icon3sub{
+	position: relative;
+    top: 98px;
+    font-size: 20px;
+    left: 58px;
+}
+.centerContent_icon4{
+	background-color: black;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    top: -83px;
+    left: 171px;
+    float: left;
+    margin: 0 20px;
+}
+.centerContent_icon4sub{
+	position: relative;
+    top: 68px;
+    font-size: 20px;
+    left: 63px;
+}
+.centerContent_icon5{
+	background-color: black;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    top: -113px;
+    left: 188px;
+    float: left;
+    margin: 0 20px;
+}
+.centerContent_icon5sub{
+	position: relative;
+    top: 38px;
+    font-size: 20px;
+    left: 72px;
+}
+.centerContent_icon6{
+	background-color: black;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+   top: -143px;
+    left: 206px;
+    float: left;	
+    margin: 0 20px;
+}
+.centerContent_icon6sub{
+	position: relative;
+    top: 7px;
+    font-size: 20px;
+    left: 109px;
+}
 /*이미지 슬라이드 영역*/
+
 
 
 #sliderFrame, #sliderFrame div {

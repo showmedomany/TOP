@@ -23,7 +23,22 @@
 			</div>
 			<div class="centerContent_empty_space"></div>
 			<div class="centerContent_mainframe">
-				
+				<div class="centerContent_program">
+					<a class="centerContent_icon1"></a>
+					<p class="centerContent_icon1sub">FITNESS</p>
+					<a class="centerContent_icon2"></a>
+					<p class="centerContent_icon2sub">PIGATES</p>
+					<a class="centerContent_icon3"></a>
+					<p class="centerContent_icon3sub">PT</p>
+					<a class="centerContent_icon4"></a>
+					<p class="centerContent_icon4sub">YOGA</p>
+					<a class="centerContent_icon5"></a>
+					<p class="centerContent_icon5sub">TAE BO</p>
+					<a class="centerContent_icon6"></a>
+					<p class="centerContent_icon6sub">GX</p>
+					
+					
+				</div>
 			</div>
 		</div>
 	</body>

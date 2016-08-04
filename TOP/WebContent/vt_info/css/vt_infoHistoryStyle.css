@@ -1,0 +1,14 @@
+.history_img1{
+	 position: relative;
+  right: 123px;
+	bottom: 81px;
+	top: 1px;
+}
+.vt_history1{
+border-bottom-style: groove;
+    width: 156px;
+    font-size: 35px;
+    position: relative;
+    font-weight: bold;
+    left: 347px;
+}
