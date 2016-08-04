@@ -64,8 +64,7 @@ function showchat(){	//뿌릴 채팅내역을 담고있는 vt_chatPro.jsp를 vt_
 
 
 function exitchat(){
-	var params = "ip="+chatForm.ip.value;
-	
+	var params = "ip="+chatForm.ip.value;	
 	request = new Request(resultexit, "exitChat.do", "POST", params);
 	request.sendRequest();
 }

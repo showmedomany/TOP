@@ -28,14 +28,9 @@ public class AdministratorController {
 	//관리자 페이지 기본
 	@RequestMapping("/administratorPage")
 	public ModelAndView administratorPage
-	(HttpServletRequest request,HttpServletResponse response){		
-		
-		String top = "vt_admin_topForm";
+	(HttpServletRequest request,HttpServletResponse response){
 		String center = "vt_admin_centerContent";	
-		
-		request.setAttribute("top", top);
 		request.setAttribute("center", center);
-		
 		return new ModelAndView("/vt_administrator/vt_administrator");
 	}//
 	
@@ -46,7 +41,7 @@ public class AdministratorController {
 	(HttpServletRequest request,HttpServletResponse response){
 		int choice = Integer.parseInt(request.getParameter("choice"));
 		
-		String top = "vt_admin_topForm";
+		
 		String center = "vt_centerInsert";
 		String administratorPage = null;
 		
@@ -60,9 +55,14 @@ public class AdministratorController {
 			break;
 		case 2:
 			administratorPage = "vt_scheduleInsert";
+			
+			//여기서 데이터가 들어간다고 예를 들자
+			String id = "kajika";
+			request.setAttribute("id", id);
+			
 			break;
 		}
-		request.setAttribute("top", top);
+		
 		request.setAttribute("center", center);
 		request.setAttribute("administratorPage", administratorPage);		
 		

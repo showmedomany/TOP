@@ -55,6 +55,7 @@ public class PageController {
 		
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//vt_infoHello
+	
 	@RequestMapping("/vt_infoHistory")
 	public ModelAndView vt_infoHistory(HttpServletRequest request, 
 			HttpServletResponse response){

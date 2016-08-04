@@ -9,7 +9,6 @@
 
 <html>
 	<head>
-		<link href = "${css}vt_infoStyle.css" rel="stylesheet"	type="text/css">
 		<link href = "${css}vt_infoInfoStyle.css" rel="stylesheet"	type="text/css">
 		<script src = "${jquery}"></script>
 		<script src="${script}vt_infoInfo.js" type="text/javascript"></script>

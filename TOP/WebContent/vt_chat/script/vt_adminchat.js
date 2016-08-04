@@ -13,6 +13,7 @@ function sndtext(){
 	adminsndmsg();
 	return false;
 }
+
 function exitchat(){
 	var params = "ip="+adminchatForm.ip.value;
 	
