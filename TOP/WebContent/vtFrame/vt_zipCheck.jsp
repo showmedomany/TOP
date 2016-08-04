@@ -8,7 +8,8 @@
 		
 		
 		
-		<form method="post" name="zipCheckForm" action="zipCheck.do" onsubmit="return checkadr()">		
+		
+		<form method="post" name="zipCheckForm" action="zipCheck.do?choice=${choice}" onsubmit="return checkadr()">		
 			<div class="wrap">
 				<div class="zip_header">
 					<div class="header_img">
@@ -64,10 +65,10 @@
 												value = "${adto.area1} ${adto.area2} ${adto.area3} ${adto.area4}"/>	
 												<div class="aaa12">	
 													<div  class="aaa1">
-														<a class="pointer" onclick = "useadr('${first}','${second}','${adr}')">${adto.zipcode}</a>
+														<a class="pointer" onclick = "useadr('${first}','${second}','${adr}','${choice}')">${adto.zipcode}</a>
 													</div>														
 													<div class="aaa2">
-													<a class="pointer" onclick = "useadr('${first}','${second}','${adr}')">${adr}</a> 
+													<a class="pointer" onclick = "useadr('${first}','${second}','${adr}','${choice}')">${adr}</a> 
 													</div>
 												</div>
 										</c:forEach>						

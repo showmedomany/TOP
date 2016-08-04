@@ -57,6 +57,14 @@ public class AdminDBBean implements AdminDao {
 	public List<String> getTrainerIdList() {		
 		return SqlMapClient.getSession().selectList("Admin.getTrainerIdList");
 	}
+	@Override
+	public int updateFitnessInfo(RegisterDataBean registerData) {		
+		return SqlMapClient.getSession().update("Admin.updateFitnessInfo", registerData);
+	}
+	@Override
+	public int insertFitnessInfo(RegisterDataBean registerData) {		
+		return SqlMapClient.getSession().update("Admin.insertFitnessInfo", registerData);
+	}
 	
 	
 	

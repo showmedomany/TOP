@@ -160,12 +160,24 @@ function searchAdr(){
 }
 
 //주소 선택시 inputform에 값 넣기
-function useadr(first, second, adr) {
-	opener.document.inputform.zipcode1.value = first;
-	opener.document.inputform.zipcode2.value = second;
-	opener.document.inputform.adr.value = adr;
-	opener.document.inputform.detail_adr.focus();
-	self.close();
+/* choice modify 때문에 추가함 */
+function useadr(first, second, adr, choice) {
+	/* 마이페이지 회원수정 주소찾기 때문에 추가함 */
+	if(choice=="modify"){
+		opener.document.memberModifyForm.zipcode1.value = first;
+		opener.document.memberModifyForm.zipcode2.value = second;
+		opener.document.memberModifyForm.adr.value = adr;
+		opener.document.memberModifyForm.detail_adr.focus();
+		self.close();
+	/* 원래 주소찾기 */
+	}else{
+		opener.document.inputform.zipcode1.value = first;
+		opener.document.inputform.zipcode2.value = second;
+		opener.document.inputform.adr.value = adr;
+		opener.document.inputform.detail_adr.focus();
+		self.close();
+	}
+	
 }
 
 //전화번호 입력창 포커싱

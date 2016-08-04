@@ -19,8 +19,11 @@ public interface AdminDao {
 	public int getUserRegisterCheck(String userId);
 	public RegisterDataBean getUserRegister(String userId);
 	
-	public int getFitnessStartYear();
+	public int getFitnessStartYear();	
 	public List<String> getTrainerIdList();
+	public int updateFitnessInfo(RegisterDataBean registerData);
+	public int insertFitnessInfo(RegisterDataBean registerData);
+	
 	
 
 	

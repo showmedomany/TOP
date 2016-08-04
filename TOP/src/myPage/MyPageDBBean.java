@@ -6,7 +6,10 @@ import member.MemberDataBean;
 import mybatis.SqlMapClient;
 
 public class MyPageDBBean implements MyPageDao {
-	
+	@Override
+	public int routineInfoIdCheck(String id) {	
+		return SqlMapClient.getSession().selectOne("MyPage.routineInfoIdCheck", id);
+	}	
 	@Override
 	public RoutineInfoDataBean getStartEndDate(String id) {
 		return SqlMapClient.getSession().selectOne("MyPage.getStartEndDate", id); 
@@ -34,6 +37,14 @@ public class MyPageDBBean implements MyPageDao {
 	@Override
 	public MemberDataBean getMemberData(String id) {
 		return SqlMapClient.getSession().selectOne("MyPage.getMemberData", id);
+	}
+	@Override
+	public int updateMember(MemberDataBean mdto) {
+		return SqlMapClient.getSession().update("MyPage.updateMember", mdto);
+	}
+	@Override
+	public int memberDelete(String id) {		
+		return SqlMapClient.getSession().delete("MyPage.memberDelete", id);
 	}
 	
 }

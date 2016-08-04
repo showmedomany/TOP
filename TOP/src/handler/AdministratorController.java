@@ -1,6 +1,9 @@
 package handler;
 
+import java.io.UnsupportedEncodingException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -96,8 +99,11 @@ public class AdministratorController {
 		if(result != 0 ){
 			String userId = memberData.getId();
 						
-			resultRegister = adminDao.getUserRegisterCheck(userId);
+			 Calendar calendar = Calendar.getInstance();
+			 int year = calendar.get(calendar.YEAR);
+			 request.setAttribute("year", year); 
 			
+			resultRegister = adminDao.getUserRegisterCheck(userId);			
 			//피트니스 정보가 있을 경우
 			if(resultRegister != 0){
 				//유저 피트니스 정보 가지고 오기
@@ -139,17 +145,17 @@ public class AdministratorController {
 				String start_day = format.format(registerData.getStart_date());
 				request.setAttribute("start_day", start_day);
 				String end_day = format.format(registerData.getEnd_date());
-				request.setAttribute("end_day", end_day);
-				
-				//트레이너 정보 가지고 오기
-				List<String> trainerIdList = adminDao.getTrainerIdList();
-				request.setAttribute("trainerIdList", trainerIdList);
+				request.setAttribute("end_day", end_day);				
 				
 			//피트니스 정보가 없을 경우
 			}else if(resultRegister == 0){				
 				
 				
 			}
+			//트레이너 정보 가지고 오기
+			List<String> trainerIdList = adminDao.getTrainerIdList();
+			request.setAttribute("trainerIdList", trainerIdList);
+			
 			request.setAttribute("resultRegister", resultRegister);
 			request.setAttribute("memberData", memberData);
 		}		
@@ -169,37 +175,59 @@ public class AdministratorController {
 	@RequestMapping("/selectDayText_end")
 	public ModelAndView selectDayText_end
 	(HttpServletRequest request,HttpServletResponse response){			
-		int start_month = Integer.parseInt(request.getParameter("end_month"));
-		String start_leapYear = request.getParameter("end_leapYear");			
+		int end_month = Integer.parseInt(request.getParameter("end_month"));
+		String end_leapYear = request.getParameter("end_leapYear");			
 		
-		request.setAttribute("end_month", start_month);
-		request.setAttribute("end_leapYear", start_leapYear);
+		request.setAttribute("end_month", end_month);
+		request.setAttribute("end_leapYear", end_leapYear);
 		return new ModelAndView("/vt_administrator/selectDayText_end");
 	}
-	@RequestMapping("/vt_fitnessInsertPro")
-	public ModelAndView vt_fitnessInsertPro
-	(HttpServletRequest request,HttpServletResponse response){			
+	@RequestMapping("/fitnessInsertProcess")
+	public ModelAndView fitnessInsertProcess
+	(HttpServletRequest request,HttpServletResponse response){		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {			
+			e.printStackTrace();
+		}		
 		
-		String top = "vt_admin_topForm";
-		String center = "vt_admin_centerContent";
-		String administratorPage = "vt_fitnessInsert";
+		String timetamp =" 00:00:00.0";
 		
-		//String exp_date = request.getParameter("exp_date");
-		//System.out.println("exp_date : " + exp_date);
-		return null;
+		String id = request.getParameter("id");
+		int exp_date = Integer.parseInt(request.getParameter("exp_date"));
+		Timestamp start = Timestamp.valueOf(request.getParameter("start")+timetamp);
+		Timestamp end = Timestamp.valueOf(request.getParameter("end")+timetamp);
+		String isGX = request.getParameter("isGX");
+		String isPT = request.getParameter("isPT");
+		int PTCount = Integer.parseInt(request.getParameter("PTCount"));
+		String trainer = request.getParameter("trainer");
+		
+		RegisterDataBean registerData = new RegisterDataBean();
+		registerData.setId(id);
+		registerData.setExp_date(exp_date);
+		registerData.setStart_date(start);
+		registerData.setEnd_date(end);
+		registerData.setGx_check(isGX);
+		registerData.setPt_check(isPT);
+		registerData.setPt_count(PTCount);
+		registerData.setTrainer_id(trainer);
+		
+		String saveType = request.getParameter("saveType");
+		if(saveType.equals("update")){			
+			int result = adminDao.updateFitnessInfo(registerData);
+			request.setAttribute("result", result);	
+			
+		}else if(saveType.equals("insert")){
+			int result = adminDao.insertFitnessInfo(registerData);
+			request.setAttribute("result", result);
+		}
 		
 		
 		
 		
 		
-		
-		
-		
-		//request.setAttribute("top", top);
-		//request.setAttribute("center", center);
-		//request.setAttribute("administratorPage", administratorPage);
-		//return new ModelAndView("/vt_administrator/vt_administrator");
-	}//
+		return new ModelAndView("/vt_administrator/fitnessDBInsertResultText");
+	}
 	
 	
 	

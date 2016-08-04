@@ -81,3 +81,75 @@ function monthDataCheckResult_end(){
 	}	
 }
 
+//피트니스 정보 디비저장하기
+function fitnessInsertProcess(saveType){	
+	var fitnessSaveDiv = document.getElementById("fitnessSaveDiv");
+	var bool = true;
+	//id
+	var id = userSearchTextForm.fitnessId.value;
+	//피트니스 기간
+	var exp_date = userSearchTextForm.exp_date.value;
+	//시작일 년월일
+	var start = userSearchTextForm.selectStartYear.value+"-"
+				+userSearchTextForm.selectStartMonth.value+"-"
+				+userSearchTextForm.selectStartDay.value;
+	//종료일 년월일
+	var end = userSearchTextForm.selectEndYear.value+"-"
+				+userSearchTextForm.selectEndMonth.value+"-"
+				+userSearchTextForm.selectEndDay.value;
+	// GT여부
+	var isGX = userSearchTextForm.GX.value;
+	// PT여부
+	var isPT = userSearchTextForm.PT.value;
+	// PT Count
+	var PTCount = userSearchTextForm.PTCount.value;
+	// 트레이너
+	var trainer = userSearchTextForm.trainerId.value;
+	
+	
+	/*유효성 검사*/
+	var fitnessEffDiv = document.getElementById("fitnessEffDiv");
+	if(!exp_date){
+		bool = false;
+		fitnessEffDiv.innerHTML="피트니스 기간을 입력 해주세요.";		
+	}else if(userSearchTextForm.selectStartYear.value > userSearchTextForm.selectEndYear.value){
+		bool = false;
+		fitnessEffDiv.innerHTML="시작일과 종료일이 맞지않습니다. year";
+	}else if(userSearchTextForm.selectStartYear.value == userSearchTextForm.selectEndYear.value){		
+		if(userSearchTextForm.selectStartMonth.value > userSearchTextForm.selectEndMonth.value){			
+			bool = false;
+			fitnessEffDiv.innerHTML="시작일과 종료일이 맞지않습니다. month";			
+		}else if(userSearchTextForm.selectStartMonth.value == userSearchTextForm.selectEndMonth.value){			
+			if(userSearchTextForm.selectStartDay.value > userSearchTextForm.selectEndDay.value){
+				bool = false;
+				fitnessEffDiv.innerHTML="시작일과 종료일이 맞지않습니다. day";				
+			}
+		}
+	}
+	if(trainer == 0){
+		bool = false;
+		alert("트레이너를 선택하여 주세요");
+		fitnessEffDiv.innerHTML="트레이너를 선택하여 주세요.";
+	}
+
+
+			
+				
+	
+	
+	if(bool==true){	
+		fitnessSaveDiv.innerHTML="저장중..";
+		request = new Request(fitnessInsertProcessResult, "fitnessInsertProcess.do", "POST", 
+				"id="+id+"&exp_date="+exp_date+"&start="+start+"&end="+end+"&isGX="+isGX+"&isPT="
+				+isPT+"&PTCount="+PTCount+"&trainer="+trainer+"&saveType="+saveType);
+		request.sendRequest();
+	}
+	
+}
+function fitnessInsertProcessResult(){	
+	if(request.httpRequest.readyState == 4){
+		if(request.httpRequest.status == 200){
+			document.getElementById("fitnessSaveDiv").innerHTML = request.httpRequest.responseText;					
+		}
+	}
+}

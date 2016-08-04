@@ -229,6 +229,12 @@ public class MemberController {
 			request.setAttribute("adto", alist);
 			
 		}		
+		/* 회원정보 수정하려고 추가함 */
+		String choice = request.getParameter("choice");
+		if(choice!=null){
+			request.setAttribute("choice", choice);
+		}	
+		/* ******************* */
 		
 		request.setAttribute("resultCheck", resultCheck);
 		request.setAttribute("area", inputarea);

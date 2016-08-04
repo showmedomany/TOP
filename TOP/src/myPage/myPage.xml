@@ -5,6 +5,10 @@
 
 
 <mapper namespace="MyPage">
+	<select id="routineInfoIdCheck" parameterType="String" resultType="int">
+		select count(*) from vt_routine_info where id = #{id}
+	</select>
+
 	<select id="getStartEndDate" parameterType="String" resultType="myPage.RoutineInfoDataBean">
 		select START_DATE, END_DATE from vt_routine_info where id = #{id}
 	</select>
@@ -32,6 +36,14 @@
 	<select id="getMemberData" parameterType="String" resultType="member.MemberDataBean">
 		select PASSWD, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE from vt_members where id = #{id}
 	</select>
-
 	
+	<update id="updateMember" parameterType="member.MemberDataBean">
+		update vt_members set passwd=#{passwd}, nickname=#{nickname}, phone=#{phone}, zipcode=#{zipcode},
+		address=#{address}, email=#{email} where id = #{id}		
+	</update>
+	
+	<delete id="memberDelete" parameterType="String" >		
+		delete from vt_members where id = #{id}
+	</delete>
+
 </mapper>
