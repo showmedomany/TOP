@@ -22,4 +22,18 @@ public interface BoardDao {
 	public int insertNoticeArticle(Map<String, String> writeContent);
 	public int updateNoticeArticle(NoticeBoardDataBean noticeBoardData);
 	public int deleteNoticeArticle(int num);
+	
+	/*공지사항 검색*/
+	public List<NoticeBoardDataBean> searhSubGetList(SearchDataBean sdto);
+	public List<NoticeBoardDataBean> searhContentGetList(SearchDataBean sdto);
+	public List<NoticeBoardDataBean> searhNickGetList(SearchDataBean sdto);
+	/*
+	public List<NoticeBoardDataBean> searhSubGetList(String msg);
+	public List<NoticeBoardDataBean> searhContentGetList(String msg);
+	public List<NoticeBoardDataBean> searhNickGetList(String msg);
+	*/
+	/*검색 전체 글수*/
+	public int subCount(String msg);
+	public int contentCount(String msg);
+	public int nickCount(String msg);
 }

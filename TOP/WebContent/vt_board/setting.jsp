@@ -6,7 +6,7 @@
 
 <!-- 경로 -->
 
-<c:set var = "css" value = "/TOP/vtFrame/css/"/>
+<c:set var = "request" value = "/TOP/request.js"/>
 <c:set var = "css" value = "/TOP/vt_board/css/"/>
 <c:set var = "script" value = "/TOP/vt_board/script/"/>
 <c:set var = "images" value = "/TOP/vt_board/images/"/>

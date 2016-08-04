@@ -5,13 +5,15 @@
 	
 }
 
-    
-.vt_writeForm_info {
-    padding: -6px;
-    font-size: 25;
-    font-weight: bolder;
-    width: 565px;
-    font-weight: normal;
+.writeFormTop {
+    border-top-style: groove;
+    border-top-width: 10px;
+    text-align: center;
+    width: 675px;
+    height: 10px;
+    border-bottom-style: groove;
+    border-bottom-width: 2px;
+        margin-bottom: 90px;
 }
 
 .vt_writeForm_button {

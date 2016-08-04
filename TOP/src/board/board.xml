@@ -7,7 +7,9 @@
 	    <select id="getCount" resultType="int">
 			select count(*) from vt_board
 		</select>
-		
+		 <select id="SubCount" resultType="int">
+			select count(*) from vt_notice_board where id like #{msg}
+		</select>
 		<select id="getArticles" parameterType="Map" resultType="board.BoardDataBean">
 			select num,id,nickname,subject,readcount,reg_date,content,r
 			from (select num,id,nickname,subject,readcount,reg_date,content,rownum r 
@@ -63,4 +65,49 @@
 			delete from vt_notice_board where num=#{num}
 		</delete>	
 		
+		
+		<select id="searhSubGetList" parameterType="board.SearchDataBean" resultType="board.NoticeBoardDataBean">
+			select num, id, subject, reg_date, readcount, r from 
+			(select num, id, subject, reg_date, readcount, rownum r from 
+			(select num, id, subject, reg_date, readcount from vt_notice_board where subject like #{sub} order by num desc) order by num desc)
+			where r &gt;= #{start} and r &lt;= #{end} 			
+		</select>
+		<select id="searhContentGetList" parameterType="board.SearchDataBean" resultType="board.NoticeBoardDataBean">
+			select num, id, subject, reg_date, readcount, r from 
+			(select num, id, subject, reg_date, readcount, rownum r from 
+			(select num, id, subject, reg_date, readcount from vt_notice_board where content like #{content} order by num desc) order by num desc)
+			where r &gt;= #{start} and r &lt;= #{end}			
+		</select>
+		<select id="searhNickGetList" parameterType="board.SearchDataBean" resultType="board.NoticeBoardDataBean">
+			select num, id, subject, reg_date, readcount, r from 
+			(select num, id, subject, reg_date, readcount, rownum r from 
+			(select num, id, subject, reg_date, readcount from vt_notice_board where id like #{nick} order by num desc) order by num desc)
+			where r &gt;= #{start} and r &lt;= #{end} 
+		</select>
+		
+		<!-- 
+		<select id="searhSubGetList" parameterType="String" resultType="board.NoticeBoardDataBean">
+			select * from vt_notice_board where subject like #{msg}
+		</select>
+		
+		<select id="searhContentGetList" parameterType="String" resultType="board.NoticeBoardDataBean">
+			select * from vt_notice_board where content like #{msg}
+		</select>
+		
+		<select id="searhNickGetList" parameterType="String" resultType="board.NoticeBoardDataBean">
+			select * from vt_notice_board where id like #{msg}
+		</select>
+		 -->
+		 
+		<select id = "subCount" parameterType="String" resultType="int">
+			select count(*) from vt_notice_board where subject like #{msg}
+		</select>
+		<select id = "contentCount" parameterType="String" resultType="int">
+			select count(*) from vt_notice_board where content like #{msg}
+		</select>
+		<select id = "nickCount" parameterType="String" resultType="int">
+			select count(*) from vt_notice_board where id like #{msg}
+		</select>
+		
+	
 </mapper>

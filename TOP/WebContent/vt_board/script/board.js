@@ -1,3 +1,48 @@
+var request = null;
+
+var msg_sererror = "검색어를 입력하세요!";
+
+function searchtext(){	
+	//text input창에 검색어 적고 엔터 쳤을 경우 submit되는거 방지함과 동시에 검색 시작
+	searchCheck();
+	return false;
+}
+function content_view(contentNum, pageNum){
+	
+	var params = "num="+contentNum+"&pageNum="+pageNum;
+	
+	request = new Request(content_show, "noticeBoardContent.do", "POST", params);
+	request.sendRequest();
+}
+
+function content_show(){
+	var content_div = document.getElementById("content_div");	
+	if(request.httpRequest.readyState == 4){
+		if(request.httpRequest.status == 200){
+			content_div.innerHTML = request.httpRequest.responseText;				
+		}
+	}
+}
+
+
+
+function searchCheck(){
+	if(!searchform.text.value){
+		alert(msg_sererror);
+		return false;
+	}else{
+		if(searchform.tag_serach.options[searchform.tag_serach.selectedIndex].value=="sub"){			
+			location = "notice_search.do?msg="+searchform.text.value+"&type=sub"+"&pageNum="+searchform.pageNum.value;
+			
+		}else if(searchform.tag_serach.options[searchform.tag_serach.selectedIndex].value=="content"){
+			location = "notice_search.do?msg="+searchform.text.value+"&type=content"+"&pageNum="+searchform.pageNum.value;
+			
+		}else if(searchform.tag_serach.options[searchform.tag_serach.selectedIndex].value=="nick"){
+			location = "notice_search.do?msg="+searchform.text.value+"&type=nick"+"&pageNum="+searchform.pageNum.value;
+		}
+	}
+}
+
 
 function checkdelete(){
 	var check = confirm("정말 삭제하시겠습니까?");

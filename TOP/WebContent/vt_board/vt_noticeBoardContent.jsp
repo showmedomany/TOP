@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "setting.jsp" %> 
-<script src="/TOP/vt_board/script/board.js" type="text/javascript"></script>
+<%@ include file = "setting.jsp" %>
 
 <body>
 	<form>
@@ -32,19 +31,16 @@
 					<td colspan="4" align="center">
 						<input type="button" value="수정" onclick="location = 'noticeBoardModifyForm.do?num=${num}&pageNum=${pageNum}'">
 						<input type="button" value="삭제" onclick="isDeleteData(${num}, ${pageNum})">
+						<input type="button" value="댓글달기">
 					</td>
 				</tr>
-			</c:if>
-			
-		
-		
+			</c:if>		
 		</table>	
 	</form>
-</body> 
+</body>
 
-<br>
-<!-- 게시판 LIST 이어붙히기 -->
-<jsp:include page="vt_noticeboard.jsp" flush="false"></jsp:include>	
+
+
 
 
 

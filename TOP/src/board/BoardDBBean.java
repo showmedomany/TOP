@@ -3,8 +3,6 @@ package board;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.jdbc.SQL;
-
 import mybatis.SqlMapClient;
 
 public class BoardDBBean implements BoardDao {
@@ -79,5 +77,45 @@ public class BoardDBBean implements BoardDao {
 		return SqlMapClient.getSession().delete("Board.deleteNoticeArticle", num);
 	}
 	
+	@Override
+	public List<NoticeBoardDataBean> searhSubGetList(SearchDataBean sdto) {		
+		return SqlMapClient.getSession().selectList("Board.searhSubGetList",sdto);
+	}
+	@Override
+	public List<NoticeBoardDataBean> searhContentGetList(SearchDataBean sdto) {
+		return SqlMapClient.getSession().selectList("Board.searhContentGetList",sdto);
+	}
+	@Override
+	public List<NoticeBoardDataBean> searhNickGetList(SearchDataBean sdto) {
+		return SqlMapClient.getSession().selectList("Board.searhNickGetList",sdto);
+	}
+	/*
+	@Override
+	public List<NoticeBoardDataBean> searhSubGetList(String msg) {		
+		return SqlMapClient.getSession().selectList("Board.searhSubGetList",msg);
+	}
+	@Override
+	public List<NoticeBoardDataBean> searhContentGetList(String msg) {
+		return SqlMapClient.getSession().selectList("Board.searhContentGetList",msg);
+	}
+	@Override
+	public List<NoticeBoardDataBean> searhNickGetList(String msg) {
+		return SqlMapClient.getSession().selectList("Board.searhNickGetList",msg);
+	}
+	*/
+	
+	@Override
+	public int subCount(String msg) {
+		return SqlMapClient.getSession().selectOne("Board.subCount",msg);
+	}
+	@Override
+	public int contentCount(String msg) {
 		
+		return SqlMapClient.getSession().selectOne("Board.contentCount",msg);
+	}
+	@Override
+	public int nickCount(String msg) {
+		
+		return SqlMapClient.getSession().selectOne("Board.nickCount",msg);
+	}
 }

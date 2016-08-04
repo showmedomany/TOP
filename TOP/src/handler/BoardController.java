@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import board.BoardDao;
 import board.BoardDataBean;
 import board.NoticeBoardDataBean;
+import board.SearchDataBean;
 
 /**
  * 핸들러들은 센터에 들어갈 각 기능의Frame폼과
@@ -343,14 +344,14 @@ public class BoardController {
 		request.setAttribute("center",center);
 		return new ModelAndView("/vtFrame/vtFrame");
 	}
-	
+	/*
 	@RequestMapping("/noticeBoardContent")
 	public ModelAndView noticeBoardContent
 	(HttpServletRequest request,HttpServletResponse response){	
-		/*
+		
 		String top = null;
 		String bottom = null;
-		*/
+		
 		String center = "/vtFrame/vt_sideMenuForm";
 		String menu = "/vt_board/vt_noticeBoardContent";
 		String word = "/vt_board/word/notice";
@@ -417,7 +418,35 @@ public class BoardController {
 		
 		return new ModelAndView("/vtFrame/vtFrame");
 	}	
-
+	*/
+	
+	@RequestMapping("/noticeBoardContent")
+	public ModelAndView noticeBoardContent
+	(HttpServletRequest request,HttpServletResponse response){			
+		int num = Integer.parseInt(request.getParameter("num"));
+		request.setAttribute("num", num);
+		String pageNum = request.getParameter("pageNum");
+		
+		if(pageNum == null){
+			pageNum = "1";
+		}
+		
+		request.setAttribute("pageNum", pageNum);		
+		
+		NoticeBoardDataBean noticeBoardData = boardDao.getNoticeArticle(num);
+		
+		//조회수 증가 / 아이디 검사
+		String memId = (String) request.getSession().getAttribute("memId");
+		request.setAttribute("memId", memId);
+		if(noticeBoardData.getId().equals(memId) == false){			
+			boardDao.setNoticeReadcountPlus(num);
+		}		
+		
+		request.setAttribute("noticeBoardData", noticeBoardData);
+		
+		return new ModelAndView("/vt_board/vt_noticeBoardContent");
+	}
+	
 	@RequestMapping("/noticeBoardWriteForm")
 	public ModelAndView adminNoticeBoardWrite
 	(HttpServletRequest request,HttpServletResponse response){		
@@ -563,7 +592,101 @@ public class BoardController {
 		return new ModelAndView("/vtFrame/vtFrame");
 	}	
 	
-	
-	
-	
+	//공지사항 게시판 검색
+	@RequestMapping("/notice_search")
+	public ModelAndView notice_sub(HttpServletRequest request,HttpServletResponse response){
+		
+		List<NoticeBoardDataBean> noticeBoardDataList = new ArrayList<NoticeBoardDataBean>();
+		
+		String searchword = request.getParameter("msg");
+		String pageNum = request.getParameter("pageNum");
+		String type = request.getParameter("type");
+				
+		String center = "/vtFrame/vt_sideMenuForm";
+		String menu = "/vt_board/vt_noticeboard";
+		String word = "/vt_board/word/notice";
+		int search = 1;
+		
+		String msg = "%"+searchword+"%";
+		int pageSize = 10;		// 페이지 크기
+		int pageBlock = 10;			
+		int currentPage = 0;	// 현재 페이지
+		int pageCount = 0;		// 전체 페이지 수
+		
+		int start = 0;			//(블럭)시작 페이지
+		int end = 0;			//(블럭)끝 페이지
+		
+		
+		int articleCount = 0;
+		
+		if(pageNum == null){
+			pageNum = "1";
+		}
+		
+		
+		//어떤종류의 검색인지
+		//검색할 text
+		
+		if(type.equals("sub")){
+			articleCount = boardDao.subCount(msg);
+		}
+		else if(type.equals("content")){
+			articleCount = boardDao.contentCount(msg);
+		}
+		else if(type.equals("nick")){
+			articleCount = boardDao.nickCount(msg);						
+		}
+		
+		
+		
+		//게시글이 없을때
+		if(articleCount == 0){			
+			request.setAttribute("pageCount", 1);
+			request.setAttribute("articleCount", articleCount);	
+		//게시글이 있을때	
+		}
+		else{			
+			//페이지 공식 구하기 
+			currentPage = Integer.parseInt(pageNum);
+			start =(currentPage - 1) * pageSize + 1;
+			end = start + pageSize - 1;
+			
+			
+			
+			SearchDataBean sdto = new SearchDataBean();
+			sdto.setStart(start);
+			sdto.setEnd(end);
+			sdto.setSub(msg);
+			
+			if(type.equals("sub")){
+				noticeBoardDataList = boardDao.searhSubGetList(sdto);
+			}
+			else if(type.equals("content")){
+				noticeBoardDataList = boardDao.searhContentGetList(sdto);
+			}
+			else if(type.equals("nick")){
+				noticeBoardDataList = boardDao.searhNickGetList(sdto);	
+			}			
+			//페이지 수 값 구하기
+			pageCount = articleCount/pageBlock;
+			if(articleCount%pageBlock!=0){
+				pageCount+=1;
+			}
+			request.setAttribute("noticeBoardDataList", noticeBoardDataList);
+			request.setAttribute("articleCount", articleCount);			
+			request.setAttribute("pageSize", pageSize);
+			request.setAttribute("pageBlock", pageBlock);
+			request.setAttribute("pageCount", pageCount);			
+		}
+		
+		request.setAttribute("center", center);
+		request.setAttribute("menu", menu);
+		request.setAttribute("word", word);
+		request.setAttribute("pageNum", pageNum);	
+		request.setAttribute("search", search);
+		request.setAttribute("type", type);
+		request.setAttribute("searchword", searchword);
+		
+		return new ModelAndView("/vtFrame/vtFrame");
+	}
 }	

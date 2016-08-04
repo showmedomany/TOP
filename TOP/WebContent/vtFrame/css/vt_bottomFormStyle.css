@@ -17,20 +17,31 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 .bottomForm_wrap{
     width: 100%;
     border-top-style: groove;
+    border-top-width: thin;
  
 }
 .bottomForm_body{
 	
-    width: 1150;
-    height: 85;
+   width: 1150;
+    height: 46px;
     margin: 0 auto;
-  
 }
 
 .bottomForm_address {
     margin-left: 378;
-  	margin-top: 43;
-    position: absolute;
+    margin-top: 43;
+    position: relative;
     margin-bottom: 25;
+    left: 210px;
+    width: 600;
+    height: 44px;
+    
     	
+}
+.bottomForm_logo{
+	position: relative;
+    width: 277px;
+    height: 88px;
+    left: -419px;
+    top: -64px;
 }

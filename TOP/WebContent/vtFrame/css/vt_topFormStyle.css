@@ -57,8 +57,10 @@ a {
     bottom: 0;
     width: 100%;
     border-bottom-style:ridge;
-    border-bottom-color: #6A84B7;
+    border-bottom-color: black;
     border-bottom-width: 0.8px;
+    background-color: black;
+    height: 50;
 }
 
 
@@ -70,9 +72,12 @@ a {
     width: 840px;
     margin: auto;
     background: white;
-    font-size: 12px;
-    color: #5D5D5D;
-   
+    font-size: 14px;
+    color: whitesmoke;
+    position: relative;
+    left: 140px;
+    background-color: black;
+  	 top: 8px;
 }
 
 /*주메뉴,서브메뉴 한묶음 제어*/
@@ -103,7 +108,7 @@ a {
 
 /*주메뉴 마우스 오버시*/
 .top_navi_menu:hover{
-	color:#d3d3d3;
+	color:white;
 }
 
 
@@ -116,8 +121,10 @@ a {
 .top_navi_subframe{
 	position: absolute;
 	left: 0; top: 35px;
-	background: lightgray;
+	background: white;
 	display: none;
+	color: black;
+    font-family: fantasy;
 
 }
 
@@ -135,5 +142,6 @@ a {
 /*서브메뉴 마우스 오버시*/
 
 .top_navi_subframe li:hover{
-	background:white;
+	background:#F3F3F3;
+	
 }
