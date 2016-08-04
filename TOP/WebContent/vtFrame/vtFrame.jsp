@@ -4,7 +4,7 @@
 <!-- 한글로 된부분 setting.jsp로 옮겨야함 -->
 
 <html>
-	<link href = "${css}vt_FrameStyle.css" rel = "stylesheet" type = "text/css">
+	
 	<head>	
 		<title>비주얼탑 홈페이지에 오신것을 환영합니다.</title>	
 	</head>
