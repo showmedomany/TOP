@@ -13,7 +13,16 @@ a {color:#333;text-decoration:none}
 a:active, a:hover {text-decoration:underline}
 address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 /* css초기화 끝 */
+.background{
 
+   position: absolute;
+    width: 1434px;
+    height: 496px;
+    float: left;
+    background-color: white;
+    left: 0px;
+	
+}
 .centerContentframe {
     max-width: 1130px;
     margin: 0 auto;
@@ -27,11 +36,11 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 }
 
 .centerContent_empty_space{
-   height: 79px;
+	height: 79px;
 }
-
+/*프로그램 아이콘*/
 .centerContent_program{
-   position: relative;
+	position: relative;
     height: 202px;
     width: 1395px;
     background:white;
@@ -39,20 +48,17 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
     
 
 }
-.visual_program{
-   position:relative;
-    top: 25px;
-    font-size: 30px;
-    left: 390px;
+.centerContent_vt_program1{
+	position: relative;
+    left: 417px;
+    font-size: 29px;
+    top: 23px;
+    font-weight: bold;
 }
-.visual_program1{
-   position:relative;
-    top: 30px;
-    font-size: 20px;
-   left: 518px;
-}
+
+
 .centerContent_icon1{
-background-color: black;
+background-color:#EAEAEA;
     height: 132px;
     width: 132px;
     border-radius: 50%;
@@ -62,18 +68,19 @@ background-color: black;
     vertical-align: middle;
     position: relative;
     top: 8px;
-    left: 107px;   
+    left: 107px;	
     float: left;
     margin: 0 20px;
+    opacity: 0.4;
 }
 .centerContent_icon1sub{
-   position: relative;
+	position: relative;
     top: 158px;
     font-size: 20;
     left: -13px;
 }
 .centerContent_icon2{
-   background-color: black;
+	background-color: #EAEAEA;
     height: 132px;
     width: 132px;
     border-radius: 50%;
@@ -86,15 +93,16 @@ background-color: black;
     left: 133px;
     float: left;
     margin: 0 20px;
+    opacity: 0.4;
 }
 .centerContent_icon2sub{
-   position: relative;
+	position: relative;
     top: 128px;
     font-size: 20px;
     left: 12px;
 }
 .centerContent_icon3{
-   background-color: black;
+	background-color:#EAEAEA;
     height: 132px;
     width: 132px;
     border-radius: 50%;
@@ -107,9 +115,120 @@ background-color: black;
     left: 153px;
     float: left;
     margin: 0 20px;
+    opacity: 0.4;
 }
 .centerContent_icon3sub{
-   position: relative;
+	position: relative;
+    top: 98px;
+    font-size: 20px;
+    left: 58px;
+}
+.centerContent_icon4{
+	background-color: #EAEAEA;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    top: -83px;
+    left: 171px;
+    float: left;
+    margin: 0 20px;
+    opacity: 0.4;
+}
+.centerContent_icon4sub{
+	position: relative;
+    top: 68px;
+    font-size: 20px;
+    left: 63px;
+}
+.centerContent_empty_space{
+	height: 79px;
+}
+/*프로그램 아이콘*/
+.centerContent_program{
+	position: relative;
+    height: 202px;
+    width: 1395px;
+    background:white;
+    left: -132px;
+    
+
+}
+.centerContent_vt_program1{
+	position: relative;
+    left: 417px;
+    font-size: 29px;
+    top: 23px;
+    font-weight: bold;
+}
+
+
+.centerContent_icon1{
+background-color:#EAEAEA;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    top: 8px;
+    left: 107px;	
+    float: left;
+    margin: 0 20px;
+    opacity: 0.4;
+}
+.centerContent_icon1sub{
+	position: relative;
+    top: 158px;
+    font-size: 20;
+    left: -13px;
+}
+.centerContent_icon2{
+	background-color: #EAEAEA;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    top: -22px;
+    left: 133px;
+    float: left;
+    margin: 0 20px;
+    opacity: 0.4;
+}
+.centerContent_icon2sub{
+	position: relative;
+    top: 128px;
+    font-size: 20px;
+    left: 12px;
+}
+.centerContent_icon3{
+	background-color:#EAEAEA;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    top: -52px;
+    left: 153px;
+    float: left;
+    margin: 0 20px;
+    opacity: 0.4;
+}
+.centerContent_icon3sub{
+	position: relative;
     top: 98px;
     font-size: 20px;
     left: 58px;
@@ -136,7 +255,7 @@ background-color: black;
     left: 63px;
 }
 .centerContent_icon5{
-   background-color: black;
+	background-color:#EAEAEA;
     height: 132px;
     width: 132px;
     border-radius: 50%;
@@ -149,15 +268,16 @@ background-color: black;
     left: 188px;
     float: left;
     margin: 0 20px;
+    opacity: 0.4;
 }
 .centerContent_icon5sub{
-   position: relative;
+	position: relative;
     top: 38px;
     font-size: 20px;
     left: 72px;
 }
 .centerContent_icon6{
-   background-color: black;
+	background-color: #EAEAEA;
     height: 132px;
     width: 132px;
     border-radius: 50%;
@@ -168,11 +288,12 @@ background-color: black;
     position: relative;
    top: -143px;
     left: 206px;
-    float: left;   
+    float: left;	
     margin: 0 20px;
+    opacity: 0.4;
 }
 .centerContent_icon6sub{
-   position: relative;
+	position: relative;
     top: 7px;
     font-size: 20px;
     left: 109px;
@@ -198,13 +319,13 @@ background-color: black;
 #slider {
     background-color: white;
     position: relative;
-    margin: 8 auto;
+    margin: 0 auto;
     transform: translate3d(0,0,0);
     box-shadow: 0px 1px 5px #999999;
-      right: -30;
-    width: 1000;
+    right: -30;
+    width: 1435px;s
     height: 495px;
-    margin-left: -185px;
+    margin-left: -405px;
 }
 
 /* the link style (if an image is wrapped by a link) */
@@ -249,8 +370,8 @@ background-color: black;
     position: absolute;
     z-index: 3;
     width: 150;
-    margin-left: 435;
-    margin-top: 160;
+    margin-left: 633px;
+    margin-top: 146px;
 }
 
 /* each bullet */
@@ -285,3 +406,54 @@ background-color: black;
 #slider>a, #slider video, #slider audio {display:none;}
 #slider div {-webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);}
 /*이미지 슬라이드 영역 끝*/
+
+
+/*게시판*/
+.center_board{
+	position: relative;
+    width: 1344px;
+    height: 543px;
+    float: left;
+    left: -96px;
+    top: -36px;
+}
+.center_board1{
+	position: relative;
+    width: 413px;
+    height: 300;
+    float: left;
+    background-color: firebrick;
+}
+.center_board2{
+	position: relative;
+    width: 413px;
+    height: 270px;
+    left: 413px;
+    background: antiquewhite;
+}
+.center_board3{
+	position: relative;
+    width: 413px;
+    height: 237px;
+    left: 413px;
+    background: burlywood;
+}
+.center_board4{
+	position: relative;
+    width: 413px;
+    height: 207px;
+    left: 0px;
+    background: currentColor;
+    top: -207px;
+	
+}
+.center_board5{
+	position: relative;
+    width: 501px;
+    height: 507px;
+    left: 826px;
+    background: currentColor;
+    top: -714px;
+	
+
+}
