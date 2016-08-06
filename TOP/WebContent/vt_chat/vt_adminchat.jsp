@@ -6,9 +6,7 @@
 	<head>
 		<script src = "${jquery}"></script>
 		<script src = "${request}"></script>
-		<script src = "${script}vt_adminchat.js"></script>		
-</html>
-		
+		<script src = "${script}vt_adminchat.js"></script>
 	</head>	
 	<body onUnload = "exitchat()" onload="adminChatFormFocus()">
 		<form name = "adminchatForm" onsubmit = "return sndtext()">

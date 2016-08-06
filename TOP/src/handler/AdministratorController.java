@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import administrator.AdminDao;
+import exercise.ExerciseDao;
 import member.MemberDataBean;
 import myPage.RegisterDataBean;
 
@@ -27,6 +28,9 @@ public class AdministratorController {
 	
 	@Resource(name="adminDao")
 	private AdminDao adminDao;
+	
+	@Resource(name="exerciseDao")
+	private ExerciseDao exerciseDao;
 	
 	//관리자 페이지 기본
 	@RequestMapping("/administratorPage")
@@ -339,8 +343,59 @@ public class AdministratorController {
 		return new ModelAndView("/vt_administrator/fitnessDBInsertResultText");
 	}
 	
+	@RequestMapping("/selectPart")
+	public ModelAndView selectPart
+	(HttpServletRequest request,HttpServletResponse response){		
+		String day = request.getParameter("day");
+		
+		switch (day) {
+		case "1":
+			day = "월";
+			break;
+		case "2":
+			day = "화";		
+			break;
+		case "3":
+			day = "수";
+			break;
+		case "4":
+			day = "목";
+			break;
+		case "5":
+			day = "금";
+			break;
+		case "6":
+			day = "토";
+			break;
+		case "7":
+			day = "일";
+			break;
+		default:
+			break;
+		}
+		request.setAttribute("day", day);
+		return new ModelAndView("/vt_administrator/vt_selectPartForm");
+	}
 	
-	
+	@RequestMapping("/selectExe")
+	public ModelAndView selectExe
+	(HttpServletRequest request,HttpServletResponse response){		
+		Integer part_id = Integer.parseInt(request.getParameter("part_id"));
+		
+		//가슴으로 vt_ex_part를 검색해서 부위 id를 검색한다.
+		//해당 부위 아이디로 운동테이블을 검색하여 결과를 리스트로 받는다.
+		//리스트를 보낸다.
+		
+		List<Map<String, Object>> list = exerciseDao.selectExerciseList(part_id);
+		
+		System.out.println("????????????????????");
+		
+		request.setAttribute("part_id", part_id);
+		request.setAttribute("list", list);
+		
+		
+		return new ModelAndView("/vt_administrator/vt_selectExerciseForm");
+	}
 }
 
 

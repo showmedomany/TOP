@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Exercise">
+	<select id="searchPart" parameterType="String" resultType="int">
+		select ex_part_id from vt_ex_part where part_name = #{part}
+	</select>
+	
+	<select id="selectExerciseList" resultType="Map">
+		SELECT
+			*
+		FROM
+			vt_exercise
+		WHERE
+			EX_PART_ID = #{part_id}
+	</select>
+</mapper>

@@ -29,6 +29,7 @@
 		<mapper resource="chat/chat.xml"/>		
 		<mapper resource="board/board.xml"/>		
 		<mapper resource="administrator/admin.xml"/>
+		<mapper resource="exercise/exercise.xml"/>
 	</mappers>
 	
 </configuration>

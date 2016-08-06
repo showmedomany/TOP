@@ -6,9 +6,12 @@
 <html>
 	<head>
 		<link href = "${css}vt_scheduleInsert.css" rel="stylesheet"	type="text/css">
+		<script src = "${jquery}"></script>
+		<script src = "${request}"></script>
+		<script src = "${script}vt_scheduleInsert.js"></script>
 	</head>
 	
-	<body>
+	<body>		
 		<div class = "frame">
 			<br><br>
 			회원id : ${id}<br><br>
@@ -16,13 +19,13 @@
 			운동시간<br><br>
 			<table border = "1">
 				<tr>
-					<th>월</th>
-					<th>화</th>
-					<th>수</th>
-					<th>목</th>
-					<th>금</th>
-					<th>토</th>
-					<th>일</th>
+					<th onclick="selectday(1)">월</th>
+					<th onclick="selectday(2)">화</th>
+					<th onclick="selectday(3)">수</th>
+					<th onclick="selectday(4)">목</th>
+					<th onclick="selectday(5)">금</th>
+					<th onclick="selectday(6)">토</th>
+					<th onclick="selectday(7)">일</th>
 				</tr>
 				<tr>
 					<th><div>여기로<br>데이터<br>들어옴</div></th>
@@ -43,58 +46,11 @@
 			</table>
 			<br><br>
 			해당 요일을 클릭하면 밑의 테이블이 생성됨?
-			<table border = "1">
-				<tr>
-					<th>부위</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>부위</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>부위</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>부위</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-				</tr>
-				<tr>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-				</tr>
-				<tr>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-				</tr>
-				<tr>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-				</tr>
-				<tr>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>운동</th>
-					<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
-				</tr>
-			</table>
-		</div>
+			<div id = "partTable"></div>
+			<div id = "exerciseTable"></div>
+			
+		
+			
+		</div>		
 	</body>
 </html>
