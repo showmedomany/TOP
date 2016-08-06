@@ -18,15 +18,13 @@
 <div class="content">
 	${noticeBoardData.content}
 </div>
-<c:if test="${noticeBoardData.id == memId}">
-	<div class="bottom">
-			<input type="button" value="수정" onclick="location = 'noticeBoardModifyForm.do?num=${num}&pageNum=${pageNum}'">
-			<input type="button" value="삭제" onclick="isDeleteData(${num}, ${pageNum})">
-			<input type="button" value="댓글달기">
-	</div>
-</c:if>
-
-
+<div class="bottom">
+	<c:if test="${noticeBoardData.id == memId}">	
+		<input type="button" value="수정" onclick="location = 'noticeBoardModifyForm.do?num=${num}&pageNum=${pageNum}'">
+		<input type="button" value="삭제" onclick="isDeleteData(${num}, ${pageNum})">	
+	</c:if>
+	<input type="button" value="댓글달기">
+</div>
 
 
 

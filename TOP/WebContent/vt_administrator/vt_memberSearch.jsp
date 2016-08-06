@@ -10,7 +10,7 @@ vt_memberSearch.jsp
 	전체 사용자 수 : ${articleCount}
 </c:if>
 <c:if test="${pageNum==0}">
-	검색된 사용자 수 : ${articleCount}
+	'${searchMessage}'의 검색된 사용자 수 : ${articleCount}
 </c:if>
 
 <body onload="memberSearchFormInit()">
@@ -36,13 +36,19 @@ vt_memberSearch.jsp
 					<input type="button" value="검색" onclick="searchMember('${pageNum}')">
 				</td>
 			</tr>
-			<tr>					
+			<tr>								
 				<th>ID</th>
 				<th>Name</th>
 				<th>Nick</th>
 				<th>JoinDate</th>
-				<th>Register</th>									
+				<th>Register</th>
+											
 			</tr>
+			<c:if test="${articleCount == 0 }">
+				<tr>
+					<th colspan="5">검색된 회원이 없습니다</th>
+				</tr>				
+			</c:if>
 			<c:if test="${articleCount != 0 }">
 				<c:forEach var="i" begin="0" end="${memberDataList.size()-1}" step="1">
 					<c:set var="userNumber" value="${userNumber+1}"/>
@@ -50,18 +56,18 @@ vt_memberSearch.jsp
 					
 					<c:set var="memberData" value="${memberDataList[i]}"/>
 					<c:if test="${memberData.authority_id == 2}">
-						<tr style="cursor:pointer; ">						
+						<tr style="cursor:pointer; ">												
 							<td onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')">${memberData.id }</td>
 							<td onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')">${memberData.name }</td>
 							<td onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')">${memberData.nickname }</td>
 							<td onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')"><fmt:formatDate value="${memberData.join_date }" pattern="yyyy-MM-dd" /></td>
 							<td>
-								<select name="searchMeans" size="1">
-									<option value="ID" selected="selected">피트니스</option>
-									<option value="NickName">인바디</option>
-									<option value="email">스케줄</option>
+								<select name="insertMeans" size="1">
+									<option value="fitness" selected="selected">피트니스</option>
+									<option value="inbody">인바디</option>
+									<option value="schedule">스케줄</option>
 								</select>			
-								<input type="button" value="등록">				
+								<input type="button" value="등록" onclick="insertUserInfo('${memberData.id}')">			
 							</td>											
 						</tr>
 						<tr>
@@ -76,8 +82,18 @@ vt_memberSearch.jsp
 			
 		</table>
 		
-		<c:forEach var="i" begin="1" end="${pageCount}" step="1">
+		<c:if test="${startPage > pageBlock }">	
+			<a href="memberSearch.do?pageNum=1">[◀◀]</a>
+			<a href="memberSearch.do?pageNum=${startPage-pageBlock}">[◀]&nbsp;</a>
+		</c:if>
+		<c:forEach var="i" begin="${startPage }" end="${endPage}" step="1">
 			<a href="memberSearch.do?pageNum=${i}">[${i}]&nbsp;</a>				
-		</c:forEach>	
+		</c:forEach>
+		<c:if test="${pageCount > endPage }">
+			<a href="memberSearch.do?pageNum=${startPage+pageBlock}">[▶]&nbsp;</a>
+			<a href="memberSearch.do?pageNum=${pageCount}">[▶▶]</a>
+		</c:if>	
 	</form>
+	
+	<div id="insertUserDiv"></div>
 </body>

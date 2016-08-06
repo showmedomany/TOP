@@ -117,7 +117,7 @@ public class NoticeBoardController {
 		}		
 		
 		request.setAttribute("noticeBoardData", noticeBoardData);		
-		return new ModelAndView("/vt_board/processing/vt_noticeBoardContent");
+		return new ModelAndView("/vt_board/vt_noticeBoardContent");
 	}
 	
 	@RequestMapping("/noticeBoardWriteForm")

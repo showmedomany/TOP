@@ -43,8 +43,10 @@
     margin-top: 22px;
 }
 .bottom{
-	position: relative;
+	border-top-style: groove;
+    border-top-width: 4;
+    position: relative;
     float: left;
     width: 700px;
-    top: 11px;
+    top: 11px;    
 }

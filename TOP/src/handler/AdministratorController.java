@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import administrator.AdminDao;
-import exercise.ExerciseDao;
 import member.MemberDataBean;
 import myPage.RegisterDataBean;
 
@@ -28,9 +27,6 @@ public class AdministratorController {
 	
 	@Resource(name="adminDao")
 	private AdminDao adminDao;
-	
-	@Resource(name="exerciseDao")
-	private ExerciseDao exerciseDao;
 	
 	//관리자 페이지 기본
 	@RequestMapping("/administratorPage")
@@ -47,7 +43,7 @@ public class AdministratorController {
 		
 		List<MemberDataBean> memberDataList = new ArrayList<MemberDataBean>();
 		int pageSize = 10;		// 페이지 크기
-		int pageBlock = 10;			
+		int pageBlock = 5;			
 		int currentPage = 0;	// 현재 페이지
 		int pageCount = 0;		// 전체 페이지 수
 		int start = 0;			//(블럭)시작 페이지
@@ -73,10 +69,22 @@ public class AdministratorController {
 			start = (currentPage - 1) * pageSize + 1;
 			end = start + pageSize - 1;			
 			//페이지 수 값 구하기
-			pageCount = articleCount/pageBlock;
-			if(articleCount%pageBlock!=0){
+			//pageCount = articleCount/pageBlock;
+			pageCount = articleCount/pageSize + (articleCount%pageSize > 0 ? 1 : 0);
+			int startPage = ( currentPage / pageBlock ) * pageBlock + 1 ;
+			if(currentPage % pageBlock == 0){
+				startPage -= pageBlock;
+			}
+			int endPage = startPage + pageBlock - 1;
+			if(endPage > pageCount){
+				endPage = pageCount;
+			}
+			/*if(articleCount%pageBlock!=0){
 				pageCount+=1;
-			}			
+			}*/			
+			
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
 			
 			Map<String, Integer> startEndPage = new HashMap<String, Integer>();
 			startEndPage.put("start", start);
@@ -89,6 +97,10 @@ public class AdministratorController {
 			request.setAttribute("pageBlock", pageBlock);
 			request.setAttribute("pageCount", pageCount);				
 		}
+		
+		
+		
+		
 		String center = "vt_memberSearch";	
 		request.setAttribute("center", center);		
 		return new ModelAndView("/vt_administrator/vt_administrator");
@@ -110,7 +122,7 @@ public class AdministratorController {
 		request.setAttribute("address", request.getParameter("address"));
 		request.setAttribute("email", request.getParameter("email"));
 		request.setAttribute("join_date", request.getParameter("join_date"));		
-		return new ModelAndView("/vt_administrator/memberSearchView");
+		return new ModelAndView("/vt_administrator/processing/memberSearchView");
 	}//
 	
 	@RequestMapping("/memberSearchResult")
@@ -121,12 +133,14 @@ public class AdministratorController {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e) {	
 			e.printStackTrace();
-		}	
+		}
+		
+		String searchMeans = request.getParameter("searchMeans");
+		String searchMessage  = request.getParameter("searchMessage");		
 		
 		request.setAttribute("pageNum", "0");
 		
-		String searchMeans = request.getParameter("searchMeans");
-		String searchMessage  = request.getParameter("searchMessage");
+		request.setAttribute("searchMessage", searchMessage);
 		int articleCount = 0;
 		if(searchMeans.equals("name")){
 			articleCount = adminDao.getNameSearchCount(searchMessage);
@@ -135,7 +149,7 @@ public class AdministratorController {
 		}else if(searchMeans.equals("nickname")){
 			articleCount = adminDao.getNickNameSearchCount(searchMessage);
 		}	
-			
+		
 		List<MemberDataBean> memberDataList = new ArrayList<MemberDataBean>();
 		
 		if(searchMeans.equals("name")){
@@ -144,17 +158,18 @@ public class AdministratorController {
 			memberDataList = adminDao.getMemberSearchIdList(searchMessage);		
 		}else if(searchMeans.equals("nickname")){
 			memberDataList = adminDao.getMemberSearchNickNameList(searchMessage);		
-		}	
+		}
 		request.setAttribute("articleCount", articleCount);
-		request.setAttribute("memberDataList", memberDataList);
-	
+		request.setAttribute("memberDataList", memberDataList);					
+		
 		String center = "vt_memberSearch";	
 		request.setAttribute("center", center);		
-		return new ModelAndView("/vt_administrator/vt_administrator");
+		return new ModelAndView("/vt_administrator/vt_administrator");		
 	}//
 	
 	
 	//관리자페이지-센터등록
+	/* 사용안함 나중에 삭제
 	@RequestMapping("/centerInsert")
 	public ModelAndView myPageInsertInbody
 	(HttpServletRequest request,HttpServletResponse response){
@@ -187,100 +202,90 @@ public class AdministratorController {
 		
 		return new ModelAndView("/vt_administrator/vt_administrator");
 	}//인바디 저장하기 컨트롤러
-	@RequestMapping("/insertFitnessUserSearch")
+		*/
+	
+	
+	@RequestMapping("/insertFitnessUserSearch")	
 	public ModelAndView insertFitnessUserSearch
 	(HttpServletRequest request,HttpServletResponse response){		
 		
-		String searchMsg = request.getParameter("searchMsg");//검색할 내용
-		String searchMeans = request.getParameter("searchMeans");//검색할 방법 아이디, 닉네임, 이메일
-		MemberDataBean memberData = null;
-		int result = 0;
-		int resultRegister = 0;
-		//ID NickName email
-		if(searchMeans.equals("ID")){
-			result = adminDao.insertFitnessUserSearchIDCheck(searchMsg);					
-			if(result != 0){
-				memberData = adminDao.insertFitnessUserSearchID(searchMsg);				
-			}
-		}else if(searchMeans.equals("NickName")){
-			result = adminDao.insertFitnessUserSearchNickNameCheck(searchMsg);
-			if(result != 0){
-				memberData = adminDao.insertFitnessUserSearchNickName(searchMsg);
-			}
-		}else if(searchMeans.equals("email")){
-			result = adminDao.insertFitnessUserSearchEmailCheck(searchMsg);
-			if(result != 0){
-				memberData = adminDao.insertFitnessUserSearchEmail(searchMsg);
-			}
-		}		
-		request.setAttribute("result", result);
-		//찾은 아이디가 있으면 피트니스 정보 가지고 오기/넣기
-		if(result != 0 ){
-			String userId = memberData.getId();
-						
-			 Calendar calendar = Calendar.getInstance();
-			 int year = calendar.get(calendar.YEAR);
-			 request.setAttribute("year", year); 
+		String id = request.getParameter("id");//검색할 아이디		
+		request.setAttribute("id", id);
+		
+		int idCheckResult = adminDao.insertFitnessUserSearchIDCheck(id);
+		request.setAttribute("idCheckResult", idCheckResult);		
+		
+		Calendar calendar = Calendar.getInstance();
+		int year = calendar.get(calendar.YEAR);
+		request.setAttribute("year", year); 
+		
+		if(idCheckResult != 0){
+			RegisterDataBean registerData = adminDao.insertFitnessUserSearchID(id);
+			request.setAttribute("registerData", registerData);		
 			
-			resultRegister = adminDao.getUserRegisterCheck(userId);			
-			//피트니스 정보가 있을 경우
-			if(resultRegister != 0){
-				//유저 피트니스 정보 가지고 오기
-				RegisterDataBean registerData = adminDao.getUserRegister(userId);				
-				request.setAttribute("registerData", registerData);		
-				
-				SimpleDateFormat format = null; 
-				
-				format = new SimpleDateFormat("yyyy");
-				int start_year = Integer.parseInt(format.format(registerData.getStart_date()));
-				int end_year = Integer.parseInt(format.format(registerData.getEnd_date()));
-				request.setAttribute("start_year", start_year);
-				request.setAttribute("end_year", end_year);
-				
-				//윤달 검사
-				String start_leapYear = "false";
-				String end_leapYear = "false";
-				if((0==(start_year%4) && 0 !=(start_year%100)) || 0 == start_year%400){
-					start_leapYear = "true";
-				}else{
-					start_leapYear = "false";
-				}				
-				if((0==(end_year%4) && 0 !=(end_year%100)) || 0 == end_year%400){
-					end_leapYear = "true";
-				}else{
-					end_leapYear = "false";
-				}
-				
-				request.setAttribute("start_leapYear", start_leapYear);
-				request.setAttribute("end_leapYear", end_leapYear);
-				
-				format = new SimpleDateFormat("MM");
-				String start_month = format.format(registerData.getStart_date());
-				request.setAttribute("start_month", start_month);
-				String end_month = format.format(registerData.getEnd_date());
-				request.setAttribute("end_month", end_month);
-				
-				format = new SimpleDateFormat("dd");
-				String start_day = format.format(registerData.getStart_date());
-				request.setAttribute("start_day", start_day);
-				String end_day = format.format(registerData.getEnd_date());
-				request.setAttribute("end_day", end_day);				
-				
-			//피트니스 정보가 없을 경우
-			}else if(resultRegister == 0){				
-				
-				
-			}
-			//트레이너 정보 가지고 오기
-			List<String> trainerIdList = adminDao.getTrainerIdList();
-			request.setAttribute("trainerIdList", trainerIdList);
+			SimpleDateFormat format = null; 
 			
-			request.setAttribute("resultRegister", resultRegister);
-			request.setAttribute("memberData", memberData);
-		}		
-		return new ModelAndView("/vt_administrator/userSearchText");	}	
+			format = new SimpleDateFormat("yyyy");
+			int start_year = Integer.parseInt(format.format(registerData.getStart_date()));
+			int end_year = Integer.parseInt(format.format(registerData.getEnd_date()));
+			request.setAttribute("start_year", start_year);
+			request.setAttribute("end_year", end_year);
+			
+			//윤달 검사
+			String start_leapYear = "false";
+			String end_leapYear = "false";
+			if((0==(start_year%4) && 0 !=(start_year%100)) || 0 == start_year%400){
+				start_leapYear = "true";
+			}else{
+				start_leapYear = "false";
+			}				
+			if((0==(end_year%4) && 0 !=(end_year%100)) || 0 == end_year%400){
+				end_leapYear = "true";
+			}else{
+				end_leapYear = "false";
+			}
+			
+			request.setAttribute("start_leapYear", start_leapYear);
+			request.setAttribute("end_leapYear", end_leapYear);
+			
+			format = new SimpleDateFormat("MM");
+			String start_month = format.format(registerData.getStart_date());
+			request.setAttribute("start_month", start_month);
+			String end_month = format.format(registerData.getEnd_date());
+			request.setAttribute("end_month", end_month);
+			
+			format = new SimpleDateFormat("dd");
+			String start_day = format.format(registerData.getStart_date());
+			request.setAttribute("start_day", start_day);
+			String end_day = format.format(registerData.getEnd_date());
+			request.setAttribute("end_day", end_day);			
+			
+		}
+		
+		List<String> trainerIdList = adminDao.getTrainerIdList();
+		request.setAttribute("trainerIdList", trainerIdList);
+
+		return new ModelAndView("/vt_administrator/processing/insertFitnessUserSearch");
+		
+	}	
+	@RequestMapping("/insertInbodyUserSearch")	
+	public ModelAndView insertInbodyUserSearch
+	(HttpServletRequest request,HttpServletResponse response){		
+		String id = request.getParameter("id");
+		request.setAttribute("id", id);
+		
+		int inbodyCheckResult = adminDao.getInbodyCheck(id);
+		/*학원에서 여기 까지 함 */
+		
+		
+		
+		
+		
+		return new ModelAndView("/vt_administrator/processing/insertInbodyUserSearch");		
+	}
 	
 	//다른월 선택시 바뀐 일수 출력하기
+	
 	@RequestMapping("/selectDayText_start")
 	public ModelAndView selectDayText_start
 	(HttpServletRequest request,HttpServletResponse response){			
@@ -289,7 +294,7 @@ public class AdministratorController {
 		
 		request.setAttribute("start_month", start_month);
 		request.setAttribute("start_leapYear", start_leapYear);
-		return new ModelAndView("/vt_administrator/selectDayText_start");
+		return new ModelAndView("/vt_administrator/processing/selectDayText_start");
 	}//
 	@RequestMapping("/selectDayText_end")
 	public ModelAndView selectDayText_end
@@ -299,7 +304,7 @@ public class AdministratorController {
 		
 		request.setAttribute("end_month", end_month);
 		request.setAttribute("end_leapYear", end_leapYear);
-		return new ModelAndView("/vt_administrator/selectDayText_end");
+		return new ModelAndView("/vt_administrator/processing/selectDayText_end");
 	}
 	@RequestMapping("/fitnessInsertProcess")
 	public ModelAndView fitnessInsertProcess
@@ -340,62 +345,10 @@ public class AdministratorController {
 			int result = adminDao.insertFitnessInfo(registerData);
 			request.setAttribute("result", result);
 		}		
-		return new ModelAndView("/vt_administrator/fitnessDBInsertResultText");
+		return new ModelAndView("/vt_administrator/processing/fitnessDBInsertResultText");
 	}
 	
-	@RequestMapping("/selectPart")
-	public ModelAndView selectPart
-	(HttpServletRequest request,HttpServletResponse response){		
-		String day = request.getParameter("day");
-		
-		switch (day) {
-		case "1":
-			day = "월";
-			break;
-		case "2":
-			day = "화";		
-			break;
-		case "3":
-			day = "수";
-			break;
-		case "4":
-			day = "목";
-			break;
-		case "5":
-			day = "금";
-			break;
-		case "6":
-			day = "토";
-			break;
-		case "7":
-			day = "일";
-			break;
-		default:
-			break;
-		}
-		request.setAttribute("day", day);
-		return new ModelAndView("/vt_administrator/vt_selectPartForm");
-	}
 	
-	@RequestMapping("/selectExe")
-	public ModelAndView selectExe
-	(HttpServletRequest request,HttpServletResponse response){		
-		Integer part_id = Integer.parseInt(request.getParameter("part_id"));
-		
-		//가슴으로 vt_ex_part를 검색해서 부위 id를 검색한다.
-		//해당 부위 아이디로 운동테이블을 검색하여 결과를 리스트로 받는다.
-		//리스트를 보낸다.
-		
-		List<Map<String, Object>> list = exerciseDao.selectExerciseList(part_id);
-		
-		System.out.println("????????????????????");
-		
-		request.setAttribute("part_id", part_id);
-		request.setAttribute("list", list);
-		
-		
-		return new ModelAndView("/vt_administrator/vt_selectExerciseForm");
-	}
 }
 
 

@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import board.BoardDao;
 import board.BoardDataBean;
 import board.SearchDataBean;
+import comment.CommentDao;
+import comment.CommentDataBean;
 
 /**
  * 핸들러들은 센터에 들어갈 각 기능의Frame폼과
@@ -29,6 +31,8 @@ public class BoardController {
 	@Resource(name = "boardDao")
 	private BoardDao boardDao;
 	
+	@Resource(name = "commentDao")
+	private CommentDao commentDao;
 	
 	@RequestMapping("/vt_community_free")//메뉴탭에서 자유게시판 선택경우
 	public ModelAndView vt_community_free(HttpServletRequest request, 
@@ -146,7 +150,7 @@ public class BoardController {
 		}
 				
 		
-		return new ModelAndView("/vt_board/processing/vt_freeContent");
+		return new ModelAndView("/vt_board/vt_freeContent");
 	}//vt_freeContent
 	
 	//자유게시판 게시글 읽는 핸들러
@@ -355,5 +359,21 @@ public class BoardController {
 		
 		return new ModelAndView("/vtFrame/vtFrame");
 	}
+	
+	//자유게시판 게시글 읽는 핸들러
+	@RequestMapping("/vt_commentlist")//메뉴탭에서 선택한경우
+	public ModelAndView vt_freereplylist(HttpServletRequest request, 
+			HttpServletResponse response)throws Exception{
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		//넘어온 num으로 reply 테이블을 검색
+		//테이블의 데이터를 list로 받음
+		//list를 넘겨 c:foreach로 뿌림		
+		List<CommentDataBean> clist = commentDao.getComments(num);
+		//=boardDao.getArticles(map);
+		request.setAttribute("clist", clist);
+		
+		return new ModelAndView("/vt_board/vt_comment");
+	}//vt_freeContent
 	
 }	

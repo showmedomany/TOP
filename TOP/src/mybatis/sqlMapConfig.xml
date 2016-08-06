@@ -28,6 +28,7 @@
 		<mapper resource="address/address.xml"/>
 		<mapper resource="chat/chat.xml"/>		
 		<mapper resource="board/board.xml"/>
+		<mapper resource="comment/comment.xml"/>
 		<mapper resource="noticeboard/noticeboard.xml"/>		
 		<mapper resource="administrator/admin.xml"/>
 		<mapper resource="exercise/exercise.xml"/>

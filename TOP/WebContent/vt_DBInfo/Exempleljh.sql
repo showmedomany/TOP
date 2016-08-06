@@ -609,21 +609,65 @@ CREATE TABLE vt_members
    join_date date NOT NULL,
    PRIMARY KEY (id)
 );
-insert into vt_members values('lees', 1, '111', '이순신', 'nic_lee', '111-6666-2222', '031-222', '서울특별시 강남구 강남동|강남아파트 111-111',  '1111@gmail.com', add_months(sysdate, -20));
-insert into vt_members values('kimy', 2,  '111', '김유신', 'nic_kim', '111-2222-7777', '031-111', '경기도 안양시 안양동|안양아파트 111-111', '2222@gmail.com', add_months(sysdate, -13));
-insert into vt_members values('jangb', 2,  '111', '장보고', 'nic_jang', '111-2222-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '3333@gmail.com',  add_months(sysdate, -12));
-insert into vt_members values('jangb1', 2,  '111', '장보고', 'nic_jang1', '111-2222-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '3@gmail.com',  add_months(sysdate, -11));
-insert into vt_members values('jangb2', 2,  '111', '장보고', 'nic_jang2', '111-2223-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '4@gmail.com',  add_months(sysdate, -10));
-insert into vt_members values('jangb3', 2,  '111', '장보고', 'nic_jang3', '111-2224-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '5@gmail.com',  add_months(sysdate, -9));
-insert into vt_members values('jangb4', 2,  '111', '장보고', 'nic_jang4', '111-2225-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '6@gmail.com',  add_months(sysdate, -8));
-insert into vt_members values('jangb5', 2,  '111', '장보고', 'nic_jang5', '111-2226-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '7@gmail.com',  add_months(sysdate, -7));
-insert into vt_members values('jangb6', 2,  '111', '장보고', 'nic_jang6', '111-2227-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '8@gmail.com',  add_months(sysdate, -6));
-insert into vt_members values('jangb7', 2,  '111', '장보고', 'nic_jang7', '111-2228-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '9@gmail.com',  add_months(sysdate, -5));
-insert into vt_members values('jangb8', 2,  '111', '장보고', 'nic_jang8', '111-2229-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '10@gmail.com',  add_months(sysdate, -4));
-insert into vt_members values('jangb9', 2,  '111', '장보고', 'nic_jang9', '111-2211-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '11@gmail.com',  add_months(sysdate, -3));
-insert into vt_members values('jangb10', 2,  '111', '장보고', 'nic_jang10', '111-2233-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '12@gmail.com',  add_months(sysdate, -2));
-insert into vt_members values('jangb11', 2,  '111', '장보고', 'nic_jang11', '111-2244-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '13@gmail.com',  add_months(sysdate, -1));
+insert into vt_members values('lees', 1, '111', '이순신', 'nic_lee', '111-6666-2222', '031-222', '서울특별시 강남구 강남동|강남아파트 111-111',  '1111@gmail.com', sysdate);
+insert into vt_members values('kimy', 2,  '111', '김유신', 'nic_kim', '111-2222-7777', '031-111', '경기도 안양시 안양동|안양아파트 111-111', '2222@gmail.com', sysdate);
+insert into vt_members values('jangb', 2,  '111', '장보고', 'nic_jang', '111-2222-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '3333@gmail.com',  sysdate);
+insert into vt_members values('jangb1', 2,  '111', '장보고', 'nic_jang1', '111-2222-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '3@gmail.com',  sysdate);
+insert into vt_members values('jangb2', 2,  '111', '장보고', 'nic_jang2', '111-2223-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '4@gmail.com',  sysdate);
+insert into vt_members values('jangb3', 2,  '111', '장보고', 'nic_jang3', '111-2224-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '5@gmail.com',  sysdate);
+insert into vt_members values('jangb4', 2,  '111', '장보고', 'nic_jang4', '111-2225-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '6@gmail.com',  sysdate);
+insert into vt_members values('jangb5', 2,  '111', '장보고', 'nic_jang5', '111-2226-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '7@gmail.com',  sysdate);
+insert into vt_members values('jangb6', 2,  '111', '장보고', 'nic_jang6', '111-2227-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '8@gmail.com',  sysdate);
+insert into vt_members values('jangb7', 2,  '111', '장보고', 'nic_jang7', '111-2228-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '9@gmail.com',  sysdate);
+insert into vt_members values('jangb8', 2,  '111', '장보고', 'nic_jang8', '111-2229-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '10@gmail.com',  sysdate);
+insert into vt_members values('jangb9', 2,  '111', '장보고', 'nic_jang9', '111-2211-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '11@gmail.com',  sysdate);
+insert into vt_members values('jangb10', 2,  '111', '장보고', 'nic_jang10', '111-2233-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '12@gmail.com',  sysdate);
+insert into vt_members values('jangb11', 2,  '111', '장보고', 'nic_jang11', '111-2244-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '13@gmail.com',  sysdate);
 insert into vt_members values('jangb12', 2,  '111', '장보고', 'nic_jang12', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '55@gmail.com',  sysdate);
+insert into vt_members values('14', 2,  '111', '장보고', '14', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '14@gmail.com',  sysdate);
+insert into vt_members values('15', 2,  '111', '장보고', '15', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '15@gmail.com',  sysdate);
+insert into vt_members values('16', 2,  '111', '장보고', '16', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '16@gmail.com',  sysdate);
+insert into vt_members values('17', 2,  '111', '장보고', '17', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '17@gmail.com',  sysdate);
+insert into vt_members values('18', 2,  '111', '장보고', '18', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '18@gmail.com',  sysdate);
+insert into vt_members values('19', 2,  '111', '장보고', '19', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '19@gmail.com',  sysdate);
+insert into vt_members values('20', 2,  '111', '장보고', '20', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '20@gmail.com',  sysdate);
+insert into vt_members values('21', 2,  '111', '장보고', '21', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '21@gmail.com',  sysdate);
+insert into vt_members values('22', 2,  '111', '장보고', '22', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '22@gmail.com',  sysdate);
+insert into vt_members values('23', 2,  '111', '장보고', '23', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '23@gmail.com',  sysdate);
+insert into vt_members values('24', 2,  '111', '장보고', '24', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '24@gmail.com',  sysdate);
+insert into vt_members values('25', 2,  '111', '장보고', '25', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '25@gmail.com',  sysdate);
+insert into vt_members values('26', 2,  '111', '장보고', '26', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '26@gmail.com',  sysdate);
+insert into vt_members values('27', 2,  '111', '장보고', '27', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '27@gmail.com',  sysdate);
+insert into vt_members values('28', 2,  '111', '장보고', '28', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '28@gmail.com',  sysdate);
+insert into vt_members values('29', 2,  '111', '장보고', '29', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '29@gmail.com',  sysdate);
+insert into vt_members values('30', 2,  '111', '장보고', '30', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '30@gmail.com',  sysdate);
+insert into vt_members values('31', 2,  '111', '장보고', '31', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '31@gmail.com',  sysdate);
+insert into vt_members values('32', 2,  '111', '장보고', '32', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '32@gmail.com',  sysdate);
+insert into vt_members values('33', 2,  '111', '장보고', '33', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '33@gmail.com',  sysdate);
+insert into vt_members values('34', 2,  '111', '장보고', '34', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '34@gmail.com',  sysdate);
+insert into vt_members values('35', 2,  '111', '장보고', '35', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '35@gmail.com',  sysdate);
+insert into vt_members values('36', 2,  '111', '장보고', '36', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '36@gmail.com',  sysdate);
+insert into vt_members values('37', 2,  '111', '장보고', '37', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '37@gmail.com',  sysdate);
+insert into vt_members values('38', 2,  '111', '장보고', '38', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '38@gmail.com',  sysdate);
+insert into vt_members values('39', 2,  '111', '장보고', '39', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '39@gmail.com',  sysdate);
+insert into vt_members values('40', 2,  '111', '장보고', '40', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '40@gmail.com',  sysdate);
+insert into vt_members values('41', 2,  '111', '장보고', '41', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '41@gmail.com',  sysdate);
+insert into vt_members values('42', 2,  '111', '장보고', '42', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '42@gmail.com',  sysdate);
+insert into vt_members values('43', 2,  '111', '장보고', '43', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '43@gmail.com',  sysdate);
+insert into vt_members values('44', 2,  '111', '장보고', '44', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '44@gmail.com',  sysdate);
+insert into vt_members values('45', 2,  '111', '장보고', '45', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '45@gmail.com',  sysdate);
+insert into vt_members values('46', 2,  '111', '장보고', '46', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '46@gmail.com',  sysdate);
+insert into vt_members values('47', 2,  '111', '장보고', '47', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '47@gmail.com',  sysdate);
+insert into vt_members values('48', 2,  '111', '장보고', '48', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '48@gmail.com',  sysdate);
+insert into vt_members values('49', 2,  '111', '장보고', '49', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '49@gmail.com',  sysdate);
+insert into vt_members values('50', 2,  '111', '장보고', '50', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '50@gmail.com',  sysdate);
+insert into vt_members values('51', 2,  '111', '장보고', '51', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '51@gmail.com',  sysdate);
+insert into vt_members values('52', 2,  '111', '장보고', '52', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '52@gmail.com',  sysdate);
+insert into vt_members values('53', 2,  '111', '장보고', '53', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '53@gmail.com',  sysdate);
+insert into vt_members values('54', 2,  '111', '장보고', '54', '111-2255-0000', '121-292', '경기도 군포시 군포동|군포아파트 111-111', '54@gmail.com',  sysdate);
+
+
+
 
 
 CREATE TABLE vt_member_routine

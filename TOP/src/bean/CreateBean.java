@@ -13,6 +13,8 @@ import board.BoardDBBean;
 import board.BoardDao;
 import chat.ChatDBBean;
 import chat.ChatDao;
+import comment.CommentDBBean;
+import comment.CommentDao;
 import exercise.ExerciseDBBean;
 import exercise.ExerciseDao;
 import member.MemberDBBean;
@@ -57,6 +59,10 @@ public class CreateBean {
 	@Bean
 	public BoardDao boardDao(){		
 		return new BoardDBBean();
+	}
+	@Bean
+	public CommentDao commentDao(){
+		return new CommentDBBean();
 	}
 	@Bean
 	public NoticeBoardDao noticeboardDao(){		

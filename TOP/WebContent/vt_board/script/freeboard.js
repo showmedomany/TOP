@@ -20,23 +20,33 @@ function searchBoardCheck(){
 		}
 	}
 }
-//자유게시판 글보기 ajax
-function board_view(contentNum, pageNum){	
-	var params = "num="+contentNum+"&pageNum="+pageNum;	
-	request = new Request(content_show, "vt_freeContent.do", "POST", params);
-	request.sendRequest();
-	
+
+
+
+//자유게시판 글보기
+function board_view(contentNum, pageNum){
+	var params = "num="+contentNum+"&pageNum="+pageNum;
+	var url = "vt_freeContent.do";
+	content_show(url,params);
 }
-//자유게시판 글보기 핸들러후 jsp뿌려줄 펑션
-function content_show(){
-	var content_div = document.getElementById("content_div");	
-	if(request.httpRequest.readyState == 4){
-		if(request.httpRequest.status == 200){
-			content_div.innerHTML = request.httpRequest.responseText;
-			content_div.scrollIntoView(); //포커싱 주기
+
+
+function content_show(url, params){
+	$.ajax({
+		type: "POST",
+		url: url,	//검색할 핸들러
+		data: params,	//데이터인데 나는 필요x
+		success: function(responseText) {	//이거는 처리된 jsp의 글자들
+			//div id
+			if(responseText != null){
+				$("#content_div").html(responseText);	  	        
+				$("#content_div").find("script").eval;
+				content_div.scrollIntoView();
+			}         	        
 		}
-	}
+	});
 }
+
 //자유게시판 삭제
 function checkdelete(num,pageNum){	
 	if(confirm("정말 삭제하시겠습니까?")){
