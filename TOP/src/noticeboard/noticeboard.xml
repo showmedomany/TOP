@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- member.xml -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="NoticeBoard">
+	
+	<!-- 공지사항게시글수 가져오기 -->
+	<select id="getNoticeArticleCount" resultType="int">
+		select count(*) from vt_notice_board
+	</select>
+	
+	<!-- 공지사항 게시글 순서대로 가져오기 -->
+	<select id="getNoticeBoardList" parameterType="Map" resultType="noticeboard.NoticeBoardDataBean">
+		select num, id, subject, reg_date, readcount, r from 
+		(select num, id, subject, reg_date, readcount, rownum r from 
+		(select num, id, subject, reg_date, readcount from vt_notice_board order by num desc) order by num desc)
+		 where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	
+	<!-- 공지사항 조회수	 -->
+	<update id="setNoticeReadcountPlus" parameterType="int">
+		update vt_notice_board set readcount = readcount+1 where num = #{num}
+	</update>
+	
+	<!-- 공지사항 해당번호 게시글 가져오기	 -->
+	<select id="getNoticeArticle" parameterType="int" resultType="noticeboard.NoticeBoardDataBean">
+		select * from vt_notice_board where num = #{num}
+	</select>
+	
+	<!-- 공지사항 작성 -->	
+	<insert id="insertNoticeArticle" parameterType="Map">		
+		insert into vt_notice_board values(vt_notice_board_seq.nextval, #{id}, #{subject}, 0, sysdate, #{content})
+	</insert>
+	
+	<!-- 공지사항 수정 -->
+	<update id="updateNoticeArticle" parameterType="noticeboard.NoticeBoardDataBean">
+		update vt_notice_board set subject = #{subject}, content = #{content} where num = #{num}		
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteNoticeArticle" parameterType="int">
+		delete from vt_notice_board where num=#{num}
+	</delete>	
+	
+	<!-- 공지사항 제목으로 검색 -->
+	<select id="searhSubGetList" parameterType="board.SearchDataBean" resultType="noticeboard.NoticeBoardDataBean">
+		select num, id, subject, reg_date, readcount, r from 
+		(select num, id, subject, reg_date, readcount, rownum r from 
+		(select num, id, subject, reg_date, readcount from vt_notice_board where subject like #{sub} order by num desc) order by num desc)
+		where r &gt;= #{start} and r &lt;= #{end} 			
+	</select>
+	
+	<!-- 공지사항 내용으로 검색 -->
+	<select id="searhContentGetList" parameterType="board.SearchDataBean" resultType="noticeboard.NoticeBoardDataBean">
+		select num, id, subject, reg_date, readcount, r from 
+		(select num, id, subject, reg_date, readcount, rownum r from 
+		(select num, id, subject, reg_date, readcount from vt_notice_board where content like #{content} order by num desc) order by num desc)
+		where r &gt;= #{start} and r &lt;= #{end}			
+	</select>
+	
+	<!-- 공지사항 닉네임(id)로 검색 -->
+	<select id="searhNickGetList" parameterType="board.SearchDataBean" resultType="noticeboard.NoticeBoardDataBean">
+		select num, id, subject, reg_date, readcount, r from 
+		(select num, id, subject, reg_date, readcount, rownum r from 
+		(select num, id, subject, reg_date, readcount from vt_notice_board where id like #{nick} order by num desc) order by num desc)
+		where r &gt;= #{start} and r &lt;= #{end} 
+	</select>
+	
+	<!-- 공지사항 카운트수?? -->
+	<select id = "subCount" parameterType="String" resultType="int">
+		select count(*) from vt_notice_board where subject like #{msg}
+	</select>
+	
+	<!-- 공지사항 카운트수?? -->
+	<select id = "contentCount" parameterType="String" resultType="int">
+		select count(*) from vt_notice_board where content like #{msg}
+	</select>
+	
+	<!-- 공지사항 카운트수?? -->
+	<select id = "nickCount" parameterType="String" resultType="int">
+		select count(*) from vt_notice_board where id like #{msg}
+	</select>
+</mapper>

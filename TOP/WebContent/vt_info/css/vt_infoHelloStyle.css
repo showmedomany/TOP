@@ -19,8 +19,9 @@
 }
 .hello_top{
 	position: relative;
-    width: inherit;
-   height: 445px;
+    width: 930px;
+    height: 713px;
+    float: left;
    
 }
 .hello_center{

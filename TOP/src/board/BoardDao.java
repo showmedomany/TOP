@@ -6,34 +6,19 @@ import java.util.Map;
 
 
 public interface BoardDao {
-	public int getCount();
-	List<BoardDataBean> getArticles(Map<String, Integer> map);	
-	public int insertArticle(BoardDataBean dto);	
-	public BoardDataBean getArticle(int num);
-	public void addCount(int num);	
-	public int modifyArticle(BoardDataBean dto);
-	public int deleteArticle (int num);
-	
-	/*공지사항*/
-	public List<NoticeBoardDataBean> getNoticeBoardList(Map<String, Integer> startEndPage);	
-	public int getNoticeArticleCount();
-	public void setNoticeReadcountPlus(int num);
-	public NoticeBoardDataBean getNoticeArticle(int num);
-	public int insertNoticeArticle(Map<String, String> writeContent);
-	public int updateNoticeArticle(NoticeBoardDataBean noticeBoardData);
-	public int deleteNoticeArticle(int num);
-	
-	/*공지사항 검색*/
-	public List<NoticeBoardDataBean> searhSubGetList(SearchDataBean sdto);
-	public List<NoticeBoardDataBean> searhContentGetList(SearchDataBean sdto);
-	public List<NoticeBoardDataBean> searhNickGetList(SearchDataBean sdto);
-	/*
-	public List<NoticeBoardDataBean> searhSubGetList(String msg);
-	public List<NoticeBoardDataBean> searhContentGetList(String msg);
-	public List<NoticeBoardDataBean> searhNickGetList(String msg);
-	*/
-	/*검색 전체 글수*/
-	public int subCount(String msg);
-	public int contentCount(String msg);
-	public int nickCount(String msg);
+	public int getCount();	//자유게시판 글 개수
+	List<BoardDataBean> getArticles(Map<String, Integer> map); //자유게시판리스트에 뿌려줄 게시글	
+	public int insertArticle(BoardDataBean dto);	//자유게시글 작성
+	public BoardDataBean getArticle(int num);	//선택된 게시글 보기
+	public void addCount(int num);				//자유게시판 조회수
+	public int modifyArticle(BoardDataBean dto);	//자유게시판 수정
+	public int deleteArticle (int num);			//자유게시판 삭제
+	/*자유게시판 검색*/
+	public List<BoardDataBean> BoardsubSearch(SearchDataBean sdto);	//자유게시판 제목검색시 리스트에 뿌려줄 게시글
+	public List<BoardDataBean> BoardcontentSearch(SearchDataBean sdto);	//자유게시판 내용검색시 리스트에 뿌려줄 게시글
+	public List<BoardDataBean> BoardnickSearch(SearchDataBean sdto);	//자유게시판 내용검색시 리스트에 뿌려줄 게시글
+	/*자유게시판 검색글수*/
+	public int BoardsubCount(String msg);	//자유게시판 제목검색글수
+	public int BoardcontentCount(String msg);	//자유게시판 내용검색글수
+	public int BoardnickCount(String msg);	//자유게시판 닉네임 검색글수
 }

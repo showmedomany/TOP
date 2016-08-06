@@ -1,0 +1,85 @@
+.name{
+	width: 702px;
+}
+.list{
+	position: relative;
+    float: right;
+    cursor: pointer;
+}
+.header{
+	width: 700px;
+    height: 70px;
+    position: relative;
+    margin: 10px 0px;
+    
+}
+.sub_wrap{
+	height: 50%;
+    width: inherit;
+    border-top-style:groove;
+    border-top-width:3px;
+    border-bottom-style: groove;
+    border-bottom-width: 1px;
+    background:#c0c0c0;
+    position: relative;
+}
+.subject{
+	position: relative;
+    left: 200px;
+    top: 5px;
+}
+.input{
+	width:305px;
+}
+.writer_wrap{
+	height: 50%;
+    width: inherit;
+    position: relative;
+    border-bottom-style: groove;
+    border-bottom-width: 1px;
+    background: #dddddd;
+}
+.writer{
+	position: relative;
+    float: right;
+    top: 9px;
+    right: 10px;
+}
+.center{
+	position: relative;
+    width: 700px;
+    height: 405px;
+}
+.text_wrap{
+	width: inherit;
+    height: inherit;
+    border: gray groove 1px;
+}
+.textarea{
+	width: inherit;
+    height: inherit;
+}
+.bottom{
+	position: relative;
+    width: 700px;
+    height: 33px;
+    margin: 9px 0;
+    background: #dddddd;
+    border-bottom-style: groove;
+    border-bottom-width: 1px;
+    border-top-style: groove;
+    border-top-width: 1px;
+}
+.btn_wrap{
+	width: 90px;
+    height: 21px;
+    position: relative;
+    float: right;
+    top: 6px;
+    right: 6px;
+    cursor: pointer;
+}
+.inputbutton{
+	position: absolute;
+	z-index: 999;
+}

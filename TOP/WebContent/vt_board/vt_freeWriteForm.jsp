@@ -1,56 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
-
 <html>
 	<head>
-		<script src = "${script}board.js"></script>
+		<link href = "${css}vt_freewriteFormStyle.css" rel="stylesheet"	type="text/css">
+		<script src = "${script}freeboard.js"></script>
 	</head>
+	
 	<body onload = "freeWriteFocus()">
 		<form method = "post" name = "freeWriteForm" 
 			action = "vt_freeWritePro.do" onsubmit="return checkblank()">
 			<input type = "hidden" name = "id" value = "${sessionScope.memId}">
 			<input type = "hidden" name = "nickname" value = "${sessionScope.nickname}">
 			<input type = "hidden" name = "pageNum" value = "${pageNum}">
-			<div>
-				<table border="1">
-					<tr>
-						<th>확인용닉네임 지워도 됨</th>
-						<th>${sessionScope.nickname}</th>
-					</tr>
-					<tr>
-						<th>확인용 아이디 지워도됨</th>
-						<th>${sessionScope.memId}</th>
-					</tr>
-					<tr>
-						<th colspan="2">
-							글쓰기 폼
-						</th>
-					</tr>
-					<tr>
-						<th>
-							제목:
-						</th>
-						<th>
-							<input type = "text" name = "subject">
-						</th>
-					</tr>
-					<tr>
-						<th>
-							내용:
-						</th>
-						<th>
-							<input type = "text" name = "content">
-						</th>
-					</tr>
-					<tr>
-						<th colspan="2">
-							<input type = "submit" value = "작성">
-							<input type = "button" value = "취소" onclick = "history.back()">
-						</th>
-					</tr>
-				</table>
+			
+			<div class="name">
+			자유게시판 게시글 작성
+				<div class="list" onclick="location = 'noticeBoard.do'">
+					목록
+				</div>
 			</div>
+			<div class="header">
+				<div class="sub_wrap">
+					<div class="subject">
+						제목&nbsp;:&nbsp;<input class = "input" type = "text" name = "subject" maxlength = "50">
+					</div>
+				</div>
+				<div class="writer_wrap">
+					<div class="writer">
+						작성자&nbsp;:&nbsp;${sessionScope.memId}
+					</div>
+				</div>
+			</div>
+			<div class="center">
+				<div class="text_wrap">
+					<textarea class="textarea" name = "content"></textarea>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="btn_wrap">
+					<input class = "inputbutton" type = "submit" value = "작성완료">
+					<input type = "button" value = "취소" onclick = "history.back()">
+				</div>	
+			</div>		
 		</form>
 	</body>
 </html>

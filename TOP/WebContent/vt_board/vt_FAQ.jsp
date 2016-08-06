@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
-
+<html>
+	<head>
 		<link href = "${css}vt_FNQStyle.css" rel="stylesheet"	type="text/css">
-
+	</head>
+	<body>
 		<div class="content_top">
 			<div class="top1">
 				고객센터
@@ -31,7 +33,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="content_center">
-		
+		<div class="content_center">		
 		</div>
-	
+	</body>		
+</html>	

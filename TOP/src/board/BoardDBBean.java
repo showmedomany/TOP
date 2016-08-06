@@ -16,7 +16,6 @@ public class BoardDBBean implements BoardDao {
 	}
 	@Override
 	public int insertArticle(BoardDataBean dto) {
-		
 		return SqlMapClient.getSession().insert("Board.insertArticle",dto);
 	}
 
@@ -39,83 +38,36 @@ public class BoardDBBean implements BoardDao {
 
 	
 	@Override
-	public int deleteArticle(int num) {		
-			
+	public int deleteArticle(int num) {	
 		return SqlMapClient.getSession().delete("Board.deleteArticle", num);
 		
 	}
 	
-	
-	
-	/* 공지사항 */ 
+	/*자유게시판검색시검색된항목수*/
 	@Override
-	public List<NoticeBoardDataBean> getNoticeBoardList(Map<String, Integer> startEndPage) {		
-		return SqlMapClient.getSession().selectList("Board.getNoticeBoardList", startEndPage);
+	public int BoardsubCount(String msg) {
+		return SqlMapClient.getSession().selectOne("Board.BoardsubCount",msg);
 	}
 	@Override
-	public int getNoticeArticleCount() {		
-		return SqlMapClient.getSession().selectOne("Board.getNoticeArticleCount");
+	public int BoardcontentCount(String msg) {
+		return SqlMapClient.getSession().selectOne("Board.BoardcontentCount",msg);
 	}
 	@Override
-	public void setNoticeReadcountPlus(int num) {
-		SqlMapClient.getSession().update("Board.setNoticeReadcountPlus", num);
-	}
-	@Override
-	public NoticeBoardDataBean getNoticeArticle(int num) {		
-		return SqlMapClient.getSession().selectOne("Board.getNoticeArticle", num);
-	}
-	@Override
-	public int insertNoticeArticle(Map<String, String> writeContent) {
-		return SqlMapClient.getSession().insert("Board.insertNoticeArticle", writeContent);
-	}	
-	@Override
-	public int updateNoticeArticle(NoticeBoardDataBean noticeBoardData) {		
-		return SqlMapClient.getSession().update("Board.updateNoticeArticle", noticeBoardData);		
-	}
-	@Override
-	public int deleteNoticeArticle(int num) {		
-		return SqlMapClient.getSession().delete("Board.deleteNoticeArticle", num);
+	public int BoardnickCount(String msg) {
+		return SqlMapClient.getSession().selectOne("Board.BoardnickCount",msg);
 	}
 	
+	/*자유게시판 검색*/
 	@Override
-	public List<NoticeBoardDataBean> searhSubGetList(SearchDataBean sdto) {		
-		return SqlMapClient.getSession().selectList("Board.searhSubGetList",sdto);
+	public List<BoardDataBean> BoardsubSearch(SearchDataBean sdto) {
+		return SqlMapClient.getSession().selectList("Board.BoardsubSearch",sdto);
 	}
 	@Override
-	public List<NoticeBoardDataBean> searhContentGetList(SearchDataBean sdto) {
-		return SqlMapClient.getSession().selectList("Board.searhContentGetList",sdto);
+	public List<BoardDataBean> BoardcontentSearch(SearchDataBean sdto) {
+		return SqlMapClient.getSession().selectList("Board.BoardcontentSearch",sdto);
 	}
 	@Override
-	public List<NoticeBoardDataBean> searhNickGetList(SearchDataBean sdto) {
-		return SqlMapClient.getSession().selectList("Board.searhNickGetList",sdto);
-	}
-	/*
-	@Override
-	public List<NoticeBoardDataBean> searhSubGetList(String msg) {		
-		return SqlMapClient.getSession().selectList("Board.searhSubGetList",msg);
-	}
-	@Override
-	public List<NoticeBoardDataBean> searhContentGetList(String msg) {
-		return SqlMapClient.getSession().selectList("Board.searhContentGetList",msg);
-	}
-	@Override
-	public List<NoticeBoardDataBean> searhNickGetList(String msg) {
-		return SqlMapClient.getSession().selectList("Board.searhNickGetList",msg);
-	}
-	*/
-	
-	@Override
-	public int subCount(String msg) {
-		return SqlMapClient.getSession().selectOne("Board.subCount",msg);
-	}
-	@Override
-	public int contentCount(String msg) {
-		
-		return SqlMapClient.getSession().selectOne("Board.contentCount",msg);
-	}
-	@Override
-	public int nickCount(String msg) {
-		
-		return SqlMapClient.getSession().selectOne("Board.nickCount",msg);
+	public List<BoardDataBean> BoardnickSearch(SearchDataBean sdto) {
+		return SqlMapClient.getSession().selectList("Board.BoardnickSearch",sdto);
 	}
 }

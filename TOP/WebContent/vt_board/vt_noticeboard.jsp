@@ -1,28 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
+
 <html>
 	<head>
 		<link href = "${css}vt_noticeStyle.css" rel="stylesheet"	type="text/css">
+		<link href = "${css}vt_noticecontentFormStyle.css" rel="stylesheet"	type="text/css">
 		<script src = "${request}"></script>
-		<script src = "${script}board.js"></script>		
+		<script src = "${script}noticeboard.js"></script>		
 	</head>
+	
 	<body>
-		<form method = "post" name = "searchform" onsubmit="return searchtext();">
+		<!-- 게시판 들어오면 가장 위로 -->
+		<form method = "post" name = "noticeBoardForm" onsubmit="return searchNoticetext();">
 			<input type="hidden" name="pageNum" value="${pageNum}">
 			<input type="hidden" name="type" value="${type}">
 			<input type="hidden" name="searchword" value="${searchword}">
 			<div id="content_div">					
 			</div>
-			<div class="notice_header">
-				
+			<div class="notice_header">			
 				<div class="notice_all">
 					전체글 : ${articleCount}
 				</div>
 				<c:if test="${authority_id==1}">		
 					<div class="notice_write">
 						<a href="noticeBoardWriteForm.do">
-							<img class="pointer_img" src="${images}write.gif">
+							<img src="${images}write.gif">
 						</a>
 					</div>
 				</c:if>
@@ -68,7 +71,7 @@
 							<div class="searchform_text">
 								<input class="ser_text" type="text" name="text">
 							</div>
-							<div class="searchform_btn"	onclick="searchCheck()">
+							<div class="searchform_btn"	onclick="searchNoticeCheck()">
 								<img src="${images}btn_ser.gif">
 							</div>
 						</div>

@@ -4,8 +4,10 @@
 
 <html>
 	<head>
-		<script src = "${script}board.js"></script>
+		<link href = "${css}vt_freewriteFormStyle.css" rel="stylesheet"	type="text/css">
+		<script src = "${script}freeboard.js"></script>
 	</head>
+	
 	<body onload = "freeModifyFocus()">
 		<form method = "post" 
 			action = "vt_freeModifyPro.do" 
@@ -13,40 +15,34 @@
 			<input type = "hidden" name = "num" value = "${num}">
 			<input type = "hidden" name = "pageNum" value = "${pageNum}">
 			
-			<div>
-				<table border="1">
-					<tr>
-						<th>
-							제목:
-						</th>
-						<th>
-							<input type = "text" name = "subject" value = "${bdto.subject}">
-						</th>
-					</tr>
-					<tr>
-						<th>
-							작성자:
-						</th>
-						<th>
-							${bdto.nickname}
-						</th>
-					</tr>
-					<tr>
-						<th>
-							내용:
-						</th>
-						<th>
-							<input type = "text" name = "content" value = "${bdto.content}">
-						</th>
-					</tr>
-					<tr>
-						<th colspan="2">
-							<input type = "submit" value = "수정">
-							<input type = "button" value = "취소" onclick = "location = 'vt_freeContent.do?pageNum=${pageNum}&num=${num}'">
-						</th>
-					</tr>					
-				</table>				
+			<div class="name">
+			자유게시판 수정
+			<div class="list" onclick="location = 'vt_community_free.do'">
+				목록
 			</div>
+		</div>
+		<div class="header">
+			<div class="sub_wrap">
+				<div class="subject">
+					제목&nbsp;:&nbsp;<input type = "text" name = "subject" value = "${bdto.subject}">
+				</div>
+			</div>
+			<div class="writer_wrap">
+				<div class="writer">
+					작성자&nbsp;:&nbsp;${bdto.nickname}
+				</div>
+			</div>
+		</div>
+		<div class="center">
+			<div class="text_wrap">
+				<textarea class="textarea" name="content">${bdto.content}</textarea>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="btn_wrap">
+				<input class = "inputbutton" type = "submit" value = "작성완료">
+			</div>	
+		</div>
 		</form>
 	</body>
 </html>

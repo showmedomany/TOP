@@ -1,40 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
-<script src="/TOP/vt_board/script/board.js" type="text/javascript"></script>
-
-
-<body>
-	<form method="post" name="NBModifyForm" action="noticeBoardModifyPro.do?pageNum=${pageNum}&num=${num}"
-		onsubmit="return noticeBoardModifyCheck()">
-		<table border="1">
-			<tr>							
-				<th>아이디</th>
-				<td>${sessionScope.memId }</td>
-				<th>제목</th>
-				<td><input type="text" name="subject" value="${noticeBoardData.subject }"></td>
-			</tr>			
-			<tr>
-				<th>내용</th>
-				<td colspan="3"> <textarea name="content" rows="20" cols="50">${noticeBoardData.content }</textarea></td>
-				
-			</tr>
-			<tr>
-				<td colspan="4" align="center">
-					<div id="modifyFormCheckDiv">			
-					</div>				
-				</td>				
-			</tr>			
-			<tr>
-				<td colspan="4" align="center">
-					<input type="submit" value="수정">
-					<input type="button" value="취소" onclick="location = 'noticeBoard.do'">					
-				</td>
-			</tr>
-		</table>	
-	</form>
-</body> 
-
+<html>
+	<head>
+		<script src="${script}noticeboard.js" type="text/javascript"></script>
+		<link href = "${css}vt_noticewriteFormStyle.css" rel="stylesheet"	type="text/css">
+	</head>
+	<body onload="noticemodifyfocus()">
+		<form method="post" name="NBModifyForm" action="noticeBoardModifyPro.do?pageNum=${pageNum}&num=${num}"
+			onsubmit="return noticeBoardModifyCheck()">
+			<div class="name">
+				공지사항 게시글 수정
+				<div class="list" onclick="location = 'noticeBoard.do'">
+					목록
+				</div>
+			</div>
+			<div class="header">
+				<div class="sub_wrap">
+					<div class="subject">
+						제목&nbsp;:&nbsp;<input type="text" name="subject" value="${noticeBoardData.subject }">
+					</div>
+				</div>
+				<div class="writer_wrap">
+					<div class="writer">
+						작성자&nbsp;:&nbsp;${sessionScope.memId}
+					</div>
+				</div>
+			</div>
+			<div class="center">
+				<div class="text_wrap">
+					<textarea class="textarea" name="content">${noticeBoardData.content }</textarea>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="btn_wrap">
+					<input class = "inputbutton" type = "submit" value = "작성완료">
+				</div>	
+			</div>	
+		</form>
+	</body> 
+</html>
 
 
 

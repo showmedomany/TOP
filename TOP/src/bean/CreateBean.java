@@ -19,6 +19,8 @@ import member.MemberDBBean;
 import member.MemberDao;
 import myPage.MyPageDBBean;
 import myPage.MyPageDao;
+import noticeboard.NoticeBoardDBBean;
+import noticeboard.NoticeBoardDao;
 
 
 
@@ -55,7 +57,10 @@ public class CreateBean {
 	@Bean
 	public BoardDao boardDao(){		
 		return new BoardDBBean();
-
+	}
+	@Bean
+	public NoticeBoardDao noticeboardDao(){		
+		return new NoticeBoardDBBean();
 	}
 	@Bean
 	public AdminDao adminDao(){

@@ -21,8 +21,7 @@
 }
 .notice_wrap{
 	position: relative;
-    width: inherit;
-    
+    width: inherit; 
 }
 .notice_center{
 	width: 677px;
@@ -93,13 +92,6 @@
 	width: inherit;
 	height: 50%;
 	border-bottom-style: groove;
-}
-.bottomwrite{
-	position: relative;
-    float: right;
-    width: 78px;
-    height: 21px;
-    left: -9px;
 }
 .bottom2{
 	position: relative;
