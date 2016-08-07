@@ -7,4 +7,10 @@
 	<select id="getComments" parameterType="int" resultType="comment.CommentDataBean">
 		select * from vt_comment where num = #{num} order by num asc
 	</select>
+	
+	<!-- 코멘트작성 -->
+	<insert id="writeComment" parameterType="comment.CommentDataBean">
+		insert into vt_comment(comment_id, num, nick, content, reg_date)
+		values(vt_comment_seq.NEXTVAL, #{num}, #{nick}, #{content}, #{reg_date})			
+	</insert>
 </mapper>

@@ -11,4 +11,10 @@ public class CommentDBBean implements CommentDao {
 		return SqlMapClient.getSession().selectList("Comment.getComments", num);
 	}
 
+	@Override
+	public int writeComment(CommentDataBean cdto) {
+		
+		return SqlMapClient.getSession().insert("Comment.writeComment", cdto);
+	}
+
 }

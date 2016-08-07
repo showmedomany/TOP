@@ -1,4 +1,5 @@
 //자유게시판 검색시 submit은 안되고 검색만 되게
+var request = null;
 function searchBoardtext(){
 	searchBoardCheck();
 	return false;
@@ -89,4 +90,19 @@ function checkblank(){
 //자유게시판 수정포커싱
 function freeModifyFocus(){
 	vt_freeModifyPro.subject.focus();
+}
+
+function writecomment(memId,contentNum){
+	var params = "num="+contentNum+"&id="
+				+memId+"&content="+freeBoardForm.commentinput.value;	
+	request = new Request(commentUpdate, "vt_writeComment.do", "POST", params);
+	request.sendRequest();	
+}
+function commentUpdate(){
+	var commentlist = document.getElementById("commentlist");	
+	if(request.httpRequest.readyState == 4){
+		if(request.httpRequest.status == 200){
+			commentlist.innerHTML = request.httpRequest.responseText;			
+		}
+	}
 }

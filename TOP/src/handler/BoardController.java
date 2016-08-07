@@ -1,7 +1,6 @@
 package handler;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +18,7 @@ import board.BoardDataBean;
 import board.SearchDataBean;
 import comment.CommentDao;
 import comment.CommentDataBean;
+import member.MemberDao;
 
 /**
  * 핸들러들은 센터에 들어갈 각 기능의Frame폼과
@@ -33,6 +33,9 @@ public class BoardController {
 	
 	@Resource(name = "commentDao")
 	private CommentDao commentDao;
+	
+	@Resource(name = "memberDao")
+	private MemberDao memberDao;
 	
 	@RequestMapping("/vt_community_free")//메뉴탭에서 자유게시판 선택경우
 	public ModelAndView vt_community_free(HttpServletRequest request, 
@@ -373,6 +376,33 @@ public class BoardController {
 		//=boardDao.getArticles(map);
 		request.setAttribute("clist", clist);
 		
+		return new ModelAndView("/vt_board/vt_comment");
+	}//vt_freeContent
+	
+	
+	@RequestMapping("/vt_writeComment")//메뉴탭에서 선택한경우
+	public ModelAndView vt_writeComment(HttpServletRequest request, 
+			HttpServletResponse response)throws Exception{
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		String id = request.getParameter("id");
+		String content = request.getParameter("content");
+		CommentDataBean cdto = new CommentDataBean();
+		//코멘트 insert
+		String nick = memberDao.getNick(id);
+		
+		
+		cdto.setNum(num);
+		cdto.setNick(nick);
+		cdto.setContent(content);
+		cdto.setReg_date(new Timestamp(System.currentTimeMillis()));
+		
+		int commentresult = commentDao.writeComment(cdto);
+		
+		List<CommentDataBean> clist = commentDao.getComments(num);
+		//=boardDao.getArticles(map);
+		request.setAttribute("clist", clist);
+			
 		return new ModelAndView("/vt_board/vt_comment");
 	}//vt_freeContent
 	
