@@ -6,7 +6,7 @@ public class InbodyDataBean {
 	private int inbody_id;
 	private String id;
 	private int age;
-	private String height;
+	private int height;
 	private String sex;
 	private int weight;
 	private int bmi;
@@ -29,10 +29,10 @@ public class InbodyDataBean {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public String getHeight() {
+	public int getHeight() {
 		return height;
 	}
-	public void setHeight(String height) {
+	public void setHeight(int height) {
 		this.height = height;
 	}
 	public String getSex() {

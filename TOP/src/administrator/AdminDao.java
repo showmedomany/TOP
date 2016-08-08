@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import member.MemberDataBean;
+import myPage.InbodyDataBean;
 import myPage.RegisterDataBean;
 
 public interface AdminDao {
@@ -29,8 +30,12 @@ public interface AdminDao {
 	public List<MemberDataBean> getMemberSearchIdList(String searchMessage);
 	public List<MemberDataBean> getMemberSearchNickNameList(String searchMessage);
 
-	
 	/* 인바디 등록확인 */
 	public int getInbodyCheck(String id);
-	
+	/* 검색한 아이디 인바디 정보 반환 */
+	public InbodyDataBean getInbodyData(String id);
+	/* 인바디 수정 */
+	public int updateInbodyInfo(InbodyDataBean inbodyData);
+	/* 인바디 저장 */
+	public int insertInbodyInfo(InbodyDataBean inbodyData);
 }

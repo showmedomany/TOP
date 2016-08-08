@@ -167,8 +167,6 @@ function memberDataViewResult(userNum){
 }
 
 function searchMember(pageNum){
-	
-	
 	var searchMeans = $('select[name=searchMeans]').val();
 	var searchMessage = memberSearchForm.searchMessage.value;
 	
@@ -179,8 +177,12 @@ function searchMember(pageNum){
 	}
 }
 
-function insertUserInfo(id){
-	var insertMeans = $('select[name=insertMeans]').val();
+
+
+function insertUserInfo(num, id){
+	
+	var selectText = "select[name=insertMeans_" + num + "]";	
+	var insertMeans = $(selectText).val();	
 	if(insertMeans=="fitness"){
 		request = new Request(insertFitnessUserSearchResult, "insertFitnessUserSearch.do", "POST", "id="+id);
 		request.sendRequest();		
@@ -206,51 +208,26 @@ function insertInbodyUserSearchResult(){
 	}
 }
 
-
-
-
-
-
-
-//submit 과 같은 기능
-/*
-function insertFitnessUserSearch(){	
-	var searchMsg = fitnessInsertform.userSearch.value;
-	var searchMeans = fitnessInsertform.searchMeans.value;
-	//document.location.href = "insertFitnessUserSearch.do?searchMsg="+searchMsg+"&searchMeans="+searchMeans;
-	request = new Request(insertFitnessUserSearchResult, "insertFitnessUserSearch.do", "POST", 
-			"searchMsg="+searchMsg+"&searchMeans="+searchMeans);
-	request.sendRequest();	
-}
-function insertFitnessUserSearchResult(){	
-	var userSearchResult = document.getElementById("userSearchResult");	
-	if(request.httpRequest.readyState == 4){
-		if(request.httpRequest.status == 200){			
-			userSearchResult.innerHTML = request.httpRequest.responseText;
-		}
-	}
-}
-*/
 /* 시작일 */
 //윤년 체크
 function leapYearCheck_start(){	
-	var selectStartYear = userSearchFitnessInfoForm.selectStartYear.value;	
+	var selectStartYear = insertForm.selectStartYear.value;	
 	var start_leapYear = false;
 	if((0==(selectStartYear%4) && 0 !=(selectStartYear%100)) || 0 == selectStartYear%400){
 		start_leapYear = true;
 	}else{
 		start_leapYear = false;
 	}
-	userSearchFitnessInfoForm.start_leapYear.value=start_leapYear;
-	var month = userSearchFitnessInfoForm.selectStartMonth.value;
+	insertForm.start_leapYear.value=start_leapYear;
+	var month = insertForm.selectStartMonth.value;
 	request = new Request(monthDataCheckResult_start, "selectDayText_start.do", "POST", 
 			"start_month="+month+"&start_leapYear="+start_leapYear);
 	request.sendRequest();	
 }
 //달 확인후 일 계산 
 function monthDataCheck_start(){
-	var start_leapYear = userSearchFitnessInfoForm.start_leapYear.value;
-	var month = userSearchFitnessInfoForm.selectStartMonth.value;
+	var start_leapYear = insertForm.start_leapYear.value;
+	var month = insertForm.selectStartMonth.value;
 	request = new Request(monthDataCheckResult_start, "selectDayText_start.do", "POST", 
 			"start_month="+month+"&start_leapYear="+start_leapYear);
 	request.sendRequest();	
@@ -266,23 +243,23 @@ function monthDataCheckResult_start(){
 /* 종료일 */
 //윤년 체크
 function leapYearCheck_end(){	
-	var selectEndYear = userSearchFitnessInfoForm.selectEndYear.value;	
+	var selectEndYear = insertForm.selectEndYear.value;	
 	var end_leapYear = false;
 	if((0==(selectEndYear%4) && 0 !=(selectEndYear%100)) || 0 == selectEndYear%400){
 		end_leapYear = true;
 	}else{
 		end_leapYear = false;
 	}
-	userSearchFitnessInfoForm.end_leapYear.value=end_leapYear;
-	var month = userSearchFitnessInfoForm.selectEndMonth.value;
+	insertForm.end_leapYear.value=end_leapYear;
+	var month = insertForm.selectEndMonth.value;
 	request = new Request(monthDataCheckResult_end, "selectDayText_end.do", "POST", 
 			"end_month="+month+"&end_leapYear="+end_leapYear);
 	request.sendRequest();	
 }
 //달 확인후 일 계산 
 function monthDataCheck_end(){
-	var end_leapYear = userSearchFitnessInfoForm.end_leapYear.value;
-	var month = userSearchFitnessInfoForm.selectEndMonth.value;	
+	var end_leapYear = insertForm.end_leapYear.value;
+	var month = insertForm.selectEndMonth.value;	
 	request = new Request(monthDataCheckResult_end, "selectDayText_end.do", "POST", 
 			"end_month="+month+"&end_leapYear="+end_leapYear);
 	request.sendRequest();	
@@ -296,69 +273,133 @@ function monthDataCheckResult_end(){
 	}	
 }
 
-//피트니스 정보 디비저장하기
-function fitnessInsertProcess(saveType){	
-	var fitnessSaveDiv = document.getElementById("fitnessSaveDiv");
+/* 피트니스 정보 디비저장하기 */
+function fitnessInsertProcess(){
 	var bool = true;
 	//id
-	var id = userSearchFitnessInfoForm.fitnessId.value;
+	var id = insertForm.fitnessId.value;
 	//피트니스 기간
-	var exp_date = userSearchFitnessInfoForm.exp_date.value;
+	var exp_date = insertForm.exp_date.value;
 	//시작일 년월일
-	var start = userSearchFitnessInfoForm.selectStartYear.value+"-"
-				+userSearchFitnessInfoForm.selectStartMonth.value+"-"
-				+userSearchFitnessInfoForm.selectStartDay.value;
+	var start = insertForm.selectStartYear.value+"-"
+				+insertForm.selectStartMonth.value+"-"
+				+insertForm.selectStartDay.value;
 	//종료일 년월일
-	var end = userSearchFitnessInfoForm.selectEndYear.value+"-"
-				+userSearchFitnessInfoForm.selectEndMonth.value+"-"
-				+userSearchFitnessInfoForm.selectEndDay.value;
+	var end = insertForm.selectEndYear.value+"-"
+				+insertForm.selectEndMonth.value+"-"
+				+insertForm.selectEndDay.value;
 	// GT여부
-	var isGX = userSearchFitnessInfoForm.GX.value;
+	var isGX = insertForm.GX.value;
 	// PT여부
-	var isPT = userSearchFitnessInfoForm.PT.value;
+	var isPT = insertForm.PT.value;
 	// PT Count
-	var PTCount = userSearchFitnessInfoForm.PTCount.value;
+	var PTCount = insertForm.PTCount.value;
 	// 트레이너
-	var trainer = userSearchFitnessInfoForm.trainerId.value;
+	var trainer = insertForm.trainerId.value;
 	
 	
-	/*유효성 검사*/
-	var fitnessEffDiv = document.getElementById("fitnessEffDiv");
-	if(!exp_date){
-		bool = false;
-		fitnessEffDiv.innerHTML="피트니스 기간을 입력 해주세요.";		
-	}else if(userSearchFitnessInfoForm.selectStartYear.value > userSearchFitnessInfoForm.selectEndYear.value){
-		bool = false;
-		fitnessEffDiv.innerHTML="시작일과 종료일이 맞지않습니다. year";
-	}else if(userSearchFitnessInfoForm.selectStartYear.value == userSearchFitnessInfoForm.selectEndYear.value){		
-		if(userSearchFitnessInfoForm.selectStartMonth.value > userSearchFitnessInfoForm.selectEndMonth.value){			
-			bool = false;
-			fitnessEffDiv.innerHTML="시작일과 종료일이 맞지않습니다. month";			
-		}else if(userSearchFitnessInfoForm.selectStartMonth.value == userSearchFitnessInfoForm.selectEndMonth.value){			
-			if(userSearchFitnessInfoForm.selectStartDay.value > userSearchFitnessInfoForm.selectEndDay.value){
-				bool = false;
-				fitnessEffDiv.innerHTML="시작일과 종료일이 맞지않습니다. day";				
+	/*유효성 검사 - 날짜 */
+	var fitnessSaveDiv = document.getElementById("fitnessSaveDiv");
+
+	if(!exp_date){		
+		fitnessSaveDiv.innerHTML="기간을 입력해 주세요.";
+		return;
+	}
+	
+	if(parseInt(insertForm.selectStartYear.value) > parseInt(insertForm.selectEndYear.value)){
+		fitnessSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
+		return;
+	}else if(parseInt(insertForm.selectStartYear.value) == parseInt(insertForm.selectEndYear.value)){
+		if(parseInt(insertForm.selectStartMonth.value) > parseInt(insertForm.selectEndMonth.value)){
+			fitnessSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
+			return;
+		}else if(parseInt(insertForm.selectStartMonth.value) == parseInt(insertForm.selectEndMonth.value)){
+			if(parseInt(insertForm.selectStartDay.value) > parseInt(insertForm.selectEndDay.value)){
+				fitnessSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
+				return;
 			}
 		}
 	}
-	if(trainer == 0){
-		bool = false;
-		alert("트레이너를 선택하여 주세요");
-		fitnessEffDiv.innerHTML="트레이너를 선택하여 주세요.";
-	}
-	if(bool==true){	
-		fitnessSaveDiv.innerHTML="저장중..";
-		request = new Request(fitnessInsertProcessResult, "fitnessInsertProcess.do", "POST", 
-				"id="+id+"&exp_date="+exp_date+"&start="+start+"&end="+end+"&isGX="+isGX+"&isPT="
-				+isPT+"&PTCount="+PTCount+"&trainer="+trainer+"&saveType="+saveType);
-		request.sendRequest();
+	
+	if(trainer == 0){		
+		fitnessSaveDiv.innerHTML="트레이너를 선택하여 주세요.";
+		return; 
 	}
 	
+	
+	fitnessSaveDiv.innerHTML="저장중..";
+	request = new Request(fitnessInsertProcessResult, "fitnessInsertProcess.do", "POST", 
+			"id="+id+"&exp_date="+exp_date+"&start="+start+"&end="+end+"&isGX="+isGX+"&isPT="
+			+isPT+"&PTCount="+PTCount+"&trainer="+trainer);
+	request.sendRequest();
+	
+	
 }
-function fitnessInsertProcessResult(){	
+function fitnessInsertProcessResult(){
 	if(request.httpRequest.readyState == 4){
 		if(request.httpRequest.status == 200){
-			document.getElementById("fitnessSaveDiv").innerHTML = request.httpRequest.responseText;					
+			document.getElementById("fitnessSaveDiv").innerHTML = request.httpRequest.responseText;							
 		}
+	}
+}
+
+
+
+
+/* 인바디 정보 저장하기 */
+function inbodyInsertProcess(){	
+	
+	//아이디
+	var id = insertForm.inbodyId.value;
+	//나이
+	var age = insertForm.age.value;
+	//성별
+	var sex = insertForm.sex.value;
+	//키
+	var height = insertForm.height.value;
+	//체중
+	var weight = insertForm.weight.value;
+	//bmi
+	var bmi = insertForm.bmi.value;
+	//측정시간
+	var check_date = insertForm.selectStartYear.value+"-"
+		+insertForm.selectStartMonth.value+"-"
+		+insertForm.selectStartDay.value;
+	
+	/* 유효성 검사 */
+	var inbodySaveDiv = document.getElementById("inbodySaveDiv");
+	if(!insertForm.age.value){
+		inbodySaveDiv.innerHTML = "나이를 입력하세요.";
+		return;
+	}else if(!insertForm.height.value){
+		inbodySaveDiv.innerHTML  = "키를 입력하세요";
+		return
+	}else if(!insertForm.weight.value){
+		inbodySaveDiv.innerHTML  = "몸무게를 입력하세요";
+		return;
+	}else if(!insertForm.bmi.value){
+		inbodySaveDiv.innerHTML  = "bmi를 입력하세요";
+		return;
+	}
+	
+	document.getElementById("inbodySaveDiv").innerHTML="저장중..";
+	request = new Request(inbodyInsertProcessResult, "inbodyInsertProcess.do", "POST",
+			"id="+id+"&age="+age+"&sex="+sex+"&height="+height+"&weight="+weight+"&bmi="+bmi+"&check_date="+check_date);
+	request.sendRequest();
+}
+function inbodyInsertProcessResult(){	
+	if(request.httpRequest.readyState == 4){
+		if(request.httpRequest.status == 200){
+			document.getElementById("inbodySaveDiv").innerHTML = request.httpRequest.responseText;					
+		}
+	}
+}
+
+
+
+
+function numOnly(){
+	if(event.keyCode>=48 && event.keyCode>=58){
+		event.returnValue=false;
 	}
 }

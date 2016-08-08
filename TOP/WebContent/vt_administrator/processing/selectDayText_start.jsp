@@ -19,7 +19,7 @@
 				<c:set var="day" value="30"/>
 			</c:if>
 		</c:if>														
-	</c:forEach>
+	</c:forEach>	
 	<c:forEach var="i" begin="1" end="${day}" step="1">
 		<c:if test="${i==1}">			
 			<option value="${i}" selected="selected">${i}일</option>			

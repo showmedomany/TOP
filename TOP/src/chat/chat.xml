@@ -35,14 +35,7 @@
 	<delete id="exitChat" parameterType="String">
 		delete from vt_request where ip = #{ip}
 	</delete>
-	
-	
-	<!-- 
-	<update id="testchat" parameterType="String">
-		update vt_request set response = 0 where ip = #{ip}
-	</update>
-	 -->
-	
+
 	
 	
 	

@@ -26,6 +26,7 @@ DROP TABLE vt_request CASCADE CONSTRAINTS;
 DROP SEQUENCE register_seq;
 DROP SEQUENCE vt_board_seq;
 DROP SEQUENCE vt_notice_board_seq;
+DROP SEQUENCE inbody_seq;
 commit;
 
 
@@ -52,6 +53,15 @@ MAXVALUE 999999999999
 MINVALUE 1
 INCREMENT BY 1
 CYCLE;
+
+/*vt_inbody*/
+CREATE SEQUENCE inbody_seq
+START WITH 1
+MAXVALUE 999999999999
+MINVALUE 1
+INCREMENT BY 1
+CYCLE;
+
 
 /*vt_chatting_seq*/
 CREATE SEQUENCE vt_chatting_seq
@@ -591,8 +601,8 @@ CREATE TABLE vt_inbody
    check_date date NOT NULL,
    PRIMARY KEY (inbody_id)
 );
-insert into vt_inbody values(1, 'kimy', 22, 170, 'male', 90, 70, sysdate);
-insert into vt_inbody values(2, 'jangb', 32, 160, 'male', 90, 70, sysdate);
+insert into vt_inbody values(inbody_seq.nextval, 'kimy', 22, 170, 'male', 90, 70, sysdate);
+insert into vt_inbody values(inbody_seq.nextval, 'jangb', 32, 160, 'male', 90, 70, sysdate);
 
 
 CREATE TABLE vt_members

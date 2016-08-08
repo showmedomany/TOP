@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import administrator.AdminDao;
 import member.MemberDataBean;
+import myPage.InbodyDataBean;
 import myPage.RegisterDataBean;
 
 
@@ -167,44 +168,6 @@ public class AdministratorController {
 		return new ModelAndView("/vt_administrator/vt_administrator");		
 	}//
 	
-	
-	//관리자페이지-센터등록
-	/* 사용안함 나중에 삭제
-	@RequestMapping("/centerInsert")
-	public ModelAndView myPageInsertInbody
-	(HttpServletRequest request,HttpServletResponse response){
-		int choice = Integer.parseInt(request.getParameter("choice"));
-		
-		
-		String center = "vt_centerInsert";
-		String administratorPage = null;
-		
-		switch(choice){
-		case 0:
-			administratorPage = "vt_fitnessInsert";
-			//int start_year = adminDao.getFitnessStartYear();
-			break;
-		case 1:
-			administratorPage = "vt_inbodyInsert";
-			break;
-		case 2:
-			administratorPage = "vt_scheduleInsert";
-			
-			//여기서 데이터가 들어간다고 예를 들자
-			String id = "kajika";
-			request.setAttribute("id", id);
-			
-			break;
-		}
-		
-		request.setAttribute("center", center);
-		request.setAttribute("administratorPage", administratorPage);		
-		
-		return new ModelAndView("/vt_administrator/vt_administrator");
-	}//인바디 저장하기 컨트롤러
-		*/
-	
-	
 	@RequestMapping("/insertFitnessUserSearch")	
 	public ModelAndView insertFitnessUserSearch
 	(HttpServletRequest request,HttpServletResponse response){		
@@ -216,8 +179,14 @@ public class AdministratorController {
 		request.setAttribute("idCheckResult", idCheckResult);		
 		
 		Calendar calendar = Calendar.getInstance();
-		int year = calendar.get(calendar.YEAR);
-		request.setAttribute("year", year); 
+		int thisYear = calendar.get(calendar.YEAR);
+		int thisMonth = calendar.get(calendar.MONTH)+1;//month 는 0부터 시작함... !!!!?
+		int today = calendar.get(calendar.DAY_OF_MONTH);		
+		request.setAttribute("thisYear", thisYear);
+		request.setAttribute("thisMonth", thisMonth);
+		request.setAttribute("today", today);
+		
+		
 		
 		if(idCheckResult != 0){
 			RegisterDataBean registerData = adminDao.insertFitnessUserSearchID(id);
@@ -225,15 +194,16 @@ public class AdministratorController {
 			
 			SimpleDateFormat format = null; 
 			
+			String start_leapYear = "false";
+			String end_leapYear = "false";
+			
 			format = new SimpleDateFormat("yyyy");
 			int start_year = Integer.parseInt(format.format(registerData.getStart_date()));
 			int end_year = Integer.parseInt(format.format(registerData.getEnd_date()));
 			request.setAttribute("start_year", start_year);
 			request.setAttribute("end_year", end_year);
 			
-			//윤달 검사
-			String start_leapYear = "false";
-			String end_leapYear = "false";
+			//윤달 검사			
 			if((0==(start_year%4) && 0 !=(start_year%100)) || 0 == start_year%400){
 				start_leapYear = "true";
 			}else{
@@ -243,7 +213,7 @@ public class AdministratorController {
 				end_leapYear = "true";
 			}else{
 				end_leapYear = "false";
-			}
+			}			
 			
 			request.setAttribute("start_leapYear", start_leapYear);
 			request.setAttribute("end_leapYear", end_leapYear);
@@ -260,7 +230,28 @@ public class AdministratorController {
 			String end_day = format.format(registerData.getEnd_date());
 			request.setAttribute("end_day", end_day);			
 			
+		}else{
+			
+			String start_leapYear = "false";
+			String end_leapYear = "false";
+			
+			if((0==(thisYear%4) && 0 !=(thisYear%100)) || 0 == thisYear%400){
+				start_leapYear = "true";
+			}else{
+				start_leapYear = "false";
+			}				
+			if((0==(thisYear%4) && 0 !=(thisYear%100)) || 0 == thisYear%400){
+				end_leapYear = "true";
+			}else{
+				end_leapYear = "false";
+			}	
+			
+			request.setAttribute("start_leapYear", start_leapYear);
+			request.setAttribute("end_leapYear", end_leapYear);
+			
 		}
+		
+		
 		
 		List<String> trainerIdList = adminDao.getTrainerIdList();
 		request.setAttribute("trainerIdList", trainerIdList);
@@ -271,16 +262,55 @@ public class AdministratorController {
 	@RequestMapping("/insertInbodyUserSearch")	
 	public ModelAndView insertInbodyUserSearch
 	(HttpServletRequest request,HttpServletResponse response){		
+		
+		Calendar calendar = Calendar.getInstance();
+		int thisYear = calendar.get(calendar.YEAR);
+		int thisMonth = calendar.get(calendar.MONTH)+1;//month 는 0부터 시작함... !!!!?
+		int today = calendar.get(calendar.DAY_OF_MONTH);		
+		request.setAttribute("thisYear", thisYear);
+		request.setAttribute("thisMonth", thisMonth);
+		request.setAttribute("today", today);
+		
 		String id = request.getParameter("id");
 		request.setAttribute("id", id);
 		
 		int inbodyCheckResult = adminDao.getInbodyCheck(id);
-		/*학원에서 여기 까지 함 */
+		request.setAttribute("inbodyCheckResult", inbodyCheckResult);
 		
-		
-		
-		
-		
+		if(inbodyCheckResult!=0){
+			InbodyDataBean inbodyData = adminDao.getInbodyData(id);
+			request.setAttribute("inbodyData", inbodyData);	
+			
+			SimpleDateFormat format = null;
+			
+			format = new SimpleDateFormat("yyyy");
+			int start_year = Integer.parseInt(format.format(inbodyData.getCheck_date()));			
+			request.setAttribute("start_year", start_year);
+			
+			String start_leapYear = "false";		
+			if((0==(start_year%4) && 0 !=(start_year%100)) || 0 == start_year%400){
+				start_leapYear = "true";
+			}else{
+				start_leapYear = "false";
+			}
+			request.setAttribute("start_leapYear", start_leapYear);
+			
+			format = new SimpleDateFormat("MM");
+			String start_month = format.format(inbodyData.getCheck_date());
+			request.setAttribute("start_month", start_month);			
+			
+			format = new SimpleDateFormat("dd");
+			String start_day = format.format(inbodyData.getCheck_date());
+			request.setAttribute("start_day", start_day);			
+		}else{
+			String start_leapYear = "false";			
+			if((0==(thisYear%4) && 0 !=(thisYear%100)) || 0 == thisYear%400){
+				start_leapYear = "true";
+			}else{
+				start_leapYear = "false";
+			}
+			request.setAttribute("start_leapYear", start_leapYear);			
+		}
 		return new ModelAndView("/vt_administrator/processing/insertInbodyUserSearch");		
 	}
 	
@@ -318,6 +348,7 @@ public class AdministratorController {
 		String timetamp =" 00:00:00.0";
 		
 		String id = request.getParameter("id");
+				
 		int exp_date = Integer.parseInt(request.getParameter("exp_date"));
 		Timestamp start = Timestamp.valueOf(request.getParameter("start")+timetamp);
 		Timestamp end = Timestamp.valueOf(request.getParameter("end")+timetamp);
@@ -336,19 +367,62 @@ public class AdministratorController {
 		registerData.setPt_count(PTCount);
 		registerData.setTrainer_id(trainer);
 		
-		String saveType = request.getParameter("saveType");
-		if(saveType.equals("update")){			
+		int idCheckResult = adminDao.insertFitnessUserSearchIDCheck(id);
+		request.setAttribute("idCheckResult", idCheckResult);
+		System.out.println(idCheckResult);
+		
+		if(idCheckResult==0){
+			int result = adminDao.insertFitnessInfo(registerData);
+			request.setAttribute("result", result);		
+		}else if(idCheckResult!=0){
 			int result = adminDao.updateFitnessInfo(registerData);
 			request.setAttribute("result", result);	
-			
-		}else if(saveType.equals("insert")){
-			int result = adminDao.insertFitnessInfo(registerData);
-			request.setAttribute("result", result);
+		}
+		return new ModelAndView("/vt_administrator/processing/DBInsertResultText");
+	}	
+	@RequestMapping("/inbodyInsertProcess")
+	public ModelAndView inbodyInsertProcess
+	(HttpServletRequest request,HttpServletResponse response){		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {			
+			e.printStackTrace();
 		}		
-		return new ModelAndView("/vt_administrator/processing/fitnessDBInsertResultText");
-	}
-	
-	
+		
+		String timetamp =" 00:00:00.0";
+		
+		String id = request.getParameter("id");
+		int age = Integer.parseInt(request.getParameter("age"));
+		String sex = request.getParameter("sex");
+		int height = Integer.parseInt(request.getParameter("height"));
+		int weight = Integer.parseInt(request.getParameter("weight"));
+		int bmi = Integer.parseInt(request.getParameter("bmi"));
+		Timestamp check_date = Timestamp.valueOf(request.getParameter("check_date")+timetamp);
+				
+		InbodyDataBean inbodyData = new InbodyDataBean();
+		inbodyData.setId(id);
+		inbodyData.setAge(age);
+		inbodyData.setSex(sex);
+		inbodyData.setHeight(height);
+		inbodyData.setWeight(weight);
+		inbodyData.setBmi(bmi);
+		inbodyData.setCheck_date(check_date);
+		
+		
+		int inbodyCheckResult = adminDao.getInbodyCheck(id);
+		request.setAttribute("inbodyCheckResult", inbodyCheckResult);
+		System.out.println(inbodyCheckResult);
+		
+		if(inbodyCheckResult==0){
+			int result = adminDao.insertInbodyInfo(inbodyData);
+			request.setAttribute("result", result);		
+		}else if(inbodyCheckResult!=0){
+			int result = adminDao.updateInbodyInfo(inbodyData);
+			request.setAttribute("result", result);	
+		}		
+			
+		return new ModelAndView("/vt_administrator/processing/DBInsertResultText");
+	}	
 }
 
 

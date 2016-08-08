@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import member.MemberDataBean;
+import myPage.InbodyDataBean;
 import myPage.RegisterDataBean;
 import mybatis.SqlMapClient;
 
@@ -72,6 +73,24 @@ public class AdminDBBean implements AdminDao {
 	@Override
 	public int getInbodyCheck(String id) {		
 		return SqlMapClient.getSession().selectOne("Admin.getInbodyCheck", id);
+	}
+	
+	/* 검색한 아이디 인바디 정보 반환 */
+	@Override
+	public InbodyDataBean getInbodyData(String id) {
+		return SqlMapClient.getSession().selectOne("Admin.getInbodyData", id);
+	}
+	
+	/* 인바디 수정 */
+	@Override
+	public int updateInbodyInfo(InbodyDataBean inbodyData){
+		return SqlMapClient.getSession().insert("Admin.updateInbodyInfo", inbodyData);
+	}
+	
+	/* 인바디 저장 */
+	@Override
+	public int insertInbodyInfo(InbodyDataBean inbodyData){
+		return SqlMapClient.getSession().insert("Admin.insertInbodyInfo", inbodyData);
 	}
 
 	

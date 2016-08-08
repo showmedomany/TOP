@@ -75,9 +75,8 @@
 		select count(*) from vt_members where nickname = #{searchMessage}
 	</select>	
 	 
-	 <select id="getMemberSearchNameList" parameterType="String" resultType="member.MemberDataBean">
-	 	select * from vt_members where name = #{searchMessage}
-	 </select>
+	 
+	 
 	 <select id="getMemberSearchIdList" parameterType="String" resultType="member.MemberDataBean">
 	 	select * from vt_members where id = #{searchMessage}
 	 </select>
@@ -90,5 +89,21 @@
 	 	select count(*) from vt_inbody where id = #{id}
 	 </select>
 	 
+	 <!-- 검색한 아이디 인바디 정보 반환 -->
+	 <select id="getInbodyData" parameterType="String" resultType="myPage.InbodyDataBean">
+	 	select * from vt_inbody where id = #{id}
+	 </select>
+	 
+	 <!-- 인바디 수정 -->
+	 <update id="updateInbodyInfo" parameterType="myPage.InbodyDataBean">
+		update vt_inbody set age=#{age}, height=#{height}, sex=#{sex},
+		weight=#{weight}, bmi=#{bmi}, check_date=#{check_date} where id = #{id}	
+	</update>	 
+	 
+	 <!--  인바디 저장 -->
+	 <insert id="insertInbodyInfo" parameterType="myPage.InbodyDataBean">
+	 	insert into vt_inbody values(inbody_seq.nextval, #{id}, #{age}, #{height}, #{sex}, 
+		#{weight}, #{bmi}, #{check_date})
+	 </insert>	
 </mapper>
 

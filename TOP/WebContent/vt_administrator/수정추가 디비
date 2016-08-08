@@ -1,0 +1,22 @@
+/*vt_inbody*/
+CREATE SEQUENCE inbody_seq
+START WITH 1
+MAXVALUE 999999999999
+MINVALUE 1
+INCREMENT BY 1
+CYCLE;
+
+CREATE TABLE vt_inbody
+(
+   inbody_id number NOT NULL,
+   id varchar2(15) NOT NULL,
+   age number NOT NULL,
+   height number NOT NULL,
+   sex varchar2(10) NOT NULL,
+   weight number NOT NULL,
+   bmi number NOT NULL,
+   check_date date NOT NULL,
+   PRIMARY KEY (inbody_id)
+);
+insert into vt_inbody values(inbody_seq.nextval, 'kimy', 22, 170, 'male', 90, 70, sysdate);
+insert into vt_inbody values(inbody_seq.nextval, 'jangb', 32, 160, 'male', 90, 70, sysdate);

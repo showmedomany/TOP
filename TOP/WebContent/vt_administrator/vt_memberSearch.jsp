@@ -62,12 +62,13 @@ vt_memberSearch.jsp
 							<td onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')">${memberData.nickname }</td>
 							<td onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')"><fmt:formatDate value="${memberData.join_date }" pattern="yyyy-MM-dd" /></td>
 							<td>
-								<select name="insertMeans" size="1">
+								<c:set var="insertMeans" value="insertMeans_${userNumber}"/>				
+								<select name="${insertMeans}" size="1">
 									<option value="fitness" selected="selected">피트니스</option>
 									<option value="inbody">인바디</option>
 									<option value="schedule">스케줄</option>
 								</select>			
-								<input type="button" value="등록" onclick="insertUserInfo('${memberData.id}')">			
+								<input type="button" value="등록" onclick="insertUserInfo('${userNumber}','${memberData.id}')">			
 							</td>											
 						</tr>
 						<tr>
