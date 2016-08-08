@@ -23,7 +23,6 @@
 		<input type="button" value="수정" onclick="location = 'noticeBoardModifyForm.do?num=${num}&pageNum=${pageNum}'">
 		<input type="button" value="삭제" onclick="isDeleteData(${num}, ${pageNum})">	
 	</c:if>
-	<input type="button" value="댓글달기">
 </div>
 
 

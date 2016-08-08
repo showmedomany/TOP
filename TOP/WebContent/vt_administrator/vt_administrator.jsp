@@ -7,10 +7,7 @@
 		<title>관리자 페이지</title>
 		<script src = "${jquery}"></script>
 		<script src = "${request}"></script>
-		<script src = "${script}chat.js"></script>
-		
-		
-		
+		<script src = "${script}chat.js"></script>		
 	</head>	
 		
 		<div id = "administrator_top" >

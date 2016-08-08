@@ -1,0 +1,139 @@
+/*css 초기화*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0;padding:0}
+fieldset,img {border:0 none}
+dl,ul,ol,menu,li {list-style:none}
+blockquote, q {quotes: none}
+blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}
+input,select,textarea,button {vertical-align:middle}
+button {border:0 none;background-color:transparent;cursor:pointer}
+body {background:#fff}
+body,th,td,input,select,textarea,button {font-size:12px;line-height:1.5;font-family:"Malgun Gothic",'돋움',dotum,sans-serif;color:#333} /* color값은 디자인가이드에 맞게사용 */
+a {color:#333;text-decoration:none}
+a:active, a:hover {text-decoration:none}
+address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
+/*css 초기화끝*/
+
+a {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 헤더영역 */
+.frame {
+    width: 100%;		
+    margin: 0 auto;
+    z-index: 999;
+    position: relative;
+}
+.body {
+    width: 100%; 
+    height: 100;
+    margin: 0 auto;
+    background: white;
+}
+.top {
+    margin: 0 auto;
+    width: 170;
+}
+.atag{
+	width: 200;
+    margin-left: 550;
+}
+.atag a{
+    cursor: pointer;
+    margin: 5;   
+}
+
+
+
+
+
+
+/*네비게이션 색상*/
+
+.naviframe {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-bottom-style:ridge;
+    border-bottom-color: #6A84B7;
+    border-bottom-width: 0.8px;
+}
+
+
+/*네비게이션 전체 영역 제어*/
+
+.navi {
+    height: 35px;
+    list-style: none;
+    width: 840px;
+    margin: auto;
+    background: white;
+    font-size: 12px;
+    color: #5D5D5D;
+   
+}
+
+/*주메뉴,서브메뉴 한묶음 제어*/
+
+.menu{
+	float: left;
+	padding:10px;
+	position: relative;
+	margin-right: -20;
+}
+
+/*주메뉴 영역 제어*/
+/* 빈메뉴 */
+.admin_top_navi_emptymenu{
+	text-align:center;
+	width:60px;
+	height:15px;
+	font-weight:bold;
+}
+/* 메뉴 */
+.subject{
+	text-align:center;
+	width:150px;
+	height:15px;
+	cursor:pointer;
+	font-weight:bold;
+}
+
+/*주메뉴 마우스 오버시*/
+.subject:hover{
+	color:#d3d3d3;
+}
+
+
+
+
+
+
+/*서브메뉴 전체영역 제어*/
+
+.contents{
+	position: absolute;
+	left: 0; top: 35px;
+	background: lightgray;
+	display: none;
+
+}
+
+
+/*서브메뉴 한칸 제어*/
+
+.contents li {
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+/*서브메뉴 마우스 오버시*/
+
+.contents li:hover{
+	background:white;
+}
