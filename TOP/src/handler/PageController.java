@@ -27,8 +27,13 @@ public class PageController {
 	(HttpServletRequest request,HttpServletResponse response){
 		//가운데 컨텐츠를 로그인Form으로 교체
 		String center = "vt_loginForm";
-		request.setAttribute("center", center);
 		
+		String page = request.getParameter("page");
+		if(page == null){
+			page = "main";
+		}
+		request.setAttribute("center", center);
+		request.setAttribute("page", page);
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//loginForm
 	

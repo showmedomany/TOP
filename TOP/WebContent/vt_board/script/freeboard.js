@@ -61,7 +61,7 @@ function logincheck(obj){
 	alert(check);*/
 	if(!obj){
 		//로그인 안했으면 로그인 갔다가 게시판으로 돌아와야함?
-		location = "loginForm.do";
+		location = "loginForm.do?page=vt_community_free";
 	}
 	else{
 		location = "vt_freeWriteForm.do";
@@ -93,10 +93,22 @@ function freeModifyFocus(){
 }
 
 function writecomment(memId,contentNum){
-	var params = "num="+contentNum+"&id="
-				+memId+"&content="+freeBoardForm.commentinput.value;	
-	request = new Request(commentUpdate, "vt_writeComment.do", "POST", params);
-	request.sendRequest();	
+	if(!memId){
+		location = "loginForm.do?page=vt_community_free";
+	}
+	else{
+		if(!freeBoardForm.commentinput.value){
+			alert("댓글을 작성해 주세요");
+			return false;
+		}
+		else{
+			var params = "num="+contentNum+"&id="
+					+memId+"&content="+freeBoardForm.commentinput.value;	
+			request = new Request(commentUpdate, "vt_writeComment.do", "POST", params);
+			request.sendRequest();
+		}
+	}	
+		
 }
 function commentUpdate(){
 	var commentlist = document.getElementById("commentlist");	
@@ -106,3 +118,21 @@ function commentUpdate(){
 		}
 	}
 }
+function commentfocus(){
+	freeBoardForm.commentbutton.focus();
+}
+
+
+
+function deletecomment(commentnum){
+	/*
+	var params = "comment_="+contentNum+"&id="
+		+memId+"&content="+freeBoardForm.commentinput.value;	
+	request = new Request(commentUpdate, "vt_writeComment.do", "POST", params);
+	request.sendRequest();
+	*/
+}
+function modifycomment(commentnum, content){
+	alert(commentnum+"=="+content);//수정 ajax처리
+}
+

@@ -165,3 +165,18 @@
 	border-bottom-style: groove;
 	border-bottom-width: 1;
 }
+.commentbottom{
+	position: relative;
+    top: 70;
+}
+.commentinput{
+	position: relative;
+    top: 60;
+}
+.comment_info{
+	font-size: 4;
+}
+.comment_info b{
+	text-align: center;
+	font-size: 15;
+}

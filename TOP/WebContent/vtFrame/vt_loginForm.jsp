@@ -9,6 +9,7 @@
 	</head>
 	<body onload = "vt_loginFormFocus()">
 		<form method = "post" action = "loginPro.do" name = "loginform">
+			<input type = "hidden" name = "page" value = "${page}">
 			<div class = "vt_loginForm_frame">
 				
 				<div class = "vt_loginForm_body">

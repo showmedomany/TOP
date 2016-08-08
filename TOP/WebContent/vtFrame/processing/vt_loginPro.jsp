@@ -33,8 +33,8 @@
 			${sessionScope.memId = id}
 			${sessionScope.nickname = nickname}
 			${sessionScope.authority_id = authority_id}
-			<c:redirect url = "main.do"/>
-			
+			<c:redirect url = "${page}.do"/>
+						
 		</c:if>
 	
 	</body>

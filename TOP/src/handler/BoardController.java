@@ -375,7 +375,8 @@ public class BoardController {
 		List<CommentDataBean> clist = commentDao.getComments(num);
 		//=boardDao.getArticles(map);
 		request.setAttribute("clist", clist);
-		
+		int commentcount = commentDao.getCommentNum(num);
+		request.setAttribute("commentcount", commentcount);
 		return new ModelAndView("/vt_board/vt_comment");
 	}//vt_freeContent
 	
@@ -397,12 +398,14 @@ public class BoardController {
 		cdto.setContent(content);
 		cdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
-		int commentresult = commentDao.writeComment(cdto);
+		commentDao.writeComment(cdto);	//코멘트 삽입
 		
 		List<CommentDataBean> clist = commentDao.getComments(num);
-		//=boardDao.getArticles(map);
+		int commentcount = commentDao.getCommentNum(num);
+		request.setAttribute("commentcount", commentcount);
+		
+		
 		request.setAttribute("clist", clist);
-			
 		return new ModelAndView("/vt_board/vt_comment");
 	}//vt_freeContent
 	

@@ -25,7 +25,7 @@
 				<input type = "button" value = "목록으로" 
 					onclick = "location = 'vt_community_free.do'">
 				<div class="board_write">
-					<a href="vt_freeWriteForm.do">
+					<a onclick = "logincheck(${memId})">
 						<img src="${images}write.gif">
 					</a>			
 				</div>

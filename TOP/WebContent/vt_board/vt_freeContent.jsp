@@ -48,8 +48,18 @@
 		<input type = "button" value = "수정" onclick = "location = 'vt_freeModifyForm.do?num=${dto.num}&pageNum=${pageNum}'">
 		<input type = "button" value = "삭제" onclick = "checkdelete(${dto.num}, ${pageNum})">
 	</c:if>
-	<input type="button" value="댓글달기">
+	<input type="button" value="댓글" onclick = "commentfocus()">
 	<input type = "button" value = "목록으로" 
 					onclick = "location = 'vt_community_free.do'">
 </div>
 <div id = "commentlist"></div>
+<div class = "commentinput">
+	<c:if test = "${nickname ne null }">
+		<b class = "commentnick">${nickname}</b>
+	</c:if>
+	<input type ="text" name ="commentinput">
+	<input type ="button" name = "commentbutton" value = "등록" onclick = "writecomment('${memId}','${dto.num}')">
+</div>
+<div class = "commentbottom">
+	목록/다음글/이전글							글쓰기
+</div>

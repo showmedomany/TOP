@@ -4,13 +4,21 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Comment">
 	<!-- 코멘트리스트 가져오기 -->
+	 
 	<select id="getComments" parameterType="int" resultType="comment.CommentDataBean">
-		select * from vt_comment where num = #{num} order by num asc
+		select comment_id, num, nick, content, reg_date, r
+				from(select comment_id, num, nick, content, reg_date, rownum r
+				from(select * from vt_comment order by comment_id asc) )where num = #{num}
 	</select>
+	
 	
 	<!-- 코멘트작성 -->
 	<insert id="writeComment" parameterType="comment.CommentDataBean">
 		insert into vt_comment(comment_id, num, nick, content, reg_date)
 		values(vt_comment_seq.NEXTVAL, #{num}, #{nick}, #{content}, #{reg_date})			
 	</insert>
+	
+	<select id="getCommentNum" parameterType="int" resultType="int">
+		select count(*) from vt_comment where num = #{num}
+	</select>
 </mapper>

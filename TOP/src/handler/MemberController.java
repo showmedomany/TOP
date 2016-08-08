@@ -48,7 +48,7 @@ public class MemberController {
 		String id = request.getParameter("id");
 		//로그인 폼에서 보내진 passwd
 		String passwd = request.getParameter("passwd");
-		
+		String page = request.getParameter("page");
 		
 		
 		int loginCheck = memberDao.loginMember(id, passwd);
@@ -66,9 +66,7 @@ public class MemberController {
 		//getMember메소드 사용해서 권한 저장
 		request.setAttribute("loginCheck", loginCheck);
 		request.setAttribute("id", id);
-		
-		
-		
+		request.setAttribute("page", page);
 		
 		
 		//리턴은 loginPro.jsp로 이동하여 로그인이 제대로 이뤄 졌는지 알려줌
