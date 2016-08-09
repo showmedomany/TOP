@@ -171,9 +171,114 @@ public class AdministratorController {
 	@RequestMapping("/insertFitnessUserSearch")	
 	public ModelAndView insertFitnessUserSearch
 	(HttpServletRequest request,HttpServletResponse response){		
+		/*
+		이 핸들러로 들어오는 경우는 2가지 register데이터가 있는지 없는지
+		없는 경우는 년도를 현재 년도로 맞추고 현재 년도로 윤달 계산
+		있는 경우는 데이터에 있는 년도로 맞추고 데이터의 년도로 윤달 계산
+		*/
+		
+		Calendar calendar = Calendar.getInstance();			//없는경우 현재 년도 계산위한 calendar함수
+		SimpleDateFormat format = new SimpleDateFormat("yyyy");		//있는경우 데이터의 년도포멧을 yyyy로 바꿈
+		String id = request.getParameter("id");			//검색할 아이디
+		
+		int startYear = 0;		//시작 년도변수
+		String startMonth = "";		//시작 월 변수
+		String startDay = "";		//시작 일 변수
+
+		int endYear = 0;		//종료 년도변수
+		String endMonth = "";		//종료 월 변수
+		String endDay = "";			//종료 일 변수
+		
+		String start_leapYear = "false";			//시작년도의 윤달이 있는지 없는지
+		String end_leapYear = "false";				//끝년도의 윤달이 있는지 없는지
 		
 		
-	}	
+		int idCheckResult = adminDao.insertFitnessUserSearchIDCheck(id);	//register에 있나 검색
+				
+		if(idCheckResult ==0){
+			//센터등록 안한 회원
+			//피트니스 시작 날짜을 오늘시간으로 맞춤
+			startYear = calendar.get(calendar.YEAR);
+			startMonth = String.valueOf(calendar.get(calendar.MONTH)+1);
+			startDay = String.valueOf(calendar.get(calendar.DAY_OF_MONTH));
+			
+			//끝날짜도 오늘로 맞춰둠
+			endYear = startYear;
+			endMonth = startMonth;
+			endDay = startDay;
+			
+		}
+		else{
+			//센터등록 했던 회원
+			RegisterDataBean registerData = adminDao.insertFitnessUserSearchID(id);	//해당회원의 register정보 가져옴
+			startYear = Integer.parseInt(format.format(registerData.getStart_date()));	//해당 회원의 시작년도
+			endYear = Integer.parseInt(format.format(registerData.getEnd_date()));		//해당 회원의 종료년도
+			
+			format = new SimpleDateFormat("MM");
+			startMonth = format.format(registerData.getStart_date());			
+			endMonth = format.format(registerData.getEnd_date());			
+			
+			format = new SimpleDateFormat("dd");
+			startDay = format.format(registerData.getStart_date());			
+			endDay = format.format(registerData.getEnd_date());	
+			
+			request.setAttribute("registerData", registerData);
+		}		
+		
+		//윤달 검사
+		if((0==(startYear%4) && 0 !=(startYear%100)) || 0 == startYear%400){
+			start_leapYear = "true";
+		}			
+		if((0==(endYear%4) && 0 !=(endYear%100)) || 0 == endYear%400){
+			end_leapYear = "true";
+		}
+		
+		
+		//트레이너의 리스트를 받아온다 
+		List<String> trainerIdList = adminDao.getTrainerIdList();
+		
+		
+		request.setAttribute("id", id);		//아이디를 넘겨준다
+		request.setAttribute("idCheckResult", idCheckResult);//register 검색 결과가 없는경우를 알려준다.
+		
+		request.setAttribute("startYear", startYear);
+		request.setAttribute("startMonth", startMonth);
+		request.setAttribute("startDay", startDay);
+		
+		request.setAttribute("endYear", endYear);
+		request.setAttribute("endMonth", endMonth);
+		request.setAttribute("endDay", endDay);
+		
+		request.setAttribute("start_leapYear", start_leapYear);
+		request.setAttribute("end_leapYear", end_leapYear);
+		
+		
+		
+		request.setAttribute("trainerIdList", trainerIdList);
+
+		return new ModelAndView("/vt_administrator/processing/insertFitnessUserSearch");		
+	}
+	
+	@RequestMapping("/selectDayText_start")
+	public ModelAndView selectDayText_start
+	(HttpServletRequest request,HttpServletResponse response){			
+		int startMonth = Integer.parseInt(request.getParameter("start_month"));
+		String start_leapYear = request.getParameter("start_leapYear");	
+		request.setAttribute("startMonth", startMonth);
+		request.setAttribute("start_leapYear", start_leapYear);
+		return new ModelAndView("/vt_administrator/processing/selectDayText_start");
+	}
+	
+	@RequestMapping("/selectDayText_end")
+	public ModelAndView selectDayText_end
+	(HttpServletRequest request,HttpServletResponse response){			
+		int endMonth = Integer.parseInt(request.getParameter("end_month"));
+		String end_leapYear = request.getParameter("end_leapYear");			
+		
+		request.setAttribute("endMonth", endMonth);
+		request.setAttribute("end_leapYear", end_leapYear);
+		return new ModelAndView("/vt_administrator/processing/selectDayText_end");
+	}
 	@RequestMapping("/insertInbodyUserSearch")	
 	public ModelAndView insertInbodyUserSearch
 	(HttpServletRequest request,HttpServletResponse response){		
@@ -231,26 +336,8 @@ public class AdministratorController {
 	
 	//다른월 선택시 바뀐 일수 출력하기
 	
-	@RequestMapping("/selectDayText_start")
-	public ModelAndView selectDayText_start
-	(HttpServletRequest request,HttpServletResponse response){			
-		int start_month = Integer.parseInt(request.getParameter("start_month"));
-		String start_leapYear = request.getParameter("start_leapYear");			
-		
-		request.setAttribute("start_month", start_month);
-		request.setAttribute("start_leapYear", start_leapYear);
-		return new ModelAndView("/vt_administrator/processing/selectDayText_start");
-	}//
-	@RequestMapping("/selectDayText_end")
-	public ModelAndView selectDayText_end
-	(HttpServletRequest request,HttpServletResponse response){			
-		int end_month = Integer.parseInt(request.getParameter("end_month"));
-		String end_leapYear = request.getParameter("end_leapYear");			
-		
-		request.setAttribute("end_month", end_month);
-		request.setAttribute("end_leapYear", end_leapYear);
-		return new ModelAndView("/vt_administrator/processing/selectDayText_end");
-	}
+	
+	
 	@RequestMapping("/fitnessInsertProcess")
 	public ModelAndView fitnessInsertProcess
 	(HttpServletRequest request,HttpServletResponse response){		

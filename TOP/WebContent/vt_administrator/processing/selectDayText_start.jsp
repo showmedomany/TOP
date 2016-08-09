@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <select size="1" name="selectStartDay">
 	<c:forEach var="i" begin="1" end="12" step="1">
-		<c:if test="${start_month==i}">
+		<c:if test="${startMonth==i}">
 			<c:if test="${i==2}">
 				<c:if test="${start_leapYear==true}">
 					<c:set var="day" value="29"/>

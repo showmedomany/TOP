@@ -211,13 +211,13 @@ function insertInbodyUserSearchResult(){
 /* 시작일 */
 //윤년 체크
 function leapYearCheck_start(){	
-	var selectStartYear = insertForm.selectStartYear.value;	
+	var selectStartYear = insertForm.selectStartYear.value;
 	var start_leapYear = false;
+	
 	if((0==(selectStartYear%4) && 0 !=(selectStartYear%100)) || 0 == selectStartYear%400){
-		start_leapYear = true;
-	}else{
-		start_leapYear = false;
-	}
+		var start_leapYear = true;
+	}	
+	
 	insertForm.start_leapYear.value=start_leapYear;
 	var month = insertForm.selectStartMonth.value;
 	request = new Request(monthDataCheckResult_start, "selectDayText_start.do", "POST", 
@@ -247,8 +247,6 @@ function leapYearCheck_end(){
 	var end_leapYear = false;
 	if((0==(selectEndYear%4) && 0 !=(selectEndYear%100)) || 0 == selectEndYear%400){
 		end_leapYear = true;
-	}else{
-		end_leapYear = false;
 	}
 	insertForm.end_leapYear.value=end_leapYear;
 	var month = insertForm.selectEndMonth.value;
@@ -395,7 +393,29 @@ function inbodyInsertProcessResult(){
 	}
 }
 
-
+function test(){
+	
+	var year = insertForm.selectStartYear.value;
+	var month = insertForm.selectStartMonth.value;
+	var day = insertForm.selectStartDay.value;
+	var start = new Date(year, month, day);
+	
+	year = insertForm.selectEndYear.value;
+	month = insertForm.selectEndMonth.value;
+	day = insertForm.selectEndDay.value;
+	var end = new Date(year, month, day);
+	
+	
+	var test = new Date(end - start)
+	
+	alert(test.+"년"+test.getMonth()+"월"+(test.getDate()-1)+"일");
+	
+	/*
+	var year = insertForm.selectEndYear.value - insertForm.selectStartYear.value;
+	var month = insertForm.selectEndMonth.value - insertForm.selectStartMonth.value;
+	var day = insertForm.selectEndDay.value - insertForm.selectStartDay.value;
+	*/
+}
 
 
 function numOnly(){
