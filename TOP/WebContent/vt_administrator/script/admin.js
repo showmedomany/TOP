@@ -407,8 +407,8 @@ function test(){
 	
 	
 	var test = new Date(end - start)
-	
-	alert(test.+"년"+test.getMonth()+"월"+(test.getDate()-1)+"일");
+	선택 년월일 계산해서 뿌려주기
+	alert(test.getMonth()+"월"+(test.getDate()-1)+"일");
 	
 	/*
 	var year = insertForm.selectEndYear.value - insertForm.selectStartYear.value;
