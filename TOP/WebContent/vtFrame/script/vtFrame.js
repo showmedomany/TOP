@@ -285,7 +285,19 @@ function CloseMe(){
     window.close();
 }
 */
-
+function checkblank(){	
+	if(!loginform.id.value){
+		alert(msg_idcheckerror);
+		loginform.id.focus();
+		
+	}
+	//비밀번호 안씀
+	else if(!loginform.passwd.value){
+		alert(msg_passwderror);
+		loginform.passwd.focus();
+		return false;
+	}
+}
 
 function sumitCheckfn(){
 	//아이디 안쓰거나 확인 안한경우

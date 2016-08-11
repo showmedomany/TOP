@@ -18,7 +18,7 @@
 				</div>		
 			</div>
 			<br>
-			<div id = "adminchat">				
+			<div id = "adminchat">			
 			</div>
 			
 			<div id = "administrator_center">	

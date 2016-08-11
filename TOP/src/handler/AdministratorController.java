@@ -41,6 +41,14 @@ public class AdministratorController {
 		return new ModelAndView("/vt_administrator/vt_administrator");
 	}//
 	
+	@RequestMapping("/admin_input")
+	public ModelAndView admin_input
+	(HttpServletRequest request, HttpServletResponse response){
+		String center = "vt_admin_inputForm";
+		request.setAttribute("center", center);
+		return new ModelAndView("/vt_administrator/vt_administrator");
+	}
+	
 	@RequestMapping("/memberSearch")
 	public ModelAndView memberSearch
 	(HttpServletRequest request,HttpServletResponse response){	

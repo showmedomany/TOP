@@ -5,10 +5,10 @@
 <html>
 	<head> 
 		<link href = "${css}vt_loginFormStyle.css" rel = "stylesheet" type = "text/css">
-		<script src = "${script}vtFram.js"></script>
+		<script src = "${script}vtFrame.js"></script>
 	</head>
 	<body onload = "vt_loginFormFocus()">
-		<form method = "post" action = "loginPro.do" name = "loginform">
+		<form method = "post" action = "loginPro.do" name = "loginform" onsubmit = "return checkblank()">
 			<input type = "hidden" name = "page" value = "${page}">
 			<div class = "vt_loginForm_frame">
 				
