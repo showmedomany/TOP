@@ -1,147 +1,207 @@
-/*css 초기화*/
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0;padding:0}
-fieldset,img {border:0 none}
-dl,ul,ol,menu,li {list-style:none}
-blockquote, q {quotes: none}
-blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}
-input,select,textarea,button {vertical-align:middle}
-button {border:0 none;background-color:transparent;cursor:pointer}
-body {background:#fff}
-body,th,td,input,select,textarea,button {font-size:12px;line-height:1.5;font-family:"Malgun Gothic",'돋움',dotum,sans-serif;color:#333} /* color값은 디자인가이드에 맞게사용 */
-a {color:#333;text-decoration:none}
-a:active, a:hover {text-decoration:none}
-address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
-/*css 초기화끝*/
+.login_p{
+	position: relative;
+	color: white;
+	float: left;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
 
 a {
-    color: #333;
+    color: white;
     text-decoration: none;
-    cursor: pointer;
 }
 
-/* 헤더영역 */
-.top_frame {
-    width: 100%;		
-    margin: 0 auto;
-    z-index: 999;
-    position: relative;
-}
-.top_header {
-    width: 100%; 
-    height: 100;
-    margin: 0 auto;
-    background: white;
-}
-.top_header_atag_line {
-    margin: 0 auto;
-    width: 170;
-}
-.top_header_atag_form{
-	width: 200;
-    margin-left: 550;
-}
-.top_header_atag_font {
-    cursor: pointer;
-    margin: 5;   
+html {
+  width: 100%;
+  height: 100%;
 }
 
-
-
-
-
-
-/*네비게이션 색상*/
-
-.top_navi_frame {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    border-bottom-style:ridge;
-    border-bottom-color: black;
-    border-bottom-width: 0.8px;
-    background-color: black;
-    height: 50;
+body {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
 }
 
-
-/*네비게이션 전체 영역 제어*/
-
-.top_navi {
-    height: 35px;
-    list-style: none;
-    width: 840px;
-    margin: auto;
-    background: white;
-    font-size: 14px;
-    color: whitesmoke;
-    position: relative;
-    left: 140px;
-    background-color: black;
-  	 top: 8px;
+h1 {
+  width: 100%;
+  text-align: center;
+  padding: 40px 0;
 }
 
-/*주메뉴,서브메뉴 한묶음 제어*/
+.open {
+  position: relative;
+  top: 40px;
+  right: 40px;
+  width: 50px;
+  height: 50px;
+  display: block;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+  float: left;
+  margin: 0px 138px ;
+}
 
-.top_navi_menuframe{
-	float: left;
-	padding:10px;
+.open:hover { opacity: 0.8; }
+
+.open span {
+  display: block;
+  float: left;
+  clear: both;
+  height: 4px;
+  width: 40px;
+  border-radius: 40px;
+  background-color: #fff;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.open span:nth-child(1) {
+  margin-top: 10px;
+  z-index: 9;
+}
+
+.open span:nth-child(2) { margin-top: 25px; }
+
+.open span:nth-child(3) { margin-top: 40px; }
+
+.sub-menu {
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  height: 0;
+  width: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+  border-radius: 50%;
+  z-index: 18;
+  overflow: hidden;
+}
+
+.sub-menu li {
+  display: block;
+  float: right;
+  clear: both;
+  height: auto;
+  margin-right: -160px;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  margin: 6px 0;
+}
+
+.sub-menu li:first-child { margin-top: 211px; }
+
+.sub-menu li:nth-child(1) { -webkit-transition-delay: 0.05s; }
+
+.sub-menu li:nth-child(2) { -webkit-transition-delay: 0.10s; }
+
+.sub-menu li:nth-child(3) { -webkit-transition-delay: 0.15s; }
+
+.sub-menu li:nth-child(4) { -webkit-transition-delay: 0.20s; }
+
+.sub-menu li:nth-child(5) { -webkit-transition-delay: 0.25s; }
+
+.sub-menu li a {
+  color: #fff;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  float: left;
+  line-height: 40px;
+}
+
+.oppenned .sub-menu {
+  opacity: 1;
+  height: 325px;
+  width: 346px;
+}
+
+.oppenned span:nth-child(2) { overflow: visible; }
+
+.oppenned span:nth-child(1),
+.oppenned span:nth-child(3) {
+  z-index: 100;
+  transform: rotate(45deg);
+}
+
+.oppenned span:nth-child(1) { transform: rotate(45deg) translateY(12px) translateX(12px); }
+
+.oppenned span:nth-child(2) {
+  height: 325px;
+  width: 340px;
+  right: -160px;
+  top: -160px;
+  border-radius: 50%;
+  background: black;
+}
+
+.oppenned span:nth-child(3) { transform: rotate(-45deg) translateY(-10px) translateX(10px); }
+
+.oppenned li { margin-right: 168px; }
+.top{
+	width:100%;
+	height: 350px;
+	background: black;
+	color: white;
+}
+.top_2{
+	margin: 0 auto;
+	width: 1411px;
+	color: white;
+}
+.login_p{
 	position: relative;
-	margin-right: -20;
+	float: right;
+	color: white;
 }
-
-/*주메뉴 영역 제어*/
-/* 빈메뉴 */
-.top_navi_emptymenu{
-	text-align:center;
-	width:60px;
-	height:15px;
-	font-weight:bold;
+.top_header_atag_font{
+	color: white;
 }
-/* 메뉴 */
-.top_navi_menu{
-	text-align:center;
-	width:150px;
-	height:15px;
-	cursor:pointer;
-	font-weight:bold;
+.menu_name{
+	color: white;
+    width: 1500px;
+    position: relative;
+    right: 57px;
+    top: 28px;
+    z-index: 9999;
+    font-size: 13px;
 }
-
-/*주메뉴 마우스 오버시*/
-.top_navi_menu:hover{
-	color:white;
+.topmenu1{
+	position: relative;
+    float: right;
+    margin: 0px 136px;
+    cursor: pointer;
+    right: -59px;
 }
-
-
-
-
-
-
-/*서브메뉴 전체영역 제어*/
-
-.top_navi_subframe{
-	position: absolute;
-	left: 0; top: 35px;
-	background: white;
-	display: none;
-	color: black;
-    font-family: fantasy;
-
+.topmenu2{
+	position: relative;
+    float: right;
+    margin: 0px 118px;
+    cursor: pointer;
+    right: 208px;
 }
-
-
-/*서브메뉴 한칸 제어*/
-
-.top_navi_subframe li {
-    padding: 10px;
-    width: 150px;
-    text-align: center;
+.site_name{
+	color: white;
+    position: relative;
+    width: 300px;
+    height: 67px;
+    font-size: 30px;
+    left: 589px;
+    top: 15px;
+    margin-bottom: 20;
+    z-index: 9999;
     cursor: pointer;
 }
-
-
-/*서브메뉴 마우스 오버시*/
-
-.top_navi_subframe li:hover{
-	background:#F3F3F3;
-	
+.open1{
+	position: relative;
+    left: -66px;
+}
+.open2{
+	position: relative;
+    right: -240px;
 }

@@ -28,8 +28,6 @@
 	<div class="header_sub">
 		<div class="subject">
 			제목&nbsp;:&nbsp;${dto.subject }
-			<input type = "button" value = "목록으로" 
-					onclick = "location = 'vt_community_free.do'">
 		</div>
 	</div>
 	<div class="header_info">
@@ -45,21 +43,16 @@
 
 <div class="bottom">
 	<c:if test="${dto.id == memId}">
-		<input type = "button" value = "수정" onclick = "location = 'vt_freeModifyForm.do?num=${dto.num}&pageNum=${pageNum}'">
-		<input type = "button" value = "삭제" onclick = "checkdelete(${dto.num}, ${pageNum})">
+		<input class="button" type = "button" value = "수정" onclick = "location = 'vt_freeModifyForm.do?num=${dto.num}&pageNum=${pageNum}'">
+		<input class="button" type = "button" value = "삭제" onclick = "checkdelete(${dto.num}, ${pageNum})">
 	</c:if>
-	<input type="button" value="댓글" onclick = "commentfocus()">
-	<input type = "button" value = "목록으로" 
+	<input class="button" type="button" value="댓글" onclick = "commentfocus()">
+	<input class="button" type = "button" value = "목록" 
 					onclick = "location = 'vt_community_free.do'">
 </div>
+
 <div id = "commentlist"></div>
 <div class = "commentinput">
-	<c:if test = "${nickname ne null }">
-		<b class = "commentnick">${nickname}</b>
-	</c:if>
-	<input type ="text" name ="commentinput">
-	<input type ="button" name = "commentbutton" value = "등록" onclick = "writecomment('${memId}','${dto.num}')">
-</div>
-<div class = "commentbottom">
-	목록/다음글/이전글							글쓰기
+	<textarea class="textarea" name ="commentinput" placeholder="명예훼손,개인정보 유출,분쟁 유발,허위사실유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌받을 수 있습니다.건전한 커뮤니티를 위해 자제를 당부 드립니다."></textarea>
+	<input class="p_button" type ="button" name = "commentbutton" value = "등록" onclick = "writecomment('${memId}','${dto.num}')">
 </div>

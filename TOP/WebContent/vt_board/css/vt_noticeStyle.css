@@ -9,7 +9,6 @@
     height: 50px;
     position: relative;
     margin-top: 50px;
-    margin-top: 182px;
 }
 .notice_write{
 	position: relative;
@@ -151,4 +150,7 @@
     position: relative;
     float: right;
     top: 3px;
+}
+.notice_content a{
+	cursor: pointer;
 }

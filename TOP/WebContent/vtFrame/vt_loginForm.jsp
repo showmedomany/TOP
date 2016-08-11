@@ -24,7 +24,7 @@
 						<input type = "submit" value = "${str_loginbt}">
 					</div>
 					<div class = "vt_loginForm_atag">
-						<a>${str_membership}</a>
+						<a href="inputForm.do">${str_membership}</a>
 						<a>${str_findidentity}</a>
 					</div>
 				</div>

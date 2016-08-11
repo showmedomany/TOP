@@ -5,6 +5,7 @@
 	position: relative;
     float: right;
     cursor: pointer;
+    border-style:ridge;
 }
 .header{
 	width: 700px;
@@ -76,10 +77,10 @@
     position: relative;
     float: right;
     top: 6px;
-    right: 6px;
-    cursor: pointer;
+    left:25px;
 }
 .inputbutton{
 	position: absolute;
 	z-index: 999;
+	cursor: pointer;
 }

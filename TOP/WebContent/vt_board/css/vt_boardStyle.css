@@ -150,6 +150,9 @@
     float: right;
     top: 3px;
 }
+.board_content a{
+	cursor: pointer;
+}
 
 #commentlist{
 	width: 700;
@@ -157,26 +160,62 @@
 	top: 50;
 }
 .commentform{	
-	border-top-style: groove;
-    border-top-width: 7;
     border-bottom-style: groove;
 }
 .comment_content{
 	border-bottom-style: groove;
 	border-bottom-width: 1;
 }
-.commentbottom{
-	position: relative;
-    top: 70;
-}
 .commentinput{
 	position: relative;
     top: 60;
 }
 .comment_info{
-	font-size: 4;
+    font-size: 10px;
+    height: 30px;
 }
 .comment_info b{
 	text-align: center;
-	font-size: 15;
+    font-size: 23px;
+    position: relative;
+    top: 15px;
+    left: 10px;
+}
+.commentnum{
+	position: relative;
+    margin: 30px 0px;
+    font-size: 20px;
+    font-family: fantasy;
+}
+.comment_read{
+	
+}
+.comen_p{
+	position: relative;
+    font-size: 15px;
+    margin: 30px 0;
+    left: 6px;
+    border-top-style: ridge;
+    background: #eeeeee;
+    border-bottom-style: ridge;
+}
+.comen_d{
+	position: relative;
+    font-size: 10px;
+}
+.textarea{
+	width: 627px;
+    height: 78px;
+    max
+}
+.p_button{
+	width: 69px;
+    height: 79px;
+    cursor: pointer;
+}
+.b_content{
+	
+}
+.b_content_b{
+	
 }

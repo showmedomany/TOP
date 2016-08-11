@@ -50,3 +50,9 @@
     width: 700px;
     top: 11px;    
 }
+.board_write{
+	cursor: pointer;
+}
+.button{
+	cursor: pointer;
+}

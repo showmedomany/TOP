@@ -11,9 +11,6 @@
 			<div class="wrap1_1">
 				V.T Personal Training
 			</div>
-			<div class="wrap1_2">
-				
-			</div>
 		</div>
 		<div class="exer_wrap2">
 			<div class="wrap2_1">
@@ -32,47 +29,38 @@
 					Visual TOP P.T
 				</div>
 				<div class="wrap3_1_word2">
-					비주얼 휘트니스만의 P.T란?
+					
 				</div>
 			</div>
 			<div class="wrap3_2">
 				<div class="wrap3_2_word1">
-					비주얼 휘트니스만의 체계적인 PT
+					"남들과 같은 운동을 하고 계시진 않나요?
+					<img src="${images}body.PNG">	
 				</div>
 				<div class="wrap3_2_word2">
-					어쩌구 저쩌구
+					<img src="${images}PT.PNG">	
 				</div>
 				<div class="wrap3_2_word3">
-					요러쿵 저렇쿵
+					<img src="${images}pt4.PNG">	
 				</div>
+				<div class="wrap3_2_word4">
+					<img src="${images}pt5.PNG">	
+				</div>
+				<div class="wrap3_2_word5">
+					<img src="${images}pt6.PNG">	
+				</div>
+				<div class="wrap3_2_word6">
+					<img src="${images}pt7.PNG">	
+				</div>
+				<div class="wrap3_2_word7">
+					<img src="${images}pt8.PNG">	
+				</div>
+				
+				
 			</div>
 		</div>
 		<div class="exer_wrap4">
-			<div class="wrap4_1">
-				<div class="wrap4_1_1">
-					<div class="wrap4_cir1">
-						이미지 넣는곳
-					</div>
-				</div>
-				<div class="wrap4_1_2">
-					<div class="wrap4_cir2">
-						이미지 넣는곳
-					</div>
-				</div>
-				<div class="wrap4_1_3">
-					<div class="wrap4_cir3">
-						이미지 넣는곳
-					</div>
-				</div>
-				<div class="wrap4_1_4">
-					<div class="wrap4_cir4">
-						이미지 넣는곳
-					</div>
-				</div>
-			</div>
-			<div class="wrap4_2">
-				우리 휘트니스 pt만 할수있는 자랑거리
-			</div>
+			
 		</div>
 	</div>
 	

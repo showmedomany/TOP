@@ -1,4 +1,9 @@
-
+.content_wrap{
+	width: 839px;
+    margin: 0 auto;
+ 	height:3295px;
+	
+}
 .exer_wrap1 {
     width: 600px;
     height: 64px;
@@ -7,15 +12,16 @@
     margin: 68px 0;
 }
 .wrap1_1 {
-    width: inherit;
+  	 width: 364px;
     height: 97%;
     text-align: center;
     font-size: 35px;
+    border-bottom-style: groove;
+    position: relative;
+    left: 131px;
+    font-weight: bold;
 }
-.wrap1_2{
-	background: black;
-	height: 3%;
-}
+
 .exer_wrap2{
 	width: initial;
     height: 250px;
@@ -72,75 +78,39 @@
 .wrap3_2 {
     width: inherit;
     height: 60%;
-    font-size: 28px;
+    font-size: 24px;
     text-align: center;
+}
+.wrap3_2_word2{
+
+position: relative;
+top: 20px;
+}
+.wrap3_2_word3{
+	position: relative;
+    top: 30px;
+}
+.wrap3_2_word4{
+	position: relative;
+    top: 30px;
+}
+.wrap3_2_word5{
+	position: relative;
+    top: 30px;
+    left: 10px;
+	
+}
+.wrap3_2_word6{
+	position: relative;
+    top: 30px;
+	
+}
+.wrap3_2_word7{
+	position: relative;
+    top: 30px;
+	
 }
 
 .exer_wrap4 {
-    width: inherit;
-    height: 500px;
-	background: #eeeeee;
-    border-radius: 4%;
-    position: relative;
-    margin: 100px 0;
-}
-.wrap4_1 {
-    width: inherit;
-    height: 189px;
-    border-radius: 11%;
-}
-.wrap4_2{
-	
-}
-.wrap4_1_1{
-	margin: 0 37px;
-}
-.wrap4_cir1{
-	width: 150px;
-    height: 150px;
-    background: white;
-    position: relative;
-    border-radius: 100%;
-    float: right;
-    top: 20;
-    margin: 0 20;
-}
-.wrap4_cir2{
-	width: 150px;
-    height: 150px;
-    background: white;
-    position: relative;
-    border-radius: 100%;
-    float: right;
-    top: 20;
-    margin: 0 20;
-}
-.wrap4_cir3{
-	width: 150px;
-    height: 150px;
-    background: white;
-    position: relative;
-    border-radius: 100%;
-    float: right;
-    top: 20;
-    margin: 0 20;
-}
-.wrap4_cir4{
-	width: 150px;
-    height: 150px;
-    background: white;
-    position: relative;
-    border-radius: 100%;
-    float: right;
-    top: 20;
-    margin: 0 20;
-}
-.wrap4_1_2{
-	
-}
-.wrap4_1_3{
-	
-}
-.wrap4_1_4{
-	
+  
 }

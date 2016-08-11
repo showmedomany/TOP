@@ -22,8 +22,6 @@
 				<div class="board_all">
 					전체글 : ${count}
 				</div>
-				<input type = "button" value = "목록으로" 
-					onclick = "location = 'vt_community_free.do'">
 				<div class="board_write">
 					<a onclick = "logincheck('${memId}')">
 						<img src="${images}write.gif">

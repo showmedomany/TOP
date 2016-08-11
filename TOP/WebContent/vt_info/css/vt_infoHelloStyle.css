@@ -11,11 +11,12 @@
 }
 .hello_hi{
 	border-bottom-style: groove;
-   	width: 156px;
+    width: 113px;
     font-size: 35px;
     position: relative;
     font-weight: bold;
-    font-family:'Exo', sans-serif;
+    font-family: 'Exo', sans-serif;
+    left: 20;
 }
 .hello_top{
 	position: relative;
@@ -26,28 +27,22 @@
 }
 .hello_center{
 	position: relative;
-    width: inherit;
-    height: 250px;
-    margin: 20 0;
+    top: -267px;
+    width: 410px;
+    left: 15px;
     
 }
 
-.hello_bottom	{
-	position:relative;
-  
-   font-size: 33px;
-    top: 30px;
-    right: 20;
-}
-.hello_bottom1{
-	position: relative;
-    left: 252px;
-    top: 23;
-}
+
 .hello_img1{
 	position: relative;
     top: 60px;
    
+}
+.hello_img2{
+	position: relative;
+    top: 379px;
+	
 }
 .hello_name{
 	   
@@ -59,58 +54,92 @@
     width: 206px;
 }
 .hello_name1{
-	font-size:25px;
-	font-weight: bold;
+	font-size: 37px;
+    font-weight: bold;
+    position: relative;
+    left: 105px;
+    bottom: 50;
 }
 .hello_name2{
 	position: relative;
-    bottom: 40;
+    bottom: 67px;
     font-size: 30px;
     font-weight: bold;
+    left: -26px;
+    font-size: 56px;
+    width: 368px;
 	
 }
-.hello_top_hi{
-	font-size:30px;
-	font-weight: bold;
-	color: #636363;
+.hello_name3{
+	position: relative;
+    font-size: 28;
+    left: 63px;
+    bottom: 40;
 	
 }
+
+	
+
 .hello_top_hi1{
-	font-size:16px;
-	color: #636363;
+	font-size: 24px;
+	color: black;
 	font-weight: bold;
 	float: left;
 	
 }
 .hello_top_hi2{
 	font-size:16px;
-	color: #636363;
-	 font-weight: bold;
+	color: darkslategray;
+	
 	
 }
 .hello_top_hi3{
 	position: relative;
     left: 679px;
-    font-weight: bold;
+    
     font-size: 20px;
-    color: #636363;
+    color: black;
 }
 .hello_top_body{
-	font-size:23px;
-	 font-weight: bold;
-	color: #050099;
+	font-size:25px;
+	
+	color: tan;
 	float: left;
 
 	
 }
 .hello_top_think{
-	font-size:16px;
-	color: #636363;
-	font-weight: bold;
+	font-size: 26px;
+    color: black;
+    font-weight: bold;
 	
 }
-.hello_bottom_mana{
+.hello_bottom{
 	position: relative;
-    width: inherit;
-    height: 425px;
+    height: 722px;
+	
+}
+.hello_bottom_ma{
+	position: relative;
+    width: 913px;
+    height: 839px;
+    bottom: 120px;
+}
+.hello_vt_manage{
+font-size: 50;
+position: relative;
+bottom: 20;
+}
+.manage{
+	font-size: 16;
+	font-weight: bold;
+}
+.manage1{
+	
+	
+}
+.manage_img1{
+	position: relative;
+    bottom:532px;
+    left: -17px;
 }

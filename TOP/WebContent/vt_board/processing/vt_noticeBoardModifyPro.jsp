@@ -1,13 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-
+    pageEncoding="UTF-8"%>  
+<%@ include file = "setting.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<link href = "${css}vt_noticeBoardWritePro.css" rel="stylesheet"	type="text/css">
 <c:if test="${updateArticleResult!=0}">
-	글이 수정 되었습니다.
-	<meta http-equiv="refresh" content="2; url=noticeBoard.do?pageNum=${pageNum }">
+	<div class="border">
+		<img src="${images}modc.png">
+	</div>
+	<meta http-equiv="refresh" content="1; url=noticeBoard.do">
 </c:if>
 <c:if test="${updateArticleResult==0}">	
-	글 수정에 실패하였습니다.
-	<meta http-equiv="refresh" content="2; url=noticeBoard.do?pageNum=${pageNum }">
+	<div class="border">
+		<img src="${images}modf.png">
+	</div>
+	<meta http-equiv="refresh" content="1; url=noticeBoard.do">
 </c:if>
+
 

@@ -11,7 +11,7 @@
 	<body onload = "noticewritefocus()">
 		<form method="post" action="noticeBoardWritePro.do" name="NBWriteForm" onsubmit="return noticeBoardWriteCheck()">
 			<div class="name">
-				공지사항 게시글 작성
+				공지사항 > 게시글 > 작성
 				<div class="list" onclick="location = 'noticeBoard.do'">
 					목록
 				</div>

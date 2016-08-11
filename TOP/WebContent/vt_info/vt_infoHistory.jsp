@@ -11,7 +11,7 @@
 		</div>
 		
 		<div class="content_wrap">
-				<img class="history_img1" src="/TOP/vt_info/images/history.png">
+				<img class="history_img1" src="/TOP/vt_info/images/history.jpg">
 		</div>
 	</body>
 </html>	

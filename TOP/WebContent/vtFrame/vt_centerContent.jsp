@@ -20,49 +20,56 @@
 					<img src="${images}in.jpg">
 					<img src="${images}in1.jpg">
 					<img src="${images}in2.jpg">
-					<img src="${images}in3.jpg">	
-					
+					<img src="${images}in3.jpg">						
 				</div>
 			</div>
-			<div class="centerContent_empty_space">
-				<div class="centerContent_vt_program">
-					<p class="centerContent_vt_program1">VISUAL T.O.P 프로그램 </p>
-				</div>
-			</div>
-			<div class="centerContent_mainframe">
-				<div class="centerContent_program">
-					<a class="centerContent_icon1"></a>
-					<p class="centerContent_icon1sub">FITNESS</p>
-					<a class="centerContent_icon2"></a>
-					<p class="centerContent_icon2sub">PIGATES</p>
-					<a class="centerContent_icon3"></a>
-					<p class="centerContent_icon3sub">PT</p>
-					<a class="centerContent_icon4"></a>
-					<p class="centerContent_icon4sub">YOGA</p>
-					<a class="centerContent_icon5"></a>
-					<p class="centerContent_icon5sub">TAE BO</p>
-					<a class="centerContent_icon6"></a>
-					<p class="centerContent_icon6sub">GX</p>
-				</div>
-				<div class="center_board">
-					<div class="center_board1">
-						
+			<div class="content_wrap">
+				<div class="content1">
+					<div class="news">
+						<div class="news1a"></div>
+						<div class="news1b"></div>
+						<div class="news1">
+							<p class="news1p">Fitness News</p>
+						</div>
+						<div class="news2">
+							
+						</div>
 					</div>
-					<div class="center_board2">
-						
+				<div class="trinfo">
+					<div class="news1a"></div>
+					<div class="news1b"></div>
+					<div class="news1">
+						<p class="news1p">Traning Infomation</p>				
 					</div>
-					<div class="center_board3">
-						
+					<div class="news2">
+						<div class="tr1">
+							<div class="tr1top">
+								<p class="tr2p">Persnal Exr</p>
+							</div>
+							<div class="tr1center">
+								<figure><a href="vt_ptinfo.do"title="사진을 클릭하면 페이지로 이동합니다."><img src="${images}tr1.jpg"></a></figure>							
+							</div>
+						</div>
+						<div class="tr2">
+							<div class="tr2top">
+								<p class="tr2p">Group Exr</p>
+							</div>
+							<div class="tr2center">
+								<figure><a href="vt_gxinfo.do" title="사진을 클릭하면 페이지로 이동합니다."><img src="${images}tr2.png"></a></figure>							
+							</div>
+						</div>
 					</div>
-					<div class="center_board4">
-						
+						<div class="trbottom">
+							<img src="${images}trbot.jpg">
+						</div>
 					</div>
-					<div class="center_board5">
-						
+					<div class="good">
+						<a href="vt_infoChar.do" title="사진을 클릭하면 페이지로 이동합니다."><img src="${images}board3.jpg"></a>
 					</div>
-					
-					
-				</div>
+				</div>	
+				<div class="content2">
+					<img src="${images}aa.jpg">
+				</div>			
 			</div>
 		</div>
 	</body>

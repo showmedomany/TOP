@@ -20,8 +20,8 @@
 </div>
 <div class="bottom">
 	<c:if test="${noticeBoardData.id == memId}">	
-		<input type="button" value="수정" onclick="location = 'noticeBoardModifyForm.do?num=${num}&pageNum=${pageNum}'">
-		<input type="button" value="삭제" onclick="isDeleteData(${num}, ${pageNum})">	
+		<input class="button" type="button" value="수정" onclick="location = 'noticeBoardModifyForm.do?num=${num}&pageNum=${pageNum}'">
+		<input class="button" type="button" value="삭제" onclick="isDeleteData(${num}, ${pageNum})">	
 	</c:if>
 </div>
 
