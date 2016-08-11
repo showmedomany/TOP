@@ -3,10 +3,17 @@
  */
 var request = null;
 
+$(
+		function(){
+			setInterval("admin_getchat()", 1000);			
+		} 
+);
+
 function adminChatFormFocus(){
 	window.focus();
 	admin_getchat();
 	adminchatForm.inputarea.focus();
+	
 }
 
 function sndtext(){
@@ -15,8 +22,7 @@ function sndtext(){
 }
 
 function exitchat(){
-	var params = "ip="+adminchatForm.ip.value;
-	
+	var params = "ip="+adminchatForm.ip.value;	
 	request = new Request(resultexit, "exitChat.do", "POST", params);
 	request.sendRequest();
 }
@@ -29,23 +35,21 @@ function resultexit(){
 	}	
 }
 
-$(
-		function(){
-			setInterval("admin_getchat()", 1000);			
-		} 
-);
+
 
 
 function admin_getchat(){
 	var params = "ip="+adminchatForm.ip.value;	
+	
 	request = new Request(getresult, "admin_getchat.do", "POST", params);
 	request.sendRequest();
 }
 
 function getresult(){	//뿌릴 채팅내역을 담고있는 vt_chatPro.jsp를 vt_memberchat의 div에 넣는다.
-	var chatarea = document.getElementById("chatarea");	
+	var chatarea = document.getElementById("chatarea");
+	
 	if(request.httpRequest.readyState == 4){
-		if(request.httpRequest.status == 200){
+		if(request.httpRequest.status == 200){			
 			chatarea.innerHTML = request.httpRequest.responseText;			
 		}
 	}	

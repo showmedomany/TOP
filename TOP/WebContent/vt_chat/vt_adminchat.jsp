@@ -12,7 +12,8 @@
 		<form name = "adminchatForm" onsubmit = "return sndtext()">
 			<input type = "hidden" name = "ip" value = "${ip}">
 			<input type = "hidden" name = "id" value = "${id}">
-			<div id = "chatarea">${ip}//${id}</div>
+			
+			<div id = "chatarea"></div>
 			<input type = "text" name = "inputarea">
 			<input type = "button" value = "전송" onclick = "adminsndmsg()">
 		</form>

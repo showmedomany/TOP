@@ -26,7 +26,7 @@
 	
 	<select id="getRegisterData" parameterType="String" resultType="myPage.RegisterDataBean">
 		select START_DATE, END_DATE, EXP_DATE, GX_CHECK, PT_CHECK, 
-		PT_COUNT, TRAINER_ID from vt_register where id = #{id}
+		PT_COUNT from vt_register where id = #{id}
 	</select>
 	
 	<select id="getInbodyData" parameterType="String" resultType="myPage.InbodyDataBean">

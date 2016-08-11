@@ -12,13 +12,13 @@ function chatFormFocus(){
 	receivechat();
 	chatForm.content.focus();
 }
-
+/*
 $(
 		function(){
 			setInterval("receivechat()", 1000);
 		}
 );
-
+*/
 function sendtext(){
 	sendmsg();
 	chatForm.content.value = "";
@@ -28,6 +28,7 @@ function sendtext(){
 
 function sendmsg(){	
 	if(chatForm.content.value){
+		setInterval("receivechat()", 1000);
 		var params = "ip="+chatForm.ip.value
 				+"&id="+chatForm.id.value
 				+"&content="+encodeURI(chatForm.content.value);

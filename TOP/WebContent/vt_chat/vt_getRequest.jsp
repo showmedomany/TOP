@@ -4,13 +4,18 @@
 
 
 <script type = "text/javascript">
-		//<!--		
-		<c:forEach var="rdto" items="${rlist}">	
+		//<!--
+		var i = parseInt(admin.chatcount.value);
+		<c:forEach var="rdto" items="${rlist}">
+		 	i = i+20;
 			var url = "responseChat.do?ip="+'${rdto.ip}'+"&id="+'${rdto.id}';
-			open(url, "_blank", 
-					'scrollbars=no,resizable=no, status=yes, width=600, height=500,left = 0, top = 0')	
-					
+			open(url, "${rdto.ip}", 
+					'scrollbars=no,resizable=no, status=yes, width=600, height=500,left='+i+', top='+i);	
 			
+			if(i>= 500){
+				i=0;
+			}
+			admin.chatcount.value = i;
 		</c:forEach>
 		//-->
 </script>

@@ -53,11 +53,7 @@
 							<th>PT state</th>
 							<td>이용안함</td>
 						</tr>
-					</c:if>
-					<tr>
-						<th>트레이너</th>
-						<td>${registerData.trainer_id }</td>
-					</tr>				
+					</c:if>							
 				</table>
 			</c:if>
 			<c:if test="${registerData==null }">

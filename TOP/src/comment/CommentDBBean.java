@@ -23,4 +23,9 @@ public class CommentDBBean implements CommentDao {
 		return SqlMapClient.getSession().selectOne("Comment.getCommentNum", num);
 	}
 
+	@Override
+	public int deletComment(int comment_id) {
+		return SqlMapClient.getSession().delete("Comment.deleteComment", comment_id);
+	}
+
 }

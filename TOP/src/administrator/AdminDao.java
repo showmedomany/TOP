@@ -13,7 +13,7 @@ public interface AdminDao {
 	public RegisterDataBean insertFitnessUserSearchID(String id);
 	
 	public int getFitnessStartYear();	
-	public List<String> getTrainerIdList();
+	//public List<String> getTrainerIdList();
 	public int updateFitnessInfo(RegisterDataBean registerData);
 	public int insertFitnessInfo(RegisterDataBean registerData);
 	

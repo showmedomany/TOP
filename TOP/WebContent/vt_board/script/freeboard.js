@@ -124,15 +124,8 @@ function commentfocus(){
 
 
 
-function deletecomment(commentnum){
-	/*
-	var params = "comment_="+contentNum+"&id="
-		+memId+"&content="+freeBoardForm.commentinput.value;	
-	request = new Request(commentUpdate, "vt_writeComment.do", "POST", params);
+function deletecomment(commentid,num){	
+	var params = "comment_id="+commentid+"&num="+num;	
+	request = new Request(commentUpdate, "vt_deleteComment.do", "POST", params);
 	request.sendRequest();
-	*/
 }
-function modifycomment(commentnum, content){
-	alert(commentnum+"=="+content);//수정 ajax처리
-}
-

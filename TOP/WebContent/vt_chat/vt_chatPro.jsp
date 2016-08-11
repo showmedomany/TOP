@@ -7,8 +7,9 @@
 		<b class = "me">${cdto.content} : ${"나"}</b><br>
 	</c:if>
 	<c:if test="${cdto.id!=id}">
-		${cdto.id} : ${cdto.content}<br>
-	
+		${cdto.id} : ${cdto.content}<br>	
 	</c:if>
 </c:forEach>
+
+
 

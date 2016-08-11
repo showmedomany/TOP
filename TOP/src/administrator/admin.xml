@@ -38,19 +38,18 @@
 	<select id="getUserRegister" parameterType="String" resultType="myPage.RegisterDataBean">
 		select * from vt_register where id = #{userId}
 	</select>
-	
+	<!-- 
 	<select id="getTrainerIdList"  resultType="String">
 		select trainer_id from vt_trainer
 	</select>
-	
+	 -->
 	<update id="updateFitnessInfo" parameterType="myPage.RegisterDataBean">
 		update vt_register set exp_date=#{exp_date}, start_date=#{start_date}, end_date=#{end_date}, 
-		GX_check=#{gx_check}, PT_check=#{pt_check}, PT_count=#{pt_count, jdbcType=VARCHAR}, 
-		trainer_id = #{trainer_id} where id = #{id}	
+		GX_check=#{gx_check}, PT_check=#{pt_check}, PT_count=#{pt_count, jdbcType=VARCHAR} where id = #{id}	
 	</update>
 	<insert id="insertFitnessInfo" parameterType="myPage.RegisterDataBean">
 		insert into vt_register values(register_seq.nextval, #{id}, #{start_date}, #{exp_date}, 
-		#{end_date}, #{gx_check}, #{pt_check}, #{pt_count, jdbcType=VARCHAR}, #{trainer_id})		
+		#{end_date}, #{gx_check}, #{pt_check}, #{pt_count, jdbcType=VARCHAR})		
 	</insert>
 	
 	<select id="getMemberDataCount" resultType="int">

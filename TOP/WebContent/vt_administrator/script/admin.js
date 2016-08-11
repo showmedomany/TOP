@@ -241,6 +241,7 @@ function monthDataCheckResult_start(){
 	}	
 }
 /* 종료일 */
+/*
 //윤년 체크
 function leapYearCheck_end(){	
 	var selectEndYear = insertForm.selectEndYear.value;	
@@ -254,6 +255,8 @@ function leapYearCheck_end(){
 			"end_month="+month+"&end_leapYear="+end_leapYear);
 	request.sendRequest();	
 }
+*/
+/*
 //달 확인후 일 계산 
 function monthDataCheck_end(){
 	var end_leapYear = insertForm.end_leapYear.value;
@@ -262,6 +265,8 @@ function monthDataCheck_end(){
 			"end_month="+month+"&end_leapYear="+end_leapYear);
 	request.sendRequest();	
 }
+*/
+/*
 function monthDataCheckResult_end(){	
 	var selectEndDay = document.getElementById("selectEndDay");
 	if(request.httpRequest.readyState == 4){
@@ -270,22 +275,23 @@ function monthDataCheckResult_end(){
 		}
 	}	
 }
-
+*/
 /* 피트니스 정보 디비저장하기 */
 function fitnessInsertProcess(){
 	var bool = true;
 	//id
 	var id = insertForm.fitnessId.value;
 	//피트니스 기간
-	var exp_date = insertForm.exp_date.value;
+	var exp_date = insertForm.termselect.value;
 	//시작일 년월일
 	var start = insertForm.selectStartYear.value+"-"
 				+insertForm.selectStartMonth.value+"-"
 				+insertForm.selectStartDay.value;
-	//종료일 년월일
-	var end = insertForm.selectEndYear.value+"-"
-				+insertForm.selectEndMonth.value+"-"
-				+insertForm.selectEndDay.value;
+	
+	//종료일 년월일 = 회원권 기간을 계산하여 나온 값을 end에 저장
+	var end = insertForm.expiYear.value+"-"
+				+insertForm.expiMonth.value+"-"
+				+insertForm.expiDay.value;
 	// GT여부
 	var isGX = insertForm.GX.value;
 	// PT여부
@@ -293,42 +299,24 @@ function fitnessInsertProcess(){
 	// PT Count
 	var PTCount = insertForm.PTCount.value;
 	// 트레이너
-	var trainer = insertForm.trainerId.value;
+	//var trainer = insertForm.trainerId.value;
 	
 	
 	/*유효성 검사 - 날짜 */
 	var fitnessSaveDiv = document.getElementById("fitnessSaveDiv");
 
-	if(!exp_date){		
-		fitnessSaveDiv.innerHTML="기간을 입력해 주세요.";
-		return;
-	}
 	
-	if(parseInt(insertForm.selectStartYear.value) > parseInt(insertForm.selectEndYear.value)){
-		fitnessSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
-		return;
-	}else if(parseInt(insertForm.selectStartYear.value) == parseInt(insertForm.selectEndYear.value)){
-		if(parseInt(insertForm.selectStartMonth.value) > parseInt(insertForm.selectEndMonth.value)){
-			fitnessSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
-			return;
-		}else if(parseInt(insertForm.selectStartMonth.value) == parseInt(insertForm.selectEndMonth.value)){
-			if(parseInt(insertForm.selectStartDay.value) > parseInt(insertForm.selectEndDay.value)){
-				fitnessSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
-				return;
-			}
-		}
-	}
-	
+	/*
 	if(trainer == 0){		
 		fitnessSaveDiv.innerHTML="트레이너를 선택하여 주세요.";
 		return; 
 	}
-	
+	*/
 	
 	fitnessSaveDiv.innerHTML="저장중..";
 	request = new Request(fitnessInsertProcessResult, "fitnessInsertProcess.do", "POST", 
 			"id="+id+"&exp_date="+exp_date+"&start="+start+"&end="+end+"&isGX="+isGX+"&isPT="
-			+isPT+"&PTCount="+PTCount+"&trainer="+trainer);
+			+isPT+"&PTCount="+PTCount);
 	request.sendRequest();
 	
 	
@@ -393,33 +381,45 @@ function inbodyInsertProcessResult(){
 	}
 }
 
-function test(){
-	
+function termcalc(){
+	/*등록일의 날짜를 가져와 기간의 개월수로 계산*/
 	var year = insertForm.selectStartYear.value;
-	var month = insertForm.selectStartMonth.value;
+	var month = parseInt(insertForm.selectStartMonth.value)-1;
 	var day = insertForm.selectStartDay.value;
-	var start = new Date(year, month, day);
 	
-	year = insertForm.selectEndYear.value;
-	month = insertForm.selectEndMonth.value;
-	day = insertForm.selectEndDay.value;
-	var end = new Date(year, month, day);
+	var term = insertForm.termselect.value;
+	
+	//선택한 개월을 더해 계산해야함
+	var startdate =  new Date(year,month,day);
+	startdate.setDate(startdate.getDate()+(parseInt(term)*30));
+	
+	insertForm.expiYear.value = startdate.getFullYear();
+	insertForm.expiMonth.value = startdate.getMonth()+1;
+	insertForm.expiDay.value = startdate.getDate();
 	
 	
-	var test = new Date(end - start)
-	선택 년월일 계산해서 뿌려주기
-	alert(test.getMonth()+"월"+(test.getDate()-1)+"일");
+	request = new Request(expichange, "expirechange.do", "POST", 
+			"year="+insertForm.expiYear.value
+			+"&month="+insertForm.expiMonth.value
+			+"&day="+insertForm.expiDay.value);
 	
-	/*
-	var year = insertForm.selectEndYear.value - insertForm.selectStartYear.value;
-	var month = insertForm.selectEndMonth.value - insertForm.selectStartMonth.value;
-	var day = insertForm.selectEndDay.value - insertForm.selectStartDay.value;
-	*/
+	request.sendRequest();
 }
 
+function expichange(){
+	if(request.httpRequest.readyState == 4){
+		if(request.httpRequest.status == 200){
+			document.getElementById("expichange").innerHTML = request.httpRequest.responseText;					
+		}
+	}
+}
 
+//지울까 고민중
 function numOnly(){
 	if(event.keyCode>=48 && event.keyCode>=58){
 		event.returnValue=false;
 	}
 }
+
+
+

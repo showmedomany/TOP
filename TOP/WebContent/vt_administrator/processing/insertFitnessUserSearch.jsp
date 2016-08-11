@@ -9,7 +9,6 @@
 
 <form name="insertForm">
 	<input type="hidden" name="start_leapYear" value="${start_leapYear}">
-	<input type="hidden" name="end_leapYear" value="${end_leapYear}">
 	<input type="hidden" name="fitnessId" value="${id}">
 	
 	<!-- 결과가 없는경우 결과없다고 띄우기 -->
@@ -18,21 +17,15 @@
 	</c:if>
 	
 	아이디 : ${id}
+	<!-- 피트니스 등록일을 셀렉터로 먼저 만들고
+		밑이나 옆으로 개월수 선택하고
+		선택하면 만료일은 자동 계산  -->
 	<table border = "1">
-		<tr>
-			<th>피트니스 기간</th>	
-			<td>
-				<input type = "text" name = "year">년
-				<input type = "text" name = "month">월
-				<input type = "text" name = "day">일
-				<input type="text" name="exp_date" 
-					value="${registerData.exp_date}" onkeydown="numOnly()">개월
-			</td>			
-		</tr>
 		<tr>
 			<th>피트니스 등록일</th>	
 			<td>
-				<select size="1" name="selectStartYear" onchange="leapYearCheck_start()">					
+				<select size="1" name="selectStartYear" onchange="leapYearCheck_start()">
+			
 					<c:forEach var="i" begin="${startYear}" end="${startYear+20}" step="1">
 						<c:if test="${startYear==i}">									
 								<option value="${i}" selected="selected">${i}년</option>									
@@ -42,8 +35,9 @@
 						</c:if>								
 					</c:forEach>
 				</select>
+								
 				<select size="1" name="selectStartMonth" onchange="monthDataCheck_start()">
-					<c:forEach var="i" begin="${startMonth}" end="12" step="1">
+					<c:forEach var="i" begin="1" end="12" step="1">
 						<c:if test="${startMonth==i}">																		
 							<option value="${i}" selected="selected">${i}월</option>
 						</c:if>
@@ -52,7 +46,7 @@
 						</c:if>
 					</c:forEach>
 				</select>
-				
+								
 				<!-- 윤년 윤달이면 셀렉터가 바뀌어야 한다. -->
 				
 				<div id = "selectStartDay" style="float: right; margin-top: 1px">
@@ -75,7 +69,7 @@
 								</c:if>
 							</c:if>													
 						</c:forEach>								
-						<c:forEach var="i" begin="${startDay}" end="${day}" step="1">
+						<c:forEach var="i" begin="1" end="${day}" step="1">
 							<c:if test="${startDay==i}">		
 								<option value="${i}" selected="selected">${i}일</option>
 							</c:if>
@@ -88,8 +82,34 @@
 			</td>
 		</tr>
 		<tr>
+			<th>피트니스 회원권 기간</th>	
+			<td>
+				<select size="1" name="termselect" onchange="termcalc()">					
+					<c:forEach var="i" begin="1" end="12" step="1">
+						<c:if test="${registerData.exp_date==i}">									
+								<option value="${i}" selected="selected">${i}개월</option>									
+						</c:if>
+						<c:if test="${registerData.exp_date!=i}">	
+								<option value="${i}">${i}개월</option>									
+						</c:if>								
+					</c:forEach>
+				</select>
+				<%-- 
+				<input type="text" name="exp_date" 
+					value="${registerData.exp_date}" onkeydown="numOnly()">개월
+				 --%>				
+			</td>			
+		</tr>
+		
+		<tr>
 			<th>피트니스 만료일</th>
-			<td>		
+			<td>
+				<input type = "hidden" name = "expiYear" value = "${endYear}">
+				<input type = "hidden" name = "expiMonth" value = "${endMonth}">
+				<input type = "hidden" name = "expiDay" value = "${endDay}">
+				<div id = "expichange">${endYear}년 ${endMonth}월 ${endDay}일</div>
+				
+				<%-- 		
 				<select size="1" name="selectEndYear" onchange="leapYearCheck_end()">					
 					<c:forEach var="i" begin="${endYear}" end="${endYear+20}" step="1">
 						<c:if test="${endYear==i}">									
@@ -101,10 +121,9 @@
 					</c:forEach>
 				</select>
 				<select size="1" name="selectEndMonth" onchange="monthDataCheck_end()">
-					<c:forEach var="i" begin="${endMonth}" end="12" step="1">
+					<c:forEach var="i" begin="1" end="12" step="1">
 						<c:if test="${endMonth==i}">																		
-							<option value="${i}" selected="selected">${i}월</option>
-							
+							<option value="${i}" selected="selected">${i}월</option>							
 						</c:if>
 						<c:if test="${endMonth!=i}">															
 							<option value="${i}">${i}월</option>								
@@ -141,7 +160,8 @@
 							</c:if>
 						</c:forEach>
 					</select>
-				</div>				
+				</div>
+				 --%>				
 			</td>
 		</tr>
 		<tr>
@@ -166,15 +186,20 @@
 					<input type="radio" name="PT" value="false">false
 				</c:if>
 				<c:if test="${(registerData.pt_check=='false')||(registerData.gx_check eq null)}">
+					<!-- <input type="radio" name="PT" value="1" onclick = "pt_onoff(this.value,'ptcheck')">true -->
 					<input type="radio" name="PT" value="true">true
 					<input type="radio" name="PT" value="false" checked="checked">false
 				</c:if>					
 			</td>
-		</tr>		
+		</tr>
 		<tr>
 			<th>PT 횟수</th>
-			<td><input type="text" name="PTCount" value="${registerData.pt_count}" onkeydown="numOnly()"></td>
+			<td>
+				<input type="text" name="PTCount" 
+						value="${registerData.pt_count}" onkeydown="numOnly()">
+			</td>			
 		</tr>
+		<%-- 
 		<tr>
 			<th>담당 트레이너</th>			
 			<td>
@@ -191,13 +216,15 @@
 				</select>
 			</td>
 		</tr>
+		 --%>
 		<tr>
-			<td colspan="2">
+			<th colspan="2">
 				<input type="button" value="수정 및 저장" onclick="fitnessInsertProcess()">
 				<div id="fitnessSaveDiv"></div>
 				
-			</td>
+			</th>
 		</tr>
+		
 	</table>	
 </form>
 

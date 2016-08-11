@@ -381,7 +381,7 @@ public class BoardController {
 	}//vt_freeContent
 	
 	
-	@RequestMapping("/vt_writeComment")//메뉴탭에서 선택한경우
+	@RequestMapping("/vt_writeComment")
 	public ModelAndView vt_writeComment(HttpServletRequest request, 
 			HttpServletResponse response)throws Exception{
 		
@@ -408,5 +408,20 @@ public class BoardController {
 		request.setAttribute("clist", clist);
 		return new ModelAndView("/vt_board/vt_comment");
 	}//vt_freeContent
-	
+	@RequestMapping("/vt_deleteComment")
+	public ModelAndView vt_deleteComment(HttpServletRequest request, 
+			HttpServletResponse response)throws Exception{
+		int num = Integer.parseInt(request.getParameter("num"));
+		int comment_id = Integer.parseInt(request.getParameter("comment_id"));
+		
+		commentDao.deletComment(comment_id);
+		
+		List<CommentDataBean> clist = commentDao.getComments(num);
+		int commentcount = commentDao.getCommentNum(num);
+		request.setAttribute("commentcount", commentcount);
+		
+		
+		request.setAttribute("clist", clist);
+		return new ModelAndView("/vt_board/vt_comment");
+	}//vt_freeContent
 }	

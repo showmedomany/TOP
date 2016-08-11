@@ -21,4 +21,9 @@
 	<select id="getCommentNum" parameterType="int" resultType="int">
 		select count(*) from vt_comment where num = #{num}
 	</select>
+	
+	
+	<delete id="deleteComment" parameterType="int">
+		delete from vt_comment where comment_id = #{comment_id}
+	</delete>
 </mapper>

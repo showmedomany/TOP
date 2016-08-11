@@ -5,8 +5,11 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -175,38 +178,42 @@ public class AdministratorController {
 		이 핸들러로 들어오는 경우는 2가지 register데이터가 있는지 없는지
 		없는 경우는 년도를 현재 년도로 맞추고 현재 년도로 윤달 계산
 		있는 경우는 데이터에 있는 년도로 맞추고 데이터의 년도로 윤달 계산
-		*/
-		
-		Calendar calendar = Calendar.getInstance();			//없는경우 현재 년도 계산위한 calendar함수
+		*/		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy");		//있는경우 데이터의 년도포멧을 yyyy로 바꿈
+		
 		String id = request.getParameter("id");			//검색할 아이디
 		
 		int startYear = 0;		//시작 년도변수
-		String startMonth = "";		//시작 월 변수
-		String startDay = "";		//시작 일 변수
+		String startMonth = null;		//시작 월 변수
+		String startDay = null;		//시작 일 변수
 
 		int endYear = 0;		//종료 년도변수
-		String endMonth = "";		//종료 월 변수
-		String endDay = "";			//종료 일 변수
+		String endMonth = null;		//종료 월 변수
+		String endDay = null;			//종료 일 변수
 		
 		String start_leapYear = "false";			//시작년도의 윤달이 있는지 없는지
-		String end_leapYear = "false";				//끝년도의 윤달이 있는지 없는지
-		
 		
 		int idCheckResult = adminDao.insertFitnessUserSearchIDCheck(id);	//register에 있나 검색
 				
 		if(idCheckResult ==0){
 			//센터등록 안한 회원
 			//피트니스 시작 날짜을 오늘시간으로 맞춤
+			//Calendar calendar = Calendar.getInstance();			//없는경우 현재 년도 계산위한 calendar함수
+			Calendar calendar = new GregorianCalendar(Locale.KOREA);
+			
 			startYear = calendar.get(calendar.YEAR);
 			startMonth = String.valueOf(calendar.get(calendar.MONTH)+1);
 			startDay = String.valueOf(calendar.get(calendar.DAY_OF_MONTH));
 			
-			//끝날짜도 오늘로 맞춰둠
-			endYear = startYear;
-			endMonth = startMonth;
-			endDay = startDay;
+			//끝날짜는 비워둠
+			//첫 등록은 한달이 디폴트값
 			
+			calendar.setTime(new Date());//현재시간을 세팅하고
+			calendar.add(Calendar.DAY_OF_YEAR, 30);//한달을 더하고 한달의 기준은 30일			
+			
+			endYear = calendar.get(calendar.YEAR);
+			endMonth = String.valueOf(calendar.get(calendar.MONTH)+1);
+			endDay = String.valueOf(calendar.get(calendar.DAY_OF_MONTH));
 		}
 		else{
 			//센터등록 했던 회원
@@ -228,14 +235,11 @@ public class AdministratorController {
 		//윤달 검사
 		if((0==(startYear%4) && 0 !=(startYear%100)) || 0 == startYear%400){
 			start_leapYear = "true";
-		}			
-		if((0==(endYear%4) && 0 !=(endYear%100)) || 0 == endYear%400){
-			end_leapYear = "true";
 		}
 		
 		
 		//트레이너의 리스트를 받아온다 
-		List<String> trainerIdList = adminDao.getTrainerIdList();
+		//List<String> trainerIdList = adminDao.getTrainerIdList();
 		
 		
 		request.setAttribute("id", id);		//아이디를 넘겨준다
@@ -249,12 +253,9 @@ public class AdministratorController {
 		request.setAttribute("endMonth", endMonth);
 		request.setAttribute("endDay", endDay);
 		
-		request.setAttribute("start_leapYear", start_leapYear);
-		request.setAttribute("end_leapYear", end_leapYear);
+		request.setAttribute("start_leapYear", start_leapYear);		
 		
-		
-		
-		request.setAttribute("trainerIdList", trainerIdList);
+		//request.setAttribute("trainerIdList", trainerIdList);
 
 		return new ModelAndView("/vt_administrator/processing/insertFitnessUserSearch");		
 	}
@@ -268,7 +269,7 @@ public class AdministratorController {
 		request.setAttribute("start_leapYear", start_leapYear);
 		return new ModelAndView("/vt_administrator/processing/selectDayText_start");
 	}
-	
+	/*
 	@RequestMapping("/selectDayText_end")
 	public ModelAndView selectDayText_end
 	(HttpServletRequest request,HttpServletResponse response){			
@@ -278,6 +279,20 @@ public class AdministratorController {
 		request.setAttribute("endMonth", endMonth);
 		request.setAttribute("end_leapYear", end_leapYear);
 		return new ModelAndView("/vt_administrator/processing/selectDayText_end");
+	}
+	*/
+	
+	@RequestMapping("/expirechange")
+	public ModelAndView expirechange
+	(HttpServletRequest request,HttpServletResponse response){			
+		String year = request.getParameter("year");		
+		String month = request.getParameter("month");
+		String day = request.getParameter("day");
+		
+		request.setAttribute("year", year);
+		request.setAttribute("month", month);
+		request.setAttribute("day", day);
+		return new ModelAndView("/vt_administrator/processing/expirechange");
 	}
 	@RequestMapping("/insertInbodyUserSearch")	
 	public ModelAndView insertInbodyUserSearch
@@ -357,7 +372,7 @@ public class AdministratorController {
 		String isGX = request.getParameter("isGX");
 		String isPT = request.getParameter("isPT");
 		int PTCount = Integer.parseInt(request.getParameter("PTCount"));
-		String trainer = request.getParameter("trainer");
+		//String trainer = request.getParameter("trainer");
 		
 		RegisterDataBean registerData = new RegisterDataBean();
 		registerData.setId(id);
@@ -367,11 +382,11 @@ public class AdministratorController {
 		registerData.setGx_check(isGX);
 		registerData.setPt_check(isPT);
 		registerData.setPt_count(PTCount);
-		registerData.setTrainer_id(trainer);
+		//registerData.setTrainer_id(trainer);
 		
 		int idCheckResult = adminDao.insertFitnessUserSearchIDCheck(id);
 		request.setAttribute("idCheckResult", idCheckResult);
-		System.out.println(idCheckResult);
+		//System.out.println(idCheckResult);
 		
 		if(idCheckResult==0){
 			int result = adminDao.insertFitnessInfo(registerData);
@@ -381,7 +396,8 @@ public class AdministratorController {
 			request.setAttribute("result", result);	
 		}
 		return new ModelAndView("/vt_administrator/processing/DBInsertResultText");
-	}	
+	}
+	
 	@RequestMapping("/inbodyInsertProcess")
 	public ModelAndView inbodyInsertProcess
 	(HttpServletRequest request,HttpServletResponse response){		
@@ -413,7 +429,7 @@ public class AdministratorController {
 		
 		int inbodyCheckResult = adminDao.getInbodyCheck(id);
 		request.setAttribute("inbodyCheckResult", inbodyCheckResult);
-		System.out.println(inbodyCheckResult);
+		//System.out.println(inbodyCheckResult);
 		
 		if(inbodyCheckResult==0){
 			int result = adminDao.insertInbodyInfo(inbodyData);

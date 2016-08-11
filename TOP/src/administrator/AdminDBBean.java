@@ -23,10 +23,12 @@ public class AdminDBBean implements AdminDao {
 	public int getFitnessStartYear() {		
 		return SqlMapClient.getSession().selectOne("Admin.getFitnessStartYear");
 	}
+	/*
 	@Override
 	public List<String> getTrainerIdList() {		
 		return SqlMapClient.getSession().selectList("Admin.getTrainerIdList");
 	}
+	*/
 	@Override
 	public int updateFitnessInfo(RegisterDataBean registerData) {		
 		return SqlMapClient.getSession().update("Admin.updateFitnessInfo", registerData);

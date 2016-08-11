@@ -11,7 +11,9 @@ public class RegisterDataBean {
 	private String gx_check;
 	private String pt_check;
 	private int pt_count;
-	private String trainer_id;
+	
+	
+	
 	public int getRegister_id() {
 		return register_id;
 	}
@@ -60,12 +62,7 @@ public class RegisterDataBean {
 	public void setPt_count(int pt_count) {
 		this.pt_count = pt_count;
 	}
-	public String getTrainer_id() {
-		return trainer_id;
-	}
-	public void setTrainer_id(String trainer_id) {
-		this.trainer_id = trainer_id;
-	}
+	
 	
 	
 }

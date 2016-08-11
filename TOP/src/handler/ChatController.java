@@ -45,8 +45,7 @@ public class ChatController {
 		String ip = request.getParameter("ip");
 		String id = request.getParameter("id");
 		
-		int checkip = chatDao.checkIp(ip);
-		
+		int checkip = chatDao.checkIp(ip);				
 		if(checkip != 0){
 			List<ChatDataBean> clist = chatDao.getChat(ip);
 			request.setAttribute("clist", clist);	//채팅 내역
@@ -158,7 +157,8 @@ public class ChatController {
 		
 		chatDao.exitChat(ip);
 		//int result = chatDao.testchat(ip);		
-				
+		
+		
 		return new ModelAndView("/vt_chat/vt_adminchat");
 	}
 	
@@ -175,7 +175,6 @@ public class ChatController {
 		
 		request.setAttribute("clist", clist);	//채팅 내역	
 		request.setAttribute("id", id);
-		
 		return new ModelAndView("/vt_chat/vt_chatPro");
 	}
 	
