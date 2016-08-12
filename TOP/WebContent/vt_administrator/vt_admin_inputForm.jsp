@@ -3,14 +3,13 @@
 <%@ include file = "setting.jsp" %>
 <!-- 한글 setting에서 처리할것 -->
 
-<html>
-	<head>
+
 		<link href = "${css}vt_admin_inputForm.css" rel = "stylesheet" type = "text/css">
 		<script src = "${script}vt_admin_inputForm.js"></script>
 		<script src = "${request}"></script>		
-	</head>
+
 	
-	<body onload = "inputformfocus()">
+	
 		<form method = "post" name = "inputform">
 			<input type="hidden" name = "idConfirm" value = "0">
 			<input type="hidden" name = "nickConfirm" value = "0">
@@ -138,5 +137,3 @@
 					</div>
 				</div>
 		</form>
-	</body>
-</html>

@@ -4,8 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import member.MemberDataBean;
+import myPage.ExerciseDataBean;
 import myPage.InbodyDataBean;
+import myPage.MemberRoutineDataBean;
+import myPage.PartDataBean;
 import myPage.RegisterDataBean;
+import myPage.RoutineInfoDataBean;
 import mybatis.SqlMapClient;
 
 public class AdminDBBean implements AdminDao {
@@ -95,13 +99,44 @@ public class AdminDBBean implements AdminDao {
 		return SqlMapClient.getSession().insert("Admin.insertInbodyInfo", inbodyData);
 	}
 
+	@Override
+	public int insertScheduleUserSearchIDCheck(String id) {
+		return SqlMapClient.getSession().selectOne("Admin.insertScheduleUserSearchIDCheck", id);
+	}
 	
+	@Override
+	public RoutineInfoDataBean insertScheduleUserSearchID(String id) {
+		return SqlMapClient.getSession().selectOne("Admin.insertScheduleUserSearchID", id);
+	}
 	
+	@Override
+	public int updateScheduleInfo(RoutineInfoDataBean scheduleData) {		
+		return SqlMapClient.getSession().update("Admin.updateScheduleInfo", scheduleData);
+	}
 	
+	@Override
+	public int insertScheduleInfo(RoutineInfoDataBean scheduleData) {		
+		return SqlMapClient.getSession().update("Admin.insertScheduleInfo", scheduleData);
+	}
 	
+	public List<PartDataBean> selectExPartList(Map<String, Object> param) {
+		return SqlMapClient.getSession().selectList("Admin.selectExPartList", param);
+	}
+		
+	public List<MemberRoutineDataBean> selectMemberRoutineList(Map<String, Object> param) {
+		return SqlMapClient.getSession().selectList("Admin.selectMemberRoutineList", param);
+	}
 	
+	public int deleteMemberRoutine(Map<String, Object> param) {
+		return SqlMapClient.getSession().insert("Admin.deleteMemberRoutine", param);
+	}
 	
+	public int insertMemberRoutine(Map<String, Object> param) {
+		return SqlMapClient.getSession().insert("Admin.insertMemberRoutine", param);
+	}
 	
-	
+	public List<ExerciseDataBean> selectExerciseList(Map<String, Object> param) {
+		return SqlMapClient.getSession().selectList("Admin.selectExerciseList", param);
+	}
 	
 }

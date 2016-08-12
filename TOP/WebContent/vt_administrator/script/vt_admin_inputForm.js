@@ -1,5 +1,7 @@
+
 function inputformfocus() {
-	alert(inputform.idConfirm.value);
+	inputform.id.focus();
+	
 }
 
 

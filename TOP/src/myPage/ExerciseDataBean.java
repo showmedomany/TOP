@@ -9,6 +9,8 @@ public class ExerciseDataBean {
 	private String method2;
 	private String method3;
 	private String method4;
+	
+	
 	public int getExercise_id() {
 		return exercise_id;
 	}

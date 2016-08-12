@@ -6,6 +6,7 @@ public class MemberRoutineDataBean {
 	private String day;
 	private int exercise_id;
 	private int count_check;
+	private int ex_part_id;
 	public int getMr_id() {
 		return mr_id;
 	}
@@ -35,6 +36,12 @@ public class MemberRoutineDataBean {
 	}
 	public void setCount_check(int count_check) {
 		this.count_check = count_check;
+	}
+	public int getEx_part_id() {
+		return ex_part_id;
+	}
+	public void setEx_part_id(int ex_part_id) {
+		this.ex_part_id = ex_part_id;
 	}
 	
 	

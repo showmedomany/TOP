@@ -420,7 +420,9 @@
 			var selectedExPartIdText = $(exPartIdItem).find(":selected").text();
 			
 			if(selectedExPartIdVal != "") {
-				return;
+				if(selectedExPartIdVal != item.ex_part_id) {
+					return;
+				}
 			}
 			
 			console.log("saveExercise - selectedExPartIdClass : " + selectedExPartIdClass);

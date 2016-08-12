@@ -190,7 +190,8 @@ function insertUserInfo(num, id){
 		request = new Request(insertInbodyUserSearchResult, "insertInbodyUserSearch.do", "POST", "id="+id);
 		request.sendRequest();		
 	}else if(insertMeans=="schedule"){		
-		
+		request = new Request(insertScheduleUserSearchResult, "insertScheduleUserSearch.do", "POST", "id="+id);
+		request.sendRequest();
 	}
 }
 function insertFitnessUserSearchResult(){	
@@ -207,7 +208,14 @@ function insertInbodyUserSearchResult(){
 		}
 	}
 }
-
+function insertScheduleUserSearchResult(){	
+	if(request.httpRequest.readyState == 4){
+		if(request.httpRequest.status == 200){
+			// document.getElementById("insertUserDiv").innerHTML = request.httpRequest.responseText;
+			$("#insertUserDiv").html(request.httpRequest.responseText);
+		}
+	}
+}
 /* 시작일 */
 //윤년 체크
 function leapYearCheck_start(){	
@@ -240,42 +248,7 @@ function monthDataCheckResult_start(){
 		}
 	}	
 }
-/* 종료일 */
-/*
-//윤년 체크
-function leapYearCheck_end(){	
-	var selectEndYear = insertForm.selectEndYear.value;	
-	var end_leapYear = false;
-	if((0==(selectEndYear%4) && 0 !=(selectEndYear%100)) || 0 == selectEndYear%400){
-		end_leapYear = true;
-	}
-	insertForm.end_leapYear.value=end_leapYear;
-	var month = insertForm.selectEndMonth.value;
-	request = new Request(monthDataCheckResult_end, "selectDayText_end.do", "POST", 
-			"end_month="+month+"&end_leapYear="+end_leapYear);
-	request.sendRequest();	
-}
-*/
-/*
-//달 확인후 일 계산 
-function monthDataCheck_end(){
-	var end_leapYear = insertForm.end_leapYear.value;
-	var month = insertForm.selectEndMonth.value;	
-	request = new Request(monthDataCheckResult_end, "selectDayText_end.do", "POST", 
-			"end_month="+month+"&end_leapYear="+end_leapYear);
-	request.sendRequest();	
-}
-*/
-/*
-function monthDataCheckResult_end(){	
-	var selectEndDay = document.getElementById("selectEndDay");
-	if(request.httpRequest.readyState == 4){
-		if(request.httpRequest.status == 200){			
-			selectEndDay.innerHTML = request.httpRequest.responseText;			
-		}
-	}	
-}
-*/
+
 /* 피트니스 정보 디비저장하기 */
 function fitnessInsertProcess(){
 	var bool = true;
@@ -419,6 +392,142 @@ function numOnly(){
 	if(event.keyCode>=48 && event.keyCode>=58){
 		event.returnValue=false;
 	}
+}
+
+/* 스케줄 정보 디비저장하기 */
+function scheduleInsertProcess(){
+	var bool = true;
+	//id
+	var id = insertForm.scheduleId.value;
+	//성별
+	var sex = insertForm.sex.value;
+	//시작일 년월일
+	var start = insertForm.selectStartYear.value+"-"
+				+insertForm.selectStartMonth.value+"-"
+				+insertForm.selectStartDay.value;
+	//종료일 년월일
+	var end = insertForm.selectEndYear.value+"-"
+				+insertForm.selectEndMonth.value+"-"
+				+insertForm.selectEndDay.value;
+	// 운동 종류
+	var routineType = insertForm.routineType.value;
+	
+	/*유효성 검사 - 날짜 */
+	var scheduleSaveDiv = document.getElementById("scheduleSaveDiv");
+
+	if(parseInt(insertForm.selectStartYear.value) > parseInt(insertForm.selectEndYear.value)){
+		scheduleSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
+		return;
+	}else if(parseInt(insertForm.selectStartYear.value) == parseInt(insertForm.selectEndYear.value)){
+		if(parseInt(insertForm.selectStartMonth.value) > parseInt(insertForm.selectEndMonth.value)){
+			scheduleSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
+			return;
+		}else if(parseInt(insertForm.selectStartMonth.value) == parseInt(insertForm.selectEndMonth.value)){
+			if(parseInt(insertForm.selectStartDay.value) > parseInt(insertForm.selectEndDay.value)){
+				scheduleSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
+				return;
+			}
+		}
+	}
+	
+	scheduleSaveDiv.innerHTML="저장중..";
+	request = new Request(scheduleInsertProcessResult, "scheduleInsertProcess.do", "POST", 
+			"id="+id+"&sex="+sex+"&start="+start+"&end="+end+"&routineType="+routineType);
+	request.sendRequest();
+	
+}
+function scheduleInsertProcessResult(){
+	if(request.httpRequest.readyState == 4){
+		if(request.httpRequest.status == 200){
+			document.getElementById("scheduleSaveDiv").innerHTML = request.httpRequest.responseText;
+			$("#memberRoutineArea").show();
+		}
+	}
+}
+
+
+function onPartChangeHandler(event, rowIndex, columnIndex) {
+	var selectedExPartIdVal = $(event.target).find(":selected").val();
+	var selectedExPartIdText = $(event.target).find(":selected").text();
+	
+//	console.log("onPartChangeHandler - selectedExPartIdVal : " + selectedExPartIdVal);
+//	console.log("onPartChangeHandler - selectedExPartIdText : " + selectedExPartIdText);
+//	console.log("onPartChangeHandler - rowIndex : " + rowIndex);
+//	console.log("onPartChangeHandler - columnIndex : " + columnIndex);
+	
+	$.ajax({
+		type: "POST",
+		url: "exerciseOption.do",
+		data: "ex_part_id=" + selectedExPartIdVal,
+		success: function(responseText) {
+//			console.log(responseText);
+			$(".exercise_method" + "." + rowIndex + "_" + columnIndex).empty();
+			$(".exercise_method" + "." + rowIndex + "_" + columnIndex).html(responseText);
+		}
+	});
+}
+
+function saveExercise() {
+	
+	var memberRoutineList = new Array();
+
+	$(".ex_part_id").each(function(exPartIdIndex, exPartIdItem) {
+		var selectedExPartIdClass = $(exPartIdItem).attr('class');
+		var selectedExPartIdDay = selectedExPartIdClass.substr(selectedExPartIdClass.length-3 , selectedExPartIdClass.length);
+		var selectedExPartIdVal = $(exPartIdItem).find(":selected").val();
+		var selectedExPartIdText = $(exPartIdItem).find(":selected").text();
+		
+		if(selectedExPartIdVal == "") {
+			return;
+		}
+		
+//		console.log("saveExercise - selectedExPartIdClass : " + selectedExPartIdClass);
+//		console.log("saveExercise - selectedExPartIdDay : " + selectedExPartIdDay);
+//		console.log("saveExercise - selectedExPartIdVal : " + selectedExPartIdVal);
+//		console.log("saveExercise - selectedExPartIdText : " + selectedExPartIdText);
+		
+		var exerciseMethodSelector = selectedExPartIdClass.replace("ex_part_id", "exercise_method").replace(/ /g, ".");
+		
+		$("." + exerciseMethodSelector).each(function(exerciseMethodIndex, exerciseMethodItem) {
+			var selectedExerciseMethodClass = $(exerciseMethodItem).attr('class');
+			var selectedExerciseMethodDay = selectedExerciseMethodClass.substr(selectedExerciseMethodClass.length-3 , selectedExerciseMethodClass.length);
+			var selectedExerciseMethodVal = $(exerciseMethodItem).find(":selected").val();
+			var selectedExerciseMethodText = $(exerciseMethodItem).find(":selected").text();
+			
+			if(selectedExerciseMethodVal == "") {
+				return;
+			}
+			
+//			console.log("saveExercise - selectedExerciseMethodClass : " + selectedExerciseMethodClass);
+//			console.log("saveExercise - selectedExerciseMethodDay : " + selectedExerciseMethodDay);
+//			console.log("saveExercise - selectedExerciseMethodVal : " + selectedExerciseMethodVal);
+//			console.log("saveExercise - selectedExerciseMethodText : " + selectedExerciseMethodText);
+			
+			var memberRoutineItem = new Object();
+			memberRoutineItem.day = selectedExerciseMethodDay;
+			memberRoutineItem.exercise_id = selectedExerciseMethodVal;
+			
+			memberRoutineList.push(memberRoutineItem);
+			
+		});
+		
+	});
+	
+	if(memberRoutineList.length == 0) {
+		return;
+	}
+	
+//	console.log(memberRoutineList);
+//	console.log(JSON.stringify(memberRoutineList));
+	
+	$.ajax({
+		type: "post",
+		url: "insertMemberRoutine.do",
+		data: "id=" + $("#scheduleId").val() + "&memberRoutineList=" + JSON.stringify(memberRoutineList),
+		success: function(responseText) {
+			console.log(responseText);
+		}
+	});
 }
 
 

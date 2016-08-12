@@ -5,8 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import member.MemberDataBean;
+import myPage.ExerciseDataBean;
 import myPage.InbodyDataBean;
+import myPage.MemberRoutineDataBean;
+import myPage.PartDataBean;
 import myPage.RegisterDataBean;
+import myPage.RoutineInfoDataBean;
 
 public interface AdminDao {
 	public int insertFitnessUserSearchIDCheck(String id);	
@@ -38,4 +42,17 @@ public interface AdminDao {
 	public int updateInbodyInfo(InbodyDataBean inbodyData);
 	/* 인바디 저장 */
 	public int insertInbodyInfo(InbodyDataBean inbodyData);
+	
+	public int insertScheduleUserSearchIDCheck(String id);	
+	public RoutineInfoDataBean insertScheduleUserSearchID(String id);
+	public int updateScheduleInfo(RoutineInfoDataBean scheduleData);
+	public int insertScheduleInfo(RoutineInfoDataBean scheduleData);
+	
+	public List<PartDataBean> selectExPartList(Map<String, Object> param);
+	public List<ExerciseDataBean> selectExerciseList(Map<String, Object> param);
+	
+	public List<MemberRoutineDataBean> selectMemberRoutineList(Map<String, Object> param);
+	public int insertMemberRoutine(Map<String, Object> param);
+	public int deleteMemberRoutine(Map<String, Object> param);
+	
 }

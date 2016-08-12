@@ -1,5 +1,6 @@
 package handler;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -18,12 +19,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import administrator.AdminDao;
 import member.MemberDataBean;
 import myPage.InbodyDataBean;
+import myPage.MemberRoutineDataBean;
 import myPage.RegisterDataBean;
+import myPage.RoutineInfoDataBean;
 
 
 @Controller
@@ -357,6 +367,95 @@ public class AdministratorController {
 		return new ModelAndView("/vt_administrator/processing/insertInbodyUserSearch");		
 	}
 	
+	@RequestMapping("/insertScheduleUserSearch")	
+	public ModelAndView insertScheduleUserSearch
+	(HttpServletRequest request,HttpServletResponse response){		
+
+		String id = request.getParameter("id");//검색할 아이디		
+		request.setAttribute("id", id);
+		
+		int idCheckResult = adminDao.insertScheduleUserSearchIDCheck(id);
+		request.setAttribute("idCheckResult", idCheckResult);		
+		
+		Calendar calendar = Calendar.getInstance();
+		int thisYear = calendar.get(calendar.YEAR);
+		int thisMonth = calendar.get(calendar.MONTH)+1;//month 는 0부터 시작함... !!!!?
+		int today = calendar.get(calendar.DAY_OF_MONTH);		
+		request.setAttribute("thisYear", thisYear);
+		request.setAttribute("thisMonth", thisMonth);
+		request.setAttribute("today", today);
+		
+		
+		
+		if(idCheckResult != 0){
+			RoutineInfoDataBean routineData = adminDao.insertScheduleUserSearchID(id);
+			request.setAttribute("routineData", routineData);		
+			
+			SimpleDateFormat format = null; 
+			
+			String start_leapYear = "false";
+			String end_leapYear = "false";
+			
+			format = new SimpleDateFormat("yyyy");
+			int start_year = Integer.parseInt(format.format(routineData.getStart_date()));
+			int end_year = Integer.parseInt(format.format(routineData.getEnd_date()));
+			request.setAttribute("start_year", start_year);
+			request.setAttribute("end_year", end_year);
+			
+			//윤달 검사			
+			if((0==(start_year%4) && 0 !=(start_year%100)) || 0 == start_year%400){
+				start_leapYear = "true";
+			}else{
+				start_leapYear = "false";
+			}				
+			if((0==(end_year%4) && 0 !=(end_year%100)) || 0 == end_year%400){
+				end_leapYear = "true";
+			}else{
+				end_leapYear = "false";
+			}			
+			
+			request.setAttribute("start_leapYear", start_leapYear);
+			request.setAttribute("end_leapYear", end_leapYear);
+			
+			format = new SimpleDateFormat("MM");
+			String start_month = format.format(routineData.getStart_date());
+			request.setAttribute("start_month", start_month);
+			String end_month = format.format(routineData.getEnd_date());
+			request.setAttribute("end_month", end_month);
+			
+			format = new SimpleDateFormat("dd");
+			String start_day = format.format(routineData.getStart_date());
+			request.setAttribute("start_day", start_day);
+			String end_day = format.format(routineData.getEnd_date());
+			request.setAttribute("end_day", end_day);			
+			
+		}else{
+			
+			String start_leapYear = "false";
+			String end_leapYear = "false";
+			
+			if((0==(thisYear%4) && 0 !=(thisYear%100)) || 0 == thisYear%400){
+				start_leapYear = "true";
+			}else{
+				start_leapYear = "false";
+			}				
+			if((0==(thisYear%4) && 0 !=(thisYear%100)) || 0 == thisYear%400){
+				end_leapYear = "true";
+			}else{
+				end_leapYear = "false";
+			}	
+			
+			request.setAttribute("start_leapYear", start_leapYear);
+			request.setAttribute("end_leapYear", end_leapYear);
+			
+		}
+		
+		request.setAttribute("exPartList", adminDao.selectExPartList(null));
+		
+		return new ModelAndView("/vt_administrator/processing/insertScheduleUserSearch");
+		
+	}
+	
 	//다른월 선택시 바뀐 일수 출력하기
 	
 	
@@ -449,6 +548,82 @@ public class AdministratorController {
 			
 		return new ModelAndView("/vt_administrator/processing/DBInsertResultText");
 	}	
+	
+	@RequestMapping("/scheduleInsertProcess")
+	public ModelAndView scheduleInsertProcess
+	(HttpServletRequest request,HttpServletResponse response){		
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {			
+			e.printStackTrace();
+		}		
+		
+		String timetamp =" 00:00:00.0";
+		
+		
+		int routineinfo_id = 0;
+		if(request.getParameter("routineinfo_id") != null) {
+			Integer.parseInt(request.getParameter("routineinfo_id"));
+		}
+		String id = request.getParameter("id");
+		String sex = request.getParameter("sex");	
+		Timestamp start = Timestamp.valueOf(request.getParameter("start")+timetamp);
+		Timestamp end = Timestamp.valueOf(request.getParameter("end")+timetamp);
+		String routineType = request.getParameter("routineType");
+		
+		RoutineInfoDataBean routineData = new RoutineInfoDataBean();
+		routineData.setRoutineinfo_id(routineinfo_id);
+		routineData.setId(id);
+		routineData.setSex(sex);
+		routineData.setStart_date(start);
+		routineData.setEnd_date(end);
+		routineData.setRoutine_type(routineType);
+		
+		int idCheckResult = adminDao.insertScheduleUserSearchIDCheck(id);
+		request.setAttribute("idCheckResult", idCheckResult);
+		
+		if(idCheckResult==0){
+			int result = adminDao.insertScheduleInfo(routineData);
+			request.setAttribute("result", result);		
+		}else if(idCheckResult!=0){
+			int result = adminDao.updateScheduleInfo(routineData);
+			request.setAttribute("result", result);	
+		}
+		return new ModelAndView("/vt_administrator/processing/DBInsertResultText");
+	}
+	
+	@RequestMapping("/exerciseOption")
+	public ModelAndView exerciseOption(@RequestParam Map<String, Object> param, HttpServletRequest request) {
+		request.setAttribute("exerciseList", adminDao.selectExerciseList(param));
+		return new ModelAndView("/vt_administrator/processing/exerciseOption");
+	}
+	
+	@RequestMapping("/insertMemberRoutine")
+	public ModelAndView insertMemberRoutine(@RequestParam Map<String, Object> param, HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
+		String id = (String) param.get("id");
+		String memberRoutineListStr = (String) param.get("memberRoutineList");
+		
+		RoutineInfoDataBean routineData = adminDao.insertScheduleUserSearchID(id);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("routineinfo_id", routineData.getRoutineinfo_id());
+		adminDao.deleteMemberRoutine(map);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		List<Map<String, Object>> memberRoutineList = mapper.readValue(memberRoutineListStr, new TypeReference<List<Map<String, Object>>>(){});
+		
+		for (Map<String, Object> memberRoutineItem : memberRoutineList) {
+			memberRoutineItem.put("routineinfo_id", routineData.getRoutineinfo_id());
+			adminDao.insertMemberRoutine(memberRoutineItem);
+		}
+		
+		return new ModelAndView("/vt_administrator/processing/DBInsertResultText");
+	}
+	
+	@RequestMapping("/selectMemberRoutineList")
+	public @ResponseBody List<MemberRoutineDataBean> selectMemberRoutineList(@RequestParam Map<String, Object> param) {
+		return adminDao.selectMemberRoutineList(param);
+	}
 }
 
 

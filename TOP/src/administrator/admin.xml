@@ -58,10 +58,56 @@
 	
 	
 	<select id="getMemberList" parameterType="Map" resultType="member.MemberDataBean">
-		select ID, AUTHORITY_ID, PASSWD, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE, r from 
-		(select ID, AUTHORITY_ID, PASSWD, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE, rownum r from 
-		(select ID, AUTHORITY_ID, PASSWD, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE from vt_members order by JOIN_DATE desc) order by JOIN_DATE desc)
-		 where r &gt;= #{start} and r &lt;= #{end}
+		SELECT
+		  id,
+		  authority_id,
+		  passwd,
+		  name,
+		  nickname,
+		  phone,
+		  zipcode,
+		  address,
+		  email,
+		  join_date,
+		  r
+		FROM
+		  (
+		    SELECT
+		      id,
+		      authority_id,
+		      passwd,
+		      name,
+		      nickname,
+		      phone,
+		      zipcode,
+		      address,
+		      email,
+		      join_date,
+		      rownum r
+		    FROM
+		      (
+		        SELECT
+		          id,
+		          authority_id,
+		          passwd,
+		          name,
+		          nickname,
+		          phone,
+		          zipcode,
+		          address,
+		          email,
+		          join_date
+		        FROM
+		          vt_members
+		        ORDER BY
+		          join_date DESC
+		      )
+		    ORDER BY
+		      join_date DESC
+		  )
+		WHERE
+		  r &gt;= #{start}
+		  AND r &lt;= #{end}
 	</select>
 	
 	<select id="getNameSearchCount" parameterType="String" resultType="int">
@@ -95,8 +141,17 @@
 	 
 	 <!-- 인바디 수정 -->
 	 <update id="updateInbodyInfo" parameterType="myPage.InbodyDataBean">
-		update vt_inbody set age=#{age}, height=#{height}, sex=#{sex},
-		weight=#{weight}, bmi=#{bmi}, check_date=#{check_date} where id = #{id}	
+		UPDATE
+		  vt_inbody
+		SET
+		  age       =#{age},
+		  height    =#{height},
+		  sex       =#{sex},
+		  weight    =#{weight},
+		  bmi       =#{bmi},
+		  check_date=#{check_date}
+		WHERE
+ 		  id = #{id}
 	</update>	 
 	 
 	 <!--  인바디 저장 -->
@@ -104,5 +159,102 @@
 	 	insert into vt_inbody values(inbody_seq.nextval, #{id}, #{age}, #{height}, #{sex}, 
 		#{weight}, #{bmi}, #{check_date})
 	 </insert>	
+	 
+	 <select id="insertScheduleUserSearchIDCheck" parameterType="String" resultType="int">
+		select count(*) from vt_routine_info where id=#{id}	
+	</select>
+	
+	<select id="insertScheduleUserSearchID" parameterType="String" resultType="myPage.RoutineInfoDataBean">
+		select * from vt_routine_info where id=#{id}	
+	</select>
+	
+	<update id="updateScheduleInfo" parameterType="myPage.RoutineInfoDataBean">
+		UPDATE
+			vt_routine_info
+		SET
+			start_date = #{start_date},
+			end_date = #{end_date},
+			sex = #{sex},
+			routine_type = #{routine_type}
+		WHERE
+			id = #{id}	
+	</update>
+	<insert id="insertScheduleInfo" parameterType="myPage.RoutineInfoDataBean">
+		INSERT INTO vt_routine_info (
+			routineinfo_id,
+			id,
+			sex,
+			routine_type,
+			start_date,
+			end_date
+		) VALUES (
+			vt_routine_info_seq.nextval,
+			#{id},
+			#{sex},
+			#{routine_type},
+			#{start_date},
+			#{end_date}
+		)
+	</insert>
+	
+	<select id="selectExPartList" resultType="myPage.PartDataBean">
+		SELECT
+			*
+		FROM
+			vt_ex_part
+	</select>
+	
+	<select id="selectExerciseList" resultType="myPage.ExerciseDataBean">
+		SELECT
+			*
+		FROM
+			vt_exercise
+		WHERE
+			ex_part_id = #{ex_part_id}
+	</select>
+	
+	<select id="selectMemberRoutineList" resultType="myPage.MemberRoutineDataBean">
+		SELECT
+			mr.*,
+			e.name,
+			ep.ex_part_id,
+			ep.part_name
+		FROM
+			vt_member_routine mr,
+			vt_exercise e,
+			vt_ex_part ep,
+			vt_routine_info ri
+		WHERE
+			mr.exercise_id = e.exercise_id
+			AND e.ex_part_id = ep.ex_part_id
+			AND mr.routineinfo_id = ri.routineinfo_id
+			AND ri.id = #{id}
+		ORDER BY
+			mr.DAY ASC,
+			mr.MR_ID ASC
+	</select>
+	
+	<insert id="insertMemberRoutine">
+		INSERT INTO vt_member_routine (
+			mr_id,
+			routineinfo_id,
+			day,
+			exercise_id,
+			count_check
+		) VALUES (
+			vt_member_routine_mr_id_seq.nextval,
+			#{routineinfo_id},
+			#{day},
+			#{exercise_id},
+			0
+		)
+	</insert>
+	
+	<delete id="deleteMemberRoutine">
+		DELETE
+			vt_member_routine
+		WHERE
+			routineinfo_id = #{routineinfo_id}
+	</delete>
 </mapper>
 
