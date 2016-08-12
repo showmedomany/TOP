@@ -1,0 +1,66 @@
+<!-- 			
+					<tr class="tableTr">
+						<td onclick="weekSchedule(1)">					
+							<c:forEach var="i" begin="0" end="${exeriselist.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselist[i]}"/>
+								<c:if test="${exeriselistData.day=='mon'}">								
+									<c:if test="${exeriselistData.exercise_part != part}">
+										${exeriselistData.exercise_part }<br>									
+										<c:set var="part" value="${exeriselistData.exercise_part }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
+					
+					
+						<td onclick="weekSchedule(2)">					
+							<c:forEach var="i" begin="0" end="${exeriselist.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselist[i]}"/>
+								<c:if test="${exeriselistData.day=='tue'}">								
+									<c:if test="${exeriselistData.exercise_part != part}">
+										${exeriselistData.exercise_part }<br>									
+										<c:set var="part" value="${exeriselistData.exercise_part }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
+					
+					
+						<td onclick="weekSchedule(3)">					
+							<c:forEach var="i" begin="0" end="${exeriselist.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselist[i]}"/>
+								<c:if test="${exeriselistData.day=='wed'}">								
+									<c:if test="${exeriselistData.exercise_part != part}">
+										${exeriselistData.exercise_part }<br>									
+										<c:set var="part" value="${exeriselistData.exercise_part }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
+					
+					
+						<td onclick="weekSchedule(4)">					
+							<c:forEach var="i" begin="0" end="${exeriselist.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselist[i]}"/>
+								<c:if test="${exeriselistData.day=='thur'}">								
+									<c:if test="${exeriselistData.exercise_part != part}">
+										${exeriselistData.exercise_part }<br>									
+										<c:set var="part" value="${exeriselistData.exercise_part }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
+					
+					
+						<td onclick="weekSchedule(5)">					
+							<c:forEach var="i" begin="0" end="${exeriselist.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselist[i]}"/>
+								<c:if test="${exeriselistData.day=='fri'}">								
+									<c:if test="${exeriselistData.exercise_part != part}">
+										${exeriselistData.exercise_part }<br>									
+										<c:set var="part" value="${exeriselistData.exercise_part }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
+						 -->	

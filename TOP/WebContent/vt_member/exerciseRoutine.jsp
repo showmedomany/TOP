@@ -25,7 +25,11 @@
 					
 			</table>		
 		</div>
-	
+		
+		${exeriselist[0].day }
+		${exeriselist[0].part_name}
+		${exeriselist[0].exercise_id }
+		
 		<c:set var="count" value="0" />
 		<div class="tableInfo">
 			<form>
@@ -36,71 +40,10 @@
 						<th width="190" onclick="weekSchedule(3)">Wednesday</th>
 						<th width="190" onclick="weekSchedule(4)">Thursday</th>
 						<th width="190" onclick="weekSchedule(5)">Friday</th>		
-					</tr>			
-					<tr class="tableTr">
-						<td onclick="weekSchedule(1)">					
-							<c:forEach var="i" begin="0" end="${userMemberRoutineList.size()-1 }" step="1" >
-								<c:set var="userMemberRoutineDate" value="${userMemberRoutineList[i]}"/>
-								<c:if test="${userMemberRoutineDate.day=='mon'}">								
-									<c:if test="${userMemberRoutineDate.exercise_part != part}">
-										${userMemberRoutineDate.exercise_part }<br>									
-										<c:set var="part" value="${userMemberRoutineDate.exercise_part }"/>																		
-									</c:if>																	
-								</c:if>
-							</c:forEach>
-						</td>
+					</tr>
 					
 					
-						<td onclick="weekSchedule(2)">
-							<c:forEach var="i" begin="0" end="${userMemberRoutineList.size()-1 }" step="1" >
-								<c:set var="userMemberRoutineDate" value="${userMemberRoutineList[i]}"/>
-								<c:if test="${userMemberRoutineDate.day=='tue' }">
-									<c:if test="${userMemberRoutineDate.exercise_part != part}">
-										${userMemberRoutineDate.exercise_part }<br>
-										<c:set var="part" value="${userMemberRoutineDate.exercise_part }"/>
-									</c:if>
-								</c:if>
-							</c:forEach>
-						</td>
-					
-					
-						<td onclick="weekSchedule(3)">
-							<c:forEach var="i" begin="0" end="${userMemberRoutineList.size()-1 }" step="1" >
-								<c:set var="userMemberRoutineDate" value="${userMemberRoutineList[i]}"/>
-								<c:if test="${userMemberRoutineDate.day=='wed' }">
-									<c:if test="${userMemberRoutineDate.exercise_part != part}">
-										${userMemberRoutineDate.exercise_part }<br>
-										<c:set var="part" value="${userMemberRoutineDate.exercise_part }"/>
-									</c:if>
-								</c:if>
-							</c:forEach>
-						</td>
-					
-					
-						<td onclick="weekSchedule(4)">
-							<c:forEach var="i" begin="0" end="${userMemberRoutineList.size()-1 }" step="1" >
-								<c:set var="userMemberRoutineDate" value="${userMemberRoutineList[i]}"/>
-								<c:if test="${userMemberRoutineDate.day=='thur' }">
-									<c:if test="${userMemberRoutineDate.exercise_part != part}">
-										${userMemberRoutineDate.exercise_part }<br>
-										<c:set var="part" value="${userMemberRoutineDate.exercise_part }"/>
-									</c:if>
-								</c:if>
-							</c:forEach>
-						</td>
-					
-					
-						<td onclick="weekSchedule(5)">
-							<c:forEach var="i" begin="0" end="${userMemberRoutineList.size()-1 }" step="1" >
-								<c:set var="userMemberRoutineDate" value="${userMemberRoutineList[i]}"/>
-								<c:if test="${userMemberRoutineDate.day=='fri' }">
-									<c:if test="${userMemberRoutineDate.exercise_part != part}">
-										${userMemberRoutineDate.exercise_part }<br>
-										<c:set var="part" value="${userMemberRoutineDate.exercise_part }"/>
-									</c:if>
-								</c:if>
-							</c:forEach>
-						</td>								
+												
 					</tr>
 				</table>
 			</form>
