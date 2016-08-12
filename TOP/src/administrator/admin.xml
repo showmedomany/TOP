@@ -48,7 +48,7 @@
 		GX_check=#{gx_check}, PT_check=#{pt_check}, PT_count=#{pt_count, jdbcType=VARCHAR} where id = #{id}	
 	</update>
 	<insert id="insertFitnessInfo" parameterType="myPage.RegisterDataBean">
-		insert into vt_register values(register_seq.nextval, #{id}, #{start_date}, #{exp_date}, 
+		insert into vt_register values(vt_register_seq.nextval, #{id}, #{start_date}, #{exp_date}, 
 		#{end_date}, #{gx_check}, #{pt_check}, #{pt_count, jdbcType=VARCHAR})		
 	</insert>
 	
@@ -156,7 +156,7 @@
 	 
 	 <!--  인바디 저장 -->
 	 <insert id="insertInbodyInfo" parameterType="myPage.InbodyDataBean">
-	 	insert into vt_inbody values(inbody_seq.nextval, #{id}, #{age}, #{height}, #{sex}, 
+	 	insert into vt_inbody values(vt_inbody_seq.nextval, #{id}, #{age}, #{height}, #{sex}, 
 		#{weight}, #{bmi}, #{check_date})
 	 </insert>	
 	 

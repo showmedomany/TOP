@@ -7,11 +7,14 @@
 		<title>관리자 페이지</title>
 		<script src = "${jquery}"></script>
 		<script src = "${request}"></script>
-		<script src = "${script}chat.js"></script>		
+		<script src = "${script}chat.js"></script>
+			
 	</head>
 	<body>
 		<form name = "admin">
-			<input type = "hidden" name = "chatcount" value = "0">
+			<input type = "hidden" name = "chatcount" value = "0">			
+		</form>
+			
 			<div id = "administrator_top" >
 				<div>			
 					<jsp:include page="vt_admin_topForm.jsp" flush="false"></jsp:include>
@@ -31,8 +34,6 @@
 				<div>				
 					<jsp:include page="/vtFrame/vt_bottomForm.jsp" flush="false"></jsp:include>				
 				</div>
-			</div>	
-		
-		</form>
+			</div>			
 	</body>
 </html>
