@@ -9,16 +9,21 @@
 		select count(*) from vt_routine_info where id = #{id}
 	</select>
 
-	<select id="getStartEndDate" parameterType="String" resultType="myPage.RoutineInfoDataBean">
-		select START_DATE, END_DATE from vt_routine_info where id = #{id}
+	<select id="getUesrRoutineInfoData" parameterType="String" resultType="myPage.RoutineInfoDataBean">
+		select * from vt_routine_info where id = #{id}
 	</select>
-	<select id="getWeekExerciseSchedule" parameterType="String" resultType="myPage.MemberRoutineDataBean">
-		select day, exercise_id, count_check from vt_member_routine
-		where routineinfo_id = (select routineinfo_id from vt_routine_info where id = #{id})
+	<select id="getUserMemberRoutineList" parameterType="int" resultType="myPage.MemberRoutineDataBean">
+		select * from vt_member_routine where routineinfo_id = #{routineinfo_id} 
 	</select>
+	<select id="getExerciseAllNames" parameterType="int" resultType="myPage.ExerciseDataBean">
+		select exercise_id, name from vt_exercise order by exercise_id asc
+	</select>
+	
+	
 	<select id="getExerciseNames" parameterType="int" resultType="myPage.ExerciseDataBean">
 		select ex_part_id, name from vt_exercise where ex_part_id = #{partId}
 	</select>
+	
 	
 	<select id="getExeriseInfo" parameterType="String" resultType="myPage.ExerciseDataBean">
 		select method1, method2, method3, method4 from vt_exercise where name = #{name}

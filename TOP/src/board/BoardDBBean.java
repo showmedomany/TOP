@@ -70,4 +70,39 @@ public class BoardDBBean implements BoardDao {
 	public List<BoardDataBean> BoardnickSearch(SearchDataBean sdto) {
 		return SqlMapClient.getSession().selectList("Board.BoardnickSearch",sdto);
 	}
+	
+	
+	/* faq 게시판 */
+	@Override
+	public int getFaqCount() {		
+		return SqlMapClient.getSession().selectOne("Board.getFaqCount");
+	}
+	@Override
+	public List<FAQDataBean> getFaqDataList(Map<String, Integer> startEndPage) {	
+		return SqlMapClient.getSession().selectList("Board.getFaqDataList", startEndPage);
+	}
+	@Override
+	public int getFaqSearchCount(String msg) {		
+		return SqlMapClient.getSession().selectOne("Board.getFaqSearchCount", msg);
+	}
+	@Override
+	public List<FAQDataBean> getFaqDataListAll(Map<String, String> startEndPageAll) {
+		return SqlMapClient.getSession().selectList("Board.getFaqDataListAll", startEndPageAll);
+	}
+	@Override
+	public int getFaqMemberCount(String msg) {
+		return SqlMapClient.getSession().selectOne("Board.getFaqMemberCount", msg);
+	}
+	
+	
+	@Override
+	public int getFaqSelectSearchCount(Map<String, String> map) {	
+		return SqlMapClient.getSession().selectOne("Board.getFaqSelectSearchCount", map);
+	}
+	@Override
+	public List<FAQDataBean> getFaqDataSelectList(Map<String, String> map) {
+		return SqlMapClient.getSession().selectList("Board.getFaqDataSelectList", map);
+	}
+	
+	
 }

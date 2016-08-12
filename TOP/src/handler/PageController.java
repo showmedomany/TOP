@@ -156,22 +156,6 @@ public class PageController {
 		
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//vt_gxtrinfo
-	//트레이너 소개 끝
-	//커뮤니티 시작
-	
-	@RequestMapping("/vt_FAQ")
-	public ModelAndView vt_FAQ(HttpServletRequest request, 
-			HttpServletResponse response){
-		
-		String center = "/vtFrame/vt_sideMenuForm"; 
-		String menu = "/vt_board/vt_FAQ";
-		String word = "/vt_board/word/FNQ";
-		request.setAttribute("center", center);
-		request.setAttribute("menu", menu);
-		request.setAttribute("word", word);
-		
-		return new ModelAndView("/vtFrame/vtFrame");
-	}//vt_FAQ
-	//커뮤니티 끝
+	//트레이너 소개 끝	
 }
 

@@ -9,7 +9,7 @@
 		<script src = "${request}"></script>		
 
 	
-	
+	<body onload = "inputformfocus()">
 		<form method = "post" name = "inputform">
 			<input type="hidden" name = "idConfirm" value = "0">
 			<input type="hidden" name = "nickConfirm" value = "0">

@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<form name = "admin">
-			<input type = "hidden" name = "chatcount" value = "0">		
+			<input type = "hidden" name = "chatcount" value = "0">
 			<div id = "administrator_top" >
 				<div>			
 					<jsp:include page="vt_admin_topForm.jsp" flush="false"></jsp:include>

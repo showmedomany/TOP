@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "setting.jsp" %>			
+		
 <script src="/TOP/request.js" type="text/javascript"></script>
 <script src="/TOP/vt_member/script/member.js" type="text/javascript"></script>
 	
 <body>
 	<div class="vt_ex_routine_body">
 		
-		<div class="vt_ex_routine_body_id">				
-			회원아이디 : ${id }		
-		</div>
+				
+			id : ${id }		
+		
 			<c:if test="${checkResult==0}">
 				운동정보 루틴을 신청하세요.
 			</c:if>

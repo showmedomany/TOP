@@ -66,4 +66,41 @@
 			(select num, id, subject, reg_date, readcount from vt_board where id like #{nick} order by num desc) order by num desc)
 			where r &gt;= #{start} and r &lt;= #{end}		
 		</select>
+		
+		
+		<!-- fqn 게시판 커리문 -->
+		<select id="getFaqCount" resultType="int">
+			select count(*) from vt_faq
+		</select>
+		<select id="getFaqDataList" parameterType="Map" resultType="board.FAQDataBean">
+			select num, classify, question, answer, r from 
+			(select num, classify, question, answer, rownum r from 
+			(select num, classify, question, answer from vt_faq order by num asc) order by num asc)
+			where r &gt;= #{start} and r &lt;= #{end}
+		</select>
+		
+		<select id="getFaqSearchCount" parameterType="String" resultType="int" >
+			select count(*) from vt_faq where question like #{msg}
+		</select>		
+		<select id="getFaqDataListAll" parameterType="Map" resultType="board.FAQDataBean">
+			select num, classify, question, answer, r from 
+			(select num, classify, question, answer, rownum r from 
+			(select num, classify, question, answer from vt_faq where question like #{msg} order by num asc) order by num asc)
+			where r &gt;= TO_NUMBER(#{start}) and r &lt;= TO_NUMBER(#{end})
+		</select>
+		
+
+		
+		
+		
+		<select id="getFaqSelectSearchCount" parameterType="Map" resultType="int">
+			select count(*) from vt_faq where classify = #{selectOption} and question like #{msg}		
+		</select>
+		<select id="getFaqDataSelectList" parameterType="Map" resultType="board.FAQDataBean">			
+			select num, classify, question, answer, r from 
+			(select num, classify, question, answer, rownum r from 
+			(select num, classify, question, answer from vt_faq where question like #{msg} and classify = #{selectOption} order by num asc)  order by num asc)
+			where r &gt;= TO_NUMBER(#{start}) and r &lt;= TO_NUMBER(#{end})		
+		</select>
+		
 </mapper>

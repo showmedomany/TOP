@@ -21,4 +21,21 @@ public interface BoardDao {
 	public int BoardsubCount(String msg);	//자유게시판 제목검색글수
 	public int BoardcontentCount(String msg);	//자유게시판 내용검색글수
 	public int BoardnickCount(String msg);	//자유게시판 닉네임 검색글수
+	
+	
+	
+	
+	
+	/* faq 게시판 */
+	public int getFaqCount();
+	public List<FAQDataBean> getFaqDataList(Map<String, Integer> startEndPage);
+	public int getFaqSearchCount(String msg);
+	public List<FAQDataBean> getFaqDataListAll(Map<String, String> startEndPageAll);
+	public int getFaqMemberCount(String msg);
+	
+	
+	
+	public int getFaqSelectSearchCount(Map<String, String> map);
+	public List<FAQDataBean> getFaqDataSelectList(Map<String, String> map);
+
 }

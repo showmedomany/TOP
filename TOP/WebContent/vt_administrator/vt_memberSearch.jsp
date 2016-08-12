@@ -13,8 +13,8 @@ vt_memberSearch.jsp
 	'${searchMessage}'의 검색된 사용자 수 : ${articleCount}
 </c:if>
 
-<body>
-	<form name="memberSearchForm" onload="memberSearchFormInit()">		
+<body onload="memberSearchFormInit()">	
+	<form name="memberSearchForm">	
 	<input type="hidden" name="userNumber" value="0">	
 		<table border="1">
 			<tr>

@@ -11,12 +11,20 @@ public class MyPageDBBean implements MyPageDao {
 		return SqlMapClient.getSession().selectOne("MyPage.routineInfoIdCheck", id);
 	}	
 	@Override
-	public RoutineInfoDataBean getStartEndDate(String id) {
-		return SqlMapClient.getSession().selectOne("MyPage.getStartEndDate", id); 
+	public RoutineInfoDataBean getUesrRoutineInfoData(String id) {
+		return SqlMapClient.getSession().selectOne("MyPage.getUesrRoutineInfoData", id); 
 	}
-	public List<MemberRoutineDataBean> getWeekExerciseSchedule(String id){
-		return SqlMapClient.getSession().selectList("MyPage.getWeekExerciseSchedule", id);	
+	@Override
+	public List<MemberRoutineDataBean> getUserMemberRoutineList(int routineinfo_id){
+		return SqlMapClient.getSession().selectList("MyPage.getUserMemberRoutineList", routineinfo_id);
 	}
+	@Override
+	public List<ExerciseDataBean> getExerciseNames() {		
+		return SqlMapClient.getSession().selectList("MyPage.getExerciseAllNames");
+	}
+	
+	
+
 	
 	@Override
 	public List<ExerciseDataBean> getExerciseNames(int partId) {		

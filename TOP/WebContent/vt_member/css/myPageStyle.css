@@ -1,0 +1,102 @@
+/* myPageView */
+
+.myPage{
+ /*	background-color: bisque;*/
+    float: left;
+    width: 1350px;
+    height: 1200px;
+}
+.sideMenu{
+   /* background: #c4c5f1;*/
+    width: 200px;
+    height: 100%;
+    float: left;
+
+}
+
+
+.myPageCenter{
+   /* background-color: #7ef5a2;*/
+    float: left;
+    margin-left: 5px;
+    width: 1000px;
+    height: 100%;
+}
+
+.bottom{
+	position: absolute;
+    top: 1200px;
+    bottom: 0;
+}
+
+.tableInfo{
+	margin-top: 50px;
+    margin-left: 50px;	
+    z-index: 999;
+}
+
+
+
+
+.tableTr{
+	background: #F6F6F6;
+    height: 50px;
+}
+
+.partName{
+	
+	margin-top: 20px;
+    margin-left: 75px;
+    margin-bottom: 20px;
+    cursor: pointer;
+	
+}
+
+.weekScheduleResult{
+	
+    margin-left: 50px;
+    margin-top: 50px;	
+}
+.partExeriseResult{
+	margin-top: -30px;
+}
+.exeriseInfo{
+	margin-left: 50px;
+}
+
+.routine{
+	margin-left: 50px;
+
+}
+
+.tableClass{
+	position: relative;
+    width: 600px;
+    margin-left: 300px;
+	
+}
+.routineTabel{
+	background: #FFD9FA;
+}
+.routineDiv{
+	background: blue;
+	width: 950px;
+    height: 330px;
+}
+
+.spanText{
+	
+}
+
+.routineSub{
+	background: red;
+    position: absolute;
+    left: 285;
+    top: 560;
+    width: 250px;
+    height: 250px;
+}
+
+
+
+

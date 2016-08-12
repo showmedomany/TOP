@@ -98,23 +98,62 @@ function modifyCheck(){
 	}	
 }
 
-
+function exerciseInit(){
+	document.getElementById("routineMonday").style.display = "none";
+	document.getElementById("routineTuesday").style.display = "none";
+	document.getElementById("routineWednesday").style.display = "none";
+	document.getElementById("routineThursday").style.display = "none";
+	document.getElementById("routineFriday").style.display = "none";
+	document.getElementById("exeriseInfo").style.display = "none";
+	
+}
 
 function weekSchedule(number){	
 	var weekScheduleResult = document.getElementById("weekScheduleResult");	
 	if(number==1){		
-		weekScheduleResult.innerHTML = "월요일 운동 순서<br>"				
+		weekScheduleResult.innerHTML = "<table><tr class='tableTr'><th style='width: 950px;'>월요일 운동 순서</th>"
+		document.getElementById("routineMonday").style.display = "";
+		document.getElementById("routineTuesday").style.display = "none";
+		document.getElementById("routineWednesday").style.display = "none";
+		document.getElementById("routineThursday").style.display = "none";
+		document.getElementById("routineFriday").style.display = "none";
+		document.getElementById("exeriseInfo").style.display = "none";
 	}else if(number==2){
-		weekScheduleResult.innerHTML = "화요일 운동 순서<br>";
+		weekScheduleResult.innerHTML = "<table><tr class='tableTr'><th style='width: 950px;'>화요일 운동 순서</th>"
+		document.getElementById("routineMonday").style.display = "none";
+		document.getElementById("routineTuesday").style.display = "";
+		document.getElementById("routineWednesday").style.display = "none";
+		document.getElementById("routineThursday").style.display = "none";
+		document.getElementById("routineFriday").style.display = "none";
+		document.getElementById("exeriseInfo").style.display = "none";
 	}else if(number==3){
-		weekScheduleResult.innerHTML = "수요일 운동 순서<br>";
+		weekScheduleResult.innerHTML = "<table><tr class='tableTr'><th style='width: 950px;'>수요일 운동 순서</th>"
+		document.getElementById("routineMonday").style.display = "none";
+		document.getElementById("routineTuesday").style.display = "none";
+		document.getElementById("routineWednesday").style.display = "";
+		document.getElementById("routineThursday").style.display = "none";
+		document.getElementById("routineFriday").style.display = "none";
+		document.getElementById("exeriseInfo").style.display = "none";
 	}else if(number==4){
-		weekScheduleResult.innerHTML = "목요일 운동 순서<br>";
+		weekScheduleResult.innerHTML = "<table><tr class='tableTr'><th style='width: 950px;'>목요일 운동 순서</th>"
+		document.getElementById("routineMonday").style.display = "none";
+		document.getElementById("routineTuesday").style.display = "none";
+		document.getElementById("routineWednesday").style.display = "none";
+		document.getElementById("routineThursday").style.display = "";
+		document.getElementById("routineFriday").style.display = "none";
+		document.getElementById("exeriseInfo").style.display = "none";
 	}else if(number==5){
-		weekScheduleResult.innerHTML = "금요일 운동 순서<br>";
+		weekScheduleResult.innerHTML = "<table><tr class='tableTr'><th style='width: 950px;'>금요일 운동 순서</th>"
+		document.getElementById("routineMonday").style.display = "none";
+		document.getElementById("routineTuesday").style.display = "none";
+		document.getElementById("routineWednesday").style.display = "none";
+		document.getElementById("routineThursday").style.display = "none";
+		document.getElementById("routineFriday").style.display = "";
+		document.getElementById("exeriseInfo").style.display = "none";
 	}
 }
 
+/* 사용안함 나중에 삭제
 function partSchedule(number){	
 	request = new Request(partScheduleResult, "myPagePartSchedulePrint.do", "POST", "partId="+number);	
 	request.sendRequest();
@@ -126,11 +165,12 @@ function partScheduleResult(){
 			partExeriseResult.innerHTML = request.httpRequest.responseText;
 		}
 	}
-}
+}*/
 
 function exeriseInfo(number){
 	var spanList = document.getElementsByTagName("span");		
 	var span = spanList.item(number).firstChild.nodeValue;
+	
 	
 	request = new Request(exeriseInfoResult, "myPageExeriseInfoPrint.do", "POST", "name="+encodeURI(span));	
 	request.sendRequest();	
@@ -139,7 +179,8 @@ function exeriseInfoResult(){
 	var exeriseInfo = document.getElementById("exeriseInfo");
 	
 	if(request.httpRequest.readyState == 4){
-		if(request.httpRequest.status == 200){			
+		if(request.httpRequest.status == 200){	
+			exeriseInfo.style.display = "";
 			exeriseInfo.innerHTML = request.httpRequest.responseText;
 		}
 	}
