@@ -77,11 +77,11 @@ $(function() {
 </script>
 <div class="JQsideMenu">
 	<ul id="navigation">
-	   <li class="centerPayment" onclick="location = 'centerPayment.do'"><a></a></li>
-	   <li class="fitness" onclick="location = 'fitnessInfo.do'"><a></a></li>
-	   <li class="inbody" onclick="location = 'inbodyInfo.do'"><a></a></li>
-	   <li class="exercise" onclick="location = 'exerciseRoutine.do'"><a> </a></li>
-	   <li class="member" onclick="location = 'memberModify.do'"><a></a></li>   
+	   <li class="centerPayment" style="cursor: pointer;" onclick="location = 'centerPayment.do'"><a></a></li>
+	   <li class="fitness" style="cursor: pointer;" onclick="location = 'fitnessInfo.do'"><a></a></li>
+	   <li class="inbody" style="cursor: pointer;" onclick="location = 'inbodyInfo.do'"><a></a></li>
+	   <li class="exercise" style="cursor: pointer;" onclick="location = 'exerciseRoutine.do'"><a> </a></li>
+	   <li class="member" style="cursor: pointer;" onclick="location = 'memberModify.do'"><a></a></li>   
 	</ul>
 </div>
 			

@@ -8,3 +8,4 @@
 <!-- vt_member 경로 -->
 <c:set var = "css" value = "/TOP/vt_member/css/"/>
 <c:set var = "script" value = "/TOP/vt_member/script/"/>
+<c:set var = "images" value = "/TOP/vt_member/images/"/>

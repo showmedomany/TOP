@@ -21,8 +21,9 @@ import myPage.InbodyDataBean;
 import myPage.MemberRoutineDataBean;
 import myPage.MyPageDao;
 import myPage.RegisterDataBean;
-import myPage.Routine;
+import myPage.RoutineDataBean;
 import myPage.RoutineInfoDataBean;
+import myPage.UserChecksDataBean;
 
 @Controller
 public class MyPageController {
@@ -35,6 +36,16 @@ public class MyPageController {
 	@RequestMapping("/myPageView")
 	public ModelAndView myPageView(HttpServletRequest request,HttpServletResponse response){		
 		
+		String id = (String) request.getSession().getAttribute("memId");
+		request.setAttribute("id", id);		
+		
+		MemberDataBean memberData = new MemberDataBean();
+		memberData = memberDao.getMember(id);
+		request.setAttribute("memberData", memberData);	
+		
+		UserChecksDataBean userCheckResult = myPageDao.uesrChecks(id);
+		request.setAttribute("userCheckResult", userCheckResult);			
+		
 		String top = "/vtFrame/vt_topForm";
 		String center = "centerPayment";
 		String bottom = "/vtFrame/vt_bottomForm";
@@ -42,74 +53,23 @@ public class MyPageController {
 		request.setAttribute("center", center);	
 		request.setAttribute("bottom", bottom); 
 		return new ModelAndView("/vt_member/myPageView");
-	}
-	
-	/*
-	@RequestMapping("/myPageView")
-	public ModelAndView myPageView
-	(HttpServletRequest request,HttpServletResponse response){	
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {			
-			e.printStackTrace();
-		}
-		String choice = request.getParameter("choice");		
-		String myPageSubject = null;
-		String id = (String) request.getSession().getAttribute("memId");
-		String center = "/vt_member/vt_myPageView";
-		if(choice==null){// 처음 들어왔을 경우 // 			
-			choice = "0";
-		}
-		switch(Integer.parseInt(choice)){
-		case 0://센터 결제정보/인바디 이동
-			myPageSubject = "vt_centerPaymentInfo";
-			RegisterDataBean registerData = myPageDao.getRegisterData(id);
-			InbodyDataBean inbodyData = myPageDao.getInbodyData(id);
-			
-			request.setAttribute("registerData", registerData);	
-			request.setAttribute("inbodyData", inbodyData);
-			
-			break;
-		case 1:	//참조운동정보 이동
-			myPageSubject = "vt_ex_routine";
-			List<MemberRoutineDataBean> WeekScheduleList = new ArrayList<MemberRoutineDataBean>();				
-			
-			int checkResult = myPageDao.routineInfoIdCheck(id);		
-			request.setAttribute("checkResult", checkResult);
-			if(checkResult==1){
-				RoutineInfoDataBean StartEndDateData = myPageDao.getStartEndDate(id);
-				WeekScheduleList = myPageDao.getWeekExerciseSchedule(id);				
-				request.setAttribute("StartEndDateData", StartEndDateData);
-				request.setAttribute("WeekScheduleList", WeekScheduleList);
-			}			
-			break;
-		case 2://달성률 이동
-			myPageSubject = "vt_achievementRate";
-			break;
-		case 3://회원정보
-			myPageSubject = "vt_passwdCheck";
-			request.setAttribute("choice", "modify");			
-			break;
-		case 4://회원탈퇴
-			myPageSubject = "vt_passwdCheck";
-			request.setAttribute("choice", "delete");
-			break;
-		}
-		
-		
-		request.setAttribute("id", id);
-		request.setAttribute("myPageSubject", myPageSubject);	
-		request.setAttribute("center", center);	
-		
-		return new ModelAndView("/vtFrame/vtFrame");
-	}//
-	*/
+	}	
 	
 	@RequestMapping("/centerPayment")
 	public ModelAndView centerPayment(HttpServletRequest request,HttpServletResponse response){	
 		
+		String id = (String) request.getSession().getAttribute("memId");
+		request.setAttribute("id", id);		
+		
+		MemberDataBean memberData = new MemberDataBean();
+		memberData = memberDao.getMember(id);
+		request.setAttribute("memberData", memberData);	
+		
+		UserChecksDataBean userCheckResult = myPageDao.uesrChecks(id);
+		request.setAttribute("userCheckResult", userCheckResult);		
+		
 		String top = "/vtFrame/vt_topForm";
-		String center = "centerPayment";	
+		String center = "centerPayment";
 		request.setAttribute("top", top);
 		request.setAttribute("center", center);	
 		return new ModelAndView("/vt_member/myPageView");
@@ -150,77 +110,28 @@ public class MyPageController {
 		String id = (String) request.getSession().getAttribute("memId");
 		request.setAttribute("id", id);
 		
+		/* 해당아이디 루틴정보 검색 없으면 0 아니면 0이 아닌값*/
 		int checkResult = myPageDao.routineInfoIdCheck(id);		
 		request.setAttribute("checkResult", checkResult);
 		
 		if(checkResult==1){
+			/* 루틴 시작일과 종료일 가지고 오기 */
 			RoutineInfoDataBean uesrRoutineInfoData = myPageDao.getUesrRoutineInfoData(id);
-			request.setAttribute("uesrRoutineInfoData", uesrRoutineInfoData);
+			request.setAttribute("uesrRoutineInfoData", uesrRoutineInfoData);			
 			
+			/* 운동부위, 요일, 운동이름 가지고 오기 */
+			List<RoutineDataBean> exeriselistRoutine = new ArrayList<RoutineDataBean>();	
+			exeriselistRoutine = myPageDao.getRoutineData(id);
+			request.setAttribute("exeriselistRoutine", exeriselistRoutine);
 			
-			List<Routine> exeriselistRoutine = new ArrayList<Routine>();	
-			exeriselistRoutine = myPageDao.getExerciseNames(id);
-			
-			
+			/* test print
 			for(int i=0; i<exeriselistRoutine.size(); i++){
 				System.out.print(exeriselistRoutine.get(i).getDay());
-				System.out.print(exeriselistRoutine.get(i).getExercise_id());
-				System.out.println(exeriselistRoutine.get(i).getPart_name());
-				
-			}
-			
-			
-			
-			
-			
-			int routineinfo_id = uesrRoutineInfoData.getRoutineinfo_id();
-			List<MemberRoutineDataBean> userMemberRoutineList = new ArrayList<MemberRoutineDataBean>();
-			userMemberRoutineList = myPageDao.getUserMemberRoutineList(routineinfo_id);
-			request.setAttribute("userMemberRoutineList", userMemberRoutineList);			
-			List<Integer> exerciseIds = new ArrayList<Integer>();
-			
-			List<ExerciseDataBean> exeriselist = new ArrayList<ExerciseDataBean>();		
-			exeriselist = myPageDao.getExerciseNames();
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			for(int i=0; i<userMemberRoutineList.size(); i++){				
-				exerciseIds.add(userMemberRoutineList.get(i).getExercise_id());			
-			}
-			
-			request.setAttribute("exerciseIds", exerciseIds);
-			request.setAttribute("exeriselist", exeriselist);			
-			/* test */
-			//for(int i=0; i<exerciseIds.size(); i++){
-			//	System.out.println(exerciseIds.get(i));
-			//}			
-			
-			
-			//여기서 가지고 올껀 운동 루팅 해당 아이디꺼를 전부 가지고 와야한다!!
-			//그래 가지고오자!
-			
-		}
-		
-		
-		/*
-		List<MemberRoutineDataBean> WeekScheduleList = new ArrayList<MemberRoutineDataBean>();
-		
-		
-		if(checkResult==1){
-			RoutineInfoDataBean StartEndDateData = myPageDao.getStartEndDate(id);
-			WeekScheduleList = myPageDao.getWeekExerciseSchedule(id);				
-			request.setAttribute("StartEndDateData", StartEndDateData);
-			request.setAttribute("WeekScheduleList", WeekScheduleList);
+				System.out.print(exeriselistRoutine.get(i).getPart_name());
+				System.out.println(exeriselistRoutine.get(i).getName());				
+			}*/
 		}		
-		
-		
-		*/
+			
 		String top = "/vtFrame/vt_topForm";
 		String center = "exerciseRoutine";
 		request.setAttribute("top", top);
@@ -232,27 +143,19 @@ public class MyPageController {
 		
 		String top = "/vtFrame/vt_topForm";
 		String center = "memberModify";
+		
+		String id = (String) request.getSession().getAttribute("memId");
+		request.setAttribute("id", id);
+		
+		MemberDataBean memberData = new MemberDataBean();
+		memberData = memberDao.getMember(id);
+		request.setAttribute("memberData", memberData);
+		
+		
 		request.setAttribute("top", top);
 		request.setAttribute("center", center);	
 		return new ModelAndView("/vt_member/myPageView");
 	}
-	
-	/* 사용안함 나중에 삭제
-	@RequestMapping("/myPagePartSchedulePrint")
-	public ModelAndView myPagePartSchedulePrint
-	(HttpServletRequest request,HttpServletResponse response){		
-		//마이페이지 부위별 출력	
-		
-		int partId = Integer.parseInt(request.getParameter("partId"));
-		
-		List<ExerciseDataBean> exeriselist = new ArrayList<ExerciseDataBean>();		
-		exeriselist = myPageDao.getExerciseNames(partId);
-		request.setAttribute("partId", partId);
-		request.setAttribute("exeriselist", exeriselist);		
-		return new ModelAndView("/vt_member/processing/routinePartText");
-	}//		
-	*/
-	
 	
 	@RequestMapping("/myPageExeriseInfoPrint")
 	public ModelAndView myPageExeriseInfoPrint
@@ -272,8 +175,7 @@ public class MyPageController {
 	
 	
 	
-	//회원 수정
-	
+	//회원 수정	
 	@RequestMapping("/memberModifyPro")
 	public ModelAndView memberModifyPro
 	(HttpServletRequest request,HttpServletResponse response){		
@@ -345,46 +247,15 @@ public class MyPageController {
 		request.setAttribute("updateResult", updateResult);
 		
 		
-		String myPageSubject = "processing/memberModifyPro";
-		String center = "/vt_member/vt_myPageView";
+				
+		String top = "/vtFrame/vt_topForm";
+		String center = "processing/memberModifyPro";
 		
-		request.setAttribute("myPageSubject", myPageSubject);	
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);	
-		return new ModelAndView("/vtFrame/vtFrame");
+		return new ModelAndView("/vt_member/myPageView");
 	}//
-	@RequestMapping("/passwdCheckPro")
-	public ModelAndView passwdCheckPro
-	(HttpServletRequest request,HttpServletResponse response){		
-		String choice = request.getParameter("choice");
-		String passwd = request.getParameter("passwd");		
-		
-		String id = (String)request.getSession().getAttribute("memId");		
-		int passwdCheck = memberDao.loginMember(id, passwd);
-		request.setAttribute("passwdCheck", passwdCheck);	
-		
-		if(passwdCheck==1){
-			if(choice.equals("modify")){
-				String myPageSubject = "vt_memberModify";
-				String center = "/vt_member/vt_myPageView";		
-				MemberDataBean memberData = myPageDao.getMemberData(id);			
-				request.setAttribute("myPageSubject", myPageSubject);	
-				request.setAttribute("center", center);
-				request.setAttribute("memberData", memberData);
-			}else if(choice.equals("delete")){
-				String myPageSubject = "vt_memberDelete";
-				String center = "/vt_member/vt_myPageView";			
-				request.setAttribute("myPageSubject", myPageSubject);	
-				request.setAttribute("center", center);	
-			}		
-			return new ModelAndView("/vtFrame/vtFrame");
-		}else{
-			String myPageSubject = "processing/passwdCheckPro";
-			String center = "/vt_member/vt_myPageView";			
-			request.setAttribute("myPageSubject", myPageSubject);	
-			request.setAttribute("center", center);	
-			return new ModelAndView("/vtFrame/vtFrame");
-		}
-	}//
+	
 	@RequestMapping("/memberDelete")
 	public ModelAndView memberDelete
 	(HttpServletRequest request,HttpServletResponse response){		
@@ -392,11 +263,12 @@ public class MyPageController {
 		int deleteResult = myPageDao.memberDelete(id);
 		request.setAttribute("deleteResult", deleteResult);
 		
-		String myPageSubject = "processing/memberDeletePro";
-		String center = "/vt_member/vt_myPageView";			
-		request.setAttribute("myPageSubject", myPageSubject);	
+		String top = "/vtFrame/vt_topForm";
+		String center = "processing/memberDeletePro";
+		
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);	
-		return new ModelAndView("/vtFrame/vtFrame");
+		return new ModelAndView("/vt_member/myPageView");
 	}//
 	
 }

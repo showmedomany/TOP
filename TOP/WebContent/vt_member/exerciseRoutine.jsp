@@ -6,162 +6,310 @@
 <script src="/TOP/request.js" type="text/javascript"></script>
 <link href = "${css}myPageStyle.css" rel="stylesheet"	type="text/css">
 
-<body onload="exerciseInit()">
-	<c:if test="${checkResult==0}">
-		운동정보 루틴을 신청하세요.
-	</c:if>
-	<c:if test="${checkResult==1}">
-		
+<div class="banner">
+	<img src="${images}ExerciseRoutineBanner.png">	
+	<div class="bannerText" style="margin-left: 180;">ExerciseRoutine</div>
+</div>
+
+	
+<body>
+	<c:if test="${checkResult==0}">		
+		<div class="tableInfo">
+			<table class="tableNotInfo">
+				<tr>
+					<td>
+						<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						운동정보 루틴을 신청하세요.</h3>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</c:if>	
+	<c:if test="${checkResult!=0}">
 		<div class="tableInfo">
 			<table>
 				<tr class="tableTr">
 					<th style="width: 200px;">루틴 시작일</th>
-					<td style="width: 800px;">${uesrRoutineInfoData.start_date }</td>			
+					<td style="width: 800px;"><fmt:formatDate value="${uesrRoutineInfoData.start_date }" type="date" pattern="yyyy년 MM월 dd일"/></td>			
 				</tr>	
 				<tr class="tableTr">
 					<th>루틴 종료일</th>
-					<td>${uesrRoutineInfoData.end_date }</td>		
+					<td><fmt:formatDate value="${uesrRoutineInfoData.end_date }" type="date" pattern="yyyy년 MM월 dd일"/></td>		
 				</tr>
 					
 			</table>		
-		</div>
+		</div>	
+
 		
-		${exeriselist[0].day }
-		${exeriselist[0].part_name}
-		${exeriselist[0].exercise_id }
-		
-		<c:set var="count" value="0" />
 		<div class="tableInfo">
 			<form>
-				<table>
+				<table style="text-align: center; cursor: pointer;">
+					<tr>
+						<td colspan="7" style="text-align: left;">
+							해당요일을 클릭하면 운동루틴를 확인할 수 있습니다.
+						</td>
+					</tr>
 					<tr class="tableTr" height="30">
-						<th width="190" onclick="weekSchedule(1)">Monday</th>
-						<th width="190" onclick="weekSchedule(2)">Tuesday</th>
-						<th width="190" onclick="weekSchedule(3)">Wednesday</th>
-						<th width="190" onclick="weekSchedule(4)">Thursday</th>
-						<th width="190" onclick="weekSchedule(5)">Friday</th>		
+						<th width="135" onclick="weekSchedule(1)">Monday</th>
+						<th width="135" onclick="weekSchedule(2)">Tuesday</th>
+						<th width="135" onclick="weekSchedule(3)">Wednesday</th>
+						<th width="135" onclick="weekSchedule(4)">Thursday</th>
+						<th width="135" onclick="weekSchedule(5)">Friday</th>
+						<th width="135" onclick="weekSchedule(6)">Saturday</th>	
+						<th width="135" onclick="weekSchedule(7)">Sunday</th>		
 					</tr>
 					
-					
-												
+					<tr class="tableTr">
+						<td onclick="weekSchedule(1)">					
+							<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${exeriselistData.day=='mon'}">								
+									<c:if test="${exeriselistData.part_name != part}">
+										${exeriselistData.part_name }<br>									
+										<c:set var="part" value="${exeriselistData.part_name }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
+						<td onclick="weekSchedule(2)">					
+							<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${exeriselistData.day=='tue'}">								
+									<c:if test="${exeriselistData.part_name != part}">
+										${exeriselistData.part_name }<br>									
+										<c:set var="part" value="${exeriselistData.part_name }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
+						<td onclick="weekSchedule(3)">					
+							<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${exeriselistData.day=='wed'}">								
+									<c:if test="${exeriselistData.part_name != part}">
+										${exeriselistData.part_name }<br>									
+										<c:set var="part" value="${exeriselistData.part_name }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
+						<td onclick="weekSchedule(4)">					
+							<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${exeriselistData.day=='thu'}">								
+									<c:if test="${exeriselistData.part_name != part}">
+										${exeriselistData.part_name }<br>									
+										<c:set var="part" value="${exeriselistData.part_name }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
+						<td onclick="weekSchedule(5)">					
+							<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${exeriselistData.day=='fri'}">								
+									<c:if test="${exeriselistData.part_name != part}">
+										${exeriselistData.part_name }<br>									
+										<c:set var="part" value="${exeriselistData.part_name }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
+						<td onclick="weekSchedule(6)">					
+							<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${exeriselistData.day=='sat'}">								
+									<c:if test="${exeriselistData.part_name != part}">
+										${exeriselistData.part_name }<br>									
+										<c:set var="part" value="${exeriselistData.part_name }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
+						<td onclick="weekSchedule(7)">					
+							<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${exeriselistData.day=='sun'}">								
+									<c:if test="${exeriselistData.part_name != part}">
+										${exeriselistData.part_name }<br>									
+										<c:set var="part" value="${exeriselistData.part_name }"/>																		
+									</c:if>																	
+								</c:if>
+							</c:forEach>
+						</td>
 					</tr>
 				</table>
 			</form>
 		</div>
+		
+		<div id="weekScheduleResult" style="margin-left: 50px; margin-top:50px"></div>	
+		<div class="routine">		
+			<div id="routineMonday" class="routineDiv" style="display: none;">			
+			
+				<c:set var="count" value="0"/>			
+				<table class="tableClass">
+					<tr class="routineTabel">
+						<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >	
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${count==6 || count==12 }">	
+									<!-- 경고가 뜨지만 이렇게 하는게 맞음. -->
+									</tr><tr style="height: 5px;"></tr><tr class="routineTabel">								
+								</c:if>
+								<c:if test="${exeriselistData.day=='mon'}">
+									<td class="tableTr" style="width: 1000px; cursor: pointer;" onclick="exeriseInfo('${exeriselistData.name}')">
+										<div class="exeriseNameDiv"><span class="exeriseText">${exeriselistData.name }</span></div>
+										<c:set var="temp" value="${i}"/>
+										<c:set var="count" value="${count+1}"/>									
+									</td>				
+								</c:if>	
+						</c:forEach>
+					</tr>				
+				</table>						
+			</div>
+			
+			<div id="routineTuesday" class="routineDiv" style="display: none;">			
+			
+				<c:set var="count" value="0"/>			
+				<table class="tableClass">
+					<tr class="routineTabel">
+						<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >	
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${count==6 || count==12 }">	
+									<!-- 경고가 뜨지만 이렇게 하는게 맞음. -->
+									</tr><tr style="height: 5px;"></tr><tr class="routineTabel">								
+								</c:if>
+								<c:if test="${exeriselistData.day=='tue'}">
+									<td class="tableTr" style="width: 1000px; cursor: pointer;" onclick="exeriseInfo('${exeriselistData.name}')">
+										<div class="exeriseNameDiv"><span class="exeriseText">${exeriselistData.name }</span></div>
+										<c:set var="temp" value="${i}"/>
+										<c:set var="count" value="${count+1}"/>									
+									</td>				
+								</c:if>	
+						</c:forEach>
+					</tr>				
+				</table>						
+			</div>
+			
+			<div id="routineWednesday" class="routineDiv" style="display: none;">			
+			
+				<c:set var="count" value="0"/>			
+				<table class="tableClass">
+					<tr class="routineTabel">
+						<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >	
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${count==6 || count==12 }">	
+									<!-- 경고가 뜨지만 이렇게 하는게 맞음. -->
+									</tr><tr style="height: 5px;"></tr><tr class="routineTabel">								
+								</c:if>
+								<c:if test="${exeriselistData.day=='wed'}">
+									<td class="tableTr" style="width: 1000px; cursor: pointer;" onclick="exeriseInfo('${exeriselistData.name}')">
+										<div class="exeriseNameDiv"><span class="exeriseText">${exeriselistData.name }</span></div>
+										<c:set var="temp" value="${i}"/>
+										<c:set var="count" value="${count+1}"/>									
+									</td>				
+								</c:if>	
+						</c:forEach>
+					</tr>				
+				</table>						
+			</div>
+			
+			<div id="routineThursday" class="routineDiv" style="display: none;">			
+			
+				<c:set var="count" value="0"/>			
+				<table class="tableClass">
+					<tr class="routineTabel">
+						<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >	
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${count==6 || count==12 }">	
+									<!-- 경고가 뜨지만 이렇게 하는게 맞음. -->
+									</tr><tr style="height: 5px;"></tr><tr class="routineTabel">								
+								</c:if>
+								<c:if test="${exeriselistData.day=='thu'}">
+									<td class="tableTr" style="width: 1000px; cursor: pointer;" onclick="exeriseInfo('${exeriselistData.name}')">
+										<div class="exeriseNameDiv"><span class="exeriseText">${exeriselistData.name }</span></div>
+										<c:set var="temp" value="${i}"/>
+										<c:set var="count" value="${count+1}"/>									
+									</td>				
+								</c:if>	
+						</c:forEach>
+					</tr>				
+				</table>						
+			</div>
+			
+			<div id="routineFriday" class="routineDiv" style="display: none;">			
+			
+				<c:set var="count" value="0"/>			
+				<table class="tableClass">
+					<tr class="routineTabel">
+						<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >	
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${count==6 || count==12 }">	
+									<!-- 경고가 뜨지만 이렇게 하는게 맞음. -->
+									</tr><tr style="height: 5px;"></tr><tr class="routineTabel">								
+								</c:if>
+								<c:if test="${exeriselistData.day=='fri'}">
+									<td class="tableTr" style="width: 1000px; cursor: pointer;" onclick="exeriseInfo('${exeriselistData.name}')">
+										<div class="exeriseNameDiv"><span class="exeriseText">${exeriselistData.name }</span></div>
+										<c:set var="temp" value="${i}"/>
+										<c:set var="count" value="${count+1}"/>									
+									</td>				
+								</c:if>	
+						</c:forEach>
+					</tr>				
+				</table>						
+			</div>
+			
+			<div id="routineSaturday" class="routineDiv" style="display: none;">			
+			
+				<c:set var="count" value="0"/>			
+				<table class="tableClass">
+					<tr class="routineTabel">
+						<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >	
+								<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+								<c:if test="${count==6 || count==12 }">	
+									<!-- 경고가 뜨지만 이렇게 하는게 맞음. -->
+									</tr><tr style="height: 5px;"></tr><tr class="routineTabel">								
+								</c:if>
+								<c:if test="${exeriselistData.day=='sat'}">
+									<td class="tableTr" style="width: 1000px; cursor: pointer;" onclick="exeriseInfo('${exeriselistData.name}')">
+										<div class="exeriseNameDiv"><span class="exeriseText">${exeriselistData.name }</span></div>
+										<c:set var="temp" value="${i}"/>
+										<c:set var="count" value="${count+1}"/>									
+									</td>				
+								</c:if>	
+						</c:forEach>
+					</tr>				
+				</table>						
+			</div>
+			
+			<div id="routineSunday" class="routineDiv" style="display: none;">			
+		
+			<c:set var="count" value="0"/>			
+				<table class="tableClass">
+					<tr class="routineTabel">
+						<c:forEach var="i" begin="0" end="${exeriselistRoutine.size()-1 }" step="1" >	
+						<c:set var="exeriselistData" value="${exeriselistRoutine[i]}"/>
+							<c:if test="${count==6 || count==12 }">	
+								<!-- 경고가 뜨지만 이렇게 하는게 맞음. -->
+								</tr><tr style="height: 5px;"></tr><tr class="routineTabel">								
+							</c:if>
+							<c:if test="${exeriselistData.day=='sun'}">
+								<td class="tableTr" style="width: 1000px; cursor: pointer;" onclick="exeriseInfo('${exeriselistData.name}')">
+									<div class="exeriseNameDiv"><span class="exeriseText">${exeriselistData.name }</span></div>
+									<c:set var="temp" value="${i}"/>
+									<c:set var="count" value="${count+1}"/>									
+								</td>				
+							</c:if>	
+						</c:forEach>
+					</tr>				
+				</table>						
+			</div>			
+		</div>
 	</c:if>
-	
-	<div id="weekScheduleResult" style="margin-left: 50px; margin-top:50px"></div>
-	<div class="routine">		
-		<div id="routineMonday" class="routineDiv">
-			<div class="routineSub"></div>
-			<table class="tableClass" style="top:20px;">
-				<c:forEach var="i" begin="0" end="${userMemberRoutineList.size()-1 }" step="1" >
-					<tr class="routineTabel">			
-						<c:set var="userMemberRoutineDate" value="${userMemberRoutineList[i]}"/>
-						<c:if test="${userMemberRoutineDate.day=='mon'}">							
-							<td style="width: 1000px;">
-								<c:forEach var="j" begin="0" end="${exeriselist.size()-1 }" step="1">
-									<c:set var="exerise" value="${exeriselist[j]}"/>
-									<c:if test="${exerise.exercise_id == exerciseIds[count] }">									
-										<span class="spanText" onclick="exeriseInfo(${count})">${exerise.name}</span>		
-									</c:if>					
-								</c:forEach>	
-								<c:set var="count" value="${count+1}" />
-							</td>													
-						</c:if>			
-					</tr>
-				</c:forEach>	
-			</table>			
-		</div>
-		
-		<div id="routineTuesday" class="routineDiv">
-			<div class="routineSub"></div>
-			<table class="tableClass" style="top:-10px;">
-				<c:forEach var="i" begin="0" end="${userMemberRoutineList.size()-1 }" step="1" >
-					<tr class="routineTabel">			
-						<c:set var="userMemberRoutineDate" value="${userMemberRoutineList[i]}"/>
-						<c:if test="${userMemberRoutineDate.day=='tue'}">
-							<td style="width: 1000px;">
-								<c:forEach var="j" begin="0" end="${exeriselist.size()-1 }" step="1">
-									<c:set var="exerise" value="${exeriselist[j]}"/>
-									<c:if test="${exerise.exercise_id == exerciseIds[count] }">
-											<span onclick="exeriseInfo(${count})">${exerise.name}</span>	
-									</c:if>					
-								</c:forEach>	
-								<c:set var="count" value="${count+1}" />
-							</td>													
-						</c:if>			
-					</tr>
-				</c:forEach>	
-			</table>
-		</div>
-		
-		<div id="routineWednesday" class="routineDiv">
-			<div class="routineSub"></div>
-			<table class="tableClass" style="top:-38px;">
-				<c:forEach var="i" begin="0" end="${userMemberRoutineList.size()-1 }" step="1" >
-					<tr class="routineTabel">			
-						<c:set var="userMemberRoutineDate" value="${userMemberRoutineList[i]}"/>
-						<c:if test="${userMemberRoutineDate.day=='wed'}">
-							<td style="width: 1000px;">
-								<c:forEach var="j" begin="0" end="${exeriselist.size()-1 }" step="1">
-									<c:set var="exerise" value="${exeriselist[j]}"/>
-									<c:if test="${exerise.exercise_id == exerciseIds[count] }">
-											<span onclick="exeriseInfo(${count})">${exerise.name}</span>	
-									</c:if>					
-								</c:forEach>	
-								<c:set var="count" value="${count+1}" />
-							</td>													
-						</c:if>			
-					</tr>
-				</c:forEach>	
-			</table>	
-		</div>
-		
-		<div id="routineThursday" class="routineDiv">
-			<div class="routineSub"></div>
-			<table class="tableClass" style="top:-68px;">
-				<c:forEach var="i" begin="0" end="${userMemberRoutineList.size()-1 }" step="1" >
-					<tr class="routineTabel">			
-						<c:set var="userMemberRoutineDate" value="${userMemberRoutineList[i]}"/>
-						<c:if test="${userMemberRoutineDate.day=='thur'}">
-							<td style="width: 1000px;">
-								<c:forEach var="j" begin="0" end="${exeriselist.size()-1 }" step="1">
-									<c:set var="exerise" value="${exeriselist[j]}"/>
-									<c:if test="${exerise.exercise_id == exerciseIds[count] }">
-											<span onclick="exeriseInfo(${count})">${exerise.name}</span>	
-									</c:if>					
-								</c:forEach>	
-								<c:set var="count" value="${count+1}" />
-							</td>													
-						</c:if>			
-					</tr>
-				</c:forEach>	
-			</table>		
-		</div>
-		
-		<div id="routineFriday" class="routineDiv">
-			<div class="routineSub"></div>
-			<table class="tableClass" style="top:-96;">
-				<c:forEach var="i" begin="0" end="${userMemberRoutineList.size()-1 }" step="1" >
-					<tr class="routineTabel">			
-						<c:set var="userMemberRoutineDate" value="${userMemberRoutineList[i]}"/>
-						<c:if test="${userMemberRoutineDate.day=='fri'}">
-							<td style="width: 1000px;">
-								<c:forEach var="j" begin="0" end="${exeriselist.size()-1 }" step="1">
-									<c:set var="exerise" value="${exeriselist[j]}"/>
-									<c:if test="${exerise.exercise_id == exerciseIds[count] }">
-											<span onclick="exeriseInfo(${count})">${exerise.name}</span>	
-									</c:if>					
-								</c:forEach>	
-								<c:set var="count" value="${count+1}" />
-							</td>													
-						</c:if>			
-					</tr>
-				</c:forEach>	
-			</table>	
-		</div>
-	</div>
-	<!-- 운동 상세 설명 -->
-	<div id="exeriseInfo" class="exeriseInfo"></div>
-</body>	
+</body>
+
+
+
+<!-- 운동 상세 설명 -->
+<div id="exeriseInfo" class="exeriseInfo"></div>
+

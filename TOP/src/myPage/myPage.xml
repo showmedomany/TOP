@@ -16,30 +16,31 @@
 		select * from vt_member_routine where routineinfo_id = #{routineinfo_id} 
 	</select>
 	
-	<select id="getExerciseAllExerciseNames" parameterType="int" resultType="myPage.ExerciseDataBean">
+	<select id="getExerciseAllNames" resultType="myPage.ExerciseDataBean">
 		select exercise_id, name from vt_exercise order by exercise_id asc
 	</select>
 	
+	<!-- 인바디 휘트니스 루틴 등록확인 -->
+	<select id="uesrChecks" parameterType="String" resultType="myPage.UserChecksDataBean">
+		select (select count(id) from vt_inbody where id = #{id}) inbody, 
+				(select check_date from vt_inbody where id = #{id}) inbody_date,
+				(select count(id) from vt_register where id = #{id}) register,
+				(select start_date from vt_register where id = #{id}) register_start_date,
+				(select end_date from vt_register where id = #{id}) register_end_date,
+				(select count(id) from vt_routine_info where id = #{id}) routine_info,
+				(select start_date from vt_register where id = #{id}) routine_start_date,
+				(select end_date from vt_register where id = #{id}) routine_end_date
+		from dual
+	</select>
 	
-	<select id="getExerciseAllNames" parameterType="String" resultType="myPage.Routine">
-		SELECT
-         mr.day,
-      ep.part_name,
-      e.exercise_id
-       FROM
-         vt_member_routine mr,
-         vt_exercise e,
-         vt_ex_part ep,
-         vt_routine_info ri
-      WHERE
-         mr.exercise_id = e.exercise_id
-         AND e.ex_part_id = ep.ex_part_id
-         AND mr.routineinfo_id = ri.routineinfo_id
-         AND ri.id = #{id}
-
-      ORDER BY
-         mr.DAY ASC,
-         mr.MR_ID ASC
+	<select id="getRoutineData" parameterType="String" resultType="myPage.RoutineDataBean">
+		SELECT mr.day, ep.part_name, e.name 
+		FROM vt_member_routine mr, vt_exercise e, vt_ex_part ep, vt_routine_info ri
+		WHERE mr.exercise_id = e.exercise_id
+		AND e.ex_part_id = ep.ex_part_id
+		AND mr.routineinfo_id = ri.routineinfo_id
+		AND ri.id = #{id}
+		ORDER BY mr.DAY ASC, mr.MR_ID ASC
 	</select>
 	
 	

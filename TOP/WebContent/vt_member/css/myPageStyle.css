@@ -25,7 +25,7 @@
 
 .bottom{
 	position: absolute;
-    top: 1200px;
+    top: 1650px;
     bottom: 0;
 }
 
@@ -71,32 +71,68 @@
 
 .tableClass{
 	position: relative;
-    width: 600px;
-    margin-left: 300px;
+    width: 950px;
+    margin-left: 0px;
+	
+}
+
+.tableNotInfo{
+	background: #f9f9f9;
+    width: 300px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
 	
 }
 .routineTabel{
-	background: #FFD9FA;
+	
 }
 .routineDiv{
-	background: blue;
-	width: 950px;
-    height: 330px;
+    width: 950px;
+    height: 205px;
 }
 
 .spanText{
 	
 }
 
-.routineSub{
-	background: red;
-    position: absolute;
-    left: 285;
-    top: 560;
-    width: 250px;
-    height: 250px;
+.exeriseNameDiv{
+	background: #e3e5e6;
+    width: 100%;
+    height: 50px;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 30px;
+}
+.exeriseText{
+	position: relative;
+    margin-left: 5px;
+    top: 15px;
 }
 
 
+.memberPro{
+	height: 200px;
+    width: 500px;
+    margin: 0 auto;	
+}
+
+.memberText{
+	margin-top: 100px;
+}
+
+/*Banner*/
+.banner{
+	margin-top: 50px;
+    margin-left: 50px;
+    height: 135px;
+    
+}
+.bannerText{
+	position: relative;
+    margin-top: -150px;
+    margin-left: 250px;
+    font-size: 80px;
+}
 
 

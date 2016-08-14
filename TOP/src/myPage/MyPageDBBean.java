@@ -20,12 +20,17 @@ public class MyPageDBBean implements MyPageDao {
 		return SqlMapClient.getSession().selectList("MyPage.getUserMemberRoutineList", routineinfo_id);
 	}
 	@Override
-	public List<Routine> getExerciseNames(String id) {		
-		return SqlMapClient.getSession().selectList("MyPage.getExerciseAllNames", id);
+	public List<RoutineDataBean> getRoutineData(String id) {		
+		return SqlMapClient.getSession().selectList("MyPage.getRoutineData", id);
 	}
 	@Override
 	public List<ExerciseDataBean> getExerciseNames() {		
-		return SqlMapClient.getSession().selectList("MyPage.getExerciseAllExerciseNames");
+		return SqlMapClient.getSession().selectList("MyPage.getExerciseAllNames");
+	}
+	
+	/* 인바디 휘트니스 루틴 등록확인 */
+	public UserChecksDataBean uesrChecks(String id){
+		return SqlMapClient.getSession().selectOne("MyPage.uesrChecks", id);
 	}
 	
 	
