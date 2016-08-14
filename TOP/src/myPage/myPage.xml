@@ -15,8 +15,31 @@
 	<select id="getUserMemberRoutineList" parameterType="int" resultType="myPage.MemberRoutineDataBean">
 		select * from vt_member_routine where routineinfo_id = #{routineinfo_id} 
 	</select>
-	<select id="getExerciseAllNames" parameterType="int" resultType="myPage.ExerciseDataBean">
+	
+	<select id="getExerciseAllExerciseNames" parameterType="int" resultType="myPage.ExerciseDataBean">
 		select exercise_id, name from vt_exercise order by exercise_id asc
+	</select>
+	
+	
+	<select id="getExerciseAllNames" parameterType="String" resultType="myPage.Routine">
+		SELECT
+         mr.day,
+      ep.part_name,
+      e.exercise_id
+       FROM
+         vt_member_routine mr,
+         vt_exercise e,
+         vt_ex_part ep,
+         vt_routine_info ri
+      WHERE
+         mr.exercise_id = e.exercise_id
+         AND e.ex_part_id = ep.ex_part_id
+         AND mr.routineinfo_id = ri.routineinfo_id
+         AND ri.id = #{id}
+
+      ORDER BY
+         mr.DAY ASC,
+         mr.MR_ID ASC
 	</select>
 	
 	

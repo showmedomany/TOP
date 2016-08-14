@@ -1,6 +1,7 @@
 package myPage;
 
 import java.util.List;
+import java.util.Map;
 
 import member.MemberDataBean;
 import mybatis.SqlMapClient;
@@ -19,8 +20,12 @@ public class MyPageDBBean implements MyPageDao {
 		return SqlMapClient.getSession().selectList("MyPage.getUserMemberRoutineList", routineinfo_id);
 	}
 	@Override
+	public List<Routine> getExerciseNames(String id) {		
+		return SqlMapClient.getSession().selectList("MyPage.getExerciseAllNames", id);
+	}
+	@Override
 	public List<ExerciseDataBean> getExerciseNames() {		
-		return SqlMapClient.getSession().selectList("MyPage.getExerciseAllNames");
+		return SqlMapClient.getSession().selectList("MyPage.getExerciseAllExerciseNames");
 	}
 	
 	

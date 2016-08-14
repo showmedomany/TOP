@@ -2,7 +2,9 @@ package handler;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +21,7 @@ import myPage.InbodyDataBean;
 import myPage.MemberRoutineDataBean;
 import myPage.MyPageDao;
 import myPage.RegisterDataBean;
+import myPage.Routine;
 import myPage.RoutineInfoDataBean;
 
 @Controller
@@ -154,6 +157,22 @@ public class MyPageController {
 			RoutineInfoDataBean uesrRoutineInfoData = myPageDao.getUesrRoutineInfoData(id);
 			request.setAttribute("uesrRoutineInfoData", uesrRoutineInfoData);
 			
+			
+			List<Routine> exeriselistRoutine = new ArrayList<Routine>();	
+			exeriselistRoutine = myPageDao.getExerciseNames(id);
+			
+			
+			for(int i=0; i<exeriselistRoutine.size(); i++){
+				System.out.print(exeriselistRoutine.get(i).getDay());
+				System.out.print(exeriselistRoutine.get(i).getExercise_id());
+				System.out.println(exeriselistRoutine.get(i).getPart_name());
+				
+			}
+			
+			
+			
+			
+			
 			int routineinfo_id = uesrRoutineInfoData.getRoutineinfo_id();
 			List<MemberRoutineDataBean> userMemberRoutineList = new ArrayList<MemberRoutineDataBean>();
 			userMemberRoutineList = myPageDao.getUserMemberRoutineList(routineinfo_id);
@@ -164,6 +183,13 @@ public class MyPageController {
 			exeriselist = myPageDao.getExerciseNames();
 			
 			
+			
+			
+			
+			
+			
+			
+			
 			for(int i=0; i<userMemberRoutineList.size(); i++){				
 				exerciseIds.add(userMemberRoutineList.get(i).getExercise_id());			
 			}
@@ -171,13 +197,9 @@ public class MyPageController {
 			request.setAttribute("exerciseIds", exerciseIds);
 			request.setAttribute("exeriselist", exeriselist);			
 			/* test */
-			for(int i=0; i<exerciseIds.size(); i++){
-				System.out.println(exerciseIds.get(i));
-			}
-			for(int i=0; i<exeriselist.size(); i++){
-				System.out.print(exeriselist.get(i).getExercise_id()+" : ");
-				System.out.println(exeriselist.get(i).getName());
-			}
+			//for(int i=0; i<exerciseIds.size(); i++){
+			//	System.out.println(exerciseIds.get(i));
+			//}			
 			
 			
 			//여기서 가지고 올껀 운동 루팅 해당 아이디꺼를 전부 가지고 와야한다!!
