@@ -4,9 +4,8 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
-<!-- 경로 -->
-<c:set var = "css" value = "/TOP/vtFrame/css/"/>
+
 <c:set var = "css" value = "/TOP/vt_trinfo/css/"/>
 <c:set var = "script" value = "/TOP/vt_trinfo/script/"/>
 <c:set var = "images" value = "/TOP/vt_trinfo/images/"/>
-<c:set var = "jquery" value = "/TOP/jquery-1.12.4.js"/> 
+<c:set var = "jquery" value = "/TOP/vt_exerinfo-1.12.4.js"/> 

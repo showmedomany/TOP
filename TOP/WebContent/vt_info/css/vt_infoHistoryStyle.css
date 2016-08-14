@@ -1,14 +1,19 @@
 .history_img1{
 	position: relative;
     right: 102px;
-    top: 29px;
+   top: 131px;
     width: 1008px;
 }
 .vt_history1{
-border-bottom-style: groove;
-    width: 156px;
-    font-size: 35px;
+	border-bottom-style: groove;
+    width: 134px;
+    font-size: 30px;
     position: relative;
     font-weight: bold;
-    left: 360px;
+    left: 370px;
+    top: 35px;
+}
+.info_historywarp {
+	width: inherit;
+    height: 1600px;
 }

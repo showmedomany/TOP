@@ -11,12 +11,13 @@
 }
 .hello_hi{
 	border-bottom-style: groove;
-    width: 113px;
-    font-size: 35px;
+    width: 161px;
+    font-size: 30px;
     position: relative;
     font-weight: bold;
     font-family: 'Exo', sans-serif;
-    left: 20;
+    left: 18px;
+
 }
 .hello_top{
 	position: relative;

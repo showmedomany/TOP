@@ -9,7 +9,6 @@
 	<div class = "gx_infowarp">
 			<div class = "gx_infotit">
 			<strong class = "tit">V.T GX Training</strong>
-			<div class = "wire"></div>
 			</div>
 		<div class = "program1">
 			<img class = "spinning1" src = "/TOP/vt_exerinfo/images/스피닝6.png">
@@ -90,6 +89,39 @@
 					몸의 유연성을 유지하고자 할 때 도움이 되는 프로그램이다.
 					LA스트레칭, 힐링스트레칭, 테라피스트레칭이 있다.
 					</p>
+		</div>
+		<div class="program5">
+			<img class = "swimming1" src = "/TOP/vt_exerinfo/images/swim.jpg">
+			<img class = "swimming2" src = "/TOP/vt_exerinfo/images/swim1.jpg">
+		</div>
+		<div class="programss5">
+			<h4>
+				<span class="num">05</span>
+				<strong class="tit">수영</strong>
+			</h4>
+			<p class ="desc">근육 + 심폐기능 발달</p>
+			<p class = "context">
+				수영은 물의 부력으로 인해 자신의 페중에 대한 부담이 적으며 물속의 환경과 물밖의 환경의 변화에 
+				따른 피부 단련에도 좋다.</p><p class = "context"> <p class = "context">몸통, 어깨, 팔, 하체근육등을 사용하는 전신운동으로 유연한 근육을 길러주며, 
+				큰 호흡이 필요하여 근육과 심폐 기능발달에 효과적입니다. </p>
+				<p class = "context">이는 혈액 순환개선에 큰 효과가 있음으로 과다한 업무와 잦은 야근등으로 쌓인 스트레스가 
+				일상화된 현대인들에게 매우 적절한 운동입니다.
+				</p>
+		</div>
+		<div class="program6">
+			<img class = "taebo1" src = "/TOP/vt_exerinfo/images/taebo.jpg">
+			<img class = "taebo2" src = "/TOP/vt_exerinfo/images/taebo1.jpg">
+		</div>
+		<div class="programss6">
+			<h4>
+				<span class="num">06</span>
+				<strong class="tit">태보</strong>
+			</h4>
+			<p class ="desc">근육 +심근 발달</p>
+			<p class = "context">
+				태권도와 복싱, 킥복싱, 고전적인 에어로빅 등을 뒤섞은 역동적인 움직임의 태보는 특히 여성들에게 인기가 있는 운동입니다. 
+				특징은 몸통지르기, 얼굴막기, 내려막기, 옆차기, 앞차기, 뒤차기 등 태권도의 기본 동작을 그대로 응용해 만들었고, 이 때문에 다이어트 방법으로뿐만 아니라 자기 방어용 호신술로도 이용되고 있습니다.
+				</p>
 		</div>
 	</div>
 	

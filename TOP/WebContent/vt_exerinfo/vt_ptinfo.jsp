@@ -29,7 +29,7 @@
 					Visual TOP P.T
 				</div>
 				<div class="wrap3_1_word2">
-					
+					비주얼 휘트니스만의 P.T란?
 				</div>
 			</div>
 			<div class="wrap3_2">

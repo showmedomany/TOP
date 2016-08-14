@@ -6,6 +6,7 @@
 		<link href = "${css}vt_infoHistoryStyle.css" rel="stylesheet"	type="text/css">
 	</head>
 	<body>
+	<div class = "info_historywarp">
 		<div class="vt_history">
 		<p class="vt_history1"> HISTORY</p>
 		</div>
@@ -13,5 +14,6 @@
 		<div class="content_wrap">
 				<img class="history_img1" src="/TOP/vt_info/images/history.jpg">
 		</div>
+	</div>	
 	</body>
 </html>	

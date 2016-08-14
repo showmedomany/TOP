@@ -4,7 +4,7 @@
 
 <link href = "${css}vt_infoHelloStyle.css" rel="stylesheet"	type="text/css">
 	<div class="hello_header">
-		<p class="hello_hi">인사말</p>
+		<p class="hello_hi">GREETING</p>
 	</div>
 	<div class="hello_top">
 		<div class="hello_face">

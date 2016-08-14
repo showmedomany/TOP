@@ -1,53 +1,235 @@
 .char_name{
-    height: 75px;
-    width: 286px;
+  	 height: 42px;
+    width: 185px;
     margin: 0px 5px;
     font-size: 30px;
+    font-weight: bold;
+    position: relative;
+    left: 335px;
+    border-bottom-style: groove;
+   top: 37px;
+}
+    
 }
 
 .char_wrap{
-	width: 988px;
-    height: 334px;
-    margin: 30px 0px;
-    border-bottom-style: groove;
-    position: relative;
+	height: 2000px;
 }
-.char1{
-	width: 58%;
-    height: inherit;
+.icon{
+	background-color:cadetblue;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
     position: relative;
+  	top: 382px;
+    left: 21px;
     float: left;
+    margin: 0 20px;
+    opacity: 0.4;
 }
-.char1_top{
-	width: inherit;
-    font-family: monospace;
-    font-size: 23px;
-    margin: 20px 0px;
-}
-.char1_center{
-	width: inherit;
-    font-family: fantasy;
-    font-size: 30px;
-    margin: 20px 0px;
-}
-.char1_bottom{
-	width: inherit;
-}
-.char2{
-	width: 42%;
-    height: inherit;
+.icon1{
+	background-color:cadetblue;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
     position: relative;
-    float: right;
+  	top: 387px;
+    left: -4px;
+    float: left;
+    margin: 0 20px;
+    opacity: 0.4;
+	
 }
-.char_img{
-	height: 284px;
-    width: 487px;
-    margin: 10px -76px;
-    border-radius: 5%;
+.icon2{
+	background-color:cadetblue;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+ 	 top: 385px;
+    left: -29px;
+    float: left;
+    margin: 0 20px;
+    opacity: 0.4;
+	
 }
-.char1_wrap{
-    width: 505px;
-    height: 254px;
-    margin: 5px;
-    margin-top: 14px;
+.icon3{
+	background-color:cadetblue;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+  	top: 388px;
+    left: -53px;
+    float: left;
+    margin: 0 20px;
+    opacity: 0.4;
+	
+}
+.icon4{
+	background-color:cadetblue;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+  	top: 256px;
+    left: 609px;
+    float: left;
+    margin: 0 20px;
+    opacity: 0.4;
+	
+}
+.icon5{
+	background-color:cadetblue;
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+  	top: 258px;
+    left: 585px;
+    float: left;
+    margin: 0 20px;
+    opacity: 0.4;
+	
+}
+
+
+.char_visual{
+	font-size: 51px;
+    position: relative;
+    top: 182px;
+    left: 237px;
+}
+.char_visualtop{
+	position: relative;
+    top: 227px;
+    font-size: 17px;
+    left:  219px;
+	
+}
+.fittt{
+	position: relative;
+    left: -206px;
+    font-size: 20px;
+    color: dimgrey;
+    top: -65px;
+    
+}
+.vt_all{
+	font-size: 22px;
+    position: relative;
+    top: 284px;
+    width: 1640px;
+    left:  -680px;
+    font-weight: bold;
+    color: slategrey;
+	
+}
+.pt{
+	position: relative;
+    left: 52px;
+    top: 48px;
+    font-size: 23px;
+    color: azure;
+}
+.yoga{
+	position: relative;
+    left: 39px;
+    top: 46px;
+    font-size: 23px;
+    color: azure;
+	
+}
+.taebo{
+	position: relative;
+    left: 28px;
+    top: 48px;
+    font-size: 23px;
+   color: azure;
+	
+}
+.pila{
+	position: relative;
+   left: 26px;
+    top: 48px;
+    font-size: 23px;
+     color: azure;
+}
+.swim{
+	position: relative;
+   left: 36px;
+    top: 48px;
+    font-size: 23px;
+   color: azure;
+	
+}
+.spi{
+	position: relative;
+   left: 14px;
+    top: 48px;
+    font-size: 23px;
+    color: azure;
+	
+}
+.chu{
+	 font-size: 24px;
+    color: dimgrey;
+    position: relative;
+    left: 244px;
+    font-weight: bold;
+}
+.chu1{
+	font-size: 20px;
+    color: dimgrey;
+}
+
+.vtvtvt{
+	position: relative;
+    top: 600;
+    left: -653px;
+    width: 1585px;
+}
+
+.vtvtvt1{
+	position: relative;
+    top: 485px;
+    left: -18px;
+}
+.mat1{
+	position: relative;
+    top: 123px;
+    font-size: 21px;
+    color: dimgrey;
+    font-weight: bold;
+    left: 142px;
+}
+
+.mat11{
+	position: relative;
+    top: 189px;
+	
 }

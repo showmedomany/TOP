@@ -33,7 +33,7 @@ public class FAQController {
 			e.printStackTrace();
 		}
 		
-		System.out.println("vt_FAQ.do");
+		
 		
 		List<FAQDataBean> faqDataList = new ArrayList<FAQDataBean>();
 		String center = "/vtFrame/vt_sideMenuForm"; 
@@ -156,7 +156,7 @@ public class FAQController {
 			map.put("msg", "%"+msg+"%");
 			
 			int faqCount = boardDao.getFaqSelectSearchCount(map);
-			System.out.println("faqCount: " +faqCount);
+			
 			if(faqCount == 0){			
 				request.setAttribute("pageCount", 1);
 				request.setAttribute("faqCount", faqCount);				

@@ -1,47 +1,50 @@
 .gx_infowarp {
     width: inherit;
-    height: 3000;
+	height: 4100px;
 }
 
 
 /*gx 정보 */
 .gx_infotit {
-    width: 550;
-    height: 100;
-    margin: 20 0;
+  	 width: 230px;
+    height: 49px;
+    margin: 21px 0;
     text-align: center;
+    border-bottom-style: groove;
+    position: relative;
+    left: 323px;
+    top: 33px;
     
 }
-.wire {
-	height : 2;
-	background-color: black;
-	margin:20 0;
-}
+
 
 
 /* 스피닝 */
 .program1 {
-    width: 890;
-    height: 450;
-	position: relative;
+   width: 890px;
+    height: 415px;
+    position: relative;
+   top: 41px;
 }
 
 /*이미지*/
 .spinning1 {
-    width: 480;
-    height: 400;
+    width: 480px;
+    height:324px;
 }
 .spinning2 {
-    width: 350;
-    height: 380;
-    margin: 5;
+   width: 350px;
+    height: 333px;
+    margin: 5px;
+    position: relative;
+    top: 5px;
 }
 /*이미지 끝*/
 
 .programss1 {
    
     width: 890px;
-    height: 250;
+    height: 250px;
     position: relative;
 }
 
@@ -50,22 +53,22 @@
 
 /* 필라테스 */
 .program2 {
-    width: 890;
-    height: 350;
-    margin-top: 50;
+    width: 890px;
+    height: 350px;
+    margin-top: 50px;
 }
 .pilates1 {
     width: 532px;
-    height: 320;
+    height: 320px;
 }
 .pilates2 {
-	width: 350;
-    height: 320;
+	width: 350px;
+    height: 320px;
 }
 .programss2 {
     margin-top: 0;
-    width: 890;
-    height: 250;
+    width: 890px;
+    height: 250px;
    
 }
 /* 필라테스 끝*/
@@ -73,9 +76,9 @@
 
 /* 요가 */
 .program3 {
-	width: 890;
-    height: 350;
-    margin-top: 50;
+	width: 890px;
+    height: 350px;
+    margin-top: 50px;
 }
 
 .programss3 {
@@ -85,8 +88,8 @@
    
 }
 .yoga1 {
-    width: 650;
-    height: 320;
+    width: 650px;
+    height: 320px;
 }
 
 /* 요가 끝*/
@@ -94,45 +97,101 @@
 
 /*스트레칭*/
 .program4 {
-	width: 890;
-    height: 350;
-    margin-top: 50;
+	width: 890px;
+    height: 350px;
+    margin-top: 13px;
 }
 
 .programss4 {
 	width: 890px;
-    height: 250;
+    height: 250px;
     position: relative;
    
 }
 .stretching1 {
 	width: 532px;
-    height: 320;
+    height: 320px;
 }
 
 .stretching2 {
-	width: 350;
-    height: 320;
+	width: 350px;
+    height: 320px;
 }
 
 /*스트레칭 끝*/
 
 
+/*수영*/
+
+.program5{
+	width: 890px;
+    height: 350px;
+   margin-top: 6px;
+}
+.programss5{
+	width: 890px;
+    height: 250px;
+    position: relative;
+	
+}
+.swimming1{
+	position: relative;
+    width: 455px;
+	
+}
+.swimming2{
+	position: relative;
+    width: 525px;
+    bottom: 295px;
+    left: 458px;
+	
+}
+/*수영끝*/
+
+/*태보*/
+
+.program6{
+	width: 890px;
+    height: 350px;
+   margin-top: 6px;
+}
+.programss6{
+	width: 890px;
+    height: 250px;
+    position: relative;
+    top: 29px;
+	
+}
+.taebo1{
+	position: relative;
+    width: 455px;
+    top: 25px;
+}
+.taebo2{
+	position: relative;
+    width: 525px;
+    bottom: 295px;
+    left: 458px;
+	
+}
+
+
+
 /* 문자열 */
 .num {
-	font-size: 30;
+	font-size: 30px;
 	font-weight: bold;
 }
 .tit {
-	font-size: 35;
+	font-size: 30px;
 	
 }
 .desc {
-	font-size:25;
-	margin-bottom: 32;
+	font-size:25px;
+	margin-bottom: 32px;
 }
 .context {
-	font-size: 15;
+	font-size: 15px;
 }
 
 /* 문자열 끝 */

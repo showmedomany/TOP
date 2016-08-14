@@ -6,19 +6,19 @@
 }
 .exer_wrap1 {
     width: 600px;
-    height: 64px;
+    height:50px;
     position: relative;
     left: 139px;
     margin: 68px 0;
 }
 .wrap1_1 {
-  	 width: 364px;
+      width: 335px;
     height: 97%;
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     border-bottom-style: groove;
     position: relative;
-    left: 131px;
+    left: 152px;
     font-weight: bold;
 }
 

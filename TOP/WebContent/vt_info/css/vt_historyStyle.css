@@ -1,14 +1,101 @@
-.history_img1{
-	position: relative;
-    right: 102px;
-    top: 29px;
-    width: 1008px;
-}
-.vt_history1{
-border-bottom-style: groove;
-    width: 156px;
-    font-size: 35px;
+
+.wrap1{
+	/*컨테트 왑 2영역으로 나누기*/
+    width: inherit;
+    height: 50%;
     position: relative;
-    font-weight: bold;
-    left: 360px;
+}
+.wrap1_content{
+	/*왑1 컨텐트 영역*/
+    width: 350px;
+    height: 385px;
+    position: absolute;
+}
+.wrap1_img{
+	/*왑1 이미지 영역*/
+	width: 524px;
+    height: 218px;
+    float: right;
+}
+.wrap1_line{
+	/*왑1 디자인 줄 영역*/
+    border: greenyellow double;
+    width: 200px;;
+    position: absolute;
+    top: 73px;
+}
+.wrap1_sub1{
+	/*왑1 글씨1 영역*/
+    width: 205px;
+    height: 115px;
+    margin-top: 72px;
+}
+.wrap1_sub_sub1{
+	/*왑1 글씨1 영역안 영역*/
+	width: inherit;
+    height: 44px;
+    font-size: 35px;
+    text-align: left;
+    color: lawngreen;
+}
+.wrap1_sub_sub2{
+	/*왑1 글씨1 영역안 영역*/
+	font-size: 40px;
+    width: 233px;
+}
+.wrap1_sub2{
+	/*왑1 글씨2 영역*/
+	width: 842px;
+    height: 200;
+}
+.wrap2{
+	/*컨테트 왑 2영역으로 나누기*/
+	width: inherit;
+    height: 50%;
+    position: relative;
+}
+.wrap2_content{
+	/*왑2 컨텐트 영역*/
+	
+}
+.wrap2_line{
+	/*왑2 디자인 줄 영역*/
+    border: greenyellow double;
+    width: 334px;;
+    position: absolute;
+}
+.wrap2_sub1{
+	/*왑2 글씨 영역*/
+	height: 67px;
+    width: 341px;
+}
+.wrap2_sub1_sub1{
+	/*왑2 서브1 안 글씨영역*/
+	font-size: 40px;
+    position: absolute;
+	color: greenyellow;
+}
+.wrap2_sub1_sub2{
+	/*왑2 서브1 안 글씨영역*/
+	float: right;
+    font-size: 40px;
+}
+.wrap2_sub2{
+	/*왑2 글씨 영역*/
+	
+}
+.wrap2_sub3{
+	/*왑2 글씨 영역*/
+	
+}
+.wrap2_sub4{
+	/*왑2 글씨 영역*/
+	
+}
+.wrap2_img{
+	/*왑2 이미지 영역*/
+	float: right;
+    width: 375px;
+    height: 309px;
+    margin-top: -126px;
 }
