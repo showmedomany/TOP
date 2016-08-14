@@ -320,11 +320,12 @@ function inbodyInsertProcess(){
 	var weight = insertForm.weight.value;
 	//bmi
 	var bmi = insertForm.bmi.value;
+	/*
 	//측정시간
 	var check_date = insertForm.selectStartYear.value+"-"
 		+insertForm.selectStartMonth.value+"-"
 		+insertForm.selectStartDay.value;
-	
+	*/
 	/* 유효성 검사 */
 	var inbodySaveDiv = document.getElementById("inbodySaveDiv");
 	if(!insertForm.age.value){
@@ -343,7 +344,7 @@ function inbodyInsertProcess(){
 	
 	document.getElementById("inbodySaveDiv").innerHTML="저장중..";
 	request = new Request(inbodyInsertProcessResult, "inbodyInsertProcess.do", "POST",
-			"id="+id+"&age="+age+"&sex="+sex+"&height="+height+"&weight="+weight+"&bmi="+bmi+"&check_date="+check_date);
+			"id="+id+"&age="+age+"&sex="+sex+"&height="+height+"&weight="+weight+"&bmi="+bmi);
 	request.sendRequest();
 }
 function inbodyInsertProcessResult(){	
@@ -406,29 +407,11 @@ function scheduleInsertProcess(){
 				+insertForm.selectStartMonth.value+"-"
 				+insertForm.selectStartDay.value;
 	//종료일 년월일
-	var end = insertForm.selectEndYear.value+"-"
-				+insertForm.selectEndMonth.value+"-"
-				+insertForm.selectEndDay.value;
+	var end = insertForm.expiYear.value+"-"
+				+insertForm.expiMonth.value+"-"
+				+insertForm.expiDay.value;
 	// 운동 종류
 	var routineType = insertForm.routineType.value;
-	
-	/*유효성 검사 - 날짜 */
-	var scheduleSaveDiv = document.getElementById("scheduleSaveDiv");
-
-	if(parseInt(insertForm.selectStartYear.value) > parseInt(insertForm.selectEndYear.value)){
-		scheduleSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
-		return;
-	}else if(parseInt(insertForm.selectStartYear.value) == parseInt(insertForm.selectEndYear.value)){
-		if(parseInt(insertForm.selectStartMonth.value) > parseInt(insertForm.selectEndMonth.value)){
-			scheduleSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
-			return;
-		}else if(parseInt(insertForm.selectStartMonth.value) == parseInt(insertForm.selectEndMonth.value)){
-			if(parseInt(insertForm.selectStartDay.value) > parseInt(insertForm.selectEndDay.value)){
-				scheduleSaveDiv.innerHTML="시작일과 종료일이 맞지않습니다";
-				return;
-			}
-		}
-	}
 	
 	scheduleSaveDiv.innerHTML="저장중..";
 	request = new Request(scheduleInsertProcessResult, "scheduleInsertProcess.do", "POST", 

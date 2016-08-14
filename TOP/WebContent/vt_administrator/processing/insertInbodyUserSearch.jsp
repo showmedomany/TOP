@@ -40,6 +40,7 @@
 				<th>bmi</th>
 				<td><input type="text" name="bmi" value="${inbodyData.bmi }" onkeydown="numOnly()"></td>
 			</tr>
+			<%-- 
 			<tr>
 				<th>측정시간</th>
 				<td>				
@@ -98,6 +99,7 @@
 					</div>					
 				</td>
 			</tr>
+			 --%>
 			<tr>
 				<td colspan="2">
 					<input type="button" value="저장" onclick="inbodyInsertProcess()">				
@@ -135,6 +137,7 @@
 				<th>bmi</th>
 				<td><input type="text" name="bmi" onkeydown="numOnly()"></td>
 			</tr>
+			<%-- 
 			<tr>
 				<th>측정시간</th>
 				<td>				
@@ -195,6 +198,7 @@
 					</div>					
 				</td>
 			</tr>
+			 --%>
 			<tr>
 				<td colspan="2">
 					<input type="button" value="저장" onclick="inbodyInsertProcess()">

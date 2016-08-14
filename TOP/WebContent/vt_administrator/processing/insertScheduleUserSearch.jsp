@@ -8,8 +8,7 @@
 <script src="/TOP/vt_administrator/script/admin.js" type="text/javascript"> </script>
 
 <form name="insertForm">
-	<input type="hidden" name="start_leapYear" value="${start_leapYear}">
-	<input type="hidden" name="end_leapYear" value="${end_leapYear}">
+	<input type="hidden" name="start_leapYear" value="${start_leapYear}">	
 	<input type="hidden" id="scheduleId" name="scheduleId" value="${id}">
 	<input type="hidden" name=routineinfo_id value="${routineData.routineinfo_id}">
 	<c:if test="${idCheckResult!=0}">
@@ -38,11 +37,11 @@
 				<td>				
 					<!-- start_year -->					
 					<select size="1" name="selectStartYear" onchange="leapYearCheck_start()">					
-						<c:forEach var="i" begin="${thisYear}" end="${thisYear+20}" step="1">
-							<c:if test="${start_year==i}">									
+						<c:forEach var="i" begin="${startYear}" end="${startYear+20}" step="1">
+							<c:if test="${startYear==i}">									
 									<option value="${i}" selected="selected">${i}년</option>									
 							</c:if>
-							<c:if test="${start_year!=i}">	
+							<c:if test="${startYear!=i}">	
 									<option value="${i}">${i}년</option>									
 							</c:if>								
 						</c:forEach>
@@ -50,10 +49,10 @@
 								
 					<select size="1" name="selectStartMonth" onchange="monthDataCheck_start()">
 						<c:forEach var="i" begin="1" end="12" step="1">
-							<c:if test="${start_month==i}">																		
+							<c:if test="${startMonth==i}">																		
 								<option value="${i}" selected="selected">${i}월</option>
 							</c:if>
-							<c:if test="${start_month!=i}">											
+							<c:if test="${startMonth!=i}">											
 								<option value="${i}">${i}월</option>								
 							</c:if>
 						</c:forEach>
@@ -62,7 +61,7 @@
 					<div id="selectStartDay" style="float: right; margin-top: 1px">				
 						<select size="1" name="selectStartDay">
 							<c:forEach var="i" begin="1" end="12" step="1">
-								<c:if test="${start_month==i}">
+								<c:if test="${startMonth==i}">
 									<c:if test="${i==2}">
 										<c:if test="${start_leapYear==true}">
 											<c:set var="day" value="29"/>
@@ -80,74 +79,41 @@
 								</c:if>													
 							</c:forEach>								
 							<c:forEach var="i" begin="1" end="${day}" step="1">
-								<c:if test="${start_day==i}">		
+								<c:if test="${startDay==i}">		
 									<option value="${i}" selected="selected">${i}일</option>
 								</c:if>
-								<c:if test="${start_day!=i}">
+								<c:if test="${startDay!=i}">
 									<option value="${i}">${i}일</option>									
 								</c:if>
 							</c:forEach>
 						</select>
 					</div>					
 				</td>			
-			</tr>					
+			</tr>
+				
 			<tr>
-				<th>운동 종료</th>
-				<td>			
-					<!-- end_year -->					
-					<select size="1" name="selectEndYear" onchange="leapYearCheck_end()">					
-						<c:forEach var="i" begin="${thisYear}" end="${thisYear+20}" step="1">
-							<c:if test="${end_year==i}">									
-								<option value="${i}" selected="selected">${i}년</option>	
-							</c:if>
-							<c:if test="${end_year!=i}">
-								<option value="${i}">${i}년</option>
-							</c:if>
-						</c:forEach>
-					</select>				
-					<!-- end_month  vt_fitnessInsert.js 에 함수 있음 -->						
-					<select size="1" name="selectEndMonth" onchange="monthDataCheck_end()">
+				<th>피트니스 회원권 기간</th>	
+				<td>
+					<select size="1" name="termselect" onchange="termcalc()">					
 						<c:forEach var="i" begin="1" end="12" step="1">
-							<c:if test="${end_month==i}">																		
-								<option value="${i}" selected="selected">${i}월</option>
-								
+							<c:if test="${exTerm==i}">									
+									<option value="${i}" selected="selected">${i}개월</option>									
 							</c:if>
-							<c:if test="${end_month!=i}">															
-								<option value="${i}">${i}월</option>								
-							</c:if>
+							<c:if test="${exTerm!=i}">	
+									<option value="${i}">${i}개월</option>									
+							</c:if>								
 						</c:forEach>
-					</select>
-					<!-- end_day -->														
-					<div id="selectEndDay" style="float: right; margin-top: 1px">				
-						<select size="1" name="selectEndDay">
-							<c:forEach var="i" begin="1" end="12" step="1">
-								<c:if test="${end_month==i}">
-									<c:if test="${i==2}">
-										<c:if test="${end_leapYear==true}">
-											<c:set var="day" value="29"/>
-										</c:if>
-										<c:if test="${end_leapYear==false}">											
-											<c:set var="day" value="28"/>
-										</c:if>
-									</c:if>
-									<c:if test="${i==1 or i==3 or i==5 or i==7 or i==8 or i==12}">
-										<c:set var="day" value="31"/>
-									</c:if>
-									<c:if test="${i==4 or i==6 or i==9 or i==10 or i==11 }">
-										<c:set var="day" value="30"/>
-									</c:if>
-								</c:if>														
-							</c:forEach>
-							<c:forEach var="i" begin="1" end="${day}" step="1">
-								<c:if test="${end_day==i}">		
-									<option value="${i}" selected="selected">${i}일</option>
-								</c:if>
-								<c:if test="${end_day!=i}">
-									<option value="${i}">${i}일</option>									
-								</c:if>
-							</c:forEach>
-						</select>
-					</div>				
+					</select>	
+				</td>			
+			</tr>
+			
+			<tr>
+				<th>피트니스 만료일</th>
+				<td>
+					<input type = "hidden" name = "expiYear" value = "${endYear}">
+					<input type = "hidden" name = "expiMonth" value = "${endMonth}">
+					<input type = "hidden" name = "expiDay" value = "${endDay}">
+					<div id = "expichange">${endYear}년 ${endMonth}월 ${endDay}일</div>
 				</td>
 			</tr>
 			<tr>
@@ -176,6 +142,7 @@
 			</tr>		
 		</table>
 	</c:if>
+	
 	<c:if test="${idCheckResult==0}">
 		<br>해당 회원은 스케줄을 기입하지 않았습니다<br>
 		아이디 : ${id}<br>
@@ -196,11 +163,11 @@
 				<td>				
 					<!-- start_year -->					
 					<select size="1" name="selectStartYear" onchange="leapYearCheck_start()">								
-						<c:forEach var="i" begin="${thisYear}" end="${thisYear+20}" step="1">
-							<c:if test="${thisYear==i}">
+						<c:forEach var="i" begin="${startYear}" end="${startYear+20}" step="1">
+							<c:if test="${startYear==i}">
 								<option value="${i}" selected="selected">${i}년</option>	
 							</c:if>
-							<c:if test="${thisYear!=i}">
+							<c:if test="${startYear!=i}">
 								<option value="${i}">${i}년</option>	
 							</c:if>											
 						</c:forEach>
@@ -208,10 +175,10 @@
 							
 					<select size="1" name="selectStartMonth" onchange="monthDataCheck_start()">
 						<c:forEach var="i" begin="1" end="12" step="1">	
-							<c:if test="${thisMonth==i}">										
+							<c:if test="${startMonth==i}">										
 								<option value="${i}" selected="selected">${i}월</option>
 							</c:if>
-							<c:if test="${thisMonth!=i}">									
+							<c:if test="${startMonth!=i}">									
 								<option value="${i}">${i}월</option>
 							</c:if>							
 						</c:forEach>
@@ -239,10 +206,10 @@
 								</c:if>																						
 							</c:forEach>
 							<c:forEach var="i" begin="1" end="${day}" step="1">
-								<c:if test="${today==i}">
+								<c:if test="${startDay==i}">
 									<option value="${i}" selected="selected">${i}일</option>	
 								</c:if>
-								<c:if test="${today!=i}">
+								<c:if test="${startDay!=i}">
 									<option value="${i}">${i}일</option>	
 								</c:if>
 							</c:forEach>
@@ -251,65 +218,28 @@
 				</td>			
 			</tr>
 			<tr>
-				<th>운동 종료</th>
-				<td>				
-					<!-- end_year -->					
-					<select size="1" name="selectEndYear" onchange="leapYearCheck_end()">			
-						<c:forEach var="i" begin="${thisYear}" end="${thisYear+20}" step="1">								
-							<c:if test="${thisYear==i}">
-								<option value="${i}" selected="selected">${i}년</option>
+				<th>피트니스 회원권 기간</th>	
+				<td>
+					<select size="1" name="termselect" onchange="termcalc()">					
+						<c:forEach var="i" begin="1" end="12" step="1">
+							<c:if test="${exTerm==i}">									
+									<option value="${i}" selected="selected">${i}개월</option>									
 							</c:if>
-							<c:if test="${thisYear!=i}">
-								<option value="${i}">${i}년</option>
+							<c:if test="${exTerm!=i}">	
+									<option value="${i}">${i}개월</option>									
 							</c:if>								
 						</c:forEach>
-					</select>
-					
-					<!-- end_month  vt_fitnessInsert.js 에 함수 있음 -->						
-					<select size="1" name="selectEndMonth" onchange="monthDataCheck_end()">
-						<c:forEach var="i" begin="1" end="12" step="1">								
-							<c:if test="${thisMonth == i}">
-								<option value="${i}" selected="selected">${i}월</option>
-							</c:if>
-							<c:if test="${thisMonth != i}">
-								<option value="${i}">${i}월</option>
-							</c:if>
-						</c:forEach>
-					</select>
-					<!-- end_day -->
+					</select>	
+				</td>			
+			</tr>
 			
-					<div id="selectEndDay" style="float: right; margin-top: 1px">				
-						<select size="1" name="selectEndDay">
-							<c:forEach var="i" begin="1" end="12" step="1">								
-								<c:if test="${i==2}">							
-									<c:if test="${start_leapYear==true}">
-										<c:set var="day" value="29"/>
-									</c:if>
-									<c:if test="${start_leapYear==false}">											
-										<c:set var="day" value="28"/>
-									</c:if>								  
-								<c:set var="day" value="28"/>
-								
-								</c:if>
-								<c:if test="${i==1 or i==3 or i==5 or i==7 or i==8 or i==12}">
-									<c:set var="day" value="31"/>
-								</c:if>
-								<c:if test="${i==4 or i==6 or i==9 or i==10 or i==11 }">
-									<c:set var="day" value="30"/>
-								</c:if>																						
-							</c:forEach>
-							<c:forEach var="i" begin="1" end="${day}" step="1">
-								<c:if test="${today ==i}">		
-									<option value="${i}" selected="selected">${i}일</option>
-								</c:if>
-								<c:if test="${today!=i}">
-									<option value="${i}">${i}일</option>					
-	
-				
-								</c:if>
-							</c:forEach>
-						</select>
-					</div>				
+			<tr>
+				<th>피트니스 만료일</th>
+				<td>
+					<input type = "hidden" name = "expiYear" value = "${endYear}">
+					<input type = "hidden" name = "expiMonth" value = "${endMonth}">
+					<input type = "hidden" name = "expiDay" value = "${endDay}">
+					<div id = "expichange">${endYear}년 ${endMonth}월 ${endDay}일</div>
 				</td>
 			</tr>
 			<tr>

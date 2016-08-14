@@ -17,9 +17,6 @@
 	</c:if>
 	
 	아이디 : ${id}
-	<!-- 피트니스 등록일을 셀렉터로 먼저 만들고
-		밑이나 옆으로 개월수 선택하고
-		선택하면 만료일은 자동 계산  -->
 	<table border = "1">
 		<tr>
 			<th>피트니스 등록일</th>	
@@ -108,60 +105,6 @@
 				<input type = "hidden" name = "expiMonth" value = "${endMonth}">
 				<input type = "hidden" name = "expiDay" value = "${endDay}">
 				<div id = "expichange">${endYear}년 ${endMonth}월 ${endDay}일</div>
-				
-				<%-- 		
-				<select size="1" name="selectEndYear" onchange="leapYearCheck_end()">					
-					<c:forEach var="i" begin="${endYear}" end="${endYear+20}" step="1">
-						<c:if test="${endYear==i}">									
-							<option value="${i}" selected="selected">${i}년</option>	
-						</c:if>
-						<c:if test="${endYear!=i}">
-							<option value="${i}">${i}년</option>
-						</c:if>
-					</c:forEach>
-				</select>
-				<select size="1" name="selectEndMonth" onchange="monthDataCheck_end()">
-					<c:forEach var="i" begin="1" end="12" step="1">
-						<c:if test="${endMonth==i}">																		
-							<option value="${i}" selected="selected">${i}월</option>							
-						</c:if>
-						<c:if test="${endMonth!=i}">															
-							<option value="${i}">${i}월</option>								
-						</c:if>
-					</c:forEach>
-				</select>
-				<!-- end_day -->														
-				<div id="selectEndDay" style="float: right; margin-top: 1px">				
-					<select size="1" name="selectEndDay"  onchange="test()">
-						<c:forEach var="i" begin="1" end="12" step="1">
-							<c:if test="${endMonth==i}">
-								<c:if test="${i==2}">
-									<c:if test="${end_leapYear==true}">
-										<c:set var="day" value="29"/>
-									</c:if>
-									<c:if test="${end_leapYear==false}">											
-										<c:set var="day" value="28"/>
-									</c:if>
-								</c:if>
-								<c:if test="${i==1 or i==3 or i==5 or i==7 or i==8 or i==12}">
-									<c:set var="day" value="31"/>
-								</c:if>
-								<c:if test="${i==4 or i==6 or i==9 or i==10 or i==11 }">
-									<c:set var="day" value="30"/>
-								</c:if>
-							</c:if>														
-						</c:forEach>
-						<c:forEach var="i" begin="${endDay+1}" end="${day}" step="1">
-							<c:if test="${endDay==i}">		
-								<option value="${i}" selected="selected">${i}일</option>
-							</c:if>
-							<c:if test="${endDay!=i}">
-								<option value="${i}">${i}일</option>									
-							</c:if>
-						</c:forEach>
-					</select>
-				</div>
-				 --%>				
 			</td>
 		</tr>
 		<tr>
@@ -199,24 +142,6 @@
 						value="${registerData.pt_count}" onkeydown="numOnly()">
 			</td>			
 		</tr>
-		<%-- 
-		<tr>
-			<th>담당 트레이너</th>			
-			<td>
-				<select size="1" name="trainerId">
-					<option value ="0" selected = "selected">트레이너를 선택해주세요</option>
-					<c:forEach var="i" begin="0" end="${trainerIdList.size()-1 }" step="1">
-						<c:if test="${trainerIdList[i]==registerData.trainer_id}">
-							<option value="${trainerIdList[i]}" selected="selected">${trainerIdList[i]}</option>	
-						</c:if>
-						<c:if test="${trainerIdList[i]!=registerData.trainer_id}">
-							<option value="${trainerIdList[i]}">${trainerIdList[i]}</option>	
-						</c:if>											
-					</c:forEach>				
-				</select>
-			</td>
-		</tr>
-		 --%>
 		<tr>
 			<th colspan="2">
 				<input type="button" value="수정 및 저장" onclick="fitnessInsertProcess()">
