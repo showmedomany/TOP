@@ -25,6 +25,11 @@ function sendtext(){
 	chatForm.content.focus();
 	return false;
 }
+function chatkeydown(){	
+	$(".chatTop").scrollTop(
+			$(".chatTop")[0].scrollHeight
+	) /* 스크롤 아래로 하기 */
+}
 
 function sendmsg(){	
 	if(chatForm.content.value){
@@ -43,7 +48,8 @@ function sendreq(){
 	var chatarea = document.getElementById("chatarea");	
 	if(request.httpRequest.readyState == 4){
 		if(request.httpRequest.status == 200){
-			chatarea.innerHTML = request.httpRequest.responseText;				
+			chatarea.innerHTML = request.httpRequest.responseText;
+			$(".chatTop").scrollTop($(".chatTop")[0].scrollHeight-20) /* 스크롤 아래로 하기 */ 
 		}
 	}	
 }

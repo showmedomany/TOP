@@ -15,7 +15,7 @@ public interface MyPageDao {
 	public List<ExerciseDataBean> getExerciseNames(int partId);
 	public ExerciseDataBean getExeriseInfo(String name);
 	public RegisterDataBean getRegisterData(String id);
-	public InbodyDataBean getInbodyData(String id);
+	
 	public MemberDataBean getMemberData(String id);
 	
 	/*인바디 휘트니스 루틴 등록확인*/

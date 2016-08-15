@@ -3,14 +3,17 @@ package myPage;
 import java.sql.Timestamp;
 
 public class UserChecksDataBean {
+	/*
 	private int inbody;
 	private Timestamp inbody_date;
+	*/
 	private int register;
 	private Timestamp register_start_date;
 	private Timestamp register_end_date;
 	private int routine_info;
 	private Timestamp routine_start_date;
 	private Timestamp routine_end_date;
+	/*
 	public int getInbody() {
 		return inbody;
 	}
@@ -23,6 +26,7 @@ public class UserChecksDataBean {
 	public void setInbody_date(Timestamp inbody_date) {
 		this.inbody_date = inbody_date;
 	}
+	*/
 	public int getRegister() {
 		return register;
 	}

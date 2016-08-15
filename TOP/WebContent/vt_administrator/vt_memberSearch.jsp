@@ -68,7 +68,7 @@
 									<c:set var="insertMeans" value="insertMeans_${userNumber}"/>				
 									<select name="${insertMeans}" size="1">
 										<option value="fitness" selected="selected">피트니스</option>
-										<option value="inbody">인바디</option>
+										<!-- <option value="inbody">인바디</option> -->
 										<option value="schedule">스케줄</option>
 									</select>			
 									<input type="button" value="등록" onclick="insertUserInfo('${userNumber}','${memberData.id}')">			

@@ -130,18 +130,18 @@
 	 <select id="getMemberSearchNickNameList" parameterType="String" resultType="member.MemberDataBean">
 	 	select * from vt_members where nickname = #{searchMessage}
 	 </select>
-	 
-	 <!-- 인바디 정보 등록 확인 -->
+	 <!-- 
+	 인바디 정보 등록 확인
 	 <select id="getInbodyCheck" parameterType="String" resultType="int">
 	 	select count(*) from vt_inbody where id = #{id}
 	 </select>
 	 
-	 <!-- 검색한 아이디 인바디 정보 반환 -->
+	 검색한 아이디 인바디 정보 반환
 	 <select id="getInbodyData" parameterType="String" resultType="myPage.InbodyDataBean">
 	 	select * from vt_inbody where id = #{id}
 	 </select>
 	 
-	 <!-- 인바디 수정 -->
+	 인바디 수정
 	 <update id="updateInbodyInfo" parameterType="myPage.InbodyDataBean">
 		UPDATE
 		  vt_inbody
@@ -156,12 +156,12 @@
  		  id = #{id}
 	</update>	 
 	 
-	 <!--  인바디 저장 -->
+	  인바디 저장
 	 <insert id="insertInbodyInfo" parameterType="myPage.InbodyDataBean">
 	 	insert into vt_inbody values(vt_inbody_seq.nextval, #{id}, #{age}, #{height}, #{sex}, 
 		#{weight}, #{bmi}, #{check_date})
 	 </insert>	
-	 
+	  -->
 	 <select id="insertScheduleUserSearchIDCheck" parameterType="String" resultType="int">
 		select count(*) from vt_routine_info where id=#{id}	
 	</select>

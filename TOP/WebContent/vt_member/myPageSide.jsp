@@ -43,9 +43,7 @@ ul#navigation .centerPayment a{
 ul#navigation .fitness a      {
     background-image: url(/TOP/vt_member/images/Fitness.png);
 }
-ul#navigation .inbody a      {
-    background-image: url(/TOP/vt_member/images/Inbody.png);
-}
+
 ul#navigation .exercise a      {
     background-image: url(/TOP/vt_member/images/ExerciseRoutine.png);
 }
@@ -79,7 +77,6 @@ $(function() {
 	<ul id="navigation">
 	   <li class="centerPayment" style="cursor: pointer;" onclick="location = 'centerPayment.do'"><a></a></li>
 	   <li class="fitness" style="cursor: pointer;" onclick="location = 'fitnessInfo.do'"><a></a></li>
-	   <li class="inbody" style="cursor: pointer;" onclick="location = 'inbodyInfo.do'"><a></a></li>
 	   <li class="exercise" style="cursor: pointer;" onclick="location = 'exerciseRoutine.do'"><a> </a></li>
 	   <li class="member" style="cursor: pointer;" onclick="location = 'memberModify.do'"><a></a></li>   
 	</ul>

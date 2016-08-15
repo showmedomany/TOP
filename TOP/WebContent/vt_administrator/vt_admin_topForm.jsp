@@ -36,15 +36,7 @@
 									<li onclick="location = 'memberSearch.do'">회원 검색</li>
 									<li onclick="location = 'admin_input.do'">홈페이지 등록</li>
 								</ul>  
-							</li> 
-							
-							<li class="admin_top_navi_menuframe">  
-								<div class="admin_top_navi_menu">게시판 관리</div>
-								<ul class="admin_top_navi_subframe">  
-									<li>공지사항</li>  
-									<li>빈공간</li>  
-								</ul>  
-							</li>							
+							</li> 			
 						</ul> 
 					</div>
 				</div>

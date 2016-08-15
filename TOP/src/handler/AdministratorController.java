@@ -32,7 +32,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import administrator.AdminDao;
 import member.MemberDao;
 import member.MemberDataBean;
-import myPage.InbodyDataBean;
 import myPage.MemberRoutineDataBean;
 import myPage.RegisterDataBean;
 import myPage.RoutineInfoDataBean;
@@ -404,61 +403,6 @@ public class AdministratorController {
 	
 	
 	
-	@RequestMapping("/insertInbodyUserSearch")	
-	public ModelAndView insertInbodyUserSearch
-	(HttpServletRequest request,HttpServletResponse response){		
-		
-		Calendar calendar = Calendar.getInstance();
-		int thisYear = calendar.get(calendar.YEAR);		
-		int thisMonth = calendar.get(calendar.MONTH)+1;//month 는 0부터 시작함... !!!!?
-		int today = calendar.get(calendar.DAY_OF_MONTH);		
-		request.setAttribute("thisYear", thisYear);
-		request.setAttribute("thisMonth", thisMonth);
-		request.setAttribute("today", today);
-		
-		String id = request.getParameter("id");
-		request.setAttribute("id", id);
-		
-		int inbodyCheckResult = adminDao.getInbodyCheck(id);
-		request.setAttribute("inbodyCheckResult", inbodyCheckResult);
-		
-		if(inbodyCheckResult!=0){
-			InbodyDataBean inbodyData = adminDao.getInbodyData(id);
-			request.setAttribute("inbodyData", inbodyData);	
-			
-			SimpleDateFormat format = null;
-			
-			format = new SimpleDateFormat("yyyy");
-			int start_year = Integer.parseInt(format.format(inbodyData.getCheck_date()));			
-			request.setAttribute("start_year", start_year);
-			
-			String start_leapYear = "false";		
-			if((0==(start_year%4) && 0 !=(start_year%100)) || 0 == start_year%400){
-				start_leapYear = "true";
-			}else{
-				start_leapYear = "false";
-			}
-			request.setAttribute("start_leapYear", start_leapYear);
-			
-			format = new SimpleDateFormat("MM");
-			String start_month = format.format(inbodyData.getCheck_date());
-			request.setAttribute("start_month", start_month);			
-			
-			format = new SimpleDateFormat("dd");
-			String start_day = format.format(inbodyData.getCheck_date());
-			request.setAttribute("start_day", start_day);			
-		}else{
-			String start_leapYear = "false";			
-			if((0==(thisYear%4) && 0 !=(thisYear%100)) || 0 == thisYear%400){
-				start_leapYear = "true";
-			}else{
-				start_leapYear = "false";
-			}
-			request.setAttribute("start_leapYear", start_leapYear);			
-		}
-		return new ModelAndView("/vt_administrator/processing/insertInbodyUserSearch");		
-	}
-	
 	@RequestMapping("/insertScheduleUserSearch")	
 	public ModelAndView insertScheduleUserSearch
 	(HttpServletRequest request,HttpServletResponse response) throws Exception{		
@@ -600,51 +544,7 @@ public class AdministratorController {
 		return new ModelAndView("/vt_administrator/processing/DBInsertResultText");
 	}
 	
-	@RequestMapping("/inbodyInsertProcess")
-	public ModelAndView inbodyInsertProcess
-	(HttpServletRequest request,HttpServletResponse response){		
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {			
-			e.printStackTrace();
-		}		
-		
-		String timetamp =" 00:00:00.0";
-		
-		String id = request.getParameter("id");
-		int age = Integer.parseInt(request.getParameter("age"));
-		String sex = request.getParameter("sex");
-		int height = Integer.parseInt(request.getParameter("height"));
-		int weight = Integer.parseInt(request.getParameter("weight"));
-		int bmi = Integer.parseInt(request.getParameter("bmi"));		
-		//시간은 현재시간으로
-		Timestamp check_date = new Timestamp(System.currentTimeMillis());
-				
-		InbodyDataBean inbodyData = new InbodyDataBean();
-		inbodyData.setId(id);
-		inbodyData.setAge(age);
-		inbodyData.setSex(sex);
-		inbodyData.setHeight(height);
-		inbodyData.setWeight(weight);
-		inbodyData.setBmi(bmi);
-		
-		inbodyData.setCheck_date(check_date);
-		
-		
-		int inbodyCheckResult = adminDao.getInbodyCheck(id);
-		request.setAttribute("inbodyCheckResult", inbodyCheckResult);
-		//System.out.println(inbodyCheckResult);
-		
-		if(inbodyCheckResult==0){
-			int result = adminDao.insertInbodyInfo(inbodyData);
-			request.setAttribute("result", result);		
-		}else if(inbodyCheckResult!=0){
-			int result = adminDao.updateInbodyInfo(inbodyData);
-			request.setAttribute("result", result);	
-		}		
-			
-		return new ModelAndView("/vt_administrator/processing/DBInsertResultText");
-	}	
+	
 	
 	@RequestMapping("/scheduleInsertProcess")
 	public ModelAndView scheduleInsertProcess

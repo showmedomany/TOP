@@ -50,7 +50,8 @@
 			</tr>
 		</c:if>
 	</table>
-	<br>	
+	<br>
+	<%-- 	
 	<table>	
 		<tr class="tableTr">
 			<th colspan="2" style="width:950px">인바디</th>
@@ -72,6 +73,7 @@
 		</c:if>
 		
 	</table>
+	 --%>
 	<br>
 	<table>
 		<tr class="tableTr">

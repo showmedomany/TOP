@@ -22,8 +22,8 @@
 	
 	<!-- 인바디 휘트니스 루틴 등록확인 -->
 	<select id="uesrChecks" parameterType="String" resultType="myPage.UserChecksDataBean">
-		select (select count(id) from vt_inbody where id = #{id}) inbody, 
-				(select check_date from vt_inbody where id = #{id}) inbody_date,
+		select <!-- (select count(id) from vt_inbody where id = #{id}) inbody, 
+				(select check_date from vt_inbody where id = #{id}) inbody_date, -->
 				(select count(id) from vt_register where id = #{id}) register,
 				(select start_date from vt_register where id = #{id}) register_start_date,
 				(select end_date from vt_register where id = #{id}) register_end_date,
@@ -56,10 +56,6 @@
 	<select id="getRegisterData" parameterType="String" resultType="myPage.RegisterDataBean">
 		select START_DATE, END_DATE, EXP_DATE, GX_CHECK, PT_CHECK, 
 		PT_COUNT from vt_register where id = #{id}
-	</select>
-	
-	<select id="getInbodyData" parameterType="String" resultType="myPage.InbodyDataBean">
-		select AGE, HEIGHT, SEX, WEIGHT, BMI, CHECK_DATE from vt_inbody where id = #{id}
 	</select>
 	
 	<select id="getMemberData" parameterType="String" resultType="member.MemberDataBean">

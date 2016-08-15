@@ -1749,7 +1749,7 @@ ALTER TABLE vt_exercise
    REFERENCES vt_ex_part (ex_part_id)
 ;
 ALTER TABLE vt_board
-   ADD FOREIGN KEY (id)
+   ADD FOREIGN KEY (id) 
    REFERENCES vt_members (id)
 ;
 ALTER TABLE vt_inbody
@@ -1762,7 +1762,7 @@ ALTER TABLE vt_notice_board
 ;
 ALTER TABLE vt_register
    ADD FOREIGN KEY (id)
-   REFERENCES vt_members (id)
+   REFERENCES vt_members (id) on delete cascade
 ;
 ALTER TABLE vt_routine_info
    ADD FOREIGN KEY (id)

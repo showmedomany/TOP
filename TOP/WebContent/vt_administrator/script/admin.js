@@ -186,10 +186,14 @@ function insertUserInfo(num, id){
 	if(insertMeans=="fitness"){
 		request = new Request(insertFitnessUserSearchResult, "insertFitnessUserSearch.do", "POST", "id="+id);
 		request.sendRequest();		
-	}else if(insertMeans=="inbody"){
+	}
+	/*
+	else if(insertMeans=="inbody"){
 		request = new Request(insertInbodyUserSearchResult, "insertInbodyUserSearch.do", "POST", "id="+id);
 		request.sendRequest();		
-	}else if(insertMeans=="schedule"){		
+	}
+	*/
+	else if(insertMeans=="schedule"){		
 		request = new Request(insertScheduleUserSearchResult, "insertScheduleUserSearch.do", "POST", "id="+id);
 		request.sendRequest();
 	}
@@ -201,6 +205,7 @@ function insertFitnessUserSearchResult(){
 		}
 	}
 }
+/*
 function insertInbodyUserSearchResult(){	
 	if(request.httpRequest.readyState == 4){
 		if(request.httpRequest.status == 200){
@@ -208,6 +213,7 @@ function insertInbodyUserSearchResult(){
 		}
 	}
 }
+*/
 function insertScheduleUserSearchResult(){	
 	if(request.httpRequest.readyState == 4){
 		if(request.httpRequest.status == 200){
@@ -304,8 +310,8 @@ function fitnessInsertProcessResult(){
 
 
 
-
-/* 인바디 정보 저장하기 */
+/*
+ 인바디 정보 저장하기 
 function inbodyInsertProcess(){	
 	
 	//아이디
@@ -320,13 +326,13 @@ function inbodyInsertProcess(){
 	var weight = insertForm.weight.value;
 	//bmi
 	var bmi = insertForm.bmi.value;
-	/*
+	
 	//측정시간
 	var check_date = insertForm.selectStartYear.value+"-"
 		+insertForm.selectStartMonth.value+"-"
 		+insertForm.selectStartDay.value;
-	*/
-	/* 유효성 검사 */
+	
+	 유효성 검사 
 	var inbodySaveDiv = document.getElementById("inbodySaveDiv");
 	if(!insertForm.age.value){
 		inbodySaveDiv.innerHTML = "나이를 입력하세요.";
@@ -354,7 +360,7 @@ function inbodyInsertProcessResult(){
 		}
 	}
 }
-
+*/
 function termcalc(){
 	/*등록일의 날짜를 가져와 기간의 개월수로 계산*/
 	var year = insertForm.selectStartYear.value;

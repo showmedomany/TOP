@@ -2,9 +2,7 @@ package handler;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import member.MemberDao;
 import member.MemberDataBean;
 import myPage.ExerciseDataBean;
-import myPage.InbodyDataBean;
-import myPage.MemberRoutineDataBean;
 import myPage.MyPageDao;
 import myPage.RegisterDataBean;
 import myPage.RoutineDataBean;
@@ -89,21 +85,7 @@ public class MyPageController {
 		request.setAttribute("center", center);	
 		return new ModelAndView("/vt_member/myPageView");
 	}
-	@RequestMapping("/inbodyInfo")
-	public ModelAndView inbodyInfo(HttpServletRequest request,HttpServletResponse response){	
-		
-		String id = (String) request.getSession().getAttribute("memId");
-		request.setAttribute("id", id);
-		
-		InbodyDataBean inbodyData = myPageDao.getInbodyData(id);
-		request.setAttribute("inbodyData", inbodyData);
-		
-		String top = "/vtFrame/vt_topForm";
-		String center = "inbodyInfo";
-		request.setAttribute("top", top);
-		request.setAttribute("center", center);	
-		return new ModelAndView("/vt_member/myPageView");
-	}
+	
 	@RequestMapping("/exerciseRoutine")
 	public ModelAndView exerciseRoutine(HttpServletRequest request,HttpServletResponse response){	
 		

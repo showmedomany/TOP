@@ -48,10 +48,8 @@ public class MyPageDBBean implements MyPageDao {
 	public RegisterDataBean getRegisterData(String id) {
 		return SqlMapClient.getSession().selectOne("MyPage.getRegisterData", id);
 	}
-	@Override
-	public InbodyDataBean getInbodyData(String id) {
-		return SqlMapClient.getSession().selectOne("MyPage.getInbodyData", id);
-	}
+	
+	/*입력받은 아이디로 Data를 가져오는 쿼리문*/
 	@Override
 	public MemberDataBean getMemberData(String id) {
 		return SqlMapClient.getSession().selectOne("MyPage.getMemberData", id);
