@@ -17,7 +17,9 @@ public class PageController {
 	(HttpServletRequest request,HttpServletResponse response){
 		//가운데 컨텐츠를 메인화면용 jsp로 교체
 		String center = "vt_centerContent";
-		request.setAttribute("center", center);		
+		String top = "/vtFrame/changeimages/mainimage";
+		request.setAttribute("top", top);
+		request.setAttribute("center", center);	
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//main
 	
@@ -27,12 +29,14 @@ public class PageController {
 	(HttpServletRequest request,HttpServletResponse response){
 		//가운데 컨텐츠를 로그인Form으로 교체
 		String center = "vt_loginForm";
+		String top = "/vtFrame/changeimages/mainimage";
 		
 		String page = request.getParameter("page");
 		if(page == null){
 			page = "main";
 		}
 		request.setAttribute("center", center);
+		request.setAttribute("top", top);
 		request.setAttribute("page", page);
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//loginForm
@@ -42,6 +46,8 @@ public class PageController {
 	(HttpServletRequest request,HttpServletResponse response){		
 	
 		String center = "vt_inputForm";
+		String top = "/vtFrame/changeimages/mainimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);				
 		return new ModelAndView("/vtFrame/vtFrame");
 	}//loginForm
@@ -54,6 +60,8 @@ public class PageController {
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_info/vt_infoHello";
 		String word = "/vt_info/word/hello";
+		String top = "/vtFrame/changeimages/cenimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);
@@ -68,6 +76,8 @@ public class PageController {
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_info/vt_infoHistory";
 		String word = "/vt_info/word/history";
+		String top = "/vtFrame/changeimages/cenimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);
@@ -81,6 +91,8 @@ public class PageController {
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_info/vt_infoInfo";
 		String word = "/vt_info/word/info";
+		String top = "/vtFrame/changeimages/cenimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);
@@ -94,6 +106,8 @@ public class PageController {
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_info/vt_infoChar";
 		String word = "/vt_info/word/char";
+		String top = "/vtFrame/changeimages/cenimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);
@@ -109,6 +123,8 @@ public class PageController {
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_exerinfo/vt_ptinfo";
 		String word = "/vt_exerinfo/word/pt";
+		String top = "/vtFrame/changeimages/exerimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);
@@ -122,6 +138,8 @@ public class PageController {
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_exerinfo/vt_gxinfo";
 		String word = "/vt_exerinfo/word/gx";
+		String top = "/vtFrame/changeimages/exerimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);
@@ -137,6 +155,8 @@ public class PageController {
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_trinfo/vt_pttrinfo";
 		String word = "/vt_trinfo/word/pttr";
+		String top = "/vtFrame/changeimages/trimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);
@@ -150,6 +170,8 @@ public class PageController {
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_trinfo/vt_gxtrinfo";
 		String word = "/vt_trinfo/word/gxtr";
+		String top = "/vtFrame/changeimages/trimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);

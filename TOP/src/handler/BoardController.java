@@ -43,6 +43,7 @@ public class BoardController {
 		String word = "/vt_board/word/free";
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_board/vt_freeboard";
+		String top = "/vtFrame/changeimages/coimage";
 		
 		int pageSize = 10;		//리스트에 보여질 게시글 갯수
 		int pageBlock = 5;		//게시판 블록의 최대수
@@ -124,6 +125,7 @@ public class BoardController {
 		request.setAttribute("word",word);
 		request.setAttribute("menu",menu);
 		request.setAttribute("center",center);
+		request.setAttribute("top", top);
 		return new ModelAndView("vtFrame/vtFrame");
 	}//vt_mainboard		
 	

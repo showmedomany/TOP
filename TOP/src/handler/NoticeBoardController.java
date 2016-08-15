@@ -41,6 +41,7 @@ public class NoticeBoardController {
 		String word = "/vt_board/word/notice";
 		String menu = "/vt_board/vt_noticeboard";		
 		String center = "/vtFrame/vt_sideMenuForm";
+		String top = "/vtFrame/changeimages/coimage";
 		
 		//페이지 템플릿	
 	
@@ -91,6 +92,7 @@ public class NoticeBoardController {
 		request.setAttribute("word",word);
 		request.setAttribute("menu",menu);
 		request.setAttribute("center",center);
+		request.setAttribute("top", top);
 		return new ModelAndView("/vtFrame/vtFrame");
 	}
 	
