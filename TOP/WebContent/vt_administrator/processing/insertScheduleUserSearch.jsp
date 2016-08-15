@@ -6,11 +6,12 @@
 
 <script src="/TOP/request.js" type="text/javascript"> </script>
 <script src="/TOP/vt_administrator/script/admin.js" type="text/javascript"> </script>
-
+<div id = "test">
 <form name="insertForm">
 	<input type="hidden" name="start_leapYear" value="${start_leapYear}">	
 	<input type="hidden" id="scheduleId" name="scheduleId" value="${id}">
 	<input type="hidden" name=routineinfo_id value="${routineData.routineinfo_id}">
+	
 	<c:if test="${idCheckResult!=0}">
 		<br><br>
 		아이디 : ${id}
@@ -320,11 +321,8 @@
 		<input type="button" value="저장" onclick="saveExercise()">
 	</div>
 </div>
-
+</div>
 <script type="text/javascript">
-	$("#memberRoutineArea").ready(function() {
-		console.log("------??");
-	});
 	
 	$.ajax({
 		type: "post",
@@ -344,6 +342,7 @@
 	
 	function setExPartIdSelectorData(item) {
 		$(".ex_part_id" + "." + item.day).each(function(exPartIdIndex, exPartIdItem) {
+			
 			var selectedExPartIdClass = $(exPartIdItem).attr('class');
 			var selectedExPartIdDay = selectedExPartIdClass.substr(selectedExPartIdClass.length-3 , selectedExPartIdClass.length);
 			var selectedExPartIdVal = $(exPartIdItem).find(":selected").val();
@@ -366,7 +365,7 @@
 			(function(exPartIdItem, item) {
 				setTimeout(function() {
 					setExerciseMethodData(exPartIdItem, item);
-				}, 300);
+				}, 500);
 			})(exPartIdItem, item);
 			
 			return false;
@@ -382,6 +381,7 @@
 		var exerciseMethodSelector = selectedExPartIdClass.replace("ex_part_id", "exercise_method").replace(/ /g, ".");
 		
 		$("." + exerciseMethodSelector).each(function(exerciseMethodIndex, exerciseMethodItem) {
+			
 			var selectedExerciseMethodClass = $(exerciseMethodItem).attr('class');
 			var selectedExerciseMethodDay = selectedExerciseMethodClass.substr(selectedExerciseMethodClass.length-3 , selectedExerciseMethodClass.length);
 			var selectedExerciseMethodVal = $(exerciseMethodItem).find(":selected").val();
@@ -390,7 +390,7 @@
 			if(selectedExerciseMethodVal != "") {
 				return;
 			}
-			
+			 
 			console.log("saveExercise - selectedExerciseMethodClass : " + selectedExerciseMethodClass);
 			console.log("saveExercise - selectedExerciseMethodDay : " + selectedExerciseMethodDay);
 			console.log("saveExercise - selectedExerciseMethodVal : " + selectedExerciseMethodVal);

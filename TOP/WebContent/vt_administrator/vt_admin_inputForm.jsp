@@ -10,10 +10,11 @@
 
 	
 	<body onload = "inputformfocus()">
-		<form method = "post" name = "inputform">
+		<form method = "post" name = "inputform" action="admin_inputPro.do" 
+			onsubmit="return sumitCheckfn()">
 			<input type="hidden" name = "idConfirm" value = "0">
 			<input type="hidden" name = "nickConfirm" value = "0">
-			<input type="hidden" name = "emailConfirm" value = "0">
+			<input type="hidden" name = "emailConfirm" value = "0">			
 
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">					
@@ -124,6 +125,8 @@
 									<option value="gmail.com"> 구글 </option>
 									<option value="nate.com"> 네이트 </option>						
 								</select>
+								<input type = "button" name = "cmail" value = "메일확인" onclick = "checkmail()">
+								<div id = "checkmail"></div>
 							</td>							
 						</tr>
 						</table>

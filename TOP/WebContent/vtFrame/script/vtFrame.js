@@ -299,6 +299,7 @@ function checkblank(){
 	}
 }
 
+
 function sumitCheckfn(){
 	//아이디 안쓰거나 확인 안한경우
 	if(inputform.idConfirm.value==0){

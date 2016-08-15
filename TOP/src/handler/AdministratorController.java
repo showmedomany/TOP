@@ -30,6 +30,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import administrator.AdminDao;
+import member.MemberDao;
 import member.MemberDataBean;
 import myPage.InbodyDataBean;
 import myPage.MemberRoutineDataBean;
@@ -43,12 +44,18 @@ public class AdministratorController {
 	@Resource(name="adminDao")
 	private AdminDao adminDao;
 	
+	@Resource(name="memberDao")
+	private MemberDao memberDao;
+	
 	//관리자 페이지 기본
 	@RequestMapping("/administratorPage")
 	public ModelAndView administratorPage
 	(HttpServletRequest request,HttpServletResponse response){
+		//관리자 페이지 메인은 검색폼으로
+		
 		String center = "vt_admin_centerContent";
-		request.setAttribute("center", center);		
+		request.setAttribute("center", center);
+		
 		return new ModelAndView("/vt_administrator/vt_administrator");
 	}//
 	
@@ -59,6 +66,109 @@ public class AdministratorController {
 		request.setAttribute("center", center);
 		return new ModelAndView("/vt_administrator/vt_administrator");
 	}
+	@RequestMapping("/admin_mailcheck")
+	public ModelAndView admin_mailcheck
+	(HttpServletRequest request, HttpServletResponse response){
+		String email = null;	
+		String email1 = request.getParameter("email1");
+		String email2 = request.getParameter("email2");
+		int checkmail = 0;
+		
+		if(!email1.equals("") && !email2.equals("")){
+			if(email2.equals("0")){
+				//직접입력
+				email = email1;
+			}
+			else{
+				//선택입력
+				email = email1 + "@" + email2;
+			}
+		}
+		//이프문으로 묶어서 이메일 있나 없나 검사 먼저
+		//있으면 이미 가입된 이메일입니다 경고창
+		//없으면 메일전송
+		
+		int emailcheck = memberDao.checkEmail(email);
+		
+		if(emailcheck!=0){
+			checkmail = 1;
+		}
+		request.setAttribute("checkmail", checkmail);
+		return new ModelAndView("/vt_administrator/processing/admin_mailcheck");
+	}
+	@RequestMapping("/admin_inputPro.do")
+	public ModelAndView admin_inputPro
+	(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		//메인으로 돌아가야하므로 센터 컨텐트로 설정
+		request.setCharacterEncoding("utf-8");
+		
+		MemberDataBean mdto = new MemberDataBean();
+		
+		mdto.setAuthority_id(2);
+		mdto.setId(request.getParameter("id"));
+		mdto.setPasswd(request.getParameter("passwd"));
+		mdto.setName(request.getParameter("name"));
+		mdto.setNickname(request.getParameter("nickname"));
+				
+		String zipcode = null;
+		String zipcode1 = request.getParameter("zipcode1");
+		String zipcode2 = request.getParameter("zipcode2");
+		
+		if(!zipcode1.equals("") && !zipcode2.equals("")){
+			zipcode = zipcode1 + "-" + zipcode2;
+		}
+		mdto.setZipcode(zipcode);
+		
+		String address = null;
+		String adr = request.getParameter("adr");
+		String detail = request.getParameter("detail_adr");
+		
+		if(!adr.equals("") && !detail.equals("")){
+			address = adr + "|" + detail;
+		}
+		mdto.setAddress(address);
+	
+		String tel = null;
+		String tel1 = request.getParameter("tel1");
+		String tel2 = request.getParameter("tel2");
+		String tel3 = request.getParameter("tel3");
+		
+		if(!tel1.equals("")
+				&& !tel2.equals("") 
+				&& !tel3.equals("")){
+			tel = tel1 + "-" + tel2 + "-" + tel3;
+		}
+		
+		mdto.setPhone(tel);
+	
+		String email = null;
+		String email1 = request.getParameter("email1");
+		String email2 = request.getParameter("email2");
+		
+		if(!email1.equals("") && !email2.equals("")){
+			if(email2.equals("0")){
+				//직접입력
+				email = email1;
+			}
+			else{
+				//선택입력
+				email = email1 + "@" + email2;
+			}
+		}
+		
+		mdto.setEmail(email);
+		
+		memberDao.insertMember(mdto);
+		
+		String center = "vt_admin_centerContent";
+		request.setAttribute("center", center);
+		
+		return new ModelAndView("/vt_administrator/vt_administrator");
+	}
+	
+	
+	
+	
 	
 	@RequestMapping("/memberSearch")
 	public ModelAndView memberSearch
@@ -589,7 +699,7 @@ public class AdministratorController {
 	public ModelAndView insertMemberRoutine(@RequestParam Map<String, Object> param, HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
 		String id = (String) param.get("id");
 		String memberRoutineListStr = (String) param.get("memberRoutineList");
-		
+		int result = 0;
 		RoutineInfoDataBean routineData = adminDao.insertScheduleUserSearchID(id);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -601,9 +711,10 @@ public class AdministratorController {
 		
 		for (Map<String, Object> memberRoutineItem : memberRoutineList) {
 			memberRoutineItem.put("routineinfo_id", routineData.getRoutineinfo_id());
-			adminDao.insertMemberRoutine(memberRoutineItem);
+			result = adminDao.insertMemberRoutine(memberRoutineItem);
 		}
 		
+		request.setAttribute("result", result);
 		return new ModelAndView("/vt_administrator/processing/DBInsertResultText");
 	}
 	

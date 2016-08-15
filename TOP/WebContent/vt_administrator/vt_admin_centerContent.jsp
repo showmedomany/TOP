@@ -8,10 +8,20 @@
 		<link href="${css}vt_admin_centerContentStyle.css" rel="stylesheet"	type="text/css">
 	</head>
 	<body>
-		관리자 페이지 처음화면 입니다.  감사합니다 .
-		<br><br><br><br><br><br>
-		
-		
+		관리자 페이지
+		관리자 페이지관리자 페이지관리자 페이지관리자 페이지관리자 페이지관리자 페이지
+		관리자 페이지
+		관리자 페이지
+		관리자 페이지
+		관리자 페이지관리자 페이지
+		관리자 페이지<br>
+		관리자 페이지<br>
+		관리자 페이지<br>
+		관리자 페이지<br>
+		관리자 페이지<br>
+		관리자 페이지<br>
+		관리자 페이지<br>
+			
 		
 		
 	</body>

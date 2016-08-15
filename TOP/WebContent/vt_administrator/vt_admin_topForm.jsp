@@ -28,33 +28,20 @@
 				<div class="top_navi_frame">
 					<div class="top_navi">
 						<ul>  
-							<li class="admin_top_navi_menuframe">  
-								<div class="admin_top_navi_emptymenu"></div>
-							</li>   
-							<li class="admin_top_navi_menuframe">  
-								<div class="admin_top_navi_emptymenu"></div>
-							</li> 
+							 
 							<li class="admin_top_navi_menuframe">  
 								<div class="admin_top_navi_menu"
-									onclick="location = 'centerInsert.do?choice=0'">센터 등록</div>
+									onclick="location = 'memberSearch.do'">회원 관리</div>
 								<ul class="admin_top_navi_subframe">  
-									<li onclick="location = 'centerInsert.do?choice=0'">회원 피트니스 등록</li>  
-									<li onclick="location = 'centerInsert.do?choice=1'">회원 인바디 등록</li>
-									<li onclick="location = 'centerInsert.do?choice=2'">회원 운동스케줄 작성</li>  
-									<li onclick="location = ''">빈공간</li>   
+									<li onclick="location = 'memberSearch.do'">회원 검색</li>
+									<li onclick="location = 'admin_input.do'">홈페이지 등록</li>
 								</ul>  
 							</li> 
-							<li class="admin_top_navi_menuframe">  
-								<div class="admin_top_navi_menu">회원 관리</div>
-								<ul class="admin_top_navi_subframe">  
-									<li onclick="location = 'memberSearch.do'">회원 검색</li>  
-									<li onclick="location = 'admin_input.do'">빈공간</li>
-								</ul>  
-							</li> 
+							
 							<li class="admin_top_navi_menuframe">  
 								<div class="admin_top_navi_menu">게시판 관리</div>
 								<ul class="admin_top_navi_subframe">  
-									<li onclick="location = 'noticeBoard.do'">공지사항</li>  
+									<li>공지사항</li>  
 									<li>빈공간</li>  
 								</ul>  
 							</li>							

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Admin">
@@ -110,6 +109,7 @@
 		  AND r &lt;= #{end}
 	</select>
 	
+	<!-- 회원검색수 -->
 	<select id="getNameSearchCount" parameterType="String" resultType="int">
 		select count(*) from vt_members where name = #{searchMessage}
 	</select>
@@ -121,7 +121,9 @@
 	</select>	
 	 
 	 
-	 
+	 <select id="getMemberSearchNameList" parameterType="String" resultType="member.MemberDataBean">
+	 	select * from vt_members where name = #{searchMessage}
+	 </select>
 	 <select id="getMemberSearchIdList" parameterType="String" resultType="member.MemberDataBean">
 	 	select * from vt_members where id = #{searchMessage}
 	 </select>

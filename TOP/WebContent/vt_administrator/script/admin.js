@@ -433,10 +433,10 @@ function onPartChangeHandler(event, rowIndex, columnIndex) {
 	var selectedExPartIdVal = $(event.target).find(":selected").val();
 	var selectedExPartIdText = $(event.target).find(":selected").text();
 	
-//	console.log("onPartChangeHandler - selectedExPartIdVal : " + selectedExPartIdVal);
-//	console.log("onPartChangeHandler - selectedExPartIdText : " + selectedExPartIdText);
-//	console.log("onPartChangeHandler - rowIndex : " + rowIndex);
-//	console.log("onPartChangeHandler - columnIndex : " + columnIndex);
+	console.log("onPartChangeHandler - selectedExPartIdVal : " + selectedExPartIdVal);
+	console.log("onPartChangeHandler - selectedExPartIdText : " + selectedExPartIdText);
+	console.log("onPartChangeHandler - rowIndex : " + rowIndex);
+	console.log("onPartChangeHandler - columnIndex : " + columnIndex);
 	
 	$.ajax({
 		type: "POST",
@@ -464,10 +464,10 @@ function saveExercise() {
 			return;
 		}
 		
-//		console.log("saveExercise - selectedExPartIdClass : " + selectedExPartIdClass);
-//		console.log("saveExercise - selectedExPartIdDay : " + selectedExPartIdDay);
-//		console.log("saveExercise - selectedExPartIdVal : " + selectedExPartIdVal);
-//		console.log("saveExercise - selectedExPartIdText : " + selectedExPartIdText);
+		console.log("saveExercise - selectedExPartIdClass : " + selectedExPartIdClass);
+		console.log("saveExercise - selectedExPartIdDay : " + selectedExPartIdDay);
+		console.log("saveExercise - selectedExPartIdVal : " + selectedExPartIdVal);
+		console.log("saveExercise - selectedExPartIdText : " + selectedExPartIdText);
 		
 		var exerciseMethodSelector = selectedExPartIdClass.replace("ex_part_id", "exercise_method").replace(/ /g, ".");
 		
@@ -481,10 +481,10 @@ function saveExercise() {
 				return;
 			}
 			
-//			console.log("saveExercise - selectedExerciseMethodClass : " + selectedExerciseMethodClass);
-//			console.log("saveExercise - selectedExerciseMethodDay : " + selectedExerciseMethodDay);
-//			console.log("saveExercise - selectedExerciseMethodVal : " + selectedExerciseMethodVal);
-//			console.log("saveExercise - selectedExerciseMethodText : " + selectedExerciseMethodText);
+			console.log("saveExercise - selectedExerciseMethodClass : " + selectedExerciseMethodClass);
+			console.log("saveExercise - selectedExerciseMethodDay : " + selectedExerciseMethodDay);
+			console.log("saveExercise - selectedExerciseMethodVal : " + selectedExerciseMethodVal);
+			console.log("saveExercise - selectedExerciseMethodText : " + selectedExerciseMethodText);
 			
 			var memberRoutineItem = new Object();
 			memberRoutineItem.day = selectedExerciseMethodDay;
@@ -503,15 +503,30 @@ function saveExercise() {
 //	console.log(memberRoutineList);
 //	console.log(JSON.stringify(memberRoutineList));
 	
+	
+				
 	$.ajax({
 		type: "post",
 		url: "insertMemberRoutine.do",
 		data: "id=" + $("#scheduleId").val() + "&memberRoutineList=" + JSON.stringify(memberRoutineList),
 		success: function(responseText) {
-			console.log(responseText);
+			if(responseText != null){
+				
+				//저장완료알림	있어야함
+				location.href = 'memberSearch.do';
+		  }
+			
 		}
 	});
+	
 }
-
-
+/*
+success: function(responseText) {	//이거는 처리된 jsp의 글자들
+	  //div id
+	  if(responseText != null){
+		 $("#adminchat").html(responseText);	  	        
+        $("#adminchat").find("script").eval;
+	  }         	        
+}
+*/
 
