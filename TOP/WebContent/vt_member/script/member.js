@@ -8,28 +8,36 @@ function searchAdr(){
 }
 /* 비밀번호 검사 */
 function comparepasswd(){
-	var userPasswd = document.getElementById("userPasswd");
+	var userPasswd = document.getElementById("userPasswd");	//div 출력 설정
+	var userPasswd_overlap = document.getElementById("userPasswd_overlap");
+		
 	//비밀번호칸이 비워져 있으면
 	if(!memberModifyForm.passwd.value){
-		userPasswd.style.display = "";
-		userPasswd.innerHTML = "비밀번호를 입력하세요.";		
+		userPasswd.innerHTML = "비밀번호를 확인해주세요";
+		userPasswd.style.display = ""; 				//파란거 출력
+		userPasswd_overlap.style.display = "none";	//빨간거 숨기기	
 	}	
 	//비밀번호는 있는데 비밀번호 확인이 비어있다면
 	else if(!memberModifyForm.repasswd.value)	{
-		userPasswd.style.display = "";
-		userPasswd.innerHTML ="비밀번호를 확인하세요.";		
+		userPasswd_overlap.innerHTML ="비밀번호 확인을 해주세요";		
+		userPasswd_overlap.style.display = ""; 		//파란거 숨기기
+		userPasswd.style.display = "none"; 			//빨간	
 	}
 	//비밀번호가 다 찾는데 맞지 않다면
-	else if(memberModifyForm.passwd.value != memberModifyForm.repasswd.value){
-		userPasswd.style.display = "";
-		userPasswd.innerHTML = msg_repasswderror;		
+	else if(memberModifyForm.passwd.value != memberModifyForm.repasswd.value){		
+		userPasswd_overlap.innerHTML = "확인비밀번호와 다릅니다.";
+		userPasswd_overlap.style.display = ""; //파란거 숨기기
+		userPasswd.style.display = "none"; //빨간거 출력 ex)비밀번호가 다릅니다	
 	}
 	//비밀번호와 재입력 비밀번호가 일치한다면
 	else{
-		userPasswd.style.display = "none";
+		userPasswd.innerHTML = "사용가능한 비밀번호입니다.";
+		userPasswd.style.display = "";				//파란거 출력 ex)비밀번호가 일치합니다
+		userPasswd_overlap.style.display = "none";	//빨간거 숨기기	
 	}
 }
 
+/*
 //닉네임 중복확인
 function confirmnick(){	
 	request = new Request(confirmnickResult, "nickConfirm.do", "POST", "nick="+memberModifyForm.nickname.value);	
@@ -60,6 +68,7 @@ function confirmnickResult(){
 		}
 	}
 }
+*/
 
 /* 메일공란 체크 */
 function mailCheck(){
@@ -88,31 +97,25 @@ function phoneCheck(){
 
 /* 유효성 검사 */
 function modifyCheck(){
+	/*비밀번호 비어있으면*/
 	if(!memberModifyForm.passwd.value){
+		alert("비밀번호를 확인하세요");
 		memberModifyForm.passwd.focus();
 		return false;	
-	}else if(!memberModifyForm.repasswd.value){
+	}
+	/*비밀번호 확인이 비어있으면*/
+	else if(!memberModifyForm.repasswd.value){
+		alert("비밀번호 확인을 해주세요");
 		memberModifyForm.repasswd.focus();
 		return false;
-	}else if(memberModifyForm.passwd.value != memberModifyForm.repasswd.value){
+	}
+	/*비밀번호와 비밀번호 확인이 틀리면*/
+	else if(memberModifyForm.passwd.value != memberModifyForm.repasswd.value){
+		alert("비밀번호와 확인비밀번호가 다릅니다.");
 		memberModifyForm.passwd.focus();
 		return false;
-	}else if(memberModifyForm.nickConfirm.value==0){
-		memberModifyForm.nickConfirm.focus();
-		return false;
-	}else if(!memberModifyForm.detail_adr.value){
-		memberModifyForm.detail_adr.focus();
-		return false;
-	}else if(!memberModifyForm.tel1.value){
-		memberModifyForm.tel1.focus();
-		return false;
-	}else if(!memberModifyForm.tel2.value){
-		memberModifyForm.tel2.focus();
-		return false;
-	}else if(!memberModifyForm.tel3.value){
-		memberModifyForm.tel3.focus();
-		return false;
-	}else if(!memberModifyForm.email1.value){			
+	}	
+	else if(!memberModifyForm.email1.value){			
 		memberModifyForm.email1.focus();
 		return false;
 	}else if(!memberModifyForm.email2.value){	
@@ -120,8 +123,6 @@ function modifyCheck(){
 		return false;
 	}else if (confirm("회원정보를 수정하시겠습니까?")){
 		return true;
-	}else{
-		return false;
 	}	
 }
 

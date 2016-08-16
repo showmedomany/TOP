@@ -5,8 +5,9 @@
 	<head>
 			<link href = "${css}vt_boardStyle.css" rel="stylesheet"	type="text/css">
 			<link href = "${css}vt_noticecontentFormStyle.css" rel="stylesheet"	type="text/css">
-			<script src = "${script}freeboard.js"></script>
 			<script src = "${request}"></script>
+			<script src = "${script}freeboard.js"></script>
+			
 	</head>
 	
 	<body>

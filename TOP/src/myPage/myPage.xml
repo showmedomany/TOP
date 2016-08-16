@@ -63,8 +63,8 @@
 	</select>
 	
 	<update id="updateMember" parameterType="member.MemberDataBean">
-		update vt_members set passwd=#{passwd}, nickname=#{nickname}, phone=#{phone}, zipcode=#{zipcode},
-		address=#{address}, email=#{email} where id = #{id}		
+		update vt_members set passwd=#{passwd}, phone=#{phone, jdbcType=VARCHAR}, zipcode=#{zipcode, jdbcType=VARCHAR},
+		address=#{address, jdbcType=VARCHAR}, email=#{email} where id = #{id}		
 	</update>
 	
 	<delete id="memberDelete" parameterType="String" >		

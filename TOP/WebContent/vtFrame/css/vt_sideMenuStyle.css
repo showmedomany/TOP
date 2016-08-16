@@ -8,11 +8,12 @@
 }
 .side_menu {
     width: 268px;
+    min-height: 800px;
+
     float: left;
     position: relative;
     margin: 50 0;
-    left: -113px;
-    border-style: double;
+    left:-100px;
 }
 .vt_info_menu_title {
     width: 246px;
@@ -34,6 +35,21 @@
     font-size: 20px;
     color: darkcyan;
 }
+.vt_info_menu_wrap_sub {
+	/*각 메뉴별 영역 공통 적용*/
+    height: 150px;
+    text-align: center;
+    margin:25px;
+}
+.vt_info_menu_wrap_sub_sub{
+	/*각 메뉴별 영역 안 제목 영역 공통 적용*/
+    font-size: 25px;
+}
+.sub{
+	/*메뉴 영역 P태그 공통적용*/
+	margin: 5px;
+    cursor: pointer;
+}
 .main_wrap {
     position: relative;
     float: right;
@@ -43,10 +59,7 @@
 }
 .menu_top {
     position: relative;
-    width: 1000px;
-    height: 200px;
-    background: red;
-    left: 59px;
+    width: 1200px;
 }
 
 .top_word {
@@ -54,7 +67,7 @@
     float: right;
     position: relative;
     left: -60px;
-    top: 200px;
+    top: 3px;
 }
 .menu_img{
 	/*메뉴 밑 메뉴 바뀔때마다 나오는 사진*/
@@ -66,25 +79,6 @@
     margin:0 auto;
 }
 /*위에까지는 기본셋팅 건들지 말것*/
-.menu p{
-	cursor: pointer;
-    text-shadow: 2px 2px 2px gold;
-    margin: 20 0;
-    color: red;
-}
-.menu .hide{
-	display:none;
-}
 
-.menu_ul{
-	left: 40px;
-    position: relative;
-    margin: 20px 0px;
-    font-size: 20px;
-    font-family: fantasy;
-}
-.hide li{
-	cursor: pointer;
-	margin: 10px 0px;
-	width: 175px;
-}
+
+

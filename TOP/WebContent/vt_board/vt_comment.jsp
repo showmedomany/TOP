@@ -13,12 +13,13 @@
 			<b>${cdto.nick}</b>
 		</div>				
 		<div class = "comment_content">
-		<p class="comen_p">${cdto.content}</p>
-			<c:if test="${nickname eq cdto.nick }">
-				<div class="b_content">
-					<input class="b_content_b" type="button" value="삭제" onclick = "deletecomment('${cdto.comment_id}','${cdto.num}')">
-				</div>
-			</c:if>		
-		<p class="comen_d">(${cdto.reg_date})</p>	
+			<p class="comen_p">${cdto.content}</p>
+				<c:if test="${nickname eq cdto.nick }">
+					<div class="b_content">
+						<input class="b_content_b" type="button" value="삭제" onclick = "deletecomment('${cdto.comment_id}','${cdto.num}')">
+					</div>
+				</c:if>		
+			<p class="comen_d">(${cdto.reg_date})</p>	
+		</div>
 	</div>
 </c:forEach>

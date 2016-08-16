@@ -105,6 +105,7 @@ function writecomment(memId,contentNum){
 			var params = "num="+contentNum+"&id="
 					+memId+"&content="+freeBoardForm.commentinput.value;	
 			request = new Request(commentUpdate, "vt_writeComment.do", "POST", params);
+			freeBoardForm.commentinput.value = "";
 			request.sendRequest();
 		}
 	}	

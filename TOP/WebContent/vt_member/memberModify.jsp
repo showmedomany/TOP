@@ -12,7 +12,7 @@
 
 <body>	
 	<form method="post" action="memberModifyPro.do" name="memberModifyForm" onsubmit="return modifyCheck()">
-		<input type="hidden" name = "nickConfirm" value ="1">
+		
 		<div class="tableInfo">
 			<table>
 				<tr class="tableTr">
@@ -30,15 +30,14 @@
 				<tr class="tableTr">	
 					<th> * 비밀번호 확인	</th>			
 					<td>
-						<input class="input" type="password" name="repasswd" maxlength="15" value="${memberData.passwd}" onkeyup="comparepasswd()">					
+						<input class="input" type="password" name="repasswd" maxlength="15" value="${memberData.passwd}" onkeyup="comparepasswd()">
+						<div id="userPasswd" style="font-size:12px; margin-left: 5px; color: blue">
+							비밀번호를 확인해주세요
+						</div>
+						<div id="userPasswd_overlap" style="font-size:12px; margin-left: 5px; color: red;">
+						</div>						
 					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div id="userPasswd" style="display:none; font-size:12px; margin-left: 5px; color: red">						
-						</div>					
-					</td>			
-				</tr>
+				</tr>				
 				<tr class="tableTr">
 					<th>* 이름</th>
 					<td>
@@ -49,11 +48,19 @@
 					<!-- AJAX로 닉네임 비교 -->
 					<th>* 닉네임</th>
 					<td>
+						${memberData.nickname }
+					</td><%-- 
 						<input class="input" type="text" name="nickname" maxlength="20" 
 							value="${memberData.nickname }" onkeyup="confirmnick()">
 						<input type="hidden" name="Nickname" value="${memberData.nickname }">
-						<br>						
-					</td>
+						<br>
+						<div id="userNick" style="font-size:12px; margin-left: 5px; color: blue">
+							${msg_nickerror}
+						</div>
+						<div id="userNick_overlap" style="font-size:12px; margin-left: 5px; color: red;">
+						
+						</div>						
+					</td> --%>
 				</tr>
 				<tr>
 					<td colspan="2">
