@@ -2,7 +2,7 @@ function memberSearchFormInit(){
 	memberSearchForm.searchMessage.focus();
 }
 
-function memberDataView(userNum, id, name, nickname, phone, zipcode, address, email, join_date){	
+function memberDataView(userNum, id, name, nickname, phone, zipcode, address, email, join_date){		
 	memberSearchForm.userNumber.value = userNum;
 	var isSend = true;
 	switch(true){

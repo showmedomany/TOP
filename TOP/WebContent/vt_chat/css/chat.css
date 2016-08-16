@@ -16,7 +16,7 @@
 .chatDiv{
 	/* background: #defffc;*/
 	width: 100%;
-    height: 100%;
+    height: 235px;
 }
 
 
@@ -25,30 +25,30 @@
     border-width: 1px;
     border-color: #7481c1;
     border-bottom-style: inset;
-    height: 380px;
+    height: 184px;
     overflow-y: scroll;
 }
 .chatBottom{
 	/* background: #ffc8c8; */
-    height: 48px;
+    height: 45px;
 }
 
 .chatBanner{
 	background: #7481c1;
-    height: 45px;
+    height: 26px;
 }
 .chatBannertText{
 	position: relative;
     left: 30px;
     top: 6px;
-    font-size: 20px;
+    font-size: 12px;
     color: white;
 }
 .chatContent{
 	margin-top: 10px;
     margin-left: 10px;
-    width: 480px;
-    height: 30px;
+    width:  190px;
+    height: 26px;
 }
 .chatButton{
 	background: #7481c1;
@@ -57,7 +57,7 @@
     width: 76px;
     height: 31px;
     top: -30px;
-    left: 500px;
+    left: 207px;
     cursor: pointer;
 }
 .chatButtonText{

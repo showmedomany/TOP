@@ -538,8 +538,8 @@ public class AdministratorController {
 			int result = adminDao.insertFitnessInfo(registerData);
 			request.setAttribute("result", result);		
 		}else if(idCheckResult!=0){
-			int result = adminDao.updateFitnessInfo(registerData);
-			request.setAttribute("result", result);	
+			adminDao.updateFitnessInfo(registerData);
+			request.setAttribute("result", "2");	
 		}
 		return new ModelAndView("/vt_administrator/processing/DBInsertResultText");
 	}

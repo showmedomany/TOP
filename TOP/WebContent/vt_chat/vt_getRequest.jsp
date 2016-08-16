@@ -10,7 +10,7 @@
 		 	i = i+20;
 			var url = "responseChat.do?ip="+'${rdto.ip}'+"&id="+'${rdto.id}';
 			open(url, "${rdto.ip}", 
-					'scrollbars=no,resizable=no, status=yes, width=600, height=500,left='+i+', top='+i);	
+					'scrollbars=no,resizable=no, status=yes, width=330, height=290,left='+i+', top='+i);	
 			
 			if(i>= 500){
 				i=0;

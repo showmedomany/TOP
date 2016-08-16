@@ -4,7 +4,7 @@
 
 <c:forEach var="cdto" items="${clist}">
 	<c:if test="${cdto.id==id}">		
-		<b class = "me">${cdto.content} : ${"나"}</b><br>
+		<b class = "me">${"나"} : ${cdto.content}</b><br>
 	</c:if>
 	<c:if test="${cdto.id!=id}">
 		${cdto.id} : ${cdto.content}<br>	

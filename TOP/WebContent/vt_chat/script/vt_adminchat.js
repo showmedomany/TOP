@@ -21,6 +21,13 @@ function sndtext(){
 	return false;
 }
 
+function chatkeydown(){	
+	$(".chatTop").scrollTop(
+			$(".chatTop")[0].scrollHeight
+	) /* 스크롤 아래로 하기 */
+}
+
+
 function exitchat(){
 	var params = "ip="+adminchatForm.ip.value;	
 	request = new Request(resultexit, "exitChat.do", "POST", params);
@@ -50,7 +57,8 @@ function getresult(){	//뿌릴 채팅내역을 담고있는 vt_chatPro.jsp를 vt
 	
 	if(request.httpRequest.readyState == 4){
 		if(request.httpRequest.status == 200){			
-			chatarea.innerHTML = request.httpRequest.responseText;			
+			chatarea.innerHTML = request.httpRequest.responseText;
+			$(".chatTop").scrollTop($(".chatTop")[0].scrollHeight);
 		}
 	}	
 }
@@ -71,7 +79,8 @@ function sndresult(){
 	var chatarea = document.getElementById("chatarea");	
 	if(request.httpRequest.readyState == 4){
 		if(request.httpRequest.status == 200){
-			chatarea.innerHTML = request.httpRequest.responseText;				
+			chatarea.innerHTML = request.httpRequest.responseText;
+			$(".chatTop").scrollTop($(".chatTop")[0].scrollHeight);
 		}
 	}
 }

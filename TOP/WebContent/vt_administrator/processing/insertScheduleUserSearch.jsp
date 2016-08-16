@@ -6,266 +6,267 @@
 
 <script src="/TOP/request.js" type="text/javascript"> </script>
 <script src="/TOP/vt_administrator/script/admin.js" type="text/javascript"> </script>
-<div id = "test">
-<form name="insertForm">
-	<input type="hidden" name="start_leapYear" value="${start_leapYear}">	
-	<input type="hidden" id="scheduleId" name="scheduleId" value="${id}">
-	<input type="hidden" name=routineinfo_id value="${routineData.routineinfo_id}">
-	
-	<c:if test="${idCheckResult!=0}">
-		<br><br>
-		아이디 : ${id}
-		<table border="1">			
-			<tr>
-				<th>회원 아이디</th>
-				<td>${id}</td>			
-			</tr>
-			<tr>
-				<th>성별</th>
-				<td>
-					 <c:if test="${routineData.sex=='male'}">
-						<input type="radio" name="sex" value="male" checked="checked">male
-						<input type="radio" name="sex" value="female">female
-					</c:if>
-					<c:if test="${routineData.sex=='female'}">
-						<input type="radio" name="sex" value="male">male
-						<input type="radio" name="sex" value="female" checked="checked">female
-					</c:if>
-				</td>
-			</tr>
-			<tr>			
-				<th>운동 시작</th>				
-				<td>				
-					<!-- start_year -->					
-					<select size="1" name="selectStartYear" onchange="leapYearCheck_start()">					
-						<c:forEach var="i" begin="${startYear}" end="${startYear+20}" step="1">
-							<c:if test="${startYear==i}">									
-									<option value="${i}" selected="selected">${i}년</option>									
-							</c:if>
-							<c:if test="${startYear!=i}">	
-									<option value="${i}">${i}년</option>									
-							</c:if>								
-						</c:forEach>
-					</select>					
-								
-					<select size="1" name="selectStartMonth" onchange="monthDataCheck_start()">
-						<c:forEach var="i" begin="1" end="12" step="1">
-							<c:if test="${startMonth==i}">																		
-								<option value="${i}" selected="selected">${i}월</option>
-							</c:if>
-							<c:if test="${startMonth!=i}">											
-								<option value="${i}">${i}월</option>								
-							</c:if>
-						</c:forEach>
-					</select>
-					<!-- start_day -->											
-					<div id="selectStartDay" style="float: right; margin-top: 1px">				
-						<select size="1" name="selectStartDay">
+<div id = "scheduleUser" class="scheduleUser">
+<div class="scheduleInsertForm">
+	<form name="insertForm">
+		<input type="hidden" name="start_leapYear" value="${start_leapYear}">	
+		<input type="hidden" id="scheduleId" name="scheduleId" value="${id}">
+		<input type="hidden" name=routineinfo_id value="${routineData.routineinfo_id}">
+		
+		<c:if test="${idCheckResult!=0}">
+			
+			<table>					
+				<tr class="tableTr">
+					<th style="width: 200px">회원 아이디</th>
+					<td style="position: relative; left: 10px; width: 680px">${id}</td>				
+				</tr>
+				<tr class="tableTr">
+					<th>성별</th>
+					<td class="scheduleTableTd">
+						 <c:if test="${routineData.sex=='male'}">
+							<input type="radio" name="sex" value="male" checked="checked">male
+							<input type="radio" name="sex" value="female">female
+						</c:if>
+						<c:if test="${routineData.sex=='female'}">
+							<input type="radio" name="sex" value="male">male
+							<input type="radio" name="sex" value="female" checked="checked">female
+						</c:if>
+					</td>
+				</tr>
+				<tr class="tableTr">			
+					<th>운동 시작</th>				
+					<td class="scheduleTableTd">				
+						<!-- start_year -->					
+						<select size="1" name="selectStartYear" onchange="leapYearCheck_start()">					
+							<c:forEach var="i" begin="${startYear}" end="${startYear+20}" step="1">
+								<c:if test="${startYear==i}">									
+										<option value="${i}" selected="selected">${i}년</option>									
+								</c:if>
+								<c:if test="${startYear!=i}">	
+										<option value="${i}">${i}년</option>									
+								</c:if>								
+							</c:forEach>
+						</select>					
+									
+						<select size="1" name="selectStartMonth" onchange="monthDataCheck_start()">
 							<c:forEach var="i" begin="1" end="12" step="1">
-								<c:if test="${startMonth==i}">
-									<c:if test="${i==2}">
+								<c:if test="${startMonth==i}">																		
+									<option value="${i}" selected="selected">${i}월</option>
+								</c:if>
+								<c:if test="${startMonth!=i}">											
+									<option value="${i}">${i}월</option>								
+								</c:if>
+							</c:forEach>
+						</select>
+						<!-- start_day -->											
+						<div id="selectStartDay" style=" position: relative; float: right; top: 1px; left: -509px;">				
+							<select size="1" name="selectStartDay">
+								<c:forEach var="i" begin="1" end="12" step="1">
+									<c:if test="${startMonth==i}">
+										<c:if test="${i==2}">
+											<c:if test="${start_leapYear==true}">
+												<c:set var="day" value="29"/>
+											</c:if>
+											<c:if test="${start_leapYear==false}">											
+												<c:set var="day" value="28"/>
+											</c:if>
+										</c:if>
+										<c:if test="${i==1 or i==3 or i==5 or i==7 or i==8 or i==12}">
+											<c:set var="day" value="31"/>
+										</c:if>
+										<c:if test="${i==4 or i==6 or i==9 or i==10 or i==11 }">
+											<c:set var="day" value="30"/>
+										</c:if>
+									</c:if>													
+								</c:forEach>								
+								<c:forEach var="i" begin="1" end="${day}" step="1">
+									<c:if test="${startDay==i}">		
+										<option value="${i}" selected="selected">${i}일</option>
+									</c:if>
+									<c:if test="${startDay!=i}">
+										<option value="${i}">${i}일</option>									
+									</c:if>
+								</c:forEach>
+							</select>
+						</div>					
+					</td>			
+				</tr>
+					
+				<tr class="tableTr">
+					<th>피트니스 회원권 기간</th>	
+					<td class="scheduleTableTd">
+						<select size="1" name="termselect" onchange="termcalc()">					
+							<c:forEach var="i" begin="1" end="12" step="1">
+								<c:if test="${exTerm==i}">									
+										<option value="${i}" selected="selected">${i}개월</option>									
+								</c:if>
+								<c:if test="${exTerm!=i}">	
+										<option value="${i}">${i}개월</option>									
+								</c:if>								
+							</c:forEach>
+						</select>	
+					</td>			
+				</tr>
+				
+				<tr class="tableTr">
+					<th>피트니스 만료일</th>
+					<td class="scheduleTableTd">
+						<input type = "hidden" name = "expiYear" value = "${endYear}">
+						<input type = "hidden" name = "expiMonth" value = "${endMonth}">
+						<input type = "hidden" name = "expiDay" value = "${endDay}">
+						<div id = "expichange">${endYear}년 ${endMonth}월 ${endDay}일</div>
+					</td>
+				</tr>
+				<tr class="tableTr">
+					<th>운동 종류</th>
+					<td class="scheduleTableTd">
+						 <c:if test="${routineData.routine_type=='muscle'}">
+							<select id="routineType" name="routineType">
+								<option value="muscle" selected="selected">근력강화</option>
+								<option value="diet">다이어트</option>
+							</select>
+						</c:if>
+						<c:if test="${routineData.routine_type=='diet'}">
+							<select id="routineType" name="routineType">
+								<option value="muscle">근력강화</option>
+								<option value="diet" selected="selected">다이어트</option>
+							</select>
+						</c:if>
+					</td>
+				</tr>		
+				<tr class="tableTr">
+					<th colspan="2">
+						<input type="button" value="수정 및 저장" onclick="scheduleInsertProcess()">
+						<div id="scheduleSaveDiv"></div>
+						
+					</th>
+				</tr>		
+			</table>
+		</c:if>
+		
+		<c:if test="${idCheckResult==0}">	
+			<table>
+				<tr>
+					<td colspan="2">해당 회원은 스케줄을 기입하지 않았습니다</td>
+				</tr>
+				<tr class="tableTr">
+					<th style="width: 200px">회원 아이디</th>
+					<td style="position: relative; left: 10px; width: 680px">${id}</td>			
+				</tr>
+				<tr class="tableTr">
+					<th>성별</th>
+					<td class="scheduleTableTd"><input type="radio" name="sex" value="male" checked="checked">male
+						<input type="radio" name="sex" value="female">female
+					</td>
+				</tr>
+				<tr class="tableTr">			
+					<th>운동 시작</th>				
+					<td class="scheduleTableTd">				
+						<!-- start_year -->					
+						<select size="1" name="selectStartYear" onchange="leapYearCheck_start()">								
+							<c:forEach var="i" begin="${startYear}" end="${startYear+20}" step="1">
+								<c:if test="${startYear==i}">
+									<option value="${i}" selected="selected">${i}년</option>	
+								</c:if>
+								<c:if test="${startYear!=i}">
+									<option value="${i}">${i}년</option>	
+								</c:if>											
+							</c:forEach>
+						</select>					
+								
+						<select size="1" name="selectStartMonth" onchange="monthDataCheck_start()">
+							<c:forEach var="i" begin="1" end="12" step="1">	
+								<c:if test="${startMonth==i}">										
+									<option value="${i}" selected="selected">${i}월</option>
+								</c:if>
+								<c:if test="${startMonth!=i}">									
+									<option value="${i}">${i}월</option>
+								</c:if>							
+							</c:forEach>
+						</select>		
+						<!-- start_day -->														
+						<div id="selectStartDay" style=" position: relative; float: right; top: 1px; left: -509px;">				
+							<select size="1" name="selectStartDay">
+								<c:forEach var="i" begin="1" end="12" step="1">								
+									<c:if test="${i==2}">								
 										<c:if test="${start_leapYear==true}">
 											<c:set var="day" value="29"/>
 										</c:if>
 										<c:if test="${start_leapYear==false}">											
 											<c:set var="day" value="28"/>
 										</c:if>
+									 
+									<c:set var="day" value="28"/>
+									
 									</c:if>
 									<c:if test="${i==1 or i==3 or i==5 or i==7 or i==8 or i==12}">
 										<c:set var="day" value="31"/>
 									</c:if>
 									<c:if test="${i==4 or i==6 or i==9 or i==10 or i==11 }">
 										<c:set var="day" value="30"/>
+									</c:if>																						
+								</c:forEach>
+								<c:forEach var="i" begin="1" end="${day}" step="1">
+									<c:if test="${startDay==i}">
+										<option value="${i}" selected="selected">${i}일</option>	
 									</c:if>
-								</c:if>													
-							</c:forEach>								
-							<c:forEach var="i" begin="1" end="${day}" step="1">
-								<c:if test="${startDay==i}">		
-									<option value="${i}" selected="selected">${i}일</option>
+									<c:if test="${startDay!=i}">
+										<option value="${i}">${i}일</option>	
+									</c:if>
+								</c:forEach>
+							</select>
+						</div>					
+					</td>			
+				</tr>
+				<tr class="tableTr">
+					<th>피트니스 회원권 기간</th>	
+					<td class="scheduleTableTd">
+						<select size="1" name="termselect" onchange="termcalc()">					
+							<c:forEach var="i" begin="1" end="12" step="1">
+								<c:if test="${exTerm==i}">									
+										<option value="${i}" selected="selected">${i}개월</option>									
 								</c:if>
-								<c:if test="${startDay!=i}">
-									<option value="${i}">${i}일</option>									
-								</c:if>
+								<c:if test="${exTerm!=i}">	
+										<option value="${i}">${i}개월</option>									
+								</c:if>								
 							</c:forEach>
-						</select>
-					</div>					
-				</td>			
-			</tr>
+						</select>	
+					</td>			
+				</tr>
 				
-			<tr>
-				<th>피트니스 회원권 기간</th>	
-				<td>
-					<select size="1" name="termselect" onchange="termcalc()">					
-						<c:forEach var="i" begin="1" end="12" step="1">
-							<c:if test="${exTerm==i}">									
-									<option value="${i}" selected="selected">${i}개월</option>									
-							</c:if>
-							<c:if test="${exTerm!=i}">	
-									<option value="${i}">${i}개월</option>									
-							</c:if>								
-						</c:forEach>
-					</select>	
-				</td>			
-			</tr>
-			
-			<tr>
-				<th>피트니스 만료일</th>
-				<td>
-					<input type = "hidden" name = "expiYear" value = "${endYear}">
-					<input type = "hidden" name = "expiMonth" value = "${endMonth}">
-					<input type = "hidden" name = "expiDay" value = "${endDay}">
-					<div id = "expichange">${endYear}년 ${endMonth}월 ${endDay}일</div>
-				</td>
-			</tr>
-			<tr>
-				<th>운동 종류</th>
-				<td>
-					 <c:if test="${routineData.routine_type=='muscle'}">
-						<select id="routineType" name="routineType">
-							<option value="muscle" selected="selected">근력강화</option>
-							<option value="diet">다이어트</option>
-						</select>
-					</c:if>
-					<c:if test="${routineData.routine_type=='diet'}">
+				<tr class="tableTr">
+					<th>피트니스 만료일</th>
+					<td class="scheduleTableTd">
+						<input type = "hidden" name = "expiYear" value = "${endYear}">
+						<input type = "hidden" name = "expiMonth" value = "${endMonth}">
+						<input type = "hidden" name = "expiDay" value = "${endDay}">
+						<div id = "expichange">${endYear}년 ${endMonth}월 ${endDay}일</div>
+					</td>
+				</tr>
+				<tr class="tableTr">
+					<th>운동 종류</th>
+					<td class="scheduleTableTd">
 						<select id="routineType" name="routineType">
 							<option value="muscle">근력강화</option>
-							<option value="diet" selected="selected">다이어트</option>
+							<option value="diet">다이어트</option>
 						</select>
-					</c:if>
-				</td>
-			</tr>		
-			<tr>
-				<td colspan="2">
-					<input type="button" value="수정 및 저장" onclick="scheduleInsertProcess()">
-					<div id="scheduleSaveDiv"></div>
-					
-				</td>
-			</tr>		
-		</table>
-	</c:if>
-	
-	<c:if test="${idCheckResult==0}">
-		<br>해당 회원은 스케줄을 기입하지 않았습니다<br>
-		아이디 : ${id}<br>
-		
-		<table border="1">
-			<tr>
-				<th>회원 아이디</th>
-				<td>${id}</td>			
-			</tr>
-			<tr>
-				<th>성별</th>
-				<td><input type="radio" name="sex" value="male" checked="checked">male
-					<input type="radio" name="sex" value="female">female
-				</td>
-			</tr>
-			<tr>			
-				<th>운동 시작</th>				
-				<td>				
-					<!-- start_year -->					
-					<select size="1" name="selectStartYear" onchange="leapYearCheck_start()">								
-						<c:forEach var="i" begin="${startYear}" end="${startYear+20}" step="1">
-							<c:if test="${startYear==i}">
-								<option value="${i}" selected="selected">${i}년</option>	
-							</c:if>
-							<c:if test="${startYear!=i}">
-								<option value="${i}">${i}년</option>	
-							</c:if>											
-						</c:forEach>
-					</select>					
-							
-					<select size="1" name="selectStartMonth" onchange="monthDataCheck_start()">
-						<c:forEach var="i" begin="1" end="12" step="1">	
-							<c:if test="${startMonth==i}">										
-								<option value="${i}" selected="selected">${i}월</option>
-							</c:if>
-							<c:if test="${startMonth!=i}">									
-								<option value="${i}">${i}월</option>
-							</c:if>							
-						</c:forEach>
-					</select>		
-					<!-- start_day -->														
-					<div id="selectStartDay" style="float: right; margin-top: 1px">				
-						<select size="1" name="selectStartDay">
-							<c:forEach var="i" begin="1" end="12" step="1">								
-								<c:if test="${i==2}">								
-									<c:if test="${start_leapYear==true}">
-										<c:set var="day" value="29"/>
-									</c:if>
-									<c:if test="${start_leapYear==false}">											
-										<c:set var="day" value="28"/>
-									</c:if>
-								 
-								<c:set var="day" value="28"/>
-								
-								</c:if>
-								<c:if test="${i==1 or i==3 or i==5 or i==7 or i==8 or i==12}">
-									<c:set var="day" value="31"/>
-								</c:if>
-								<c:if test="${i==4 or i==6 or i==9 or i==10 or i==11 }">
-									<c:set var="day" value="30"/>
-								</c:if>																						
-							</c:forEach>
-							<c:forEach var="i" begin="1" end="${day}" step="1">
-								<c:if test="${startDay==i}">
-									<option value="${i}" selected="selected">${i}일</option>	
-								</c:if>
-								<c:if test="${startDay!=i}">
-									<option value="${i}">${i}일</option>	
-								</c:if>
-							</c:forEach>
-						</select>
-					</div>					
-				</td>			
-			</tr>
-			<tr>
-				<th>피트니스 회원권 기간</th>	
-				<td>
-					<select size="1" name="termselect" onchange="termcalc()">					
-						<c:forEach var="i" begin="1" end="12" step="1">
-							<c:if test="${exTerm==i}">									
-									<option value="${i}" selected="selected">${i}개월</option>									
-							</c:if>
-							<c:if test="${exTerm!=i}">	
-									<option value="${i}">${i}개월</option>									
-							</c:if>								
-						</c:forEach>
-					</select>	
-				</td>			
-			</tr>
-			
-			<tr>
-				<th>피트니스 만료일</th>
-				<td>
-					<input type = "hidden" name = "expiYear" value = "${endYear}">
-					<input type = "hidden" name = "expiMonth" value = "${endMonth}">
-					<input type = "hidden" name = "expiDay" value = "${endDay}">
-					<div id = "expichange">${endYear}년 ${endMonth}월 ${endDay}일</div>
-				</td>
-			</tr>
-			<tr>
-				<th>운동 종류</th>
-				<td>
-					<select id="routineType" name="routineType">
-						<option value="muscle">근력강화</option>
-						<option value="diet">다이어트</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="button" value="저장" onclick="scheduleInsertProcess()">				
-					<div id="scheduleSaveDiv"></div>
-				</td>
-			</tr>					
-		</table>		
-	</c:if>
-</form>
+					</td>
+				</tr>
+				<tr class="tableTr">
+					<th colspan="2">
+						<input type="button" value="저장" onclick="scheduleInsertProcess()">				
+						<div id="scheduleSaveDiv"></div>
+					</th>
+				</tr>					
+			</table>		
+		</c:if>
+	</form>
+</div>
 <div id="memberRoutineArea" onload="selectMemberRoutineList()" style="width: 890px; ${idCheckResult==0 ? 'display: none;' : ''}"> 
 	<div style="width: 100%; height:405px; overflow-x:scroll;">
-		<table border="1">
+		<table style="background: #D5D5D5;">
 			<thead>
-				<tr>
+				<tr class="scheduleTableTr">
 					<th colspan="2">월요일</th>
 					<th colspan="2">화요일</th>
 					<th colspan="2">수요일</th>
@@ -274,7 +275,7 @@
 					<th colspan="2">토요일</th>
 					<th colspan="2">일요일</th>
 				</tr>
-				<tr>
+				<tr  class="scheduleTableTr">
 					<th>부위</th>
 					<th>운동</th>
 					<th>부위</th>
@@ -294,7 +295,7 @@
 			<tbody>
 				<c:set var="days" value="${fn:split('mon,tue,wed,thu,fri,sat,sun', ',')}"/>
 				<c:forEach begin="0" end="3" varStatus="rowStatus">
-					<tr>
+					<tr class="scheduleTableTr">
 						<c:forEach begin="0" end="6" varStatus="columnStatus">
 							<td>
 								<select class="ex_part_id ${rowStatus.index}_${columnStatus.index} ${days[columnStatus.index]}" onchange="onPartChangeHandler(event, ${rowStatus.index}, ${columnStatus.index})">

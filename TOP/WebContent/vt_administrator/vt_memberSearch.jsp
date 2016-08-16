@@ -10,27 +10,33 @@
 </head>
 
 <body onload="memberSearchFormInit()">
-	<c:if test="${pageNum!=0}">
-		전체 사용자 수 : ${articleCount}
-	</c:if>
-	<c:if test="${pageNum==0}">
-		'${searchMessage}'의 검색된 사용자 수 : ${articleCount}
-	</c:if>
-	<form name="memberSearchForm">	
+	<div id="insertUserDiv"></div><br><br>
+	
+	<form name="memberSearchForm" >	
 		<input type="hidden" name="userNumber" value="0">
 		<div class = "frame">	
-			<table border="1">
+			<table class="memberTable">
 				<tr>
+					<td>
+						<c:if test="${pageNum!=0}">
+							전체 사용자 수 : ${articleCount}
+						</c:if>
+						<c:if test="${pageNum==0}">
+							'${searchMessage}'의 검색된 사용자 수 : ${articleCount}
+						</c:if>
+					</td>				
+				</tr>
+				<tr class="tableTr" >
 					<th colspan="5">
 						회원리스트
 					</th>
 				</tr>	
-				<tr>
+				<tr class="tableTr" >
 					<th>
 						검색
 					</th>
-					<td colspan="4">					
-						<input type="text" name="searchMessage" onkeydown="if(event.keyCode==13) return false;">
+					<td align="center" colspan="4">					
+						<input style="width: 450px;" type="text" name="searchMessage" onkeydown="if(event.keyCode==13) return false;">
 						<select name="searchMeans" size="1">
 							<option value="name" selected="selected">Name</option>
 							<option value="id">ID</option>
@@ -39,12 +45,12 @@
 						<input type="button" value="검색" onclick="searchMember('${pageNum}')">
 					</td>
 				</tr>
-				<tr>								
-					<th>ID</th>
-					<th>Name</th>
-					<th>Nick</th>
-					<th>JoinDate</th>
-					<th>Register</th>
+				<tr class="tableTr" >								
+					<th style="width: 150px;">ID</th>
+					<th style="width: 100px;">Name</th>
+					<th style="width: 180px;">Nick</th>
+					<th style="width: 200px;">JoinDate</th>
+					<th style="width: 150px;">Register</th>
 												
 				</tr>
 				<c:if test="${articleCount == 0 }">
@@ -59,12 +65,12 @@
 						
 						<c:set var="memberData" value="${memberDataList[i]}"/>
 						<c:if test="${memberData.authority_id == 2}">
-							<tr style="cursor:pointer; ">												
-								<td onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')">${memberData.id }</td>
-								<td onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')">${memberData.name }</td>
-								<td onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')">${memberData.nickname }</td>
-								<td onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')"><fmt:formatDate value="${memberData.join_date }" pattern="yyyy-MM-dd" /></td>
-								<td>
+							<tr class="mambertableTr" style="cursor:pointer; ">												
+								<td align="center" onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')">${memberData.id }</td>
+								<td align="center" onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')">${memberData.name }</td>
+								<td align="center" onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')">${memberData.nickname }</td>
+								<td align="center" onclick="memberDataView('${userNumber}', '${memberData.id}', '${memberData.name}','${memberData.nickname}','${memberData.phone}', '${memberData.zipcode}','${memberData.address}','${memberData.email}','${memberData.join_date}')"><fmt:formatDate value="${memberData.join_date }" pattern="yyyy년 MM월 dd일" /></td>
+								<td align="center" >
 									<c:set var="insertMeans" value="insertMeans_${userNumber}"/>				
 									<select name="${insertMeans}" size="1">
 										<option value="fitness" selected="selected">피트니스</option>
@@ -83,21 +89,27 @@
 						</c:if>					
 					</c:forEach>
 				</c:if>
-				
+				<tr class="tableTr">
+					<td align="center" colspan="5">
+						<c:if test="${startPage > pageBlock }">	
+							<a href="memberSearch.do?pageNum=1">[◀◀]</a>
+							<a href="memberSearch.do?pageNum=${startPage-pageBlock}">[◀]&nbsp;</a>
+						</c:if>
+						<c:forEach var="i" begin="${startPage }" end="${endPage}" step="1">
+							<c:if test="${startPage!=endPage }">
+								<a href="memberSearch.do?pageNum=${i}">[${i}]&nbsp;</a>	
+							</c:if>										
+						</c:forEach>
+						<c:if test="${pageCount > endPage }">
+							<a href="memberSearch.do?pageNum=${startPage+pageBlock}">[▶]&nbsp;</a>
+							<a href="memberSearch.do?pageNum=${pageCount}">[▶▶]</a>
+						</c:if>
+					</td>				
+				</tr>				
 			</table>
 			
-			<c:if test="${startPage > pageBlock }">	
-				<a href="memberSearch.do?pageNum=1">[◀◀]</a>
-				<a href="memberSearch.do?pageNum=${startPage-pageBlock}">[◀]&nbsp;</a>
-			</c:if>
-			<c:forEach var="i" begin="${startPage }" end="${endPage}" step="1">
-				<a href="memberSearch.do?pageNum=${i}">[${i}]&nbsp;</a>				
-			</c:forEach>
-			<c:if test="${pageCount > endPage }">
-				<a href="memberSearch.do?pageNum=${startPage+pageBlock}">[▶]&nbsp;</a>
-				<a href="memberSearch.do?pageNum=${pageCount}">[▶▶]</a>
-			</c:if>
+			
 		</div>
-	</form>	
-	<div id="insertUserDiv"></div>
+	</form>
+	
 </body>

@@ -27,7 +27,7 @@
 									<c:if test="${sessionScope.authority_id eq 1 }">
 										${sessionScope.memId}
 										<a class="top_header_atag_font"
-											href = "administratorPage.do">관리자페이지</a>
+											href = "memberSearch.do">관리자페이지</a>
 										<a class="top_header_atag_font" 
 											href = "logoutPro.do">${str_logouttag}</a> 
 									</c:if>

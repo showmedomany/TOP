@@ -49,7 +49,7 @@ function sendreq(){
 	if(request.httpRequest.readyState == 4){
 		if(request.httpRequest.status == 200){
 			chatarea.innerHTML = request.httpRequest.responseText;
-			$(".chatTop").scrollTop($(".chatTop")[0].scrollHeight-20) /* 스크롤 아래로 하기 */ 
+			$(".chatTop").scrollTop($(".chatTop")[0].scrollHeight); /* 스크롤 아래로 하기 */ 
 		}
 	}	
 }
@@ -64,7 +64,8 @@ function showchat(){	//뿌릴 채팅내역을 담고있는 vt_chatPro.jsp를 vt_
 	var chatarea = document.getElementById("chatarea");	
 	if(request.httpRequest.readyState == 4){
 		if(request.httpRequest.status == 200){
-			chatarea.innerHTML = request.httpRequest.responseText;			
+			chatarea.innerHTML = request.httpRequest.responseText;
+			$(".chatTop").scrollTop($(".chatTop")[0].scrollHeight);
 		}
 	}	
 }

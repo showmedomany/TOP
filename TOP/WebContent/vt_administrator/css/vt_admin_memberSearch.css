@@ -1,6 +1,54 @@
 .frame{
 	
 }
-.frame table{
-	margin-left: 40%;
+
+.memberTable{
+	
+    position: relative;
+    margin: 0 auto;    
+}
+.tableTr{
+	background: #F6F6F6;
+    height: 50px;
+}
+
+
+.mambertableTr{
+	background: #F6F6F6;
+    height: 50px;
+}
+.mambertableTr:HOVER{	
+    background-color: white;
+}
+
+/* processing/insertFitnessUserSearch.jsp의 css*/
+.fit_frame{
+	
+}
+.fit_table{
+	
+    position: relative;
+    margin: 0 auto;    
+}
+.tableTd{
+	width: 500px;
+    position: relative;
+    left: 10px;
+}
+
+/* insertScheduleUserSearch */
+
+.scheduleUser{	
+    width: 1000px;
+    margin: 0 auto;
+}
+.scheduleInsertForm{
+	
+}
+.scheduleTableTd{	
+    position: relative;
+    left: 10px;
+}
+.scheduleTableTr{
+	background: #F6F6F6;  
 }

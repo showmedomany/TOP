@@ -6,7 +6,11 @@
 	저장 실패
 </c:if>
 <c:if test="${result==1}">
+	저장 완료	
+</c:if>
+<c:if test="${result==2}">
 	저장 완료
+	<meta http-equiv="refresh" content="2; url=memberSearch.do">
 </c:if>
 
  

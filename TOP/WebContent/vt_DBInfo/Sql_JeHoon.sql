@@ -28,6 +28,13 @@ DROP SEQUENCE vt_exercise_seq;
 DROP SEQUENCE vt_routine_info_seq;
 DROP SEQUENCE VT_MEMBER_ROUTINE_MR_ID_SEQ;
 /* vt_member_routine */
+CREATE SEQUENCE vt_routine_info_seq
+START WITH 1
+MAXVALUE 999999999999
+MINVALUE 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
 CREATE SEQUENCE VT_MEMBER_ROUTINE_MR_ID_SEQ
 START WITH 1
 MAXVALUE 999999999999
@@ -1680,79 +1687,6 @@ CREATE TABLE vt_member_routine
    count_check number,
    PRIMARY KEY (mr_id)
 );
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 1, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 3, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 6, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 7, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 13, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 14, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 15, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 16, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 72, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 73, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 74, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 44, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 45, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 46, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'mon', 47, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 34, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 35, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 36, 24);                                                                     
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 31, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 32, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 33, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 34, 24);                                                                     
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 61, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 62, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 63, 24);                                                                     
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 64, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 75, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 76, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'tue', 77, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 1, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 3, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 6, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 7, 24);                                                               
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 13, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 14, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 15, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 16, 24);                                                               
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 72, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 73, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 74, 24);                                                                   
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 44, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 45, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 46, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'wed', 47, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 34, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 35, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 36, 24); 
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 31, 24);                                                             
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 32, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 33, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 34, 24);   
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 61, 24);                                                              
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 62, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 63, 24);   
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 64, 24);                                                                  
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 75, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 76, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'thur' 77, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 1, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 3, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 6, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 7, 24);                                                          
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 13, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 14, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 15, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 16, 24);                                                            
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 72, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 73, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 74, 24);                                                               
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 44, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 45, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 46, 24);
-insert into vt_member_routine values(VT_MEMBER_ROUTINE_MR_ID_SEQ.nextval, 1, 'fri', 47, 24);
 CREATE TABLE vt_notice_board
 (
    num number NOT NULL,

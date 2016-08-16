@@ -28,11 +28,6 @@
 				<!-- 가운데 부분만 jsp를 갈아 끼운다. -->
 				<jsp:include page="${center}.jsp" flush="false"></jsp:include>
 			</div>
-		</div>	
-		<div id = "administrator_bottom">	
-			<div>				
-				<jsp:include page="/vtFrame/vt_bottomForm.jsp" flush="false"></jsp:include>				
-			</div>
-		</div>			
+		</div>				
 	</body>
 </html>
