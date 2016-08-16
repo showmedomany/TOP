@@ -53,9 +53,9 @@
 .main_wrap {
     position: relative;
     float: right;
-    left: -165px;
+    left: -20px;
     width: 700px;
-    margin : 50 0;
+    margin: 50 0;
 }
 .menu_top {
     position: relative;

@@ -80,7 +80,9 @@ public class MemberController {
 		
 		//메인으로 돌아가야하므로 센터 컨텐트로 설정
 		String center = "vt_centerContent";
-		request.setAttribute("center", center);		
+		request.setAttribute("center", center);
+		String top = "/vtFrame/changeimages/mainimage";
+		request.setAttribute("top", top);
 		//세션 내용을 지움
 		request.getSession().removeAttribute("memId");
 		request.getSession().removeAttribute("authority_id");

@@ -345,11 +345,6 @@ function sumitCheckfn(){
 	}
 }
 
-
-
-
-
-
 /*									상단 jquery						*/
 $(document).ready(function(){ 
 	$(".top_navi_menu").hover(function() { //마우스를 topnav에 오버시

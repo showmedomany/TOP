@@ -41,10 +41,10 @@ public class MyPageController {
 		
 		UserChecksDataBean userCheckResult = myPageDao.uesrChecks(id);
 		request.setAttribute("userCheckResult", userCheckResult);			
-		
-		String top = "/vtFrame/vt_topForm";
+				
 		String center = "centerPayment";
 		String bottom = "/vtFrame/vt_bottomForm";
+		String top = "/vtFrame/changeimages/mainimage";
 		request.setAttribute("top", top);
 		request.setAttribute("center", center);	
 		request.setAttribute("bottom", bottom); 
@@ -64,7 +64,7 @@ public class MyPageController {
 		UserChecksDataBean userCheckResult = myPageDao.uesrChecks(id);
 		request.setAttribute("userCheckResult", userCheckResult);		
 		
-		String top = "/vtFrame/vt_topForm";
+		String top = "/vtFrame/changeimages/mainimage";
 		String center = "centerPayment";
 		request.setAttribute("top", top);
 		request.setAttribute("center", center);	
@@ -79,7 +79,7 @@ public class MyPageController {
 		RegisterDataBean registerData = myPageDao.getRegisterData(id);
 		request.setAttribute("registerData", registerData);
 		
-		String top = "/vtFrame/vt_topForm";
+		String top = "/vtFrame/changeimages/mainimage";
 		String center = "fitnessInfo";		
 		request.setAttribute("top", top);
 		request.setAttribute("center", center);	
@@ -114,7 +114,7 @@ public class MyPageController {
 			}*/
 		}		
 			
-		String top = "/vtFrame/vt_topForm";
+		String top = "/vtFrame/changeimages/mainimage";
 		String center = "exerciseRoutine";
 		request.setAttribute("top", top);
 		request.setAttribute("center", center);	
@@ -123,7 +123,7 @@ public class MyPageController {
 	@RequestMapping("/memberModify")
 	public ModelAndView memberModify(HttpServletRequest request,HttpServletResponse response){	
 		
-		String top = "/vtFrame/vt_topForm";
+		String top = "/vtFrame/changeimages/mainimage";
 		String center = "memberModify";
 		
 		String id = (String) request.getSession().getAttribute("memId");
@@ -230,7 +230,7 @@ public class MyPageController {
 		
 		
 				
-		String top = "/vtFrame/vt_topForm";
+		String top = "/vtFrame/changeimages/mainimage";
 		String center = "processing/memberModifyPro";
 		
 		request.setAttribute("top", top);
@@ -245,7 +245,7 @@ public class MyPageController {
 		int deleteResult = myPageDao.memberDelete(id);
 		request.setAttribute("deleteResult", deleteResult);
 		
-		String top = "/vtFrame/vt_topForm";
+		String top = "/vtFrame/changeimages/mainimage";
 		String center = "processing/memberDeletePro";
 		
 		request.setAttribute("top", top);

@@ -141,7 +141,8 @@ public class BoardController {
 		
 		String pageNum = request.getParameter("pageNum");		//현재페이지
 		String number = request.getParameter("number");			//화면의 표시될 글번호
-		
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		BoardDataBean dto = boardDao.getArticle(num);			//디비에서 해당글의 내용을 가져와서
 		
 		
@@ -166,6 +167,8 @@ public class BoardController {
 		
 		/*int num = 0;*/
 		String pageNum = request.getParameter("pageNum");
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		if(pageNum == null){
 			pageNum = "1";
 		}
@@ -222,7 +225,8 @@ public class BoardController {
 		String center = "/vtFrame/vt_sideMenuForm"; 
 		String menu = "/vt_board/vt_freeModifyForm";
 		String word = "/vt_board/word/free";
-		
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		request.setAttribute("bdto", bdto);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
@@ -247,7 +251,8 @@ public class BoardController {
 		bdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
 		String pageNum = request.getParameter("pageNum");
-		
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		int result = boardDao.modifyArticle(bdto);
 		
 		request.setAttribute("result", result);
@@ -279,7 +284,8 @@ public class BoardController {
 		String searchword = request.getParameter("msg");
 		String pageNum = request.getParameter("pageNum");
 		String type = request.getParameter("type");
-				
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);		
 		String center = "/vtFrame/vt_sideMenuForm";
 		String menu = "/vt_board/vt_freeboard";
 		String word = "/vt_board/word/free";
@@ -388,6 +394,8 @@ public class BoardController {
 			HttpServletResponse response)throws Exception{
 		
 		int num = Integer.parseInt(request.getParameter("num"));
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		String id = request.getParameter("id");
 		String content = request.getParameter("content");
 		CommentDataBean cdto = new CommentDataBean();
@@ -415,7 +423,8 @@ public class BoardController {
 			HttpServletResponse response)throws Exception{
 		int num = Integer.parseInt(request.getParameter("num"));
 		int comment_id = Integer.parseInt(request.getParameter("comment_id"));
-		
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		commentDao.deletComment(comment_id);
 		
 		List<CommentDataBean> clist = commentDao.getComments(num);

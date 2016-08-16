@@ -5,9 +5,8 @@
 	<head>
 			<link href = "${css}vt_boardStyle.css" rel="stylesheet"	type="text/css">
 			<link href = "${css}vt_noticecontentFormStyle.css" rel="stylesheet"	type="text/css">
-			<script src = "${request}"></script>
 			<script src = "${script}freeboard.js"></script>
-			
+			<script src = "${request}"></script>
 	</head>
 	
 	<body>
@@ -50,7 +49,10 @@
 							<c:forEach var="i" begin="0" end="${list.size()-1 }" step="1">
 								<c:set var="dto" value="${list[i] }"/>
 								<div class="show">
-									<p class="p1">${dto.num}</p>									
+									<%-- <p class="p1">${dto.num}</p>	 --%>
+									<p class="p1">${number}</p>	
+									<c:set var = "number" value = "${number-1 }"/>		
+											
 									<p class="p2">									
 										<a onclick="board_view(${dto.num},${pageNum})">${dto.subject}</a>
 									</p>
@@ -80,15 +82,25 @@
 									<img src="${images}btn_ser.gif">
 								</div>
 							</div>
+			
 							<div class="pagenum">
-								<div class="left">
-									<img src="${images}left.gif">
+								<div class="left">									
+									<c:if test="${startPage > pageBlock }">	
+									<a href="vt_community_free.do?pageNum=1">[◀◀]</a>
+									<a href="vt_community_free.do?pageNum=${startPage-pageBlock}">[◀]</a>
+									<%-- <a href="vt_community_free.do?pageNum=${currentPage-1}">[◀]</a> --%>
+									</c:if>
 								</div>
 								<div class="num">
 									<c:if test="${search ne 1 }">
-										<c:forEach var="i" begin="1" end="${pageCount}" step="1">
-											<a href="vt_community_free.do?pageNum=${i}">[${i }]&nbsp;</a>	
-										</c:forEach>
+										<c:forEach var="i" begin="${startPage}" end="${endPage}">
+										<c:if test="${i == currentPage}">
+											<span><b>[${i}]</b></span>
+										</c:if>
+										<c:if test="${i != currentPage}">
+											<a href="vt_community_free.do?pageNum=${i}">[${i}]</a>
+										</c:if>
+									</c:forEach>
 									</c:if>
 									<c:if test="${search eq 1 }">
 										<c:forEach var="i" begin="1" end="${pageCount}" step="1">
@@ -98,10 +110,15 @@
 										</c:forEach>									
 									</c:if>							
 								</div>
-								<div class="right">
-									<img src="${images}right.gif">
+								<div class="right">									
+									<c:if test="${startPage < pageBlock }">	
+										<a href="vt_community_free.do?pageNum=${startPage+pageBlock}">[▶]</a>
+										<a href="vt_community_free.do?pageNum=${pageCount}">[▶▶]</a>
+										<%-- <a href="vt_community_free.do?pageNum=${currentPage+1}">[▶]</a> --%>
+									</c:if>
 								</div>
 							</div>
+							
 						</div>
 					</div>
 				</div>

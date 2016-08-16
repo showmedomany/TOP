@@ -1,7 +1,8 @@
 .login_p{
-	position: relative;
-	color: white;
-	float: left;
+	    position: relative;
+    float: right;
+    color: black;
+    right: 162px;	
 }
 
 * {
@@ -19,57 +20,24 @@ html {
   height: 100%;
 }
 
-body {
-  width: 100%;
-  height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #fff;
-}
-
-h1 {
-  width: 100%;
-  text-align: center;
-  padding: 40px 0;
-}
-
 .open {
   position: relative;
   top: 40px;
   right: 40px;
-  width: 50px;
+  width: 94px;
   height: 50px;
   display: block;
   cursor: pointer;
   transition: opacity 0.2s linear;
   float: left;
-  margin: 0px 138px ;
+  margin: 0px 138px;
+  font-size: 20;
 }
 
 .open:hover { opacity: 0.8; }
 
-.open span {
-  display: block;
-  float: left;
-  clear: both;
-  height: 4px;
-  width: 40px;
-  border-radius: 40px;
-  background-color: #fff;
-  position: absolute;
-  right: 3px;
-  top: 3px;
-  overflow: hidden;
-  transition: all 0.4s ease;
-}
 
-.open span:nth-child(1) {
-  margin-top: 10px;
-  z-index: 9;
-}
 
-.open span:nth-child(2) { margin-top: 25px; }
-
-.open span:nth-child(3) { margin-top: 40px; }
 
 .sub-menu {
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -78,32 +46,10 @@ h1 {
   right: 0;
   top: 0;
   position: absolute;
-  border-radius: 50%;
   z-index: 18;
   overflow: hidden;
 }
 
-.sub-menu li {
-  display: block;
-  float: right;
-  clear: both;
-  height: auto;
-  margin-right: -160px;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  margin: 6px 0;
-}
-
-.sub-menu li:first-child { margin-top: 211px; }
-
-.sub-menu li:nth-child(1) { -webkit-transition-delay: 0.05s; }
-
-.sub-menu li:nth-child(2) { -webkit-transition-delay: 0.10s; }
-
-.sub-menu li:nth-child(3) { -webkit-transition-delay: 0.15s; }
-
-.sub-menu li:nth-child(4) { -webkit-transition-delay: 0.20s; }
-
-.sub-menu li:nth-child(5) { -webkit-transition-delay: 0.25s; }
 
 .sub-menu li a {
   color: #fff;
@@ -116,38 +62,15 @@ h1 {
 }
 
 .oppenned .sub-menu {
-  opacity: 1;
-  height: 325px;
-  width: 346px;
+  	opacity: 1;
+    height: 205px;
+    width: 170px;
 }
 
-.oppenned span:nth-child(2) { overflow: visible; }
 
-.oppenned span:nth-child(1),
-.oppenned span:nth-child(3) {
-  z-index: 100;
-  transform: rotate(45deg);
-}
-
-.oppenned span:nth-child(1) { transform: rotate(45deg) translateY(12px) translateX(12px); }
-
-.oppenned span:nth-child(2) {
-  height: 325px;
-  width: 340px;
-  right: -160px;
-  top: -160px;
-  border-radius: 50%;
-  background: black;
-}
-
-.oppenned span:nth-child(3) { transform: rotate(-45deg) translateY(-10px) translateX(10px); }
-
-.oppenned li { margin-right: 168px; }
 .top{
-	width:100%;
-	height: 350px;
-	background: black;
-	color: white;
+	width: 100%;
+    height: 327px;
 }
 .top_2{
 	margin: 0 auto;
@@ -157,51 +80,234 @@ h1 {
 .login_p{
 	position: relative;
 	float: right;
-	color: white;
+	color: black;
 }
 .top_header_atag_font{
-	color: white;
+	color: black;
 }
-.menu_name{
-	color: white;
-    width: 1500px;
-    position: relative;
-    right: 57px;
-    top: 28px;
-    z-index: 9999;
-    font-size: 13px;
-}
-.topmenu1{
-	position: relative;
-    float: right;
-    margin: 0px 136px;
-    cursor: pointer;
-    right: -59px;
-}
-.topmenu2{
+.topmenu{
 	position: relative;
     float: right;
     margin: 0px 118px;
     cursor: pointer;
     right: 208px;
 }
-.site_name{
-	color: white;
+.site_name {
     position: relative;
     width: 300px;
     height: 67px;
-    font-size: 30px;
-    left: 589px;
-    top: 15px;
-    margin-bottom: 20;
-    z-index: 9999;
     cursor: pointer;
+    float: left;
+    right: -229px;
+    top: -56px;
 }
-.open1{
-	position: relative;
-    left: -66px;
+.div_1 {
+    position: relative;
+    width: 210px;
+    height: 70px;
+    float: left;
+    right: -50px;
+    top: -42px;
 }
-.open2{
+.div_1menu{
 	position: relative;
-    right: -240px;
+    top: 6px;
+    left: 40px;
+    font-size: 17px;
+}
+.div_1menu1{
+	width: 55px;
+    position: relative;
+    left: 54px;
+    top: 18px;
+}
+.div_1menu2{
+	width: 83px;
+    position: relative;
+    left: 54px;
+    top: 18px;
+    margin: 7px 0px;
+}
+.div_1menu3{
+	width: 78px;
+    position: relative;
+    left: 54px;
+    top: 18px;
+}
+.div_1menu4{
+	width: 76px;
+    position: relative;
+    left: 54px;
+    top: 18px;
+    margin: 7px 0px;
+}
+.div_2{
+	position: relative;
+    float: left;
+    right: -11px;
+    top: -43px;
+}
+.div_2menu{
+	 position: relative;
+    top: 7px;
+    left: 72px;
+    font-size: 17px;
+}
+
+.div_2menu1{
+	width: 153px;
+    position: relative;
+    left: 17px;
+    top: 18px;
+}
+.div_2menu2{
+	width: 143px;
+    position: relative;
+    left: 26px;
+    top: 18px;
+    margin: 7px 0px;
+}
+
+.div_3 {
+    position: relative;
+    top: -40px;
+    right: 111px;
+}
+.div_3menu{
+	 position: relative;
+    top: 6px;
+    left: 35px;
+    font-size: 17px;
+}
+
+.div_3menu1{
+	width: 113px;
+    position: relative;
+    left: 54px;
+    top: 18px;
+    
+}
+.div_3menu2{
+	width: 104px;
+    position: relative;
+    left: 61px;
+    top: 18px;
+    margin: 7px 0px;
+}
+.div_4{
+	position: relative;
+    top: -89px;
+    left: 494px;
+}
+.div_4menu{
+	position: relative;
+    top: 3px;
+    left: 28px;
+    font-size: 17px;
+}
+.div_4menu1{
+	width: 132px;
+    position: relative;
+    left: 31px;
+    top: 18px;
+}
+.div_4menu2{
+	width: 95px;
+    position: relative;
+    left: 47px;
+    top: 18px;
+    margin: 7px 0px;
+}
+.div_4menu3{
+	width: 35px;
+    position: relative;
+    left: 78px;
+    top: 18px;
+}
+.login_wrap{
+	width: 100%;
+    height: 50;
+    black: white;
+    background: white;
+    opacity: 0.4;
+}
+.login_body{
+	width: 1583px;
+    margin: 0 auto;
+}
+.div_wrap{
+	width: 100%;
+    height: 78px;
+    position: absolute;
+}
+.div_img_wrap{
+    position: absolute;
+}
+.div_posi{
+	width: 100%;
+    height: 120px;
+    background: black;
+    position: absolute;
+    opacity: 0.8;
+    z-index: -998;
+    left: -181px;
+    top: -51px;
+}
+.menu1{
+	width: 90px;
+}
+.menu2{
+	width: 180px;
+}
+.menu3{
+	width: 140px;
+}
+.menu4{
+	width: 90px;
+}
+
+.menu1:hover{
+	background:black; 
+}
+.menu2:hover{
+	background:black; 
+}
+.menu3:hover{
+	background:black; 
+}
+.menu4:hover{
+	background:black; 
+}
+.div_1menu1:hover {
+	background:black; 
+}
+.div_1menu2:hover {
+	background:black; 
+}
+.div_1menu3:hover {
+	background:black;
+}
+.div_1menu4:hover {
+	background:black;
+}
+.div_2menu1:hover {
+	background:black; 
+}
+.div_2menu2:hover {
+	background:black; 
+}
+.div_3menu1:hover {
+	background:black;
+}
+.div_3menu2:hover {
+	background:black;
+}
+.div_4menu1:hover {
+	background:black;
+}
+.div_4menu2:hover {
+	background:black;
+}
+.div_4menu3:hover {
+	background:black;
 }

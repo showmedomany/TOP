@@ -33,7 +33,8 @@ public class FAQController {
 			e.printStackTrace();
 		}
 		
-		
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		
 		List<FAQDataBean> faqDataList = new ArrayList<FAQDataBean>();
 		String center = "/vtFrame/vt_sideMenuForm"; 
@@ -97,7 +98,8 @@ public class FAQController {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		String selectOption = request.getParameter("selectOption");		
 		String msg = request.getParameter("msg");	
 		

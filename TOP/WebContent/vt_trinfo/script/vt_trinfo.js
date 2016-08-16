@@ -1,12 +1,3 @@
-
-jQuery(document).ready(function(){
-	jQuery("#detailview").hide();
-	jQuery(".con_close img").click(function(){
-		jQuery("#dviewdiv").html("");
-		jQuery("#detailview").fadeOut(500);
-		jQuery("#detailview .con").animate({width:0},300);
-	});
-});
 function ddel(no){
 	if(confirm("정말 삭제하시겠습니까? 복구가 불가능합니다.")){
 		self.location = "../bdd/?mid=team&mode=del&no="+no;

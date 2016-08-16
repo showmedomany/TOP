@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "setting.jsp" %>
+<link href="${css}vt_FrameStyle.css" rel="stylesheet"	type="text/css">
 <!-- 한글로 된부분 setting.jsp로 옮겨야함 -->
 
 <html>

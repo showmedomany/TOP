@@ -31,12 +31,14 @@ public class NoticeBoardController {
 		List<NoticeBoardDataBean> noticeBoardDataList = new ArrayList<NoticeBoardDataBean>();	
 		
 		int pageSize = 10;		// 페이지 크기
-		int pageBlock = 10;			
+		int pageBlock = 5;			
 		int currentPage = 0;	// 현재 페이지
 		int pageCount = 0;		// 전체 페이지 수
-		int start = 0;			//(블럭)시작 페이지
-		int end = 0;			//(블럭)끝 페이지	
-		
+		int start = 0;			//(블럭)게시글 맨 윗글
+		int end = 0;			//(블럭)게시글 맨 아래
+		int number = 0;
+		int startPage = 0;
+		int endPage = 0;
 		
 		String word = "/vt_board/word/notice";
 		String menu = "/vt_board/vt_noticeboard";		
@@ -53,42 +55,57 @@ public class NoticeBoardController {
 		request.setAttribute("pageNum", pageNum);
 		
 		//게시글 수
-		int articleCount = noticeboardDao.getNoticeArticleCount();
+		int articleCount = noticeboardDao.getNoticeArticleCount();	//공지사항 총 글 갯수
 		
 		
-		//게시글이 없을때
-		if(articleCount == 0){			
-			request.setAttribute("pageCount", 1);
-			request.setAttribute("articleCount", articleCount);			
-			request.setAttribute("center", center);
-			request.setAttribute("menu", menu);			
-		//게시글이 있을때	
-		}else{			
+		
+		if(articleCount != 0){			
 			//페이지 공식 구하기 
-			currentPage = Integer.parseInt(pageNum);
-			start = (currentPage - 1) * pageSize + 1;
-			end = start + pageSize - 1;
-			
-			
+			currentPage = Integer.parseInt(pageNum); //받아온 페이지를 현재 페이지로
+			start = (currentPage - 1) * pageSize + 1; //(블럭)게시글 맨 윗글
+			end = start + pageSize - 1;				 //(블럭)게시글 맨 아래글
+			number = articleCount - (currentPage -1) * pageSize;	//왼쪽에 나열된 글 번호
+		
+		    //페이지들의 총 갯수 
+        	pageCount = articleCount / pageSize 
+              + (articleCount % pageSize>0 ? 1 : 0);
+		    //밑에 표시될 페이지의 시작 
+	        startPage = (currentPage / pageBlock) * pageBlock + 1;
+	        //         (현재 페이지/나열될 페이지수) * 나열될 페이지수 + 1;
+	        
+	        if(currentPage % pageBlock == 0) startPage -= pageBlock;
+	        
+	                //밑에 표시될 페이지의 끝 
+	        endPage = startPage + pageBlock -1;
+	               //표시 시작 페이지 + 나열될 페이지수 -1;
+	        
+	        if(endPage > pageCount) endPage = pageCount;
+	        
+			/*
 			//페이지 수 값 구하기
 			pageCount = articleCount/pageBlock;
 			if(articleCount%pageBlock!=0){
 				pageCount+=1;
 			}
-			
-			//해당 페이지 start ~ end 만큼 표시하기
+			*/
+			//게시글 가져오기
 			Map<String, Integer> startEndPage = new HashMap<String, Integer>();
 			startEndPage.put("start", start);
 			startEndPage.put("end", end);		
 			noticeBoardDataList = noticeboardDao.getNoticeBoardList(startEndPage);		
 			
 			request.setAttribute("noticeBoardDataList", noticeBoardDataList);
-			request.setAttribute("articleCount", articleCount);			
+						
 			request.setAttribute("pageSize", pageSize);
 			request.setAttribute("pageBlock", pageBlock);
 			request.setAttribute("pageCount", pageCount);	
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("number", number);
 			
 		}
+		request.setAttribute("articleCount", articleCount);
+		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("word",word);
 		request.setAttribute("menu",menu);
 		request.setAttribute("center",center);
@@ -129,7 +146,8 @@ public class NoticeBoardController {
 		String center = "/vtFrame/vt_sideMenuForm";
 		String menu = "/vt_board/vt_noticeBoardWriteForm";
 		String word = "/vt_board/word/notice";		
-		
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);
 		request.setAttribute("center", center);
@@ -144,6 +162,8 @@ public class NoticeBoardController {
 		String center = "/vtFrame/vt_sideMenuForm";
 		String menu = "/vt_board/processing/vt_noticeBoardWritePro";
 		String word = "/vt_board/word/notice";
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);
 		request.setAttribute("center", center);
@@ -176,6 +196,8 @@ public class NoticeBoardController {
 		String center = "/vtFrame/vt_sideMenuForm";
 		String menu = "/vt_board/vt_noticeBoardModifyForm";
 		String word = "/vt_board/word/notice";
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);
@@ -207,6 +229,8 @@ public class NoticeBoardController {
 		String center = "/vtFrame/vt_sideMenuForm";
 		String menu = "/vt_board/processing/vt_noticeBoardModifyPro";
 		String word = "/vt_board/word/notice";
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);
@@ -245,6 +269,8 @@ public class NoticeBoardController {
 		String center = "/vtFrame/vt_sideMenuForm";
 		String menu = "/vt_board/processing/vt_noticeBoardDeletePro";
 		String word = "/vt_board/word/notice";
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		request.setAttribute("center", center);
 		request.setAttribute("menu", menu);
 		request.setAttribute("word", word);		
@@ -280,6 +306,8 @@ public class NoticeBoardController {
 		String center = "/vtFrame/vt_sideMenuForm";
 		String menu = "/vt_board/vt_noticeboard";
 		String word = "/vt_board/word/notice";
+		String top = "/vtFrame/changeimages/coimage";
+		request.setAttribute("top", top);
 		int search = 1;
 		
 		String msg = "%"+searchword+"%";

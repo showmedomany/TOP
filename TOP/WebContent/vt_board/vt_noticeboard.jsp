@@ -44,7 +44,9 @@
 							<c:forEach var="i" begin="0" end="${noticeBoardDataList.size()-1 }" step="1">
 								<c:set var="noticeBoardData" value="${noticeBoardDataList[i] }"/>
 								<div class="show">
-									<p class="p1">${noticeBoardData.num}</p>									
+									<%-- <p class="p1">${noticeBoardData.num}</p> --%>
+									<p class="p1">${number}</p>		
+									<c:set var = "number" value = "${number-1 }"/>							
 									<p class="p2">									
 										<a onclick="content_view(${noticeBoardData.num},${pageNum})">${noticeBoardData.subject}</a>
 									</p>
@@ -77,16 +79,25 @@
 						</div>
 						<div class="pagenum">
 							<div class="left">
-								<img src="${images}left.gif">
+								<c:if test="${startPage > pageBlock }">	
+									<a href="noticeBoard.do?pageNum=1">[◀◀]</a>
+									<a href="noticeBoard.do?pageNum=${startPage-pageBlock}">[◀]</a>
+									<%-- <a href="noticeBoard.do?pageNum=${currentPage-1}">[◀]</a> --%>
+								</c:if>
 							</div>
 							<div class="num">
 								<c:if test="${search ne 1 }">
-									<c:forEach var="i" begin="1" end="${pageCount}" step="1">
-										<a href="noticeBoard.do?pageNum=${i}">[${i }]&nbsp;</a>	
+									<c:forEach var="i" begin="${startPage}" end="${endPage}">
+										<c:if test="${i == currentPage}">
+											<span><b>[${i}]</b></span>
+										</c:if>
+										<c:if test="${i != currentPage}">
+											<a href="noticeBoard.do?pageNum=${i}">[${i}]</a>
+										</c:if>
 									</c:forEach>
 								</c:if>
 								<c:if test="${search eq 1 }">
-									<c:forEach var="i" begin="1" end="${pageCount}" step="1">
+									<c:forEach var="i" begin="${startPage}" end="${endPage}">
 										<a href="notice_search.do?msg=${searchword}&type=${type}&pageNum=${i}">
 											[${i }]&nbsp;
 										</a>	
@@ -94,7 +105,10 @@
 								</c:if>							
 							</div>
 							<div class="right">
-								<img src="${images}right.gif">
+								<c:if test = "${pageCount > endPage }">
+							      <a href = "noticeBoard.do?pageNum=${startPage + pageBlock}">[▶]</a>
+							      <a href = "noticeBoard.do?pageNum=${pageCount}">[▶▶]</a>
+							   </c:if>
 							</div>
 						</div>
 					</div>
