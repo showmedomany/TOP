@@ -405,91 +405,100 @@ public class AdministratorController {
 	
 	@RequestMapping("/insertScheduleUserSearch")	
 	public ModelAndView insertScheduleUserSearch
-	(HttpServletRequest request,HttpServletResponse response) throws Exception{		
+	(HttpServletRequest request,HttpServletResponse response) throws Exception{	
 		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy");		//있는경우 데이터의 년도포멧을 yyyy로 바꿈
+		String id = request.getParameter("id");
 		
-		String id = request.getParameter("id");//검색할 아이디	
-		
-		int idCheckResult = adminDao.insertScheduleUserSearchIDCheck(id);
-				
-		int startYear = 0;		//시작 년도변수
-		String startMonth = null;		//시작 월 변수
-		String startDay = null;		//시작 일 변수
-
-		int endYear = 0;		//종료 년도변수
-		String endMonth = null;		//종료 월 변수
-		String endDay = null;			//종료 일 변수
-		
-		int exTerm = 1;				//운동기간				
-		
-		String start_leapYear = "false";			//시작년도의 윤달이 있는지 없는지
-		
-		if(idCheckResult ==0){			
-			Calendar calendar = new GregorianCalendar(Locale.KOREA);
+		/* 휘트니스 등록했는지 조사 */
+		int fitnessIdCheckResult = adminDao.insertFitnessUserSearchIDCheck(id);
+		request.setAttribute("fitnessIdCheckResult", fitnessIdCheckResult);
+		/* 휘트니스 등록했는지 안했는지에 따라서 스케줄 작성을 허용하는지 막는 if문 */
+		if(fitnessIdCheckResult==0){
 			
-			startYear = calendar.get(calendar.YEAR);
-			startMonth = String.valueOf(calendar.get(calendar.MONTH)+1);
-			startDay = String.valueOf(calendar.get(calendar.DAY_OF_MONTH));
+		}else{
 			
-			//끝날짜는 비워둠
-			//첫 등록은 한달이 디폴트값
+			SimpleDateFormat format = new SimpleDateFormat("yyyy");		//있는경우 데이터의 년도포멧을 yyyy로 바꿈		
 			
-			calendar.setTime(new Date());//현재시간을 세팅하고
-			calendar.add(Calendar.DAY_OF_YEAR, 30);//한달을 더하고 한달의 기준은 30일			
-			
-			endYear = calendar.get(calendar.YEAR);
-			endMonth = String.valueOf(calendar.get(calendar.MONTH)+1);
-			endDay = String.valueOf(calendar.get(calendar.DAY_OF_MONTH));
-			
-			exTerm = 1;
-		}
-		//아이디 검색했을때 결과값이 있을경우
-		else{
-			
-			RoutineInfoDataBean routineData = adminDao.insertScheduleUserSearchID(id);
-			request.setAttribute("routineData", routineData);		
-			
-			startYear = Integer.parseInt(format.format(routineData.getStart_date()));	//해당 회원의 시작년도
-			endYear = Integer.parseInt(format.format(routineData.getEnd_date()));		//해당 회원의 종료년도
-						
-			format = new SimpleDateFormat("MM");
-			startMonth = format.format(routineData.getStart_date());			
-			endMonth = format.format(routineData.getEnd_date());
+			int idCheckResult = adminDao.insertScheduleUserSearchIDCheck(id);
 					
-			format = new SimpleDateFormat("dd");
-			startDay = format.format(routineData.getStart_date());			
-			endDay = format.format(routineData.getEnd_date());
+			int startYear = 0;		//시작 년도변수
+			String startMonth = null;		//시작 월 변수
+			String startDay = null;		//시작 일 변수
+	
+			int endYear = 0;		//종료 년도변수
+			String endMonth = null;		//종료 월 변수
+			String endDay = null;			//종료 일 변수
+			
+			int exTerm = 1;				//운동기간				
+			
+			String start_leapYear = "false";			//시작년도의 윤달이 있는지 없는지
+			
+			if(idCheckResult ==0){			
+				Calendar calendar = new GregorianCalendar(Locale.KOREA);
+				
+				startYear = calendar.get(calendar.YEAR);
+				startMonth = String.valueOf(calendar.get(calendar.MONTH)+1);
+				startDay = String.valueOf(calendar.get(calendar.DAY_OF_MONTH));
+				
+				//끝날짜는 비워둠
+				//첫 등록은 한달이 디폴트값
+				
+				calendar.setTime(new Date());//현재시간을 세팅하고
+				calendar.add(Calendar.DAY_OF_YEAR, 30);//한달을 더하고 한달의 기준은 30일			
+				
+				endYear = calendar.get(calendar.YEAR);
+				endMonth = String.valueOf(calendar.get(calendar.MONTH)+1);
+				endDay = String.valueOf(calendar.get(calendar.DAY_OF_MONTH));
+				
+				exTerm = 1;
+			}
+			//아이디 검색했을때 결과값이 있을경우
+			else{
+				
+				RoutineInfoDataBean routineData = adminDao.insertScheduleUserSearchID(id);
+				request.setAttribute("routineData", routineData);		
+				
+				startYear = Integer.parseInt(format.format(routineData.getStart_date()));	//해당 회원의 시작년도
+				endYear = Integer.parseInt(format.format(routineData.getEnd_date()));		//해당 회원의 종료년도
+							
+				format = new SimpleDateFormat("MM");
+				startMonth = format.format(routineData.getStart_date());			
+				endMonth = format.format(routineData.getEnd_date());
 						
+				format = new SimpleDateFormat("dd");
+				startDay = format.format(routineData.getStart_date());			
+				endDay = format.format(routineData.getEnd_date());
+							
+				
+				format = new SimpleDateFormat("yyyyMMdd");
+				String start = String.valueOf(startYear)+startMonth+startDay;
+				String end = String.valueOf(endYear)+endMonth+endDay;
+				
+				Date startDate = format.parse(start);
+				Date endDate = format.parse(end);
+				
+				long term = endDate.getTime() - startDate.getTime();
+				exTerm = (int)(term/(24*60*60*1000));			
+				exTerm = exTerm/30;			
+			}		
 			
-			format = new SimpleDateFormat("yyyyMMdd");
-			String start = String.valueOf(startYear)+startMonth+startDay;
-			String end = String.valueOf(endYear)+endMonth+endDay;
+			//윤달 검사
+			if((0==(startYear%4) && 0 !=(startYear%100)) || 0 == startYear%400){
+				start_leapYear = "true";
+			}
 			
-			Date startDate = format.parse(start);
-			Date endDate = format.parse(end);
-			
-			long term = endDate.getTime() - startDate.getTime();
-			exTerm = (int)(term/(24*60*60*1000));			
-			exTerm = exTerm/30;			
-		}		
-		
-		//윤달 검사
-		if((0==(startYear%4) && 0 !=(startYear%100)) || 0 == startYear%400){
-			start_leapYear = "true";
+			request.setAttribute("id", id);
+			request.setAttribute("idCheckResult", idCheckResult);
+			request.setAttribute("exPartList", adminDao.selectExPartList(null));
+			request.setAttribute("startYear", startYear);
+			request.setAttribute("startMonth", startMonth);
+			request.setAttribute("startDay", startDay);
+			request.setAttribute("endYear", endYear);
+			request.setAttribute("endMonth", endMonth);
+			request.setAttribute("endDay", endDay);
+			request.setAttribute("exTerm", exTerm);
+			request.setAttribute("start_leapYear", start_leapYear);
 		}
-		
-		request.setAttribute("id", id);
-		request.setAttribute("idCheckResult", idCheckResult);
-		request.setAttribute("exPartList", adminDao.selectExPartList(null));
-		request.setAttribute("startYear", startYear);
-		request.setAttribute("startMonth", startMonth);
-		request.setAttribute("startDay", startDay);
-		request.setAttribute("endYear", endYear);
-		request.setAttribute("endMonth", endMonth);
-		request.setAttribute("endDay", endDay);
-		request.setAttribute("exTerm", exTerm);
-		request.setAttribute("start_leapYear", start_leapYear);
 		
 		return new ModelAndView("/vt_administrator/processing/insertScheduleUserSearch");
 		
