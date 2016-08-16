@@ -6,7 +6,18 @@
 
 <script src="/TOP/request.js" type="text/javascript"> </script>
 <script src="/TOP/vt_administrator/script/admin.js" type="text/javascript"> </script>
-<div id = "scheduleUser" class="scheduleUser">
+
+<!-- 스케쥴 작성시 휘트니스 등록 검사 -->
+<c:if test="${fitnessIdCheckResult==0}">
+<script type="text/javascript">
+//<!--
+	alert("휘트니스를 등록하세요.");
+//-->
+</script>
+</c:if>
+<c:if test="${fitnessIdCheckResult!=0}">
+	
+	<div id = "scheduleUser" class="scheduleUser">
 <div class="scheduleInsertForm">
 	<form name="insertForm">
 		<input type="hidden" name="start_leapYear" value="${start_leapYear}">	
@@ -402,4 +413,7 @@
 			return false;
 		});
 	}
-</script>
+	</script>
+</c:if>
+
+
