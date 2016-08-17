@@ -30,7 +30,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import administrator.AdminDao;
-import administrator.SearchAdminDataBean;
 import member.MemberDao;
 import member.MemberDataBean;
 import myPage.MemberRoutineDataBean;
@@ -261,9 +260,6 @@ public class AdministratorController {
 	@RequestMapping("/memberSearchResult")
 	public ModelAndView memberSearchResult
 	(HttpServletRequest request,HttpServletResponse response){	
-		
-		/* 그냥 출력인지 검색인지 구별 */
-		request.setAttribute("searchChoice", "search");
 			
 		try {
 			request.setCharacterEncoding("utf-8");
@@ -272,29 +268,11 @@ public class AdministratorController {
 		}
 		
 		String searchMeans = request.getParameter("searchMeans");
-		String searchMessage  = request.getParameter("searchMessage");
+		String searchMessage  = request.getParameter("searchMessage");		
 		
+		request.setAttribute("pageNum", "0");
 		
-		
-		
-		
-		
-		
-		
-		
-		int pageSize = 10;		// 페이지 크기
-		int pageBlock = 5;			
-		int currentPage = 0;	// 현재 페이지
-		int pageCount = 0;		// 전체 페이지 수
-		int start = 0;			//(블럭)시작 페이지
-		int end = 0;			//(블럭)끝 페이지
-		
-		String searchPageNum = request.getParameter("searchPageNum");	
-		if(searchPageNum == null){
-			searchPageNum = "1";
-		}
-		request.setAttribute("searchPageNum", searchPageNum);
-		
+		request.setAttribute("searchMessage", searchMessage);
 		int articleCount = 0;
 		if(searchMeans.equals("name")){
 			articleCount = adminDao.getNameSearchCount("%"+searchMessage+"%");
@@ -304,77 +282,17 @@ public class AdministratorController {
 			articleCount = adminDao.getNickNameSearchCount("%"+searchMessage+"%");
 		}	
 		
-		System.out.println("TEST2");
-		/*이 아래로 에러가 있음 */
+		List<MemberDataBean> memberDataList = new ArrayList<MemberDataBean>();
 		
-		//검색결과가 없을때
-		if(articleCount==0){
-			request.setAttribute("pageCount", 1);
-			request.setAttribute("articleCount", articleCount);
-			
-		//검색결과가 있을때
-		}else{
-			//페이지 공식 구하기 
-			currentPage = Integer.parseInt(searchPageNum);
-			start = (currentPage - 1) * pageSize + 1;
-			end = start + pageSize - 1;
-			//페이지 수 값 구하기
-			pageCount = articleCount/pageSize + (articleCount%pageSize > 0 ? 1 : 0);
-			int startPage = ( currentPage / pageBlock ) * pageBlock + 1 ;
-			if(currentPage % pageBlock == 0){
-				startPage -= pageBlock;
-			}
-			int endPage = startPage + pageBlock - 1;
-			if(endPage > pageCount){
-				endPage = pageCount;
-			}
-			
-			request.setAttribute("startPage", startPage);
-			request.setAttribute("endPage", endPage);
-			
-			/*
-			Map<String, Integer> startEndPage = new HashMap<String, Integer>();
-			startEndPage.put("start", start);
-			startEndPage.put("end", end);		
-			memberDataList = adminDao.getMemberList(startEndPage);
-			*/
-			List<MemberDataBean> memberDataList = new ArrayList<MemberDataBean>();
-			SearchAdminDataBean searchAdminData = new SearchAdminDataBean();	
-			searchAdminData.setStart(start);
-			searchAdminData.setEnd(end);
-			
-			System.out.println("TEST3");
-			
-			if(searchMeans.equals("name")){
-				searchAdminData.setName("%"+searchMessage+"%");
-				memberDataList = adminDao.getMemberSearchNameList(searchAdminData);		
-			}else if(searchMeans.equals("id")){
-				searchAdminData.setId("%"+searchMessage+"%");
-				memberDataList = adminDao.getMemberSearchNameList(searchAdminData);		
-			}else if(searchMeans.equals("nickname")){
-				searchAdminData.setNickname("%"+searchMessage+"%");
-				memberDataList = adminDao.getMemberSearchNameList(searchAdminData);		
-			}	
-			
-			for(int i=0; i<memberDataList.size(); i++){
-				memberDataList.get(i).getName();
-			}
-			
-			request.setAttribute("searchMessage", searchMessage);
-			
-			request.setAttribute("memberDataList", memberDataList);				
-			request.setAttribute("articleCount", articleCount);			
-			request.setAttribute("pageSize", pageSize);
-			request.setAttribute("pageBlock", pageBlock);
-			request.setAttribute("pageCount", pageCount);			
+		if(searchMeans.equals("name")){
+			memberDataList = adminDao.getMemberSearchNameList("%"+searchMessage+"%");		
+		}else if(searchMeans.equals("id")){
+			memberDataList = adminDao.getMemberSearchIdList("%"+searchMessage+"%");		
+		}else if(searchMeans.equals("nickname")){
+			memberDataList = adminDao.getMemberSearchNickNameList("%"+searchMessage+"%");		
 		}
-		
-		
-		
-			
-		
-		
-			
+		request.setAttribute("articleCount", articleCount);
+		request.setAttribute("memberDataList", memberDataList);					
 		
 		String center = "vt_memberSearch";	
 		request.setAttribute("center", center);		

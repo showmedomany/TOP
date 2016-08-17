@@ -122,10 +122,7 @@
 	 
 	 
 	 <select id="getMemberSearchNameList" parameterType="String" resultType="member.MemberDataBean">
-	 	select ID, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE, r from 
-		(select ID, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE, rownum r from 
-		(select ID, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE from vt_members where name like #{searchMessage} order by id desc) order by id desc)
-		where r &gt;= #{start} and r &lt;= #{end} 
+	 select * from vt_members where name Like #{searchMessage}
 	 </select>
 	 <select id="getMemberSearchIdList" parameterType="String" resultType="member.MemberDataBean">
 	 	select * from vt_members where id Like #{searchMessage}

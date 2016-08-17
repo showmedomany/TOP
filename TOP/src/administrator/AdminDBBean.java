@@ -63,15 +63,15 @@ public class AdminDBBean implements AdminDao {
 		return SqlMapClient.getSession().selectOne("Admin.getNickNameSearchCount", searchMessage);
 	}
 	@Override
-	public List<MemberDataBean> getMemberSearchNameList(SearchAdminDataBean searchMessage) {
+	public List<MemberDataBean> getMemberSearchNameList(String searchMessage) {
 		return SqlMapClient.getSession().selectList("Admin.getMemberSearchNameList", searchMessage);
 	}
 	@Override
-	public List<MemberDataBean> getMemberSearchIdList(SearchAdminDataBean searchMessage) {		
+	public List<MemberDataBean> getMemberSearchIdList(String searchMessage) {
 		return SqlMapClient.getSession().selectList("Admin.getMemberSearchIdList", searchMessage);
 	}
 	@Override
-	public List<MemberDataBean> getMemberSearchNickNameList(SearchAdminDataBean searchMessage) {
+	public List<MemberDataBean> getMemberSearchNickNameList(String searchMessage) {
 		return SqlMapClient.getSession().selectList("Admin.getMemberSearchNickNameList", searchMessage);
 	}
 	/*

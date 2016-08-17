@@ -92,41 +92,22 @@
 						</c:if>					
 					</c:forEach>
 				</c:if>
-				<tr class="tableTr">
-					<c:if test="${searchChoice!='search'}">
-						<td align="center" colspan="5">
-							<c:if test="${startPage > pageBlock }">	
-								<a href="memberSearch.do?pageNum=1">[◀◀]</a>
-								<a href="memberSearch.do?pageNum=${startPage-pageBlock}">[◀]&nbsp;</a>
-							</c:if>
-							<c:forEach var="i" begin="${startPage }" end="${endPage}" step="1">
-								<c:if test="${startPage!=endPage }">
-									<a href="memberSearch.do?pageNum=${i}">[${i}]&nbsp;</a>	
-								</c:if>										
-							</c:forEach>
-							<c:if test="${pageCount > endPage }">
-								<a href="memberSearch.do?pageNum=${startPage+pageBlock}">[▶]&nbsp;</a>
-								<a href="memberSearch.do?pageNum=${pageCount}">[▶▶]</a>
-							</c:if>
-						</td>
-					</c:if>
-					<c:if test="${searchChoice=='search'}">
-						<td align="center" colspan="5">
-							<c:if test="${startPage > pageBlock }">	
-								<a href="memberSearch.do?searchPageNum=1">[◀◀]</a>
-								<a href="memberSearch.do?searchPageNum=${startPage-pageBlock}">[◀]&nbsp;</a>
-							</c:if>
-							<c:forEach var="i" begin="${startPage }" end="${endPage}" step="1">
-								<c:if test="${startPage!=endPage }">
-									<a href="memberSearch.do?pageNum=${i}">[${i}]&nbsp;</a>	
-								</c:if>										
-							</c:forEach>
-							<c:if test="${pageCount > endPage }">
-								<a href="memberSearch.do?searchPageNum=${startPage+pageBlock}">[▶]&nbsp;</a>
-								<a href="memberSearch.do?searchPageNum=${pageCount}">[▶▶]</a>
-							</c:if>
-						</td>
-					</c:if>				
+				<tr class="tableTr">					
+					<td align="center" colspan="5">
+						<c:if test="${startPage > pageBlock }">	
+							<a href="memberSearch.do?pageNum=1">[◀◀]</a>
+							<a href="memberSearch.do?pageNum=${startPage-pageBlock}">[◀]&nbsp;</a>
+						</c:if>
+						<c:forEach var="i" begin="${startPage }" end="${endPage}" step="1">
+							<c:if test="${startPage!=endPage }">
+								<a href="memberSearch.do?pageNum=${i}">[${i}]&nbsp;</a>	
+							</c:if>										
+						</c:forEach>
+						<c:if test="${pageCount > endPage }">
+							<a href="memberSearch.do?pageNum=${startPage+pageBlock}">[▶]&nbsp;</a>
+							<a href="memberSearch.do?pageNum=${pageCount}">[▶▶]</a>
+						</c:if>
+					</td>								
 				</tr>				
 			</table>
 			
