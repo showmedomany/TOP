@@ -60,12 +60,12 @@
 	padding: 40;
 }
 .vt_inputForm_body{
-	margin:auto;
-    width: 50%;
 	margin: auto;
-	position: relative;
-	height: inherit;
-	z-index: 1;
+    width: 50%;
+    position: relative;
+    height: inherit;
+    z-index: 1;
+    top: 21px;
 }
 
 .vt_inputForm_table{
@@ -104,11 +104,6 @@
 }
 .info{
 	width:100px;
-}
-.input_img{
-	height: 200px;
-    background: red;
-    width: 710px;
 }
 
 

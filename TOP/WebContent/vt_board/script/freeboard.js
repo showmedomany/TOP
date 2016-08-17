@@ -1,3 +1,5 @@
+var msg_sererror = "검색어를 입력하세요!";
+
 //자유게시판 검색시 submit은 안되고 검색만 되게
 var request = null;
 function searchBoardtext(){

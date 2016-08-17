@@ -17,9 +17,11 @@
 <c:set var = "str_hometag" value = "홈"/>
 <c:set var = "str_logintag" value = "로그인"/>
 <c:set var = "str_membership" value = "회원가입"/>
-<c:set var = "str_logouttag" value = "로그아웃"/>
-
-
+<c:set var = "str_logouttag" value = "LOG OUT"/>
+<c:set var = "str_logintag" value = "LOG IN"/>
+<c:set var = "str_hometag" value = "HOME"/>
+<c:set var = "str_signuptag" value = "SIGN UP"/>
+<c:set var = "str_pagetag" value = "MY PAGE"/>
 
 
 <!-- 로그인 페이지 문자열 -->

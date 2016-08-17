@@ -16,11 +16,11 @@
 										${sessionScope.authority_id }
 										${sessionScope.memId }
 										<a class="top_header_atag_font" 
-											href="main.do">HOME</a>&nbsp;
+											href="main.do">${str_hometag}</a>&nbsp;
 										<a class="top_header_atag_font"
-											href="loginForm.do">LOGIN</a>&nbsp;
+											href="loginForm.do">${str_logintag}</a>&nbsp;
 										<a class="top_header_atag_font"
-											href="inputForm.do">SIGN UP</a>								
+											href="inputForm.do">${str_signuptag}</a>								
 									</c:if>
 							
 									<!-- 세션스코프의 권한 값이 관리자일때  -->
@@ -33,10 +33,10 @@
 									</c:if>
 									<!-- 세션스코프의 권한 값이 회원일때  -->
 									<c:if test="${sessionScope.authority_id eq 2 }">
-										${sessionScope.memId }
+										${sessionScope.memId }&nbsp;님 안녕하세요?
 										<!-- 마이페이지.do 를 a태그에 걸어줌 -->	
 										<a class="top_header_atag_font"
-											href="myPageView.do">마이페이지</a>
+											href="myPageView.do">${str_pagetag}</a>&nbsp;
 										<a class="top_header_atag_font"
 											href = "logoutPro.do">${str_logouttag}</a> 
 									</c:if>

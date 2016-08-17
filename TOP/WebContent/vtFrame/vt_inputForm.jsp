@@ -20,9 +20,7 @@
 
 			<div class="vt_inputForm_Frame">
 				<div class = "vt_inputForm_body">
-					<div class="input_img">
-						<img src="${images}input.gif">
-					</div>
+					
 					<div class="vt_inputForm_top">
 						<div class="vt_inputForm_top_sub1">
 							<div class="vt_inputForm_info">
