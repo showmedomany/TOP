@@ -158,8 +158,8 @@ public class AdministratorController {
 		mdto.setEmail(email);
 		
 		memberDao.insertMember(mdto);
-		
-		String center = "vt_admin_centerContent";
+		/*160817 03:47수정: 회원등록하고 완료후 관리자페이지(회원검색)으로 가도록 수정 */
+		String center = "processing/admin_inputcheck";
 		request.setAttribute("center", center);
 		
 		return new ModelAndView("/vt_administrator/vt_administrator");
@@ -275,21 +275,21 @@ public class AdministratorController {
 		request.setAttribute("searchMessage", searchMessage);
 		int articleCount = 0;
 		if(searchMeans.equals("name")){
-			articleCount = adminDao.getNameSearchCount(searchMessage);
+			articleCount = adminDao.getNameSearchCount("%"+searchMessage+"%");
 		}else if(searchMeans.equals("id")){
-			articleCount = adminDao.getIdSearchCount(searchMessage);
+			articleCount = adminDao.getIdSearchCount("%"+searchMessage+"%");
 		}else if(searchMeans.equals("nickname")){
-			articleCount = adminDao.getNickNameSearchCount(searchMessage);
+			articleCount = adminDao.getNickNameSearchCount("%"+searchMessage+"%");
 		}	
 		
 		List<MemberDataBean> memberDataList = new ArrayList<MemberDataBean>();
 		
 		if(searchMeans.equals("name")){
-			memberDataList = adminDao.getMemberSearchNameList(searchMessage);		
+			memberDataList = adminDao.getMemberSearchNameList("%"+searchMessage+"%");		
 		}else if(searchMeans.equals("id")){
-			memberDataList = adminDao.getMemberSearchIdList(searchMessage);		
+			memberDataList = adminDao.getMemberSearchIdList("%"+searchMessage+"%");		
 		}else if(searchMeans.equals("nickname")){
-			memberDataList = adminDao.getMemberSearchNickNameList(searchMessage);		
+			memberDataList = adminDao.getMemberSearchNickNameList("%"+searchMessage+"%");		
 		}
 		request.setAttribute("articleCount", articleCount);
 		request.setAttribute("memberDataList", memberDataList);					

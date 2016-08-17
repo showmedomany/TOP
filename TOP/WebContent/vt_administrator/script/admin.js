@@ -165,7 +165,11 @@ function memberDataViewResult(userNum){
 		}
 	}
 }
-
+function onEnter(pageNum){	
+	searchMember(pageNum);
+	return false;
+	
+}
 function searchMember(pageNum){
 	var searchMeans = $('select[name=searchMeans]').val();
 	var searchMessage = memberSearchForm.searchMessage.value;

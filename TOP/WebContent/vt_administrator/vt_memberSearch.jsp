@@ -12,7 +12,7 @@
 <body onload="memberSearchFormInit()">
 	<div id="insertUserDiv"></div><br><br>
 	
-	<form name="memberSearchForm" >	
+	<form name="memberSearchForm" onsubmit = "return onEnter()">	
 		<input type="hidden" name="userNumber" value="0">
 		<div class = "frame">	
 			<table class="memberTable">
@@ -27,8 +27,11 @@
 					</td>				
 				</tr>
 				<tr class="tableTr" >
-					<th colspan="5">
+					<th colspan="4">
 						회원리스트
+					</th>
+					<th>
+						<input type="button" name="meminput" value="회원등록" onclick="location.href = 'admin_input.do'">
 					</th>
 				</tr>	
 				<tr class="tableTr" >
@@ -36,7 +39,7 @@
 						검색
 					</th>
 					<td align="center" colspan="4">					
-						<input style="width: 450px;" type="text" name="searchMessage" onkeydown="if(event.keyCode==13) return false;">
+						<input style="width: 450px;" type="text" name="searchMessage">
 						<select name="searchMeans" size="1">
 							<option value="name" selected="selected">Name</option>
 							<option value="id">ID</option>
@@ -55,7 +58,7 @@
 				</tr>
 				<c:if test="${articleCount == 0 }">
 					<tr>
-						<th colspan="5">검색된 회원이 없습니다</th>
+						<th colspan="5">검색된 회원이 없습니다.&nbsp;&nbsp;&nbsp;<a href="admin_input.do" style="text-decoration: underline;font-weight: normal;">회원등록하기</a></th>
 					</tr>				
 				</c:if>
 				<c:if test="${articleCount != 0 }">
