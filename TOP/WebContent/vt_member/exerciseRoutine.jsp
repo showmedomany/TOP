@@ -68,7 +68,7 @@
 						</th>
 						<th width="135" onclick="weekSchedule(3)">
 							<c:if test="${day eq 4 }">
-								<div class = "emp">Wednesday</div>
+								<div class = "emp">Wednesday 강조</div>
 							</c:if>
 							<c:if test="${day ne 4 }">
 								Wednesday

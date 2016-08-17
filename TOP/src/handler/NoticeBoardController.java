@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import board.SearchDataBean;
 import noticeboard.NoticeBoardDao;
 import noticeboard.NoticeBoardDataBean;
+import util.Util;
 
 @Controller
 public class NoticeBoardController {
@@ -180,7 +181,7 @@ public class NoticeBoardController {
 		Map<String, String> writeContent = new HashMap<String, String>();		
 		writeContent.put("id", ((String) request.getSession().getAttribute("memId")));
 		writeContent.put("subject", subject);
-		writeContent.put("content", content);
+		writeContent.put("content", Util.toJS(content));
 		
 		int insertArticleResult = noticeboardDao.insertNoticeArticle(writeContent);		
 		request.setAttribute("insertArticleResult", insertArticleResult);
@@ -250,9 +251,10 @@ public class NoticeBoardController {
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");		
 		
+		
 		NoticeBoardDataBean noticeBoardData = new NoticeBoardDataBean();
 		noticeBoardData.setSubject(subject);
-		noticeBoardData.setContent(content);
+		noticeBoardData.setContent(Util.toJS(content));
 		noticeBoardData.setNum(num);	
 		
 		int updateArticleResult = noticeboardDao.updateNoticeArticle(noticeBoardData);

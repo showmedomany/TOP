@@ -19,6 +19,7 @@ import board.SearchDataBean;
 import comment.CommentDao;
 import comment.CommentDataBean;
 import member.MemberDao;
+import util.Util;
 
 /**
  * 핸들러들은 센터에 들어갈 각 기능의Frame폼과
@@ -199,7 +200,9 @@ public class BoardController {
 		bdto.setNickname(request.getParameter("nickname"));
 		bdto.setSubject(request.getParameter("subject"));
 		bdto.setReadcount(0);
-		bdto.setContent(request.getParameter("content"));
+		String content = request.getParameter("content");
+		
+		bdto.setContent(Util.toJS(content));
 		bdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
 		int result = boardDao.insertArticle(bdto);
@@ -247,7 +250,9 @@ public class BoardController {
 		
 		bdto.setNum(Integer.parseInt(request.getParameter("num")));
 		bdto.setSubject(request.getParameter("subject"));
-		bdto.setContent(request.getParameter("content"));
+		String content = request.getParameter("content");
+		
+		bdto.setContent(Util.toJS(content));
 		bdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
 		String pageNum = request.getParameter("pageNum");
@@ -398,6 +403,7 @@ public class BoardController {
 		request.setAttribute("top", top);
 		String id = request.getParameter("id");
 		String content = request.getParameter("content");
+		
 		CommentDataBean cdto = new CommentDataBean();
 		//코멘트 insert
 		String nick = memberDao.getNick(id);
@@ -405,7 +411,7 @@ public class BoardController {
 		
 		cdto.setNum(num);
 		cdto.setNick(nick);
-		cdto.setContent(content);
+		cdto.setContent(Util.toJS(content));
 		cdto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
 		commentDao.writeComment(cdto);	//코멘트 삽입

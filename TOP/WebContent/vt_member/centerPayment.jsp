@@ -51,30 +51,7 @@
 		</c:if>
 	</table>
 	<br>
-	<%-- 	
-	<table>	
-		<tr class="tableTr">
-			<th colspan="2" style="width:950px">인바디</th>
-		</tr>	
-		
-		<c:if test="${userCheckResult.inbody==1}">
-			<tr class="tableTr" style="height: 30px;">
-				<td colspan="2" align="center">인바디를 등록하셨습니다.</td>
-			</tr>
-			<tr class="tableTr">
-				<th>등록일</th>
-				<td align="center"><fmt:formatDate value="${userCheckResult.inbody_date }" type="date" pattern="yyyy년 MM월 dd일"/></td>	
-			</tr>
-		</c:if>
-		<c:if test="${userCheckResult.inbody==0}">
-			<tr class="tableTr">
-				<td align="center">인바디를 등록하지 않으셨습니다.</td>
-			</tr>
-		</c:if>
-		
-	</table>
-	 --%>
-	<br>
+	<br>	
 	<table>
 		<tr class="tableTr">
 			<th colspan="2" style="width:950px">운동루틴</th>
