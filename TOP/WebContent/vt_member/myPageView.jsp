@@ -21,13 +21,8 @@
 
 	
 	
-	<%-- <div class="myPage">	
-		<!-- 사이드 메뉴 -->
-		<div class="sideMenu">
-			<jsp:include page="myPageSide.jsp" flush="false"></jsp:include>
-		</div>	
-		<!-- 센터 -->
-		<div class="myPageCenter">
-			
-		</div>
-	</div> --%>
+	
+	
+	
+	
+	

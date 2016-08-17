@@ -3,7 +3,6 @@
 <%@ include file = "setting.jsp" %>
 <script src="${script}member.js" type="text/javascript"></script>
 <script src="/TOP/request.js" type="text/javascript"></script>
-<link href = "${css}myPageStyle.css" rel="stylesheet"	type="text/css">
 
 <div class="banner">
 	<img src="${images}MemberBanner.png">	
@@ -49,18 +48,7 @@
 					<th>* 닉네임</th>
 					<td>
 						${memberData.nickname }
-					</td><%-- 
-						<input class="input" type="text" name="nickname" maxlength="20" 
-							value="${memberData.nickname }" onkeyup="confirmnick()">
-						<input type="hidden" name="Nickname" value="${memberData.nickname }">
-						<br>
-						<div id="userNick" style="font-size:12px; margin-left: 5px; color: blue">
-							${msg_nickerror}
-						</div>
-						<div id="userNick_overlap" style="font-size:12px; margin-left: 5px; color: red;">
-						
-						</div>						
-					</td> --%>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2">

@@ -2,7 +2,10 @@ package handler;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -104,15 +107,12 @@ public class MyPageController {
 			/* 운동부위, 요일, 운동이름 가지고 오기 */
 			List<RoutineDataBean> exeriselistRoutine = new ArrayList<RoutineDataBean>();	
 			exeriselistRoutine = myPageDao.getRoutineData(id);
-			request.setAttribute("exeriselistRoutine", exeriselistRoutine);
-			
-			/* test print
-			for(int i=0; i<exeriselistRoutine.size(); i++){
-				System.out.print(exeriselistRoutine.get(i).getDay());
-				System.out.print(exeriselistRoutine.get(i).getPart_name());
-				System.out.println(exeriselistRoutine.get(i).getName());				
-			}*/
-		}		
+			request.setAttribute("exeriselistRoutine", exeriselistRoutine);			
+		}
+		//현재요일 가져오기
+		Calendar calendar = new GregorianCalendar(Locale.KOREA);
+		int day = calendar.get(Calendar.DAY_OF_WEEK);
+		request.setAttribute("day", day);
 			
 		String top = "/vtFrame/changeimages/mainimage";
 		String center = "exerciseRoutine";
