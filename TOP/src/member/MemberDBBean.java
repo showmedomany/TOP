@@ -49,7 +49,7 @@ public class MemberDBBean implements MemberDao {
 	}
 	
 	@Override
-	public String getNick(String id) {		
+	public String getNick(String id) {
 		MemberDataBean mdto = getMember(id);
 		return mdto.getNickname();
 	}
