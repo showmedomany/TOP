@@ -14,11 +14,11 @@
 <c:set var = "jquery" value = "/TOP/jquery-1.12.4.js"/>
 
 <!-- 탑메뉴 문자열 -->
-<c:set var = "str_hometag" value = "홈"/>
-<c:set var = "str_logintag" value = "로그인"/>
-<c:set var = "str_membership" value = "회원가입"/>
-<c:set var = "str_logouttag" value = "로그아웃"/>
-
+<c:set var = "str_hometag" value = "HOME"/>
+<c:set var = "str_logintag" value = "LOGIN"/>
+<c:set var = "str_membership" value = "SIGN UP"/>
+<c:set var = "str_logouttag" value = "LOGOUT"/>
+<c:set var = "str_mypagetag" value = "MYPAGE"/>
 
 
 
