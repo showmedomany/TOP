@@ -43,7 +43,9 @@
 
 <div class="bottom">
 	<c:if test="${dto.id == memId}">
-		<input class="button" type = "button" value = "수정" onclick = "location = 'vt_freeModifyForm.do?num=${dto.num}&pageNum=${pageNum}'">
+		<input class="button" type = "button" value = "수정" onclick = "location = 'vt_freeModifyForm.do?num=${dto.num}&pageNum=${pageNum}'">	
+	</c:if>
+	<c:if test="${dto.id == memId || authority_id == 1}">
 		<input class="button" type = "button" value = "삭제" onclick = "checkdelete(${dto.num}, ${pageNum})">
 	</c:if>
 	<input class="button" type="button" value="댓글" onclick = "commentfocus()">
