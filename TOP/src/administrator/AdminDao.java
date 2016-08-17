@@ -30,9 +30,9 @@ public interface AdminDao {
 	public int getNickNameSearchCount(String searchMessage);
 	
 	
-	public List<MemberDataBean> getMemberSearchNameList(String searchMessage);
-	public List<MemberDataBean> getMemberSearchIdList(String searchMessage);
-	public List<MemberDataBean> getMemberSearchNickNameList(String searchMessage);
+	public List<MemberDataBean> getMemberSearchNameList(SearchAdminDataBean searchMessage);
+	public List<MemberDataBean> getMemberSearchIdList(SearchAdminDataBean searchMessage);
+	public List<MemberDataBean> getMemberSearchNickNameList(SearchAdminDataBean searchMessage);
 
 	/* 인바디 등록확인 
 	public int getInbodyCheck(String id);

@@ -166,14 +166,20 @@ function memberDataViewResult(userNum){
 	}
 }
 
-function searchMember(pageNum){
+function onEnter(searchPageNum){	
+	searchMember(searchPageNum);
+	return false;
+	
+}
+
+function searchMember(searchPageNum){		
 	var searchMeans = $('select[name=searchMeans]').val();
 	var searchMessage = memberSearchForm.searchMessage.value;
 	
 	if(!memberSearchForm.searchMessage.value){		
 		location.href = 'memberSearch.do';		
 	}else{	
-		location.href = "memberSearchResult.do?pageNum="+pageNum+"&searchMeans="+searchMeans+"&searchMessage="+searchMessage;
+		location.href = "memberSearchResult.do?searchPageNum="+searchPageNum+"&searchMeans="+searchMeans+"&searchMessage="+searchMessage;
 	}
 }
 

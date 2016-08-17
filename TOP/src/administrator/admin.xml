@@ -111,24 +111,27 @@
 	
 	<!-- 회원검색수 -->
 	<select id="getNameSearchCount" parameterType="String" resultType="int">
-		select count(*) from vt_members where name = #{searchMessage}
+		select count(*) from vt_members where name Like #{searchMessage}
 	</select>
 	<select id="getIdSearchCount" parameterType="String" resultType="int">
-		select count(*) from vt_members where id = #{searchMessage}
+		select count(*) from vt_members where id Like #{searchMessage}
 	</select>
 	<select id="getNickNameSearchCount" parameterType="String" resultType="int">
-		select count(*) from vt_members where nickname = #{searchMessage}
+		select count(*) from vt_members where nickname Like #{searchMessage}
 	</select>	
 	 
 	 
 	 <select id="getMemberSearchNameList" parameterType="String" resultType="member.MemberDataBean">
-	 	select * from vt_members where name = #{searchMessage}
+	 	select ID, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE, r from 
+		(select ID, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE, rownum r from 
+		(select ID, NAME, NICKNAME, PHONE, ZIPCODE, ADDRESS, EMAIL, JOIN_DATE from vt_members where name like #{searchMessage} order by id desc) order by id desc)
+		where r &gt;= #{start} and r &lt;= #{end} 
 	 </select>
 	 <select id="getMemberSearchIdList" parameterType="String" resultType="member.MemberDataBean">
-	 	select * from vt_members where id = #{searchMessage}
+	 	select * from vt_members where id Like #{searchMessage}
 	 </select>
 	 <select id="getMemberSearchNickNameList" parameterType="String" resultType="member.MemberDataBean">
-	 	select * from vt_members where nickname = #{searchMessage}
+	 	select * from vt_members where nickname Like #{searchMessage}
 	 </select>
 	 <!-- 
 	 인바디 정보 등록 확인

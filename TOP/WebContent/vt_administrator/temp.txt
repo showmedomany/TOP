@@ -1,0 +1,112 @@
+@RequestMapping("/memberSearch")
+	public ModelAndView memberSearch
+	(HttpServletRequest request,HttpServletResponse response){	
+		
+		List<MemberDataBean> memberDataList = new ArrayList<MemberDataBean>();
+		int pageSize = 10;		// 페이지 크기
+		int pageBlock = 5;			
+		int currentPage = 0;	// 현재 페이지
+		int pageCount = 0;		// 전체 페이지 수
+		int start = 0;			//(블럭)시작 페이지
+		int end = 0;			//(블럭)끝 페이지
+		
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null){
+			pageNum = "1";
+		}
+		request.setAttribute("pageNum", pageNum);
+		
+		//회원의  수
+		int articleCount = adminDao.getMemberDataCount();		
+		
+		//회원이 없을때 
+		if(articleCount == 0){			
+			request.setAttribute("pageCount", 1);
+			request.setAttribute("articleCount", articleCount);				
+		//회원이 있을때	
+		}else{			
+			//페이지 공식 구하기 
+			currentPage = Integer.parseInt(pageNum);
+			start = (currentPage - 1) * pageSize + 1;
+			end = start + pageSize - 1;			
+			//페이지 수 값 구하기
+			//pageCount = articleCount/pageBlock;
+			pageCount = articleCount/pageSize + (articleCount%pageSize > 0 ? 1 : 0);
+			int startPage = ( currentPage / pageBlock ) * pageBlock + 1 ;
+			if(currentPage % pageBlock == 0){
+				startPage -= pageBlock;
+			}
+			int endPage = startPage + pageBlock - 1;
+			if(endPage > pageCount){
+				endPage = pageCount;
+			}
+			/*if(articleCount%pageBlock!=0){
+				pageCount+=1;
+			}*/			
+			
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
+			
+			Map<String, Integer> startEndPage = new HashMap<String, Integer>();
+			startEndPage.put("start", start);
+			startEndPage.put("end", end);		
+			memberDataList = adminDao.getMemberList(startEndPage);		
+			
+			request.setAttribute("memberDataList", memberDataList);
+			request.setAttribute("articleCount", articleCount);			
+			request.setAttribute("pageSize", pageSize);
+			request.setAttribute("pageBlock", pageBlock);
+			request.setAttribute("pageCount", pageCount);				
+		}
+		
+		
+		
+		
+		/*검색 백업*/
+		@RequestMapping("/memberSearchResult")
+	public ModelAndView memberSearchResult
+	(HttpServletRequest request,HttpServletResponse response){	
+			
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {	
+			e.printStackTrace();
+		}
+		
+		String searchMeans = request.getParameter("searchMeans");
+		String searchMessage  = request.getParameter("searchMessage");	
+		
+		
+		String pageNum = request.getParameter("pageNum");
+		
+		request.setAttribute("pageNum", pageNum);
+		/*request.setAttribute("pageNum", "0");*/
+		
+		request.setAttribute("searchMessage", searchMessage);
+		
+		int articleCount = 0;
+		if(searchMeans.equals("name")){
+			articleCount = adminDao.getNameSearchCount("%"+searchMessage+"%");
+		}else if(searchMeans.equals("id")){
+			articleCount = adminDao.getIdSearchCount("%"+searchMessage+"%");
+		}else if(searchMeans.equals("nickname")){
+			articleCount = adminDao.getNickNameSearchCount("%"+searchMessage+"%");
+		}	
+		
+		List<MemberDataBean> memberDataList = new ArrayList<MemberDataBean>();
+		
+		if(searchMeans.equals("name")){
+			memberDataList = adminDao.getMemberSearchNameList("%"+searchMessage+"%");		
+		}else if(searchMeans.equals("id")){
+			memberDataList = adminDao.getMemberSearchIdList("%"+searchMessage+"%");		
+		}else if(searchMeans.equals("nickname")){
+			memberDataList = adminDao.getMemberSearchNickNameList("%"+searchMessage+"%");		
+		}		
+		
+		request.setAttribute("articleCount", articleCount);
+		request.setAttribute("memberDataList", memberDataList);					
+		
+		String center = "vt_memberSearch";	
+		request.setAttribute("center", center);		
+		return new ModelAndView("/vt_administrator/vt_administrator");		
+	}//
