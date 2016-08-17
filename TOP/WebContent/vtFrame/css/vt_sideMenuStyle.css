@@ -9,11 +9,12 @@
 .side_menu {
     width: 268px;
     min-height: 800px;
-
     float: left;
     position: relative;
     margin: 50 0;
-    left:-100px;
+    left: -100px;
+    border-style: double;
+    top: 25px;
 }
 .vt_info_menu_title {
     width: 246px;
